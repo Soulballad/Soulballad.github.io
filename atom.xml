@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="https://soulballad.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://soulballad.github.io/"/>
+  <updated>2020-10-27T12:58:05.475Z</updated>
+  <id>https://soulballad.github.io/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Github Pages和Hexo搭建博客</title>
+    <link href="https://soulballad.github.io/2020/10/27/shi-yong-github-pages-he-hexo-da-jian-bo-ke/"/>
+    <id>https://soulballad.github.io/2020/10/27/shi-yong-github-pages-he-hexo-da-jian-bo-ke/</id>
+    <published>2020-10-27T12:31:29.000Z</published>
+    <updated>2020-10-27T12:58:05.475Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;文章目录&quot;&gt;&lt;a href=&quot;#文章目录&quot; class=&quot;headerlink&quot; title=&quot;文章目录&quot;&gt;&lt;/a&gt;文章目录&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Github Pages" scheme="https://soulballad.github.io/tags/Github-Pages/"/>
+    
+    <category term="Hexo" scheme="https://soulballad.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://soulballad.github.io/2020/10/27/hello-world/"/>
+    <id>https://soulballad.github.io/2020/10/27/hello-world/</id>
+    <published>2020-10-27T11:55:33.424Z</published>
+    <updated>2020-10-27T11:55:33.424Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
