@@ -5,15 +5,42 @@
   
 
   
-  <title>Hexo</title>
+  <title>使用Github Pages和Hexo搭建博客 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="文章目录 ● 前言 ● 入门 ● 安装 Node.js ● 安装 Git  • 检验Git是否安装成功   ● 安装Hexo  • Hexo 初始化配置   ● 本地查看效果 ● 将博客部署到 Github Pages 上  • 注册 Github 账户 • 创建项目代码库 • 配置 SSH 密钥 • 在 GitHub 账户中添加你的公钥 • 测试 • 配置 Git 个人信息   ● 将本地的 H">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Github Pages和Hexo搭建博客">
+<meta property="og:url" content="http://example.com/2020/10/27/%E4%BD%BF%E7%94%A8Github-Pages%E5%92%8CHexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="文章目录 ● 前言 ● 入门 ● 安装 Node.js ● 安装 Git  • 检验Git是否安装成功   ● 安装Hexo  • Hexo 初始化配置   ● 本地查看效果 ● 将博客部署到 Github Pages 上  • 注册 Github 账户 • 创建项目代码库 • 配置 SSH 密钥 • 在 GitHub 账户中添加你的公钥 • 测试 • 配置 Git 个人信息   ● 将本地的 H">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY0ODFkMzc0MC5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY0Yzk5ZjcwOC5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY0ZWU4YTc5NC5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY1MGVjMjA5Mi5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY1M2Q0YjAxOS5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY1NjZiNGI2Yi5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY1OGQyZWVlNS5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY1YjdjNzRkMi5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY1ZTA5MzBjMi5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY2MDZlNzU1OC5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY2MjJiNDU4OC5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY2M2ViMWFiMi5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY2YmMxZmM4Ny5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY2ZTNiNDgwMy5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY3MDJjNDZkNi5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY3MjBjY2FlMC5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/20190816220246218.png">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY3NmNiM2RhNC5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY3OGI4YmEzZS5wbmc">
+<meta property="og:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY3ZTExZWVkNy5wbmc">
+<meta property="article:published_time" content="2020-10-27T12:31:29.000Z">
+<meta property="article:modified_time" content="2020-10-27T12:58:05.475Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Github Pages">
+<meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="e:/笔记/自己整理/typora-user-images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY0ODFkMzc0MC5wbmc">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -62,9 +89,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-使用Github-Pages和Hexo搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-使用Github-Pages和Hexo搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/27/%E4%BD%BF%E7%94%A8Github-Pages%E5%92%8CHexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
   <time datetime="2020-10-27T12:31:29.000Z" itemprop="datePublished">2020-10-27</time>
@@ -77,8 +102,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/%E4%BD%BF%E7%94%A8Github-Pages%E5%92%8CHexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">使用Github Pages和Hexo搭建博客</a>
+    <h1 class="article-title" itemprop="name">
+      使用Github Pages和Hexo搭建博客
     </h1>
   
 
@@ -234,60 +259,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/27/hello-world/" class="article-date">
-  <time datetime="2020-10-27T11:55:33.424Z" itemprop="datePublished">2020-10-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2020/10/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/27/hello-world/" data-id="ckgrxrivr00000s3mbhyuh12v" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
