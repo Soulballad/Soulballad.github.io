@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="1.Arthas 使用(一) -- 基础命令, Soulballad">
+    <meta name="keywords" content="(Arthas)1、Arthas基础命令, Soulballad">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>1.Arthas 使用(一) -- 基础命令 | Soulballad</title>
+    <title>(Arthas)1、Arthas基础命令 | Soulballad</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -30,7 +30,11 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Soulballad" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 
@@ -311,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">1.Arthas 使用(一) -- 基础命令</h1>
+                    <h1 class="description center-align post-title">(Arthas)1、Arthas基础命令</h1>
                 </div>
             </div>
         </div>
@@ -446,6 +450,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AF%8A%E6%96%AD/" class="post-category">
+                                诊断
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -453,29 +466,49 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-28
+                    2020-10-29
                 </div>
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-10-29
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2k
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Arthas-简介"><a href="#Arthas-简介" class="headerlink" title="Arthas 简介"></a>Arthas 简介</h1><p>Arthas 是 Alibaba 开源的 Java 诊断工具，根据官方介绍，它提供了如下工功能：</p>
+                <h1 id="1、Arthas-简介"><a href="#1、Arthas-简介" class="headerlink" title="1、Arthas 简介"></a>1、Arthas 简介</h1><p>Arthas 是 Alibaba 开源的 Java 诊断工具，根据官方介绍，它提供了如下工功能：</p>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517111859.png" alt="image-20200517111854420"></p>
 <p>官方文档地址： <a href="https://alibaba.github.io/arthas/" target="_blank" rel="noopener">https://alibaba.github.io/arthas/</a></p>
 <p>github 源码地址： <a href="https://github.com/alibaba/arthas" target="_blank" rel="noopener">https://github.com/alibaba/arthas</a></p>
-<br/>
+<br>
 
-<h1 id="Arthas-安装"><a href="#Arthas-安装" class="headerlink" title="Arthas 安装"></a>Arthas 安装</h1><h2 id="启动-Arthas"><a href="#启动-Arthas" class="headerlink" title="启动 Arthas"></a>启动 Arthas</h2><pre class=" language-shell"><code class="language-shell"># 下载 arthas
+<h1 id="2、Arthas-安装"><a href="#2、Arthas-安装" class="headerlink" title="2、Arthas 安装"></a>2、Arthas 安装</h1><h2 id="启动-Arthas"><a href="#启动-Arthas" class="headerlink" title="启动 Arthas"></a>启动 Arthas</h2><pre class=" language-shell"><code class="language-shell"># 下载 arthas
 curl -O https://alibaba.github.io/arthas/arthas-boot.jar
 # 通过如下命令启动
 java -jar arthas-boot.jar</code></pre>
@@ -501,23 +534,24 @@ java -jar arthas-boot.jar</code></pre>
   java -jar arthas-boot.jar --repo-mirror aliyun --use-http
 WIKI:
   https://alibaba.github.io/arthas</code></pre>
-<br/>
+<br>
 
 <h2 id="help"><a href="#help" class="headerlink" title="help"></a>help</h2><p>arthas 连接成功后，使用 help 可以看到提供的一些命令</p>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517161913.png" alt="image-20200517155940521"></p>
 <p>每个命令可以使用 <code>-h</code> 参数查看帮助信息，里面有<code>EXAMPLES</code>和<code>WIKI</code>链接</p>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517161912.png" alt="image-20200517154635722"></p>
-<br/>
+<br>
 
 <h2 id="webconsole"><a href="#webconsole" class="headerlink" title="webconsole"></a>webconsole</h2><p>arthas 启动后，可以通过浏览器进行访问，地址 <a href="http://localhost:8563/" target="_blank" rel="noopener">http://localhost:8563/</a></p>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194019.png" alt="image-20200517162105397"></p>
-<br/>
+<br>
 
 <h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><p>如果只是退出当前的连接，可以用<code>quit</code>或者<code>exit</code>命令。Attach到目标进程上的arthas还会继续运行，端口会保持开放，下次连接时可以直接连接上。</p>
 <p>如果想完全退出arthas，可以执行<code>stop</code>命令。</p>
-<br/>
+<br>
 
-<h1 id="Arthas-命令"><a href="#Arthas-命令" class="headerlink" title="Arthas 命令"></a>Arthas 命令</h1><h2 id="dashboard"><a href="#dashboard" class="headerlink" title="dashboard"></a>dashboard</h2><p>查看面板信息，主要包含cpu 内存使用信息，可以按  <code>Ctrl+C</code> 或者 输入 <code>q</code> 退出</p>
+<p>3、# Arthas 命令</p>
+<h2 id="dashboard"><a href="#dashboard" class="headerlink" title="dashboard"></a>dashboard</h2><p>查看面板信息，主要包含cpu 内存使用信息，可以按  <code>Ctrl+C</code> 或者 输入 <code>q</code> 退出</p>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517163427.png" alt="_images/dashboard.png"></p>
 <p>数据说明</p>
 <ul>
@@ -531,7 +565,7 @@ WIKI:
 <li>INTERRUPTED: 线程当前的中断位状态</li>
 <li>DAEMON: 是否是daemon线程</li>
 </ul>
-<br/>
+<br>
 
 <h2 id="thread"><a href="#thread" class="headerlink" title="thread"></a>thread</h2><p>查看线程使用情况</p>
 <pre class=" language-shell"><code class="language-shell"># 查看所有线程信息
@@ -545,7 +579,7 @@ thread -n 3 -i 5000
 # 查找线程是否有阻塞
 thread -b</code></pre>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517163428.png" alt="image-20200517163025955"></p>
-<br/>
+<br>
 
 <h2 id="sysprop"><a href="#sysprop" class="headerlink" title="sysprop"></a>sysprop</h2><p>查看当前JVM的系统属性，支持 pipeline</p>
 <pre class=" language-shell"><code class="language-shell">sysprop # 查询所有属性
@@ -554,19 +588,19 @@ sysprop key value # 修改属性值
 sysprop | grep java # 查询包含java的属性
 sysprop | wc -l # 统计数量</code></pre>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194020.png" alt="image-20200517163647024"></p>
-<br/>
+<br>
 
 <h2 id="sysenv"><a href="#sysenv" class="headerlink" title="sysenv"></a>sysenv</h2><p>查看当前JVM的环境属性</p>
 <p>用法和 sysprop 类似，不支持修改</p>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194024.png" alt="image-20200517170505831"></p>
-<br/>
+<br>
 
 <h2 id="logger"><a href="#logger" class="headerlink" title="logger"></a>logger</h2><p>查看logger信息，更新logger level</p>
 <pre class=" language-shell"><code class="language-shell">logger # 查看所有logger对象信息
 logger -n [name] # 查看名为name的logger信息
 logger -c [classloader] -n [name] -l ERROR # 修改名为name的logger级别为ERROR，需指定类加载器</code></pre>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194023.png" alt="image-20200517165827604"></p>
-<br/>
+<br>
 
 <h2 id="sc"><a href="#sc" class="headerlink" title="sc"></a>sc</h2><p>查看JVM已加载的类信息</p>
 <pre class=" language-shell"><code class="language-shell">sc -d org.apache.commons.lang.StringUtils # 查看StringUtils详细信息
@@ -574,7 +608,7 @@ sc -d org/apache/commons/lang/StringUtils # 查看StringUtils详细信息
 sc -d *StringUtils # 查看StringUtils，根据*匹配
 sc -d -f org.apache.commons.lang.StringUtils # 查看类及成员变量信息，f要配合d使用才有效</code></pre>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194022.png" alt="image-20200517165504773"></p>
-<br/>
+<br>
 
 <h2 id="sm"><a href="#sm" class="headerlink" title="sm"></a>sm</h2><p>查看已加载类的方法信息，用法和 <code>sc</code> 类似</p>
 <pre class=" language-shell"><code class="language-shell">sm java.lang.String # 查看String的所有方法
@@ -582,7 +616,7 @@ sm -d org.apache.commons.lang.StringUtils # 查看String方法详情
 sm -d org/apache/commons/lang/StringUtils # 查看String方法详情
 sm *StringUtils *  # 查看String方法，根据*匹配</code></pre>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194025.png" alt="image-20200517170620766"></p>
-<br/>
+<br>
 
 <h2 id="dump"><a href="#dump" class="headerlink" title="dump"></a>dump</h2><p>dump 已加载类的 bytecode 到特定目录</p>
 <pre class=" language-shell"><code class="language-shell">dump java.lang.String # dump java.lang.String.class文件
@@ -591,7 +625,7 @@ dump -d /tmp/output java.lang.String # dump到指定目录
 dump org/apache/commons/lang/StringUtils # dump，支持目录格式
 dump *StringUtils # dump，根据*匹配</code></pre>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194021.png" alt="image-20200517164153476"></p>
-<br/>
+<br>
 
 <h2 id="jad"><a href="#jad" class="headerlink" title="jad"></a>jad</h2><p>反编译指定已加载类的源码</p>
 <pre class=" language-shell"><code class="language-shell">jad java.lang.String # 反编译String类
@@ -599,7 +633,7 @@ jad java.lang.String toString # 反编译指定方法
 jad --source-only java.lang.String # 反编绎时只显示源代码
 jad -c 39eb305e org/apache/log4j/Logger # 反编译指定classloader</code></pre>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194027.png" alt="image-20200517171304855"></p>
-<br/>
+<br>
 
 <h2 id="classloader"><a href="#classloader" class="headerlink" title="classloader"></a>classloader</h2><p>查看classloader的继承树，urls，类加载信息</p>
 <pre class=" language-shell"><code class="language-shell">classloader    # 列出所有classLoader
@@ -609,13 +643,13 @@ classloader -c 327a647b # 查看具体的classLoader
 classloader -a # 列出所有加载的类
 classloader -c 659e0bfd --load demo.MathGame # 使用指定classLoader加载类</code></pre>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194026.png" alt="image-20200517171909021"></p>
-<br/>
+<br>
 
 <h2 id="mc"><a href="#mc" class="headerlink" title="mc"></a>mc</h2><p>编译<code>.java</code>文件生成<code>.class</code></p>
 <pre class=" language-shell"><code class="language-shell">mc /tmp/Test.java    # 编译Test.java
 mc -c 327a647b /tmp/Test.java # 使用 -c 指定classLoader
 mc -d /tmp/output /tmp/ClassA.java /tmp/ClassB.java # 使用 -d 指定输出目录</code></pre>
-<br/>
+<br>
 
 <h2 id="redefine"><a href="#redefine" class="headerlink" title="redefine"></a>redefine</h2><p>加载外部的<code>.class</code>文件</p>
 <blockquote>
@@ -634,7 +668,7 @@ redefine -c 327a647b /tmp/Test.class /tmp/Test\$Inner.class # 指定classLoader<
 <li>不允许新增加 field/method</li>
 <li>正在跑的函数，没有退出不能生效</li>
 </ul>
-<br/>
+<br>
 
 <h2 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h2><p>方法执行数据观测</p>
 <pre class=" language-shell"><code class="language-shell"># 方法调用前观察，可以是非静态方法
@@ -666,7 +700,7 @@ watch *StringUtils isBlank params '#cost>100'</code></pre>
 <li>输出结果中，第一次输出的是方法调用前的观察结果，第二次输出的是方法返回后的表达式的结果</li>
 <li>结果的输出顺序和事件发生的先后顺序一致，和命令中 <code>-s -b</code> 的顺序无关</li>
 </ul>
-<br/>
+<br>
 
 <h2 id="trace"><a href="#trace" class="headerlink" title="trace"></a>trace</h2><p>方法内部调用路径，并输出方法路径上的每个节点上耗时</p>
 <pre class=" language-shell"><code class="language-shell">trace org.apache.commons.lang.StringUtils isBlank # 查看isBlank方法调用路径及耗时
@@ -677,12 +711,12 @@ trace -E com.test.ClassA|org.test.ClassB method1|method2|method3
 trace demo.MathGame run -n 5 # 只执行5次
 trace demo.MathGame run --skipJDKMethod false # 不跳过jdk中方法，默认为true</code></pre>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194028.png" alt="image-20200517180614199"></p>
-<br/>
+<br>
 
 <h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><p>输出当前方法被调用的调用路径</p>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194031.png" alt="image-20200517181157825"></p>
 <p>支持条件过滤和 ognl 表达式</p>
-<br/>
+<br>
 
 <h2 id="tt"><a href="#tt" class="headerlink" title="tt"></a>tt</h2><p>方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测</p>
 <pre class=" language-shell"><code class="language-shell">tt -t *StringUtils isEmpty # 记录isEmpty方法调用
@@ -693,7 +727,7 @@ tt -i 1000 -p # 根据index重新触发调用
 tt -i 1000 -p --replay-times 3 --replay-interval 3000 # 指定触发间隔和次数
 tt --delete-all # 删除所有记录</code></pre>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194030.png" alt="image-20200517190220743"></p>
-<br/>
+<br>
 
 <h2 id="ognl"><a href="#ognl" class="headerlink" title="ognl"></a>ognl</h2><p>执行ognl表达式</p>
 <pre class=" language-shell"><code class="language-shell">ognl '@java.lang.System@out.println("hello")' # 调用静态函数
@@ -727,7 +761,7 @@ ognl -c 5d113a51 '@com.taobao.arthas.core.GlobalOptions@isDump' # 输出false</c
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://soulballad.github.io/2020/10/28/1-arthas-shi-yong-yi-ji-chu-ming-ling/">https://soulballad.github.io/2020/10/28/1-arthas-shi-yong-yi-ji-chu-ming-ling/</a>
+                    <a href="https://soulballad.github.io/2020/10/29/arthas-1-arthas-ji-chu-ming-ling/">https://soulballad.github.io/2020/10/29/arthas-1-arthas-ji-chu-ming-ling/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1205,13 +1239,13 @@ ognl -c 5d113a51 '@com.taobao.arthas.core.GlobalOptions@isDump' # 输出false</c
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/10/28/2-arthas-shi-yong-er-ying-yong-chang-jing/">
+                <a href="/2020/10/29/arthas-2-arthas-ying-yong-chang-jing/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="2.Arthas 使用(二) -- 应用场景">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="(Arthas)2、Arthas应用场景">
                         
-                        <span class="card-title">2.Arthas 使用(二) -- 应用场景</span>
+                        <span class="card-title">(Arthas)2、Arthas应用场景</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1222,12 +1256,16 @@ ognl -c 5d113a51 '@com.taobao.arthas.core.GlobalOptions@isDump' # 输出false</c
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-29
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Soulballad
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AF%8A%E6%96%AD/" class="post-category">
+                                    诊断
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1494,6 +1532,9 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">5.4k</span>&nbsp;字
             
             
             
