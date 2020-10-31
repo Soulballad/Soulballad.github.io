@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Soulballad" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Soulballad" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
@@ -473,7 +473,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    137
+                    156
                 </div>
                 
 
@@ -495,7 +495,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>JdbcTemplate 是 spring 提供的一个操作数据库的工具类，它是模板方法模式的一种实现。它本身不会注入到 spring 容器中，需要在使用时声明。在创建 JdbcTemplate 对象时一般需要传入一个 datasource，所以在 DataSourceConfig 中同时读二者进行了声明。</p>
+                <blockquote>
+<p>Spring Boot JdbcTemplate：<a href="168bdb80">【从零开始学Spring Boot】-11.Spring Boot JdbcTemplate操作数据库</a></p>
+</blockquote>
+<p>JdbcTemplate 是 spring 提供的一个操作数据库的工具类，它是模板方法模式的一种实现。它本身不会注入到 spring 容器中，需要在使用时声明。在创建 JdbcTemplate 对象时一般需要传入一个 datasource，所以在 DataSourceConfig 中同时读二者进行了声明。</p>
 <h2 id="1-JdbcTemplate-查询执行流程"><a href="#1-JdbcTemplate-查询执行流程" class="headerlink" title="1.JdbcTemplate 查询执行流程"></a>1.JdbcTemplate 查询执行流程</h2><p>这里以 UserService#findUserById 为例说明，其他类似</p>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726163317151.png" alt="image-20200726163317151"></p>
 <p>主要流程还是 jdbc 连接数据的操作，需要用户自己实现结果集映射，重写 RowMapper 中的 mapRow 方法。</p>
@@ -524,7 +527,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://soulballad.github.io/posts/b8ed8d8.html">https://soulballad.github.io/posts/b8ed8d8.html</a>
+                    <a href="https://soulballad.github.io/posts/b8ed8d8">https://soulballad.github.io/posts/b8ed8d8</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1002,7 +1005,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/906fe0fc.html">
+                <a href="/posts/906fe0fc">
                     <div class="card-image">
                         
                         
@@ -1014,9 +1017,11 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            以 UserServiceImpl#findUserByName 为例，分析一下相关源码。
-1.mybatis 的加载
-SqlSessionFactoryBean 实现了 InitializingBean 接口，重写了 afterPrope
+                            
+Spring Boot Mybatis：【从零开始学Spring Boot】-12.Spring Boot Mybatis操作数据库
+
+以 UserServiceImpl#findUserByName 为例，分析一下相关源码。
+1.myb
                         
                     </div>
                     <div class="publish-info">
@@ -1057,7 +1062,7 @@ SqlSessionFactoryBean 实现了 InitializingBean 接口，重写了 afterPrope
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/4ba425af.html">
+                <a href="/posts/4ba425af">
                     <div class="card-image">
                         
                         
@@ -1069,7 +1074,10 @@ SqlSessionFactoryBean 实现了 InitializingBean 接口，重写了 afterPrope
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.@Repository 如何加载的？SpringBooApplication 应用启动时，会调用 createApplicationContext 方法，这里指定了默认 web 应用的类型是 AnnotationConfigServle
+                            
+Spring Boot Jpa：【从零开始学Spring Boot】-10.Spring Boot Jpa操作数据库
+
+1.@Repository 如何加载的？SpringBooApplication 应用启动时，会调用 createAp
                         
                     </div>
                     <div class="publish-info">
@@ -1303,7 +1311,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.5k</span>&nbsp;字
+                class="white-color">47.5k</span>&nbsp;字
             
             
             

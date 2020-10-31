@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Soulballad" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Soulballad" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
@@ -433,12 +433,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/Gradle/">
+                                <span class="chip bg-color">Gradle</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" class="post-category">
+                                项目构建工具
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -456,14 +473,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -478,7 +495,122 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="1-项目自动化的好处"><a href="#1-项目自动化的好处" class="headerlink" title="1. 项目自动化的好处"></a>1. 项目自动化的好处</h1><ol>
+<li>防止手动介入</li>
+<li>创建可重复的构建</li>
+<li>让构建便携</li>
+</ol>
+<h1 id="2-项目自动化的类型"><a href="#2-项目自动化的类型" class="headerlink" title="2. 项目自动化的类型"></a>2. 项目自动化的类型</h1><ol>
+<li>按需构建：开发人员在自己的机器上触发构建</li>
+<li>触发构建：代码提交到版本控制系统时触发构建</li>
+<li>预定构建：通过定时任务进行构建</li>
+</ol>
+<h1 id="3-构建工具"><a href="#3-构建工具" class="headerlink" title="3. 构建工具"></a>3. 构建工具</h1><h2 id="3-1-构建工具的组成"><a href="#3-1-构建工具的组成" class="headerlink" title="3.1 构建工具的组成"></a>3.1 构建工具的组成</h2><p>构建文件+构建的输入输出+构建引擎+依赖管理器</p>
+<p><strong>构建文件</strong></p>
+<p>构建文件包含了构建所需的配置信息、定义外部依赖，例如第三方类库，还包含了以任务形式实现某个特殊目的的指令和它们的相互依赖关系。</p>
+<p><strong>构建的输入输出</strong></p>
+<p>一个任务会接收一个输入，然后执行一系列步骤，最后产生-一个输出。某些任务也许不需要输入，也不需要产生一个必要的输出。在复杂的任务依赖关系中，也许会使用一个依赖任务的输出作为输入。</p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719112517549.png" alt="image-20200719112517549"></p>
+<p><strong>构建引擎</strong></p>
+<p>构建文件的一.步步指令或者规则集必须被翻译成构建工具可以理解的内部模型。构建引擎会在运行时处理构建文件，解析任务之间的依赖，设置好执行所需要的全部配置。<br>一旦内部模型建立好了， 引擎就会按照正确的顺序去执行一系列任务。某些构建工具还允许你通过API去访问这个模型，以便在运行时获取构建信息。</p>
+<p><strong>依赖管理器</strong></p>
+<p>依赖管理器用于处理你在build文件中声明的依赖定义，从工件仓库(例如，本地文件系统、一个FTP或者HTTP服务器)中解析它们，并使它们对项目可用。依赖通常是指外部依赖，一种JAR文件形式的可重用类库(例如，Log4j 对日志的支持)。该仓库就像是依赖的储藏所，通过标识符组织和描述它们，例如名字和版本。<br>一个典型的仓库可以是HTTP服务器或者本地文件系统。</p>
+<h2 id="3-2-Java构建工具"><a href="#3-2-Java构建工具" class="headerlink" title="3.2 Java构建工具"></a>3.2 Java构建工具</h2><h3 id="3-2-1-Ant"><a href="#3-2-1-Ant" class="headerlink" title="3.2.1 Ant"></a>3.2.1 Ant</h3><p>Apache Ant (Another Neat Tool)是一个用Java编写的开源构建工具。其主要目 的是在Java项目中为常用任务提供自动化，例如编译源代码、运行单元测试、打包 JAR文件和生成Javadoc文档。另外，它还为文件系统和存档操作提供了许多不同 的预定义任务。如果任何一个任务不满足需求，那么你就可以用Java写新的任务来 扩展构建。<br>虽然Ant的核心是用Java编写的，但是build文件是通过XML表示的，这样 就可以在任何运行时环境下使用了。Ant 不提供依赖管理器，所以你需要自己管理 外部依赖。然而，Ant 可以和另一个Apache项目Ivy 很好地集成，它是一个完善且独立的依赖管理器。要集成Ant和Ivy需要一些额外的工作， 而且要为每个独立的 项目手动配置。让我们一起看一个样例构建脚本。</p>
+<ol>
+<li><p>示例：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>my-app<span class="token punctuation">"</span></span> <span class="token attr-name">default</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dist<span class="token punctuation">"</span></span> <span class="token attr-name">basedir</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- set global properties for this build --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>src<span class="token punctuation">"</span></span> <span class="token attr-name">location</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>src<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>build<span class="token punctuation">"</span></span> <span class="token attr-name">location</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>build<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dist<span class="token punctuation">"</span></span> <span class="token attr-name">location</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dist<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>version<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1.0<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>target</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>init<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token comment" spellcheck="true">&lt;!-- Create the build directory structure used by compile --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mkdir</span> <span class="token attr-name">dir</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${build}<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>target</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>target</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>compile<span class="token punctuation">"</span></span> <span class="token attr-name">depends</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>init<span class="token punctuation">"</span></span> <span class="token attr-name">description</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>compile the source<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token comment" spellcheck="true">&lt;!-- Compile the java code from ${src} into ${build} --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>javac</span> <span class="token attr-name">srcdir</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${src}<span class="token punctuation">"</span></span> <span class="token attr-name">destdir</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${build}<span class="token punctuation">"</span></span> <span class="token attr-name">classpath</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>lib/commons-lang3-3.1.jar<span class="token punctuation">"</span></span> <span class="token attr-name">includeantruntime</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>target</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>target</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dist<span class="token punctuation">"</span></span> <span class="token attr-name">depends</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>compile<span class="token punctuation">"</span></span> <span class="token attr-name">description</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>generate the distribution<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token comment" spellcheck="true">&lt;!-- Create the distribution directory --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mkdir</span> <span class="token attr-name">dir</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${dist}<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+
+        <span class="token comment" spellcheck="true">&lt;!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>jar</span> <span class="token attr-name">jarfile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${dist}/my-app-${version}.jar<span class="token punctuation">"</span></span> <span class="token attr-name">basedir</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${build}<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>target</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>target</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>clean<span class="token punctuation">"</span></span> <span class="token attr-name">description</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>clean up<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token comment" spellcheck="true">&lt;!-- Delete the ${build} and ${dist} directory trees --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>delete</span> <span class="token attr-name">dir</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${build}<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>delete</span> <span class="token attr-name">dir</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${dist}<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>target</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span></code></pre>
+</li>
+<li><p>缺点：</p>
+<ol>
+<li>使用xml定义构建逻辑，会导致构建脚本过于臃肿</li>
+<li>复杂的构建逻辑会导致又长又难以维护的构建脚本。无法定义类似 if-else 的逻辑结构</li>
+<li>没有提供任何指导来告诉你如何构建项目，可能会导致每次构建的结果都不一样</li>
+<li>无法知道有多少类被编译或多少个task被执行；没有提供获取内存信息的api</li>
+<li>如果没有lvy，很难管理依赖</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-2-2-Maven"><a href="#3-2-2-Maven" class="headerlink" title="3.2.2 Maven"></a>3.2.2 Maven</h3><p>Maven选择约定优于配置的思想，这意味着它为你的项目配置 和行为提供了有意义的默认值。项目自然而然就知道去哪些目录寻找源代码以及构 建运行时有哪些task去执行。如果你的项目遵从默认值，那么只需要写几行XML 就可以建立-一个完整的项目。另外，Maven 也拥有为应用产生包含Javadoc 在内的 HTML格式项目文档的能力。<br> Maven的核心功能可以通过开发定制的插件来扩展。Maven的社区非常活跃，几乎支持构建的每个方面，从集成其他工具到生成报告，你都能够找到合适的插件。如果找不到满足需求的插件，你也可以自己去写。</p>
+<ol>
+<li><p>示例：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">></span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.mycompany.app<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>my-app<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>packaging</span><span class="token punctuation">></span></span>jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>packaging</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.commons<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>commons-lang3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span></code></pre>
+</li>
+<li><p>缺点：</p>
+<ol>
+<li>maven推荐一个默认的生命周期，常常会太过限制，可能不适合你的项目需求</li>
+<li>编写扩展过于麻烦，需要使用Mojos</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-为什么学习-Gradle"><a href="#4-为什么学习-Gradle" class="headerlink" title="4. 为什么学习 Gradle"></a>4. 为什么学习 Gradle</h1><h2 id="4-1-gradle-特性"><a href="#4-1-gradle-特性" class="headerlink" title="4.1 gradle 特性"></a>4.1 gradle 特性</h2><ol>
+<li><p>可表达性的构建语言的底层API</p>
+</li>
+<li><p>Gradle 就是 Groovy：gradle 的 DSL 由Groovy 实现</p>
+</li>
+<li><p>灵活的约定：默认配置可轻松改变</p>
+</li>
+<li><p>鲁棒和强大的依赖管理</p>
+</li>
+<li><p>可扩展的构建：支持增量构建和部分构建</p>
+</li>
+<li><p>轻松的可扩展性：编写插件方便</p>
+</li>
+<li><p>和其他构建工具集成：支持 Ant 和 Maven 等的迁移和支持</p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718122415471.png" alt="image-20200718122415471"></p>
+</li>
+</ol>
+<h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5. 参考"></a>5. 参考</h1><ol>
+<li>《实战Gradle 中文版》</li>
+</ol>
+
             </div>
             <hr/>
 
@@ -503,7 +635,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://soulballad.github.io/posts/8c005aec.html">https://soulballad.github.io/posts/8c005aec.html</a>
+                    <a href="https://soulballad.github.io/posts/8c005aec">https://soulballad.github.io/posts/8c005aec</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -540,7 +672,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/Gradle/">
+                                    <span class="chip bg-color">Gradle</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -973,7 +1113,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/83b68e34.html">
+                <a href="/posts/83b68e34">
                     <div class="card-image">
                         
                         
@@ -985,7 +1125,10 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            1. 安装前检查Gradle 依赖 JDK， 检查 JDK 是否已经安装 
+
+2. 安装 Gradle2.1 下载 Gradlehttps://gradle.org/releases/
+https://services.gradle.org
                         
                     </div>
                     <div class="publish-info">
@@ -994,11 +1137,27 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Soulballad
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    项目构建工具
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/Gradle/">
+                        <span class="chip bg-color">Gradle</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1010,7 +1169,7 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/80c21ac2.html">
+                <a href="/posts/80c21ac2">
                     <div class="card-image">
                         
                         
@@ -1022,8 +1181,10 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.自定义 starter 原理分析demo-spring-boot-starter 中 Hello 接口定义了 hello 方法，它又三个实现类，分别是：HelloGirl、HelloJava、HelloWorld。
-它们三个都是在 He
+                            
+Spring Boot Starter：【从零开始学Spring Boot】-17.Spring Boot Starter自定义
+
+1.自定义 starter 原理分析demo-spring-boot-starter 中 Hello 接口
                         
                     </div>
                     <div class="publish-info">
@@ -1257,7 +1418,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.5k</span>&nbsp;字
+                class="white-color">47.5k</span>&nbsp;字
             
             
             

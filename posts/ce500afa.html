@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Soulballad" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Soulballad" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
@@ -433,12 +433,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/Gradle/">
+                                <span class="chip bg-color">Gradle</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" class="post-category">
+                                项目构建工具
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -456,14 +473,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    618
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -478,7 +495,115 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="1-Java开发"><a href="#1-Java开发" class="headerlink" title="1. Java开发"></a>1. Java开发</h1><p>Java插件是Gradle自身装载的一个插件。Java插件提供的基本功能远比源代码编译和打包多。它为你的项目建立了一个标准的项目布局，并确保有意义、有顺序地执行任务。现在，为你的项目创建一个构建脚本并使用Java插件。</p>
+<h2 id="1-1-使用插件"><a href="#1-1-使用插件" class="headerlink" title="1.1 使用插件"></a>1.1 使用插件</h2><p>使用java插件</p>
+<pre class=" language-groovy"><code class="language-groovy">apply plugin<span class="token punctuation">:</span> <span class="token string">'java'</span></code></pre>
+<h2 id="1-2-定制项目"><a href="#1-2-定制项目" class="headerlink" title="1.2 定制项目"></a>1.2 定制项目</h2><p>可以修改项目和插件属性</p>
+<pre class=" language-groovy"><code class="language-groovy">apply plugin<span class="token punctuation">:</span> <span class="token string">'java'</span>
+
+version <span class="token operator">=</span> <span class="token number">0.1</span>
+<span class="token comment" spellcheck="true">// 设置java版本编译兼容1.6</span>
+sourceCompatibility <span class="token operator">=</span> <span class="token number">1.6</span>
+
+jar <span class="token punctuation">{</span>
+    manifest <span class="token punctuation">{</span>
+        attributes <span class="token string">'Main-Class'</span><span class="token punctuation">:</span> <span class="token string">'com.manning.gia.todo.ToDoApp'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>可以修改项目结构</p>
+<pre class=" language-groovy"><code class="language-groovy">apply plugin<span class="token punctuation">:</span> <span class="token string">'java'</span>
+
+version <span class="token operator">=</span> <span class="token number">0.1</span>
+sourceCompatibility <span class="token operator">=</span> <span class="token number">1.6</span>
+
+<span class="token comment" spellcheck="true">// 指定打包jar的启动类属性</span>
+jar <span class="token punctuation">{</span>
+    manifest <span class="token punctuation">{</span>
+        attributes <span class="token string">'Main-Class'</span><span class="token punctuation">:</span> <span class="token string">'com.manning.gia.todo.ToDoApp'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 修改项目结构</span>
+sourceSets <span class="token punctuation">{</span>
+    main <span class="token punctuation">{</span>
+        java <span class="token punctuation">{</span>
+            srcDirs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'src'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    test <span class="token punctuation">{</span>
+        java <span class="token punctuation">{</span>
+            srcDirs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'test'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 指定编译后文件输出目录</span>
+buildDir <span class="token operator">=</span> <span class="token string">'out'</span></code></pre>
+<h2 id="1-3-使用外部依赖"><a href="#1-3-使用外部依赖" class="headerlink" title="1.3 使用外部依赖"></a>1.3 使用外部依赖</h2><p>定义仓库</p>
+<pre class=" language-groovy"><code class="language-groovy">repositories <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 配置对maven central仓库的访问快捷方式</span>
+    <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>定义依赖</p>
+<pre class=" language-groovy"><code class="language-groovy">dependencies <span class="token punctuation">{</span>
+    compile group<span class="token punctuation">:</span> <span class="token string">'org.apache.commons'</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'commons-lang3'</span><span class="token punctuation">,</span> version<span class="token punctuation">:</span> <span class="token string">'3.1'</span>
+<span class="token punctuation">}</span></code></pre>
+<h1 id="2-web开发"><a href="#2-web开发" class="headerlink" title="2. web开发"></a>2. web开发</h1><p>build.gradle</p>
+<pre class=" language-groovy"><code class="language-groovy"><span class="token comment" spellcheck="true">// 配置插件</span>
+apply plugin<span class="token punctuation">:</span> <span class="token string">'java'</span>
+apply plugin<span class="token punctuation">:</span> <span class="token string">'war'</span>
+apply plugin<span class="token punctuation">:</span> <span class="token string">'jetty'</span>
+
+<span class="token comment" spellcheck="true">// 配置仓库地址</span>
+repositories <span class="token punctuation">{</span>
+    <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 配置依赖</span>
+dependencies <span class="token punctuation">{</span>
+    providedCompile <span class="token string">'javax.servlet:servlet-api:2.5'</span>
+    runtime <span class="token string">'javax.servlet:jstl:1.1.2'</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 定制jetty插件</span>
+jettyRun <span class="token punctuation">{</span>
+    httpPort <span class="token operator">=</span> <span class="token number">9090</span>
+    contextPath <span class="token operator">=</span> <span class="token string">'todo'</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 改变web的源代码目录，默认webapp</span>
+webAppDirName <span class="token operator">=</span> <span class="token string">'webfiles'</span>
+
+<span class="token comment" spellcheck="true">// 将css和js目录转移到war根目录下的static下</span>
+war <span class="token punctuation">{</span>
+    from <span class="token string">'static'</span>
+<span class="token punctuation">}</span></code></pre>
+<p>构建项目</p>
+<pre class=" language-shell"><code class="language-shell">gradle build</code></pre>
+<p>运行jetty</p>
+<pre class=" language-groovy"><code class="language-groovy">gradle jettyRun</code></pre>
+<h1 id="3-Gradle包装器"><a href="#3-Gradle包装器" class="headerlink" title="3. Gradle包装器"></a>3. Gradle包装器</h1><p>它是 Gradle 的核心特性，能够让机器在没有安装 Gradle 运行时的情况下运行Gradle 构建。它也让构建脚本运行在一个指定的 Gradle 版本上。它是通过自动从中心仓库下载 Gradle 运行时，解压和使用来实现的。最终的目标是创造一个独立于系统、 系统配置和 Gradle 版本的可靠和可重复的构建。</p>
+<h2 id="3-1-配置包装器"><a href="#3-1-配置包装器" class="headerlink" title="3.1 配置包装器"></a>3.1 配置包装器</h2><p>在构建脚本中添加包装器任务</p>
+<pre class=" language-groovy"><code class="language-groovy">task <span class="token function">wrapper</span><span class="token punctuation">(</span>type<span class="token punctuation">:</span> Wrapper<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//指定要使用的gradle版本</span>
+    gradleVersion <span class="token operator">=</span> <span class="token string">'5.0'</span>
+<span class="token punctuation">}</span></code></pre>
+<p>同时提供用于linux和windows使用的脚本 gradlew 和 gradlew.bat</p>
+<h2 id="3-2-使用包装器"><a href="#3-2-使用包装器" class="headerlink" title="3.2 使用包装器"></a>3.2 使用包装器</h2><pre class=" language-shell"><code class="language-shell">gradlew.bat jettyRun</code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718144713357.png" alt="image-20200718144713357"></p>
+<p>当包装器任务被执行时，Gradle 运行时会被下载、解包并使用</p>
+<h2 id="3-3-定制包装器"><a href="#3-3-定制包装器" class="headerlink" title="3.3 定制包装器"></a>3.3 定制包装器</h2><pre class=" language-groovy"><code class="language-groovy">task <span class="token function">wrapper</span><span class="token punctuation">(</span>type<span class="token punctuation">:</span> Wrapper<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//请求的gradle版本</span>
+    gradleVersion <span class="token operator">=</span> <span class="token string">'5.0'</span>
+    <span class="token comment" spellcheck="true">//获取gradle包装器的地址</span>
+    distributionUrl <span class="token operator">=</span> <span class="token string">'http://myenterprise.com/gradle/dists'</span>
+    <span class="token comment" spellcheck="true">//包装器被解压后存放的相对路径</span>
+    distributionPath <span class="token operator">=</span> <span class="token string">'gradle-dists'</span>
+<span class="token punctuation">}</span></code></pre>
+<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4. 参考"></a>4. 参考</h1><ol>
+<li>《实战Gradle 中文版》</li>
+</ol>
+
             </div>
             <hr/>
 
@@ -503,7 +628,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://soulballad.github.io/posts/ce500afa.html">https://soulballad.github.io/posts/ce500afa.html</a>
+                    <a href="https://soulballad.github.io/posts/ce500afa">https://soulballad.github.io/posts/ce500afa</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -540,7 +665,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/Gradle/">
+                                    <span class="chip bg-color">Gradle</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -973,7 +1106,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/4d80b27.html">
+                <a href="/posts/4d80b27">
                     <div class="card-image">
                         
                         
@@ -985,7 +1118,16 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            1. 创建项目需要已在本地安装好了 Gradle，并配置环境变量
+1.1 新建项目创建 spring boot 项目
+
+Type 选择 Gradle Project
+
+添加 web mvc 依赖
+
+finish 创建完成
+
+整个创建过程中，
                         
                     </div>
                     <div class="publish-info">
@@ -994,11 +1136,27 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Soulballad
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    项目构建工具
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/Gradle/">
+                        <span class="chip bg-color">Gradle</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1010,7 +1168,7 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/83b68e34.html">
+                <a href="/posts/83b68e34">
                     <div class="card-image">
                         
                         
@@ -1022,7 +1180,10 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            1. 安装前检查Gradle 依赖 JDK， 检查 JDK 是否已经安装 
+
+2. 安装 Gradle2.1 下载 Gradlehttps://gradle.org/releases/
+https://services.gradle.org
                         
                     </div>
                     <div class="publish-info">
@@ -1031,11 +1192,27 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Soulballad
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    项目构建工具
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/Gradle/">
+                        <span class="chip bg-color">Gradle</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1240,7 +1417,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.5k</span>&nbsp;字
+                class="white-color">47.5k</span>&nbsp;字
             
             
             

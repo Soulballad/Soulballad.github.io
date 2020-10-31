@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Soulballad" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Soulballad" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
@@ -473,7 +473,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    171
+                    192
                 </div>
                 
 
@@ -495,7 +495,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-注解校验如何生效的？"><a href="#1-注解校验如何生效的？" class="headerlink" title="1.注解校验如何生效的？"></a>1.注解校验如何生效的？</h2><p>在 UserController#add 方法上有使用 @Valid 注解，标明这个方法需要校验，同时也可以使用 @Validated 注解标明要校验的位置。那么 @Valid 是如何生效的呢？</p>
+                <blockquote>
+<p>Spring Boot 参数校验：<a href="28985c9a">【从零开始学Spring Boot】-4.Spring Boot Validation 参数校验</a></p>
+</blockquote>
+<h2 id="1-注解校验如何生效的？"><a href="#1-注解校验如何生效的？" class="headerlink" title="1.注解校验如何生效的？"></a>1.注解校验如何生效的？</h2><p>在 UserController#add 方法上有使用 @Valid 注解，标明这个方法需要校验，同时也可以使用 @Validated 注解标明要校验的位置。那么 @Valid 是如何生效的呢？</p>
 <p>在 <a href="https://blog.csdn.net/u010139373/article/details/107303452" target="_blank" rel="noopener">SpringBoot学习(三)——WebMVC及其工作原理</a> 中，有跟踪 Spring MVC 的运行原理，@Valid 的注解校验就在 </p>
 <p>RequestMappingHandlerAdapter#invokeHandlerMethod 方法中</p>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712204316361.png" alt="image-20200712204316361"></p>
@@ -541,7 +544,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://soulballad.github.io/posts/24d616a1.html">https://soulballad.github.io/posts/24d616a1.html</a>
+                    <a href="https://soulballad.github.io/posts/24d616a1">https://soulballad.github.io/posts/24d616a1</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1019,7 +1022,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/32c5ef91.html">
+                <a href="/posts/32c5ef91">
                     <div class="card-image">
                         
                         
@@ -1031,8 +1034,10 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.Spring Boot 中 Profile 是如何生效的？在启动类启动的时候，按照如下顺序调用 SpringApplication.run -&gt; prepareEnvironment -&gt; 
-listeners.enviro
+                            
+Spring Boot Profile 环境隔离： 【从零开始学Spring Boot】-5.Spring Boot Profile环境隔离
+
+1.Spring Boot 中 Profile 是如何生效的？在启动类启动的时候，按照如下顺序
                         
                     </div>
                     <div class="publish-info">
@@ -1073,7 +1078,7 @@ listeners.enviro
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/f12c731c.html">
+                <a href="/posts/f12c731c">
                     <div class="card-image">
                         
                         
@@ -1085,11 +1090,12 @@ listeners.enviro
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.Spring  WebMvc 运行流程是怎样的？
+                            
+Spring Boot WebMVC：【从零开始学Spring Boot】-3.Spring Boot WebMVC
+
+1.Spring  WebMvc 运行流程是怎样的？
 
 用户发送请求至前端控制器 DispatcherServlet。
-DispatcherServlet 收到请求调用 HandlerMapping 处理器映射器。
-处理器映射器找到具体的处
                         
                     </div>
                     <div class="publish-info">
@@ -1323,7 +1329,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.5k</span>&nbsp;字
+                class="white-color">47.5k</span>&nbsp;字
             
             
             
