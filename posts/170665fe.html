@@ -310,6 +310,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -1633,22 +1646,22 @@ Spring Boot Jpa：【从零开始学Spring Boot】-10.Spring Boot Jpa操作数�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/740f06b3">
+                <a href="/posts/79a11b69">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="【源码分析-Spring Boot】-8.Spring Boot WebEndpoint 请求原理">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="【源码分析-Spring Boot】-9.Spring Boot Admin 请求和通信原理">
                         
-                        <span class="card-title">【源码分析-Spring Boot】-8.Spring Boot WebEndpoint 请求原理</span>
+                        <span class="card-title">【源码分析-Spring Boot】-9.Spring Boot Admin 请求和通信原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-Spring Boot Actuator监控：【从零开始学Spring Boot】-8.Spring Boot Actuator监控
+Spring Boot Admin：【从零开始学Spring Boot】-9.Spring Boot Admin
 
-1.web endpoint 请求原理spring boot actuator 中有很多 endpoi
+1.admin server 的请求原理Spring Boot Admin 组件中，通过 @EnableAdminServ
                         
                     </div>
                     <div class="publish-info">
@@ -1882,7 +1895,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">62.8k</span>&nbsp;字
+                class="white-color">63.1k</span>&nbsp;字
             
             
             
