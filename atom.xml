@@ -6,7 +6,7 @@
   <link href="https://soulballad.github.io/atom.xml" rel="self"/>
   
   <link href="https://soulballad.github.io/"/>
-  <updated>2020-11-02T04:16:39.589Z</updated>
+  <updated>2020-11-29T13:58:08.554Z</updated>
   <id>https://soulballad.github.io/</id>
   
   <author>
@@ -15,6 +15,216 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>3.如何设计一个安全的对外接口</title>
+    <link href="https://soulballad.github.io/posts/28ed7026"/>
+    <id>https://soulballad.github.io/posts/28ed7026</id>
+    <published>2020-11-22T12:05:18.000Z</published>
+    <updated>2020-11-29T13:58:08.554Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近有个项目需要对外提供一个接口，提供公网域名进行访问，而且接口和交易订单有关，所以安全性很重要；这里整理了一下常用的一些安全措施以及具体如何去实现。&lt;/p&gt;
+&lt;h2 id=&quot;安全措施&quot;&gt;&lt;a href=&quot;#安全措施&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/categories/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2.一个秒杀系统的设计思考</title>
+    <link href="https://soulballad.github.io/posts/c4292d51"/>
+    <id>https://soulballad.github.io/posts/c4292d51</id>
+    <published>2020-11-20T12:05:18.000Z</published>
+    <updated>2020-11-29T13:58:08.549Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;0-前言&quot;&gt;&lt;a href=&quot;#0-前言&quot; class=&quot;headerlink&quot; title=&quot;0. 前言&quot;&gt;&lt;/a&gt;0. 前言&lt;/h1&gt;&lt;p&gt;秒杀大家都不陌生。自2011年首次出现以来，无论是双十一购物还是 12306</summary>
+        
+      
+    
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/categories/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1.秒杀系统架构分析与实战</title>
+    <link href="https://soulballad.github.io/posts/346960d3"/>
+    <id>https://soulballad.github.io/posts/346960d3</id>
+    <published>2020-11-18T12:05:18.000Z</published>
+    <updated>2020-11-29T13:58:08.552Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-秒杀业务分析&quot;&gt;&lt;a href=&quot;#1-秒杀业务分析&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/categories/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>6.阿里员工排查Java问题常用工具</title>
+    <link href="https://soulballad.github.io/posts/bf8aaefe"/>
+    <id>https://soulballad.github.io/posts/bf8aaefe</id>
+    <published>2020-11-13T09:03:00.000Z</published>
+    <updated>2020-11-29T13:54:23.733Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;我的问题排查工具箱&quot;&gt;&lt;a href=&quot;#我的问题排查工具箱&quot; class=&quot;headerlink&quot; title=&quot;我的问题排查工具箱&quot;&gt;&lt;/a&gt;我的问题排查工具箱&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="问题定位分析" scheme="https://soulballad.github.io/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/"/>
+    
+    
+    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
+    
+    <category term="JVM" scheme="https://soulballad.github.io/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>5.CPU占用100%定位方法</title>
+    <link href="https://soulballad.github.io/posts/5901445c"/>
+    <id>https://soulballad.github.io/posts/5901445c</id>
+    <published>2020-11-10T09:03:00.000Z</published>
+    <updated>2020-11-29T13:53:37.024Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;0-背景&quot;&gt;&lt;a href=&quot;#0-背景&quot; class=&quot;headerlink&quot; title=&quot;0. 背景&quot;&gt;&lt;/a&gt;0. 背景&lt;/h1&gt;&lt;p&gt;经常做后端服务开发的同学，或多或少都遇到过 CPU</summary>
+        
+      
+    
+    
+    
+    <category term="问题定位分析" scheme="https://soulballad.github.io/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/"/>
+    
+    
+    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
+    
+    <category term="JVM" scheme="https://soulballad.github.io/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>4.磁盘IO高分析方法</title>
+    <link href="https://soulballad.github.io/posts/818cdaca"/>
+    <id>https://soulballad.github.io/posts/818cdaca</id>
+    <published>2020-11-09T09:03:00.000Z</published>
+    <updated>2020-11-29T13:53:37.021Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;磁盘IO高分析方法&lt;br&gt;工具准备：&lt;br&gt;iotop: &lt;a href=&quot;http://guichaz.free.fr/iotop/&quot; target=&quot;_blank&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="问题定位分析" scheme="https://soulballad.github.io/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/"/>
+    
+    
+    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
+    
+    <category term="JVM" scheme="https://soulballad.github.io/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.通过jstack和jmap排查线上问题</title>
+    <link href="https://soulballad.github.io/posts/882ef194"/>
+    <id>https://soulballad.github.io/posts/882ef194</id>
+    <published>2020-11-06T09:03:00.000Z</published>
+    <updated>2020-11-29T13:53:37.019Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、发现问题&quot;&gt;&lt;a href=&quot;#一、发现问题&quot; class=&quot;headerlink&quot; title=&quot;一、发现问题&quot;&gt;&lt;/a&gt;一、发现问题&lt;/h1&gt;&lt;p&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="问题定位分析" scheme="https://soulballad.github.io/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/"/>
+    
+    
+    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
+    
+    <category term="JVM" scheme="https://soulballad.github.io/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1.Linux常用命令</title>
+    <link href="https://soulballad.github.io/posts/65459ec0"/>
+    <id>https://soulballad.github.io/posts/65459ec0</id>
+    <published>2020-11-05T12:26:42.000Z</published>
+    <updated>2020-11-29T13:50:51.261Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;基础命令&quot;&gt;&lt;a href=&quot;#基础命令&quot; class=&quot;headerlink&quot; title=&quot;基础命令&quot;&gt;&lt;/a&gt;基础命令&lt;/h3&gt;&lt;p&gt;Linux系统的命令通常都是如下所示的格式：&lt;/p&gt;
+&lt;pre class=&quot; language-Shell&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://soulballad.github.io/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="https://soulballad.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>学习计划</title>
@@ -167,408 +377,153 @@
   </entry>
   
   <entry>
-    <title>【Spring Cloud学习】-6.Spring Cloud Bus 消息总线</title>
-    <link href="https://soulballad.github.io/posts/f2301729"/>
-    <id>https://soulballad.github.io/posts/f2301729</id>
-    <published>2020-08-23T02:32:21.000Z</published>
-    <updated>2020-11-01T03:30:00.040Z</updated>
+    <title>【Python】-12.Python网络编程</title>
+    <link href="https://soulballad.github.io/posts/ac4faf38"/>
+    <id>https://soulballad.github.io/posts/ac4faf38</id>
+    <published>2020-09-19T12:09:39.000Z</published>
+    <updated>2020-11-28T13:50:38.259Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-概述&quot;&gt;&lt;a href=&quot;#1-1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.1</summary>
+    <summary type="html">&lt;h1 id=&quot;1-Python底层网络模块&quot;&gt;&lt;a href=&quot;#1-Python底层网络模块&quot; class=&quot;headerlink&quot; title=&quot;1. Python底层网络模块&quot;&gt;&lt;/a&gt;1. Python底层网络模块&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="Spring Cloud学习" scheme="https://soulballad.github.io/categories/Spring-Cloud%E5%AD%A6%E4%B9%A0/"/>
+    <category term="Python 学习" scheme="https://soulballad.github.io/categories/Python-%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Cloud" scheme="https://soulballad.github.io/tags/Spring-Cloud/"/>
-    
-    <category term="Bus" scheme="https://soulballad.github.io/tags/Bus/"/>
+    <category term="Python" scheme="https://soulballad.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
-    <title>【Spring Cloud学习】-5.Spring Cloud Config 配置中心</title>
-    <link href="https://soulballad.github.io/posts/9d886b0b"/>
-    <id>https://soulballad.github.io/posts/9d886b0b</id>
-    <published>2020-08-22T11:42:21.000Z</published>
-    <updated>2020-11-01T03:50:13.105Z</updated>
+    <title>【Python】-11.Python正则表达式</title>
+    <link href="https://soulballad.github.io/posts/ecd0efa4"/>
+    <id>https://soulballad.github.io/posts/ecd0efa4</id>
+    <published>2020-09-18T12:09:39.000Z</published>
+    <updated>2020-11-28T13:50:25.376Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-概述&quot;&gt;&lt;a href=&quot;#1-1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.1</summary>
+    <summary type="html">&lt;h1 id=&quot;1-正则表达式语法&quot;&gt;&lt;a href=&quot;#1-正则表达式语法&quot; class=&quot;headerlink&quot; title=&quot;1. 正则表达式语法&quot;&gt;&lt;/a&gt;1. 正则表达式语法&lt;/h1&gt;&lt;h2 id=&quot;1-1-普通字符&quot;&gt;&lt;a href=&quot;#1-1-普通字符&quot;</summary>
         
       
     
     
     
-    <category term="Spring Cloud学习" scheme="https://soulballad.github.io/categories/Spring-Cloud%E5%AD%A6%E4%B9%A0/"/>
+    <category term="Python 学习" scheme="https://soulballad.github.io/categories/Python-%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Cloud" scheme="https://soulballad.github.io/tags/Spring-Cloud/"/>
+    <category term="Python" scheme="https://soulballad.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
-    <title>【源码分析-Spring-Cloud】-4.Spring Cloud Feign 实现原理</title>
-    <link href="https://soulballad.github.io/posts/632bf22a"/>
-    <id>https://soulballad.github.io/posts/632bf22a</id>
-    <published>2020-08-21T12:14:21.000Z</published>
-    <updated>2020-11-01T03:45:09.341Z</updated>
+    <title>【Python】-10.Python线程和进程</title>
+    <link href="https://soulballad.github.io/posts/eb520850"/>
+    <id>https://soulballad.github.io/posts/eb520850</id>
+    <published>2020-09-16T12:09:39.000Z</published>
+    <updated>2020-11-28T13:50:20.239Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Spring Cloud Feign：&lt;a href=&quot;95f7c0a4&quot;&gt;【Spring Cloud学习】-4.Spring Cloud Feign 服务调用&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+    <summary type="html">&lt;h1 id=&quot;1-线程&quot;&gt;&lt;a href=&quot;#1-线程&quot; class=&quot;headerlink&quot; title=&quot;1. 线程&quot;&gt;&lt;/a&gt;1. 线程&lt;/h1&gt;&lt;p&gt;Python中关于线程的主要是 _thread 和 threading 模块&lt;/p&gt;
 &lt;h2</summary>
         
       
     
     
     
-    <category term="源码分析" scheme="https://soulballad.github.io/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    <category term="Python 学习" scheme="https://soulballad.github.io/categories/Python-%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Cloud 源码分析" scheme="https://soulballad.github.io/tags/Spring-Cloud-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    <category term="Python" scheme="https://soulballad.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
-    <title>【Spring Cloud学习】-4.Spring Cloud Feign 服务调用</title>
-    <link href="https://soulballad.github.io/posts/95f7c0a4"/>
-    <id>https://soulballad.github.io/posts/95f7c0a4</id>
-    <published>2020-08-21T10:32:21.000Z</published>
-    <updated>2020-11-01T03:33:48.424Z</updated>
+    <title>【Python】-9.Python日期和时间</title>
+    <link href="https://soulballad.github.io/posts/6bf2810c"/>
+    <id>https://soulballad.github.io/posts/6bf2810c</id>
+    <published>2020-09-15T12:09:39.000Z</published>
+    <updated>2020-11-28T13:50:16.898Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-概述&quot;&gt;&lt;a href=&quot;#1-1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.1</summary>
+    <summary type="html">&lt;h1 id=&quot;1-基本概念&quot;&gt;&lt;a href=&quot;#1-基本概念&quot; class=&quot;headerlink&quot; title=&quot;1. 基本概念&quot;&gt;&lt;/a&gt;1. 基本概念&lt;/h1&gt;&lt;h2 id=&quot;1-1-时间戳&quot;&gt;&lt;a href=&quot;#1-1-时间戳&quot; class=&quot;headerlink&quot;</summary>
         
       
     
     
     
-    <category term="Spring Cloud学习" scheme="https://soulballad.github.io/categories/Spring-Cloud%E5%AD%A6%E4%B9%A0/"/>
+    <category term="Python 学习" scheme="https://soulballad.github.io/categories/Python-%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Cloud" scheme="https://soulballad.github.io/tags/Spring-Cloud/"/>
+    <category term="Python" scheme="https://soulballad.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
-    <title>【源码分析-Spring-Cloud】-3.Spring Cloud Hystrix 实现原理</title>
-    <link href="https://soulballad.github.io/posts/ff0798d5"/>
-    <id>https://soulballad.github.io/posts/ff0798d5</id>
-    <published>2020-08-20T13:08:21.000Z</published>
-    <updated>2020-11-01T03:45:11.364Z</updated>
+    <title>【Python】-8.Python文件与IO</title>
+    <link href="https://soulballad.github.io/posts/afdbecf1"/>
+    <id>https://soulballad.github.io/posts/afdbecf1</id>
+    <published>2020-09-13T12:09:39.000Z</published>
+    <updated>2020-11-28T13:50:05.250Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Spring Cloud Hystrix：&lt;a href=&quot;d1dde1f&quot;&gt;【Spring Cloud学习】-3.Spring Cloud Hystrix 服务降级&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2</summary>
+    <summary type="html">&lt;h1 id=&quot;1-打开文件&quot;&gt;&lt;a href=&quot;#1-打开文件&quot; class=&quot;headerlink&quot; title=&quot;1. 打开文件&quot;&gt;&lt;/a&gt;1.</summary>
         
       
     
     
     
-    <category term="源码分析" scheme="https://soulballad.github.io/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    <category term="Python 学习" scheme="https://soulballad.github.io/categories/Python-%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Cloud 源码分析" scheme="https://soulballad.github.io/tags/Spring-Cloud-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    <category term="Python" scheme="https://soulballad.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
-    <title>【Spring Cloud学习】-3.Spring Cloud Hystrix 服务降级</title>
-    <link href="https://soulballad.github.io/posts/d1dde1f"/>
-    <id>https://soulballad.github.io/posts/d1dde1f</id>
-    <published>2020-08-20T11:32:21.000Z</published>
-    <updated>2020-11-01T03:33:22.989Z</updated>
+    <title>【Python】-7.Python中的模块</title>
+    <link href="https://soulballad.github.io/posts/eff54974"/>
+    <id>https://soulballad.github.io/posts/eff54974</id>
+    <published>2020-09-12T12:09:39.000Z</published>
+    <updated>2020-11-22T08:23:03.767Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-概述&quot;&gt;&lt;a href=&quot;#1-1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.1</summary>
+    <summary type="html">&lt;h1 id=&quot;1-模块&quot;&gt;&lt;a href=&quot;#1-模块&quot; class=&quot;headerlink&quot; title=&quot;1. 模块&quot;&gt;&lt;/a&gt;1. 模块&lt;/h1&gt;&lt;h2 id=&quot;1-1-模块介绍&quot;&gt;&lt;a href=&quot;#1-1-模块介绍&quot; class=&quot;headerlink&quot;</summary>
         
       
     
     
     
-    <category term="Spring Cloud学习" scheme="https://soulballad.github.io/categories/Spring-Cloud%E5%AD%A6%E4%B9%A0/"/>
+    <category term="Python 学习" scheme="https://soulballad.github.io/categories/Python-%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Cloud" scheme="https://soulballad.github.io/tags/Spring-Cloud/"/>
-    
-    <category term="Hystrix" scheme="https://soulballad.github.io/tags/Hystrix/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【源码分析-Spring-Cloud】-2.Spring Cloud Eureka 注册中心原理</title>
-    <link href="https://soulballad.github.io/posts/3d633558"/>
-    <id>https://soulballad.github.io/posts/3d633558</id>
-    <published>2020-08-11T14:15:21.000Z</published>
-    <updated>2020-11-01T03:45:14.991Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Spring Cloud Eureka：&lt;a href=&quot;b857daf6&quot;&gt;【Spring Cloud学习】-2.Spring Cloud Eureka 服务注册中心&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="源码分析" scheme="https://soulballad.github.io/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-    
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Cloud 源码分析" scheme="https://soulballad.github.io/tags/Spring-Cloud-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Spring Cloud学习】-2.Spring Cloud Eureka 服务注册中心</title>
-    <link href="https://soulballad.github.io/posts/b857daf6"/>
-    <id>https://soulballad.github.io/posts/b857daf6</id>
-    <published>2020-08-11T13:09:21.000Z</published>
-    <updated>2020-11-01T03:33:07.702Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-概述&quot;&gt;&lt;a href=&quot;#1-1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.1</summary>
-        
-      
-    
-    
-    
-    <category term="Spring Cloud学习" scheme="https://soulballad.github.io/categories/Spring-Cloud%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Cloud" scheme="https://soulballad.github.io/tags/Spring-Cloud/"/>
-    
-    <category term="Eureka" scheme="https://soulballad.github.io/tags/Eureka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【源码分析-Spring-Cloud】-1.Spring Cloud Ribbon 负载均衡实现原理</title>
-    <link href="https://soulballad.github.io/posts/95da5302"/>
-    <id>https://soulballad.github.io/posts/95da5302</id>
-    <published>2020-08-10T13:46:21.000Z</published>
-    <updated>2020-11-01T03:45:17.164Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Spring Cloud Ribbon： &lt;a href=&quot;883eb3ff&quot;&gt;【Spring Cloud学习】-1.Spring Cloud Ribbon 实现负载均衡&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="源码分析" scheme="https://soulballad.github.io/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-    
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Cloud 源码分析" scheme="https://soulballad.github.io/tags/Spring-Cloud-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Spring Cloud学习】-1.Spring Cloud Ribbon 实现负载均衡</title>
-    <link href="https://soulballad.github.io/posts/883eb3ff"/>
-    <id>https://soulballad.github.io/posts/883eb3ff</id>
-    <published>2020-08-10T12:32:21.000Z</published>
-    <updated>2020-11-01T03:32:34.806Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-概述&quot;&gt;&lt;a href=&quot;#1-1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.1</summary>
-        
-      
-    
-    
-    
-    <category term="Spring Cloud学习" scheme="https://soulballad.github.io/categories/Spring-Cloud%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Cloud" scheme="https://soulballad.github.io/tags/Spring-Cloud/"/>
-    
-    <category term="Ribbon" scheme="https://soulballad.github.io/tags/Ribbon/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【源码分析-Spring Boot】-16.Spring Boot Starter 加载和解析</title>
-    <link href="https://soulballad.github.io/posts/80c21ac2"/>
-    <id>https://soulballad.github.io/posts/80c21ac2</id>
-    <published>2020-08-02T13:27:31.000Z</published>
-    <updated>2020-11-01T03:11:13.285Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Spring Boot Starter：&lt;a href=&quot;610a5a80&quot;&gt;【从零开始学Spring Boot】-17.Spring Boot Starter自定义&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="源码分析" scheme="https://soulballad.github.io/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-    
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Boot 源码分析" scheme="https://soulballad.github.io/tags/Spring-Boot-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【从零开始学Spring Boot】-17.Spring Boot Starter自定义</title>
-    <link href="https://soulballad.github.io/posts/610a5a80"/>
-    <id>https://soulballad.github.io/posts/610a5a80</id>
-    <published>2020-08-02T12:19:38.000Z</published>
-    <updated>2020-11-01T03:11:20.390Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-概述&quot;&gt;&lt;a href=&quot;#1-1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.1</summary>
-        
-      
-    
-    
-    
-    <category term="Spring Boot学习" scheme="https://soulballad.github.io/categories/Spring-Boot%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Boot" scheme="https://soulballad.github.io/tags/Spring-Boot/"/>
-    
-    <category term="Starter" scheme="https://soulballad.github.io/tags/Starter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【源码分析-Spring Boot】-15.Spring Boot MessageConverter 执行和原理</title>
-    <link href="https://soulballad.github.io/posts/a5bcdca6"/>
-    <id>https://soulballad.github.io/posts/a5bcdca6</id>
-    <published>2020-07-30T13:26:59.000Z</published>
-    <updated>2020-11-01T03:10:42.397Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Spring Boot MessageConverter：&lt;a href=&quot;d815b741&quot;&gt;【从零开始学Spring Boot】-16.Spring Boot</summary>
-        
-      
-    
-    
-    
-    <category term="源码分析" scheme="https://soulballad.github.io/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-    
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Boot 源码分析" scheme="https://soulballad.github.io/tags/Spring-Boot-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【从零开始学Spring Boot】-16.Spring Boot MessageConverter消息转换器</title>
-    <link href="https://soulballad.github.io/posts/d815b741"/>
-    <id>https://soulballad.github.io/posts/d815b741</id>
-    <published>2020-07-30T12:58:37.000Z</published>
-    <updated>2020-11-01T03:10:25.818Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-概述&quot;&gt;&lt;a href=&quot;#1-1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.1</summary>
-        
-      
-    
-    
-    
-    <category term="Spring Boot学习" scheme="https://soulballad.github.io/categories/Spring-Boot%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
-    <category term="Spring Boot" scheme="https://soulballad.github.io/tags/Spring-Boot/"/>
-    
-    <category term="Http" scheme="https://soulballad.github.io/tags/Http/"/>
+    <category term="Python" scheme="https://soulballad.github.io/tags/Python/"/>
     
   </entry>
   

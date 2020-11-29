@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【Arthas】-2.Arthas应用场景, Soulballad">
+    <meta name="keywords" content="3.如何设计一个安全的对外接口, Soulballad">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【Arthas】-2.Arthas应用场景 | Soulballad</title>
+    <title>3.如何设计一个安全的对外接口 | Soulballad</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -326,12 +326,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【Arthas】-2.Arthas应用场景</h1>
+                    <h1 class="description center-align post-title">3.如何设计一个安全的对外接口</h1>
                 </div>
             </div>
         </div>
@@ -448,12 +448,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Arthas/">
-                                <span class="chip bg-color">Arthas</span>
-                            </a>
-                        
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
+                            <a href="/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/">
+                                <span class="chip bg-color">方案设计</span>
                             </a>
                         
                     </div>
@@ -464,8 +460,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/" class="post-category">
-                                问题定位分析
+                            <a href="/categories/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/" class="post-category">
+                                方案设计
                             </a>
                         
                     </div>
@@ -477,7 +473,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-19
+                    2020-11-22
                 </div>
                 
 
@@ -486,14 +482,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    811
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    8 分
                 </div>
                 
 
@@ -508,156 +504,41 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-ognl获取bean"><a href="#1-ognl获取bean" class="headerlink" title="1. ognl获取bean"></a>1. ognl获取bean</h1><p>SpringContextUtil，通常代码中会有类似这样的工具类用来获取 bean 实例</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringContextUtil</span> <span class="token keyword">implements</span> <span class="token class-name">ApplicationContextAware</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">static</span> ApplicationContext applicationContext<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setApplicationContext</span><span class="token punctuation">(</span>ApplicationContext applicationContext<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
-        SpringContextUtil<span class="token punctuation">.</span>applicationContext <span class="token operator">=</span> applicationContext<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> Object <span class="token function">getBean</span><span class="token punctuation">(</span>String beanName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T <span class="token function">getBean</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span>T<span class="token operator">></span> clazz<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>clazz<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+                <p>最近有个项目需要对外提供一个接口，提供公网域名进行访问，而且接口和交易订单有关，所以安全性很重要；这里整理了一下常用的一些安全措施以及具体如何去实现。</p>
+<h2 id="安全措施"><a href="#安全措施" class="headerlink" title="安全措施"></a><strong>安全措施</strong></h2><p>个人觉得安全措施大体来看主要在两个方面，一方面就是如何保证数据在传输过程中的安全性，另一个方面是数据已经到达服务器端，服务器端如何识别数据，如何不被攻击；下面具体看看都有哪些安全措施。</p>
+<h3 id="1-数据加密"><a href="#1-数据加密" class="headerlink" title="1. 数据加密"></a>1. 数据加密</h3><p>我们知道数据在传输过程中是很容易被抓包的，如果直接传输比如通过 http 协议，那么用户传输的数据可以被任何人获取；所以必须对数据加密，常见的做法对关键字段加密比如用户密码直接通过 md5 加密；现在主流的做法是使用 https 协议，在 http 和 tcp 之间添加一层加密层 (SSL 层)，这一层负责数据的加密和解密；</p>
+<h3 id="2-数据加签"><a href="#2-数据加签" class="headerlink" title="2. 数据加签"></a>2. 数据加签</h3><p>数据加签就是由发送者产生一段无法伪造的一段数字串，来保证数据在传输过程中不被篡改；你可能会问数据如果已经通过 https 加密了，还有必要进行加签吗？数据在传输过程中经过加密，理论上就算被抓包，也无法对数据进行篡改；但是我们要知道加密的部分其实只是在外网，现在很多服务在内网中都需要经过很多服务跳转，所以这里的加签可以防止内网中数据被篡改；</p>
+<h3 id="3-时间戳机制"><a href="#3-时间戳机制" class="headerlink" title="3. 时间戳机制"></a>3. 时间戳机制</h3><p>数据是很容易被抓包的，但是经过如上的加密，加签处理，就算拿到数据也不能看到真实的数据；但是有不法者不关心真实的数据，而是直接拿到抓取的数据包进行恶意请求；这时候可以使用时间戳机制，在每次请求中加入当前的时间，服务器端会拿到当前时间和消息中的时间相减，看看是否在一个固定的时间范围内比如 5 分钟内；这样恶意请求的数据包是无法更改里面时间的，所以 5 分钟后就视为非法请求了；</p>
+<h3 id="4-AppId-机制"><a href="#4-AppId-机制" class="headerlink" title="4. AppId 机制"></a>4. AppId 机制</h3><p>大部分网站基本都需要用户名和密码才能登录，并不是谁来能使用我的网站，这其实也是一种安全机制；对应的对外提供的接口其实也需要这么一种机制，并不是谁都可以调用，需要使用接口的用户需要在后台开通 appid，提供给用户相关的密钥；在调用的接口中需要提供 appid + 密钥，服务器端会进行相关的验证；</p>
+<h3 id="5-限流机制"><a href="#5-限流机制" class="headerlink" title="5. 限流机制"></a>5. 限流机制</h3><p>本来就是真实的用户，并且开通了 appid，但是出现频繁调用接口的情况；这种情况需要给相关 appid 限流处理，常用的限流算法有令牌桶和漏桶算法；</p>
+<h3 id="6-黑名单机制"><a href="#6-黑名单机制" class="headerlink" title="6. 黑名单机制"></a>6. 黑名单机制</h3><p>如果此 appid 进行过很多非法操作，或者说专门有一个中黑系统，经过分析之后直接将此 appid 列入黑名单，所有请求直接返回错误码；</p>
+<h3 id="7-数据合法性校验"><a href="#7-数据合法性校验" class="headerlink" title="7. 数据合法性校验"></a>7. 数据合法性校验</h3><p>这个可以说是每个系统都会有的处理机制，只有在数据是合法的情况下才会进行数据处理；每个系统都有自己的验证规则，当然也可能有一些常规性的规则，比如身份证长度和组成，电话号码长度和组成等等；</p>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a><strong>如何实现</strong></h2><p>以上大体介绍了一下常用的一些接口安全措施，当然可能还有其他我不知道的方式，希望大家补充，下面看看以上这些方法措施，具体如何实现；</p>
+<h3 id="1-数据加密-1"><a href="#1-数据加密-1" class="headerlink" title="1. 数据加密"></a>1. 数据加密</h3><p>现在主流的加密方式有对称加密和非对称加密；</p>
+<p><strong>对称加密</strong>：对称密钥在加密和解密的过程中使用的密钥是相同的，常见的对称加密算法有 DES，AES；优点是计算速度快，缺点是在数据传送前，发送方和接收方必须商定好秘钥，然后使双方都能保存好秘钥，如果一方的秘钥被泄露，那么加密信息也就不安全了；</p>
+<p><strong>非对称加密</strong>：服务端会生成一对密钥，私钥存放在服务器端，公钥可以发布给任何人使用；优点就是比起对称加密更加安全，但是加解密的速度比对称加密慢太多了；广泛使用的是 RSA 算法；</p>
+<p>两种方式各有优缺点，而 https 的实现方式正好是结合了两种加密方式，整合了双方的优点，在安全和性能方面都比较好；</p>
+<p>对称加密和非对称加密代码实现，jdk 提供了相关的工具类可以直接使用，此处不过多介绍；</p>
+<h3 id="2-数据加签-1"><a href="#2-数据加签-1" class="headerlink" title="2. 数据加签"></a>2. 数据加签</h3><p>数据签名使用比较多的是 md5 算法，将需要提交的数据通过某种方式组合和一个字符串，然后通过 md5 生成一段加密字符串，这段加密字符串就是数据包的签名，可以看一个简单的例子：</p>
+<pre class=" language-java"><code class="language-java">str：参数<span class="token number">1</span><span class="token operator">=</span><span class="token punctuation">{</span>参数<span class="token number">1</span><span class="token punctuation">}</span><span class="token operator">&amp;</span>参数<span class="token number">2</span><span class="token operator">=</span><span class="token punctuation">{</span>参数<span class="token number">2</span><span class="token punctuation">}</span><span class="token operator">&amp;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>&amp;参数n<span class="token operator">=</span><span class="token punctuation">{</span>参数n<span class="token punctuation">}</span>$key<span class="token operator">=</span><span class="token punctuation">{</span>用户密钥<span class="token punctuation">}</span><span class="token punctuation">;</span> MD5<span class="token punctuation">.</span><span class="token function">encrypt</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>注意最后的用户密钥，客户端和服务端都有一份，这样会更加安全；</p>
+<h3 id="3-时间戳机制-1"><a href="#3-时间戳机制-1" class="headerlink" title="3. 时间戳机制"></a>3. 时间戳机制</h3><p>解密后的数据，经过签名认证后，我们拿到数据包中的客户端时间戳字段，然后用服务器当前时间去减客户端时间，看结果是否在一个区间内，伪代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">long</span> interval<span class="token operator">=</span><span class="token number">5</span><span class="token operator">*</span><span class="token number">60</span><span class="token operator">*</span><span class="token number">1000</span>；<span class="token comment" spellcheck="true">//超时时间</span>
+<span class="token keyword">long</span> clientTime<span class="token operator">=</span>request<span class="token punctuation">.</span><span class="token function">getparameter</span><span class="token punctuation">(</span><span class="token string">"clientTime"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">long</span> serverTime<span class="token operator">=</span>System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>serverTime<span class="token operator">-</span>clientTime<span class="token operator">></span>interval<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span><span class="token string">"超过处理时长"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
-<p>UserController</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger LOGGER <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>UserController<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/user/{id}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> User <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> Integer id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>null <span class="token operator">==</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"id can not be null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"id must be greater than 1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> <span class="token string">"zhangsan"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>使用 arthas 连接 spring 应用，执行如下操作：</p>
-<blockquote>
-<ol>
-<li><p>查找全类名</p>
-<pre class=" language-shell"><code class="language-shell">sc *SpringContextUtil</code></pre>
-</li>
-<li><p>查找类加载器</p>
-<pre class=" language-shell"><code class="language-shell">sc -d *SpringContextUtil | grep classLoaderHash</code></pre>
-</li>
-<li><p>使用ognl表达式获取bean，并调用方法</p>
-<pre class=" language-shell"><code class="language-shell">> ognl -c 18b4aac2 '@com.soulballad.usage.arthasdemo.util.SpringContextUtil@getBean("userController").getUser(2)'</code></pre>
-</li>
-</ol>
-</blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519154539999.png" alt="image-20200519154539999"></p>
-<br>
-
-<h1 id="2-watch观测方法调用"><a href="#2-watch观测方法调用" class="headerlink" title="2. watch观测方法调用"></a>2. watch观测方法调用</h1><pre class=" language-shell"><code class="language-shell"># 查看 UserController 下所有方法的 参数、对象、返回值
-watch com.soulballad.usage.arthasdemo.web.UserController * '{params,target,returnObj}'</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519155222425.png" alt="image-20200519155222425"></p>
-<p>watch 支持方法调用前、调用后、异常抛出等多个场景观测，同时还可以在第四个参数中使用条件进行过滤，比如：</p>
-<pre class=" language-shell"><code class="language-shell">watch com.soulballad.usage.arthasdemo.web.UserController * '{returnObj}' 'params[0]>10'
-watch com.soulballad.usage.arthasdemo.web.UserController * '{returnObj}' '#cost>10'</code></pre>
-<br>
-
-<h1 id="3-热更新"><a href="#3-热更新" class="headerlink" title="3. 热更新"></a>3. 热更新</h1><p>步骤：使用jad反编译 -&gt; 修改文件 -&gt; 使用mc重新编译修改后的文件-&gt;使用redefine加载重新编译后的类</p>
-<p>上述 UserController 访问 <code>user/0</code>，会出现如下错误：</p>
-<blockquote>
-<p>There was an unexpected error (type=Internal Server Error, status=500).<br>id must be greater than 1</p>
-</blockquote>
-<p>现对其进行热更新</p>
-<blockquote>
-<ol>
-<li><p>反编译 UserController </p>
-<pre class=" language-shell"><code class="language-shell"># --source-only 只输出源码
-jad --source-only com.soulballad.usage.arthasdemo.web.UserController > UserController.java</code></pre>
-</li>
-<li><p>修改编译后的文件</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>soulballad<span class="token punctuation">.</span>usage<span class="token punctuation">.</span>arthasdemo<span class="token punctuation">.</span>web<span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>soulballad<span class="token punctuation">.</span>usage<span class="token punctuation">.</span>arthasdemo<span class="token punctuation">.</span>model<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>soulballad<span class="token punctuation">.</span>usage<span class="token punctuation">.</span>arthasdemo<span class="token punctuation">.</span>util<span class="token punctuation">.</span>SpringContextUtil<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>GetMapping<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>PathVariable<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RestController<span class="token punctuation">;</span>
-
-<span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
-        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger LOGGER <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>UserController<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"/user/{id}"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> User <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> Integer id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>null <span class="token operator">==</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"id can not be null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">// throw new IllegalArgumentException("id must be greater than 1");</span>
-            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> <span class="token string">"lisi"</span><span class="token operator">+</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> <span class="token string">"zhangsan"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-</li>
-<li><p>重新编译</p>
-<pre class=" language-shell"><code class="language-shell"># 使用mc重新编译修改后的文件，这里需要使用 -c 指定类加载器
-sc -d com.soulballad.usage.arthasdemo.web.UserController | grep classLoaderHash
-mc -c 18b4aac2 UserController.java</code></pre>
-<p>编译完成会出现一个路径，这个路径就是编译后class文件的位置</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519160730384.png" alt="image-20200519160730384"></p>
-</li>
-<li><p>使用redefine重新加载</p>
-<pre class=" language-shell"><code class="language-shell"># redefine 后面使用上一步的路径，需要将 \ 转成 /
-redefine ../UserController.class</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519160948601.png" alt="image-20200519160948601"></p>
-</li>
-<li><p>更新后结果</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519161238976.png" alt="image-20200519161238976"></p>
-</li>
-</ol>
-</blockquote>
-<br>
-
-<h1 id="4-更新日志级别"><a href="#4-更新日志级别" class="headerlink" title="4. 更新日志级别"></a>4. 更新日志级别</h1><p>查找类加载器</p>
-<pre class=" language-shell"><code class="language-shell">sc -d *UserController | grep classLoaderHash</code></pre>
-<p>查看更新前日志级别</p>
-<pre class=" language-shell"><code class="language-shell">ognl -c 18b4aac2 '@com.soulballad.usage.arthasdemo.web.UserController@LOGGER'</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519161959204.png" alt="image-20200519161959204"></p>
-<p>更新日志级别为 DEBUG</p>
-<pre class=" language-shell"><code class="language-shell">ognl -c 18b4aac2 '@com.soulballad.usage.arthasdemo.web.UserController@LOGGER.setLevel(@ch.qos.logback.classic.Level@DEBUG)'</code></pre>
-<p>查看更新后日志级别</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519163825883.png" alt="image-20200519163825883"></p>
-<br>
-
-<h1 id="5-tt获取spring上下文"><a href="#5-tt获取spring上下文" class="headerlink" title="5. tt获取spring上下文"></a>5. tt获取spring上下文</h1><p>执行 <code>tt</code> 命令来记录 <code>RequestMappingHandlerAdapter#invokeHandlerMethod</code> 的请求</p>
-<pre class=" language-shell"><code class="language-shell">tt -t org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter invokeHandlerMethod</code></pre>
-<p>然后访问 <code>user/1</code>，arthas 会记录访问时间片（time fragment）</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519164201326.png" alt="image-20200519164201326"></p>
-<p>可以用 <code>tt</code> 命令的 <code>-i</code> 参数来指定index，并且用 <code>-w</code> 参数来执行ognl表达式来获取spring context：</p>
-<pre class=" language-shell"><code class="language-shell">tt -i 1000 -w 'target.getApplicationContext()'</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519164620433.png" alt="image-20200519164620433"></p>
-<p>可以从 applicationContext 中获取 bean，触发方法调用</p>
-<pre class=" language-shell"><code class="language-shell">tt -i 1000 -w 'target.getApplicationContext().getBean("userController").getUser(2)'</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519164751963.png" alt="image-20200519164751963"></p>
-<br>
-
-<h1 id="6-链接"><a href="#6-链接" class="headerlink" title="6. 链接"></a>6. 链接</h1><ul>
-<li>Arthas: <a href="https://github.com/alibaba/arthas" target="_blank" rel="noopener">https://github.com/alibaba/arthas</a></li>
-<li><a href="https://alibaba.github.io/arthas/tt.html" target="_blank" rel="noopener">https://alibaba.github.io/arthas/tt.html</a></li>
-<li><a href="https://alibaba.github.io/arthas/ognl.html" target="_blank" rel="noopener">https://alibaba.github.io/arthas/ognl.html</a></li>
-<li><a href="https://alibaba.github.io/arthas/redefine.html" target="_blank" rel="noopener">https://alibaba.github.io/arthas/redefine.html</a></li>
-<li><a href="https://alibaba.github.io/arthas/watch.html" target="_blank" rel="noopener">https://alibaba.github.io/arthas/watch.html</a></li>
-</ul>
+<h3 id="4-AppId-机制-1"><a href="#4-AppId-机制-1" class="headerlink" title="4. AppId 机制"></a>4. AppId 机制</h3><p>生成一个唯一的 AppId 即可，密钥使用字母、数字等特殊字符随机生成即可；生成唯一 AppId 根据实际情况看是否需要全局唯一；但是不管是否全局唯一最好让生成的 Id 有如下属性：趋势递增：这样在保存数据库的时候，使用索引性能更好；信息安全：尽量不要连续的，容易发现规律；关于全局唯一 Id 生成的方式常见的有类 snowflake 方式等；</p>
+<h3 id="5-限流机制-1"><a href="#5-限流机制-1" class="headerlink" title="5. 限流机制"></a>5. 限流机制</h3><p>常用的限流算法包括：令牌桶限流， 漏桶限流， 计数器限流；</p>
+<p><strong>1. 令牌桶限流</strong> 令牌桶算法的原理是系统以一定速率向桶中放入令牌，填满了就丢弃令牌；请求来时会先从桶中取出令牌，如果能取到令牌，则可以继续完成请求，否则等待或者拒绝服务；令牌桶允许一定程度突发流量，只要有令牌就可以处理，支持一次拿多个令牌；</p>
+<p><strong>2. 漏桶限流</strong> 漏桶算法的原理是按照固定常量速率流出请求，流入请求速率任意，当请求数超过桶的容量时，新的请求等待或者拒绝服务；可以看出漏桶算法可以强制限制数据的传输速度；</p>
+<p><strong>3. 计数器限流</strong> 计数器是一种比较简单粗暴的算法，主要用来限制总并发数，比如数据库连接池、线程池、秒杀的并发数；计数器限流只要一定时间内的总请求数超过设定的阀值则进行限流；具体基于以上算法如何实现，Guava 提供了 RateLimiter 工具类基于基于令牌桶算法：</p>
+<pre class=" language-java"><code class="language-java">RateLimiter rateLimiter <span class="token operator">=</span> RateLimiter<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>以上代码表示一秒钟只允许处理五个并发请求，以上方式只能用在单应用的请求限流，不能进行全局限流；这个时候就需要分布式限流，可以基于 redis+lua 来实现；</p>
+<h3 id="6-黑名单机制-1"><a href="#6-黑名单机制-1" class="headerlink" title="6. 黑名单机制"></a>6. 黑名单机制</h3><p>如何为什么中黑我们这边不讨论，我们可以给每个用户设置一个状态比如包括：初始化状态，正常状态，中黑状态，关闭状态等等；或者我们直接通过分布式配置中心，直接保存黑名单列表，每次检查是否在列表中即可；</p>
+<h3 id="7-数据合法性校验-1"><a href="#7-数据合法性校验-1" class="headerlink" title="7. 数据合法性校验"></a>7. 数据合法性校验</h3><p>合法性校验包括：常规性校验以及业务校验；常规性校验：包括签名校验，必填校验，长度校验，类型校验，格式校验等；业务校验：根据实际业务而定，比如订单金额不能小于 0 等；</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>本文大致列举了几种常见的安全措施机制包括：数据加密、数据加签、时间戳机制、AppId 机制、限流机制、黑名单机制以及数据合法性校验；当然肯定有其他方式，欢迎补充。</p>
 
             </div>
             <hr/>
@@ -683,7 +564,7 @@ redefine ../UserController.class</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://soulballad.github.io/posts/de8c797a">https://soulballad.github.io/posts/de8c797a</a>
+                    <a href="https://soulballad.github.io/posts/28ed7026">https://soulballad.github.io/posts/28ed7026</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -721,12 +602,8 @@ redefine ../UserController.class</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Arthas/">
-                                    <span class="chip bg-color">Arthas</span>
-                                </a>
-                            
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
+                                <a href="/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/">
+                                    <span class="chip bg-color">方案设计</span>
                                 </a>
                             
                         </div>
@@ -1157,55 +1034,49 @@ redefine ../UserController.class</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/3aaee350">
+                <a href="/posts/28ed7026">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="【从零开始学Spring Boot】-1.第一个Spring Boot应用">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="3.如何设计一个安全的对外接口">
                         
-                        <span class="card-title">【从零开始学Spring Boot】-1.第一个Spring Boot应用</span>
+                        <span class="card-title">3.如何设计一个安全的对外接口</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.简介1.1 概述
-Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “jus
+                            最近有个项目需要对外提供一个接口，提供公网域名进行访问，而且接口和交易订单有关，所以安全性很重要；这里整理了一下常用的一些安全措施以及具体如何去实现。
+安全措施个人觉得安全措施大体来看主要在两个方面，一方面就是如何保证数据在传输过程中的安全
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Spring-Boot%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Spring Boot学习
+                            <a href="/categories/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/" class="post-category">
+                                    方案设计
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/Spring-Boot/">
-                        <span class="chip bg-color">Spring Boot</span>
-                    </a>
-                    
-                    <a href="/tags/WebMVC/">
-                        <span class="chip bg-color">WebMVC</span>
+                    <a href="/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">方案设计</span>
                     </a>
                     
                 </div>
@@ -1219,34 +1090,31 @@ Spring Boot makes it easy to create stand-alone, production-grade Spring based A
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/b0a6b96a">
+                <a href="/posts/c4292d51">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="【Arthas】-1.Arthas基础命令">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="2.一个秒杀系统的设计思考">
                         
-                        <span class="card-title">【Arthas】-1.Arthas基础命令</span>
+                        <span class="card-title">2.一个秒杀系统的设计思考</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. Arthas 简介Arthas 是 Alibaba 开源的 Java 诊断工具，根据官方介绍，它提供了如下工功能：
-
-官方文档地址： https://alibaba.github.io/arthas/
-github 源码地址： htt
+                            0. 前言秒杀大家都不陌生。自2011年首次出现以来，无论是双十一购物还是 12306 抢票，秒杀场景已随处可见。简单来说，秒杀就是在同一时刻大量请求争抢购买同一商品并完成交易的过程。从架构视角来看，秒杀系统本质是一个高性能、高一致、高可用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/" class="post-category">
-                                    问题定位分析
+                            <a href="/categories/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/" class="post-category">
+                                    方案设计
                                 </a>
                             
                             
@@ -1256,12 +1124,8 @@ github 源码地址： htt
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Arthas/">
-                        <span class="chip bg-color">Arthas</span>
-                    </a>
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">方案设计</span>
                     </a>
                     
                 </div>
@@ -1468,7 +1332,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">63.1k</span>&nbsp;字
+                class="white-color">132.8k</span>&nbsp;字
             
             
             

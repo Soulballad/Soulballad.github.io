@@ -1,0 +1,1682 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="6.阿里员工排查Java问题常用工具, Soulballad">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>6.阿里员工排查Java问题常用工具 | Soulballad</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Soulballad" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Soulballad</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Soulballad</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/Soulballad" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/Soulballad" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">6.阿里员工排查Java问题常用工具</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/JVM/">
+                                <span class="chip bg-color">JVM</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/" class="post-category">
+                                问题定位分析
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-11-13
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    12 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="我的问题排查工具箱"><a href="#我的问题排查工具箱" class="headerlink" title="我的问题排查工具箱"></a>我的问题排查工具箱</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>平时的工作中经常碰到很多疑难问题的处理，在解决问题的同时，有一些工具起到了相当大的作用，在此书写下来，一是作为笔记，可以让自己后续忘记了可快速翻阅，二是分享，希望看到此文的同学们可以拿出自己日常觉得帮助很大的工具，大家一起进步。</p>
+<p>闲话不多说，开搞。</p>
+<h2 id="Linux命令类"><a href="#Linux命令类" class="headerlink" title="Linux命令类"></a>Linux命令类</h2><h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h3><p>最常用的tail -f</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">tail</span> -300f shopbase.log <span class="token comment" spellcheck="true">#倒数300行并进入实时监听文件写入模式</span></code></pre>
+<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">grep</span> forest f.txt     <span class="token comment" spellcheck="true">#文件查找</span>
+<span class="token function">grep</span> forest f.txt cpf.txt <span class="token comment" spellcheck="true">#多文件查找</span>
+<span class="token function">grep</span> <span class="token string">'log'</span> /home/admin -r -n <span class="token comment" spellcheck="true">#目录下查找所有符合关键字的文件</span>
+<span class="token function">cat</span> f.txt <span class="token operator">|</span> <span class="token function">grep</span> -i shopbase    
+<span class="token function">grep</span> <span class="token string">'shopbase'</span> /home/admin -r -n --include *.<span class="token punctuation">{</span>vm,java<span class="token punctuation">}</span> <span class="token comment" spellcheck="true">#指定文件后缀</span>
+<span class="token function">grep</span> <span class="token string">'shopbase'</span> /home/admin -r -n --exclude *.<span class="token punctuation">{</span>vm,java<span class="token punctuation">}</span> <span class="token comment" spellcheck="true">#反匹配</span>
+<span class="token function">seq</span> 10 <span class="token operator">|</span> <span class="token function">grep</span> 5 -A 3    <span class="token comment" spellcheck="true">#上匹配</span>
+<span class="token function">seq</span> 10 <span class="token operator">|</span> <span class="token function">grep</span> 5 -B 3    <span class="token comment" spellcheck="true">#下匹配</span>
+<span class="token function">seq</span> 10 <span class="token operator">|</span> <span class="token function">grep</span> 5 -C 3    <span class="token comment" spellcheck="true">#上下匹配，平时用这个就妥了</span>
+<span class="token function">cat</span> f.txt <span class="token operator">|</span> <span class="token function">grep</span> -c <span class="token string">'SHOPBASE'</span></code></pre>
+<h3 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h3><p>1 基础命令</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$4</span>,<span class="token variable">$6</span>}'</span> f.txt
+<span class="token function">awk</span> <span class="token string">'{print NR,<span class="token variable">$0</span>}'</span> f.txt cpf.txt    
+<span class="token function">awk</span> <span class="token string">'{print FNR,<span class="token variable">$0</span>}'</span> f.txt cpf.txt
+<span class="token function">awk</span> <span class="token string">'{print FNR,FILENAME,<span class="token variable">$0</span>}'</span> f.txt cpf.txt
+<span class="token function">awk</span> <span class="token string">'{print FILENAME,"NR="NR,"FNR="FNR,"$"NF"="<span class="token variable">$NF</span>}'</span> f.txt cpf.txt
+<span class="token keyword">echo</span> 1:2:3:4 <span class="token operator">|</span> <span class="token function">awk</span> -F: <span class="token string">'{print <span class="token variable">$1</span>,<span class="token variable">$2</span>,<span class="token variable">$3</span>,<span class="token variable">$4</span>}'</span></code></pre>
+<p>2 匹配</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'/ldb/ {print}'</span> f.txt   <span class="token comment" spellcheck="true">#匹配ldb</span>
+<span class="token function">awk</span> <span class="token string">'!/ldb/ {print}'</span> f.txt  <span class="token comment" spellcheck="true">#不匹配ldb</span>
+<span class="token function">awk</span> <span class="token string">'/ldb/ &amp;&amp; /LISTEN/ {print}'</span> f.txt   <span class="token comment" spellcheck="true">#匹配ldb和LISTEN</span>
+<span class="token function">awk</span> <span class="token string">'<span class="token variable">$5</span> ~ /ldb/ {print}'</span> f.txt <span class="token comment" spellcheck="true">#第五列匹配ldb</span></code></pre>
+<p>3 内建变量</p>
+<p>NR:NR表示从awk开始执行后，按照记录分隔符读取的数据次数，默认的记录分隔符为换行符，因此默认的就是读取的数据行数，NR可以理解为Number of Record的缩写。</p>
+<p>FNR:在awk处理多个输入文件的时候，在处理完第一个文件后，NR并不会从1开始，而是继续累加，因此就出现了FNR，每当处理一个新文件的时候，FNR就从1开始计数，FNR可以理解为File Number of Record。</p>
+<p>NF: NF表示目前的记录被分割的字段的数目，NF可以理解为Number of Field。</p>
+<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin <span class="token function">find</span> /home/admin /tmp /usr -name \*.log<span class="token punctuation">(</span>多个目录去找<span class="token punctuation">)</span>
+<span class="token function">find</span> <span class="token keyword">.</span> -iname \*.txt<span class="token punctuation">(</span>大小写都匹配<span class="token punctuation">)</span>
+<span class="token function">find</span> <span class="token keyword">.</span> -type d<span class="token punctuation">(</span>当前目录下的所有子目录<span class="token punctuation">)</span>
+<span class="token function">find</span> /usr -type l<span class="token punctuation">(</span>当前目录下所有的符号链接<span class="token punctuation">)</span>
+<span class="token function">find</span> /usr -type l -name <span class="token string">"z*"</span> -ls<span class="token punctuation">(</span>符号链接的详细信息 eg:inode,目录<span class="token punctuation">)</span>
+<span class="token function">find</span> /home/admin -size +250000k<span class="token punctuation">(</span>超过250000k的文件，当然+改成-就是小于了<span class="token punctuation">)</span>
+<span class="token function">find</span> /home/admin f -perm 777 -exec <span class="token function">ls</span> -l <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span> <span class="token punctuation">(</span>按照权限查询文件<span class="token punctuation">)</span>
+<span class="token function">find</span> /home/admin -atime -1  1天内访问过的文件
+<span class="token function">find</span> /home/admin -ctime -1  1天内状态改变过的文件    
+<span class="token function">find</span> /home/admin -mtime -1  1天内修改过的文件
+<span class="token function">find</span> /home/admin -amin -1  1分钟内访问过的文件
+<span class="token function">find</span> /home/admin -cmin -1  1分钟内状态改变过的文件    
+<span class="token function">find</span> /home/admin -mmin -1  1分钟内修改过的文件</code></pre>
+<h3 id="pgm"><a href="#pgm" class="headerlink" title="pgm"></a>pgm</h3><p>批量查询vm-shopbase满足条件的日志</p>
+<pre class=" language-bash"><code class="language-bash">pgm -A -f vm-shopbase <span class="token string">'cat /home/admin/shopbase/logs/shopbase.log.2017-01-17|grep 2069861630'</span></code></pre>
+<h3 id="tsar"><a href="#tsar" class="headerlink" title="tsar"></a>tsar</h3><p>tsar是咱公司自己的采集工具。很好用, 将历史收集到的数据持久化在磁盘上，所以我们快速来查询历史的系统数据。当然实时的应用情况也是可以查询的啦。大部分机器上都有安装。</p>
+<pre class=" language-bash"><code class="language-bash">tsar  <span class="token comment" spellcheck="true">##可以查看最近一天的各项指标</span></code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/fc25b8f22e53818d5576c5d00dd52618.png" alt="screenshot.png"></p>
+<pre class=" language-bash"><code class="language-bash">tsar --live <span class="token comment" spellcheck="true">##可以查看实时指标，默认五秒一刷</span></code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/b68910c5416fd85a99a49a092fc9ffbb.png" alt="screenshot.png"></p>
+<pre class=" language-bash"><code class="language-bash">tsar -d 20161218 <span class="token comment" spellcheck="true">##指定查看某天的数据，貌似最多只能看四个月的数据</span></code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/aafdbfb515b817a2aceb270d1d470c19.png" alt="screenshot.png"></p>
+<pre class=" language-bash"><code class="language-bash">tsar --mem
+tsar --load
+tsar --cpu
+<span class="token comment" spellcheck="true">##当然这个也可以和-d参数配合来查询某天的单个指标的情况 </span></code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/cb46ef4e374e1502d3b672d04d48099a.png" alt="screenshot.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/079f3fa722bfa1991557469eb97c7273.png" alt="screenshot.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/6dd77351ad4d1ad84cdbfba20c9d4c29.png" alt="screenshot.png"></p>
+<h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><p>top除了看一些基本信息之外，剩下的就是配合来查询vm的各种问题了</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> java
+<span class="token function">top</span> -H -p pid
+</code></pre>
+<p>获得线程10进制转16进制后jstack去抓看这个线程到底在干啥</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">netstat</span> -nat<span class="token operator">|</span><span class="token function">awk</span>  <span class="token string">'{print <span class="token variable">$6</span>}'</span><span class="token operator">|</span><span class="token function">sort</span><span class="token operator">|</span><span class="token function">uniq</span> -c<span class="token operator">|</span><span class="token function">sort</span> -rn 
+<span class="token comment" spellcheck="true">#查看当前连接，注意close_wait偏高的情况，比如如下</span></code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/250a027410775cf5990d0db6e87ba927.png" alt="screenshot.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/639811da529750064e2f70867d6234e0.png" alt="screenshot.png"></p>
+<h2 id="排查利器"><a href="#排查利器" class="headerlink" title="排查利器"></a>排查利器</h2><h3 id="btrace"><a href="#btrace" class="headerlink" title="btrace"></a>btrace</h3><p>首当其冲的要说的是btrace。真是生产环境&amp;预发的排查问题大杀器。 简介什么的就不说了。直接上代码干</p>
+<ol>
+<li><p>查看当前谁调用了ArrayList的add方法，同时只打印当前ArrayList的size大于500的线程调用栈</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@OnMethod</span><span class="token punctuation">(</span>clazz <span class="token operator">=</span> <span class="token string">"java.util.ArrayList"</span><span class="token punctuation">,</span> method<span class="token operator">=</span><span class="token string">"add"</span><span class="token punctuation">,</span> location <span class="token operator">=</span> <span class="token annotation punctuation">@Location</span><span class="token punctuation">(</span>value <span class="token operator">=</span> Kind<span class="token punctuation">.</span>CALL<span class="token punctuation">,</span> clazz <span class="token operator">=</span> <span class="token string">"/.*/"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token string">"/.*/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">m</span><span class="token punctuation">(</span><span class="token annotation punctuation">@ProbeClassName</span> String probeClass<span class="token punctuation">,</span> <span class="token annotation punctuation">@ProbeMethodName</span> String probeMethod<span class="token punctuation">,</span> <span class="token annotation punctuation">@TargetInstance</span> Object instance<span class="token punctuation">,</span> <span class="token annotation punctuation">@TargetMethodOrField</span> String method<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">"java.util.ArrayList"</span><span class="token punctuation">,</span> <span class="token string">"size"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> instance<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">479</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"check who ArrayList.add method:"</span> <span class="token operator">+</span> probeClass <span class="token operator">+</span> <span class="token string">"#"</span> <span class="token operator">+</span> probeMethod  <span class="token operator">+</span> <span class="token string">", method:"</span> <span class="token operator">+</span> method <span class="token operator">+</span> <span class="token string">", size:"</span> <span class="token operator">+</span> <span class="token function">getInt</span><span class="token punctuation">(</span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">"java.util.ArrayList"</span><span class="token punctuation">,</span> <span class="token string">"size"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> instance<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">jstack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>监控当前服务方法被调用时返回的值以及请求的参数</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@OnMethod</span><span class="token punctuation">(</span>clazz <span class="token operator">=</span> <span class="token string">"com.taobao.sellerhome.transfer.biz.impl.C2CApplyerServiceImpl"</span><span class="token punctuation">,</span> method<span class="token operator">=</span><span class="token string">"nav"</span><span class="token punctuation">,</span> location <span class="token operator">=</span> <span class="token annotation punctuation">@Location</span><span class="token punctuation">(</span>value <span class="token operator">=</span> Kind<span class="token punctuation">.</span>RETURN<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">mt</span><span class="token punctuation">(</span><span class="token keyword">long</span> userId<span class="token punctuation">,</span> <span class="token keyword">int</span> current<span class="token punctuation">,</span> <span class="token keyword">int</span> relation<span class="token punctuation">,</span> String check<span class="token punctuation">,</span> String redirectUrl<span class="token punctuation">,</span> <span class="token annotation punctuation">@Return</span> AnyType result<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"parameter# userId:"</span> <span class="token operator">+</span> userId <span class="token operator">+</span> <span class="token string">", current:"</span> <span class="token operator">+</span> current <span class="token operator">+</span> <span class="token string">", relation:"</span> <span class="token operator">+</span> relation <span class="token operator">+</span> <span class="token string">", check:"</span> <span class="token operator">+</span> check <span class="token operator">+</span> <span class="token string">", redirectUrl:"</span> <span class="token operator">+</span> redirectUrl <span class="token operator">+</span> <span class="token string">", result:"</span> <span class="token operator">+</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ol>
+<p>其他功能集团的一些工具或多或少都有，就不说了。感兴趣的请移步。<br><a href="https://github.com/btraceio/btrace" target="_blank" rel="noopener">https://github.com/btraceio/btrace</a></p>
+<p>注意:</p>
+<ol>
+<li>经过观察，1.3.9的release输出不稳定，要多触发几次才能看到正确的结果</li>
+<li>正则表达式匹配trace类时范围一定要控制，否则极有可能出现跑满CPU导致应用卡死的情况</li>
+<li>由于是字节码注入的原理，想要应用恢复到正常情况，需要重启应用。</li>
+</ol>
+<h3 id="Greys"><a href="#Greys" class="headerlink" title="Greys"></a>Greys</h3><p>Greys是@杜琨的大作吧。说几个挺棒的功能(部分功能和btrace重合):</p>
+<p><code>sc -df xxx</code>: 输出当前类的详情,包括源码位置和classloader结构</p>
+<p><code>trace class method</code>: 相当喜欢这个功能! 很早前可以早JProfiler看到这个功能。打印出当前方法调用的耗时情况，细分到每个方法。对排查方法性能时很有帮助，比如我之前这篇就是使用了trace命令来的:<a href="http://www.atatech.org/articles/52947%E3%80%82" target="_blank" rel="noopener">http://www.atatech.org/articles/52947。</a></p>
+<p>其他功能部分和btrace重合，可以选用，感兴趣的请移步。<br><a href="http://www.atatech.org/articles/26247" target="_blank" rel="noopener">http://www.atatech.org/articles/26247</a></p>
+<p>另外相关联的是arthas，他是基于Greys的，感兴趣的再移步<a href="http://mw.alibaba-inc.com/products/arthas/docs/middleware-container/arthas.wiki/home.html?spm=a1z9z.8109794.header.32.1lsoMc" target="_blank" rel="noopener">http://mw.alibaba-inc.com/products/arthas/docs/middleware-container/arthas.wiki/home.html?spm=a1z9z.8109794.header.32.1lsoMc</a></p>
+<h3 id="javOSize"><a href="#javOSize" class="headerlink" title="javOSize"></a>javOSize</h3><p>就说一个功能<br><code>classes</code>：通过修改了字节码，改变了类的内容，即时生效。 所以可以做到快速的在某个地方打个日志看看输出，缺点是对代码的侵入性太大。但是如果自己知道自己在干嘛，的确是不错的玩意儿。</p>
+<p>其他功能Greys和btrace都能很轻易做的到，不说了。</p>
+<p>可以看看我之前写的一篇javOSize的简介<a href="http://www.atatech.org/articles/38546" target="_blank" rel="noopener">http://www.atatech.org/articles/38546</a><br>官网请移步<a href="http://www.javosize.com/" target="_blank" rel="noopener">http://www.javosize.com/</a></p>
+<h3 id="JProfiler"><a href="#JProfiler" class="headerlink" title="JProfiler"></a>JProfiler</h3><p>之前判断许多问题要通过JProfiler，但是现在Greys和btrace基本都能搞定了。再加上出问题的基本上都是生产环境(网络隔离)，所以基本不怎么使用了，但是还是要标记一下。<br>官网请移步<a href="https://www.ej-technologies.com/products/jprofiler/overview.html" target="_blank" rel="noopener">https://www.ej-technologies.com/products/jprofiler/overview.html</a></p>
+<h2 id="大杀器"><a href="#大杀器" class="headerlink" title="大杀器"></a>大杀器</h2><h3 id="eclipseMAT"><a href="#eclipseMAT" class="headerlink" title="eclipseMAT"></a>eclipseMAT</h3><p>可作为eclipse的插件，也可作为单独的程序打开。<br>详情请移步<a href="http://www.eclipse.org/mat/" target="_blank" rel="noopener">http://www.eclipse.org/mat/</a></p>
+<h3 id="zprofiler"><a href="#zprofiler" class="headerlink" title="zprofiler"></a>zprofiler</h3><p>集团内的开发应该是无人不知无人不晓了。简而言之一句话:有了zprofiler还要mat干嘛<br>详情请移步<a href="http://zprofiler.alibaba-inc.com/" target="_blank" rel="noopener">zprofiler.alibaba-inc.com</a></p>
+<h2 id="java三板斧，噢不对，是七把"><a href="#java三板斧，噢不对，是七把" class="headerlink" title="java三板斧，噢不对，是七把"></a>java三板斧，噢不对，是七把</h2><h3 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h3><p>我只用一条命令：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/java/bin/jps -mlvV</code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/7b156cb53250bf5f91811900c2575a91.png" alt="screenshot.png"></p>
+<h3 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h3><p>普通用法:</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jstack 2815</code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/bc501bf424b3d2884e6ec118d14554a3.png" alt="screenshot.png"></p>
+<p>native+java栈:</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jstack -m 2815</code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/4c59dc2971f3d8778e1898d64266266a.png" alt="screenshot.png"></p>
+<h3 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a>jinfo</h3><p>可看系统启动的参数，如下</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jinfo -flags 2815</code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/bc879145e2994e9a09327407ed88382c.png" alt="screenshot.png"></p>
+<h3 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a>jmap</h3><p>两个用途</p>
+<p>1.查看堆的情况</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jmap -heap 2815</code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/00d9eaef08cdb51263d202d26795036b.png" alt="screenshot.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/3c08bccf81fef8b7bcae2b321012b503.png" alt="screenshot.png"></p>
+<p>2.dump</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jmap -dump:live,format<span class="token operator">=</span>b,file<span class="token operator">=</span>/tmp/heap2.bin 2815</code></pre>
+<p>或者</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jmap -dump:format<span class="token operator">=</span>b,file<span class="token operator">=</span>/tmp/heap3.bin 2815</code></pre>
+<p>3.看看堆都被谁占了? 再配合zprofiler和btrace，排查问题简直是如虎添翼</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jmap -histo 2815 <span class="token operator">|</span> <span class="token function">head</span> -10</code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/500ec6709fcd03a4fca2679615d54522.png" alt="screenshot.png"></p>
+<h3 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h3><p>jstat参数众多，但是使用一个就够了</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jstat -gcutil 2815 1000 </code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/05743916a9187535c202fb410d30d50d.png" alt="screenshot.png"></p>
+<h3 id="jdb"><a href="#jdb" class="headerlink" title="jdb"></a>jdb</h3><p>时至今日，jdb也是经常使用的。<br>jdb可以用来预发debug,假设你预发的java_home是/opt/taobao/java/，远程调试端口是8000.那么<br><code>sudo -u admin /opt/taobao/java/bin/jdb -attach 8000</code>.</p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/16332fcd45b20137bffc7a3b9a88b0f1.png" alt="screenshot.png"></p>
+<p>出现以上代表jdb启动成功。后续可以进行设置断点进行调试。<br>具体参数可见oracle官方说明<a href="http://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html" target="_blank" rel="noopener">http://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html</a></p>
+<h3 id="CHLSDB"><a href="#CHLSDB" class="headerlink" title="CHLSDB"></a>CHLSDB</h3><p>CHLSDB感觉很多情况下可以看到更好玩的东西，不详细叙述了。 查询资料听说jstack和jmap等工具就是基于它的。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/java/bin/java -classpath /opt/taobao/java/lib/sa-jdi.jar sun.jvm.hotspot.CLHSDB</code></pre>
+<p>更详细的可见R大此贴<br><a href="http://rednaxelafx.iteye.com/blog/1847971" target="_blank" rel="noopener">http://rednaxelafx.iteye.com/blog/1847971</a></p>
+<h2 id="plugin-of-intellij-idea"><a href="#plugin-of-intellij-idea" class="headerlink" title="plugin of intellij idea"></a>plugin of intellij idea</h2><h3 id="key-promoter"><a href="#key-promoter" class="headerlink" title="key promoter"></a>key promoter</h3><p>快捷键一次你记不住，多来几次你总能记住了吧？</p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/356c11885a95e28736a605aecdc8083e.png" alt="screenshot.png"></p>
+<h3 id="maven-helper"><a href="#maven-helper" class="headerlink" title="maven helper"></a>maven helper</h3><p>分析maven依赖的好帮手。</p>
+<h2 id="VM-options"><a href="#VM-options" class="headerlink" title="VM options"></a>VM options</h2><ol>
+<li><p>你的类到底是从哪个文件加载进来的？</p>
+<pre class=" language-bash"><code class="language-bash">-XX:+TraceClassLoading
+结果形如<span class="token punctuation">[</span>Loaded java.lang.invoke.MethodHandleImpl<span class="token variable">$Lazy</span> from D:\programme\jdk\jdk8U74\jre\lib\rt.jar<span class="token punctuation">]</span> </code></pre>
+</li>
+<li><p>应用挂了输出dump文件</p>
+<pre class=" language-bash"><code class="language-bash">-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath<span class="token operator">=</span>/home/admin/logs/java.hprof
+集团的vm参数里边基本都有这个选项</code></pre>
+</li>
+</ol>
+<h2 id="jar包冲突"><a href="#jar包冲突" class="headerlink" title="jar包冲突"></a>jar包冲突</h2><p>把这个单独写个大标题不过分吧？每个人或多或少都处理过这种烦人的case。我特么下边这么多方案不信就搞不定你?</p>
+<h3 id="mvn-dependency-tree-gt-dependency-txt"><a href="#mvn-dependency-tree-gt-dependency-txt" class="headerlink" title="mvn dependency:tree > ~/dependency.txt"></a>mvn dependency:tree &gt; ~/dependency.txt</h3><p>打出所有依赖</p>
+<h3 id="mvn-dependency-tree-Dverbose-Dincludes-groupId-artifactId"><a href="#mvn-dependency-tree-Dverbose-Dincludes-groupId-artifactId" class="headerlink" title="mvn dependency:tree -Dverbose -Dincludes=groupId:artifactId"></a>mvn dependency:tree -Dverbose -Dincludes=groupId:artifactId</h3><p>只打出指定groupId和artifactId的依赖关系</p>
+<h3 id="XX-TraceClassLoading"><a href="#XX-TraceClassLoading" class="headerlink" title="-XX:+TraceClassLoading"></a>-XX:+TraceClassLoading</h3><p>vm启动脚本加入。在tomcat启动脚本中可见加载类的详细信息</p>
+<h3 id="verbose"><a href="#verbose" class="headerlink" title="-verbose"></a>-verbose</h3><p>vm启动脚本加入。在tomcat启动脚本中可见加载类的详细信息</p>
+<h3 id="greys-sc"><a href="#greys-sc" class="headerlink" title="greys:sc"></a>greys:sc</h3><p>greys的sc命令也能清晰的看到当前类是从哪里加载过来的</p>
+<h3 id="tomcat-classloader-locate"><a href="#tomcat-classloader-locate" class="headerlink" title="tomcat-classloader-locate"></a>tomcat-classloader-locate</h3><p>通过以下url可以获知当前类是从哪里加载的<br>curl <a href="http://localhost:8006/classloader/locate?class=org.apache.xerces.xs.XSObject" target="_blank" rel="noopener">http://localhost:8006/classloader/locate?class=org.apache.xerces.xs.XSObject</a></p>
+<h2 id="ALI-TOMCAT带给我们的惊喜-感谢-务观"><a href="#ALI-TOMCAT带给我们的惊喜-感谢-务观" class="headerlink" title="ALI-TOMCAT带给我们的惊喜(感谢@务观)"></a>ALI-TOMCAT带给我们的惊喜(感谢@务观)</h2><ol>
+<li><p>列出容器加载的jar列表</p>
+<p>curl <a href="http://localhost:8006/classloader/jars" target="_blank" rel="noopener">http://localhost:8006/classloader/jars</a></p>
+</li>
+<li><p>列出当前当当前类加载的实际jar包位置，解决类冲突时有用</p>
+<p>curl <a href="http://localhost:8006/classloader/locate?class=org.apache.xerces.xs.XSObject" target="_blank" rel="noopener">http://localhost:8006/classloader/locate?class=org.apache.xerces.xs.XSObject</a><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/4568b16d3db0daf98e852412b830f1a8.png" alt="screenshot.png"></p>
+</li>
+</ol>
+<h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><h3 id="gpref"><a href="#gpref" class="headerlink" title="gpref"></a>gpref</h3><p><a href="http://www.atatech.org/articles/33317" target="_blank" rel="noopener">http://www.atatech.org/articles/33317</a></p>
+<h3 id="dmesg"><a href="#dmesg" class="headerlink" title="dmesg"></a>dmesg</h3><p>如果发现自己的java进程悄无声息的消失了，几乎没有留下任何线索，那么dmesg一发，很有可能有你想要的。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">dmesg</span><span class="token operator">|</span><span class="token function">grep</span> -i <span class="token function">kill</span><span class="token operator">|</span><span class="token function">less</span></code></pre>
+<p>去找关键字oom_killer。找到的结果类似如下:</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>6710782.021013<span class="token punctuation">]</span> java invoked oom-killer: gfp_mask<span class="token operator">=</span>0xd0, order<span class="token operator">=</span>0, oom_adj<span class="token operator">=</span>0, oom_scoe_adj<span class="token operator">=</span>0
+<span class="token punctuation">[</span>6710782.070639<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>ffffffff81118898<span class="token operator">></span><span class="token punctuation">]</span> ? oom_kill_process+0x68/0x140 
+<span class="token punctuation">[</span>6710782.257588<span class="token punctuation">]</span> Task <span class="token keyword">in</span> /LXC011175068174 killed as a result of limit of /LXC011175068174 
+<span class="token punctuation">[</span>6710784.698347<span class="token punctuation">]</span> Memory cgroup out of memory: Kill process 215701 <span class="token punctuation">(</span>java<span class="token punctuation">)</span> score 854 or sacrifice child 
+<span class="token punctuation">[</span>6710784.707978<span class="token punctuation">]</span> Killed process 215701, UID 679, <span class="token punctuation">(</span>java<span class="token punctuation">)</span> total-vm:11017300kB, anon-rss:7152432kB, file-rss:1232kB</code></pre>
+<p>以上表明，对应的java进程被系统的OOM Killer给干掉了，得分为854.<br>解释一下OOM killer（Out-Of-Memory killer），该机制会监控机器的内存资源消耗。当机器内存耗尽前，该机制会扫描所有的进程（按照一定规则计算，内存占用，时间等），挑选出得分最高的进程，然后杀死，从而保护机器。</p>
+<p>dmesg日志时间转换公式:<br>log实际时间=格林威治1970-01-01+(当前时间秒数-系统启动至今的秒数+dmesg打印的log时间)秒数：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">date</span> -d <span class="token string">"1970-01-01 UTC `echo "</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%s<span class="token variable">)</span></span>-<span class="token punctuation">$(</span>cat /proc/uptime<span class="token operator">|</span><span class="token function">cut</span> -f 1 -d<span class="token string">' '</span><span class="token punctuation">)</span>+12288812.926194<span class="token string">"|bc ` seconds"</span></code></pre>
+<p>剩下的，就是看看为什么内存这么大，触发了OOM-Killer了。</p>
+<h2 id="新技能get"><a href="#新技能get" class="headerlink" title="新技能get"></a>新技能get</h2><h3 id="RateLimiter"><a href="#RateLimiter" class="headerlink" title="RateLimiter"></a>RateLimiter</h3><p>想要精细的控制QPS? 比如这样一个场景，你调用某个接口，对方明确需要你限制你的QPS在400之内你怎么控制？这个时候RateLimiter就有了用武之地。详情可移步<a href="http://ifeve.com/guava-ratelimiter/" target="_blank" rel="noopener">http://ifeve.com/guava-ratelimiter/</a></p>
+<blockquote>
+<p>原文链接： <a href="https://developer.aliyun.com/article/69520" target="_blank" rel="noopener">https://developer.aliyun.com/article/69520</a></p>
+</blockquote>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Soulballad</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://soulballad.github.io/posts/bf8aaefe">https://soulballad.github.io/posts/bf8aaefe</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Soulballad</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/JVM/">
+                                    <span class="chip bg-color">JVM</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'kqUAqqa6YAVxxp8k3O4V74MR-MdYXbMMI',
+        appKey: 'yS1j1UPuIqtQdbFU1klYbB1A',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '欢迎留言！请在这里说出你的想法！'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/346960d3">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="1.秒杀系统架构分析与实战">
+                        
+                        <span class="card-title">1.秒杀系统架构分析与实战</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1.秒杀业务分析
+正常电子商务流程
+
+
+（1）查询商品；（2）创建订单；（3）扣减库存；（4）更新订单；（5）付款；（6）卖家发货；
+
+
+秒杀业务的特性
+
+
+（1）低廉价格； （2）大幅推广； （3）瞬时售空； （4）一般是定时上架； （5
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/" class="post-category">
+                                    方案设计
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">方案设计</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/5901445c">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="5.CPU占用100%定位方法">
+                        
+                        <span class="card-title">5.CPU占用100%定位方法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            0. 背景经常做后端服务开发的同学，或多或少都遇到过 CPU 负载特别高的问题。尤其是在周末或大半夜，突然群里有人反馈线上机器负载特别高，不熟悉定位流程和思路的同学可能登上服务器一通手忙脚乱，定位过程百转千回。
+
+对此，也有不少同学曾经整理
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/" class="post-category">
+                                    问题定位分析
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">Soulballad</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">132.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "5";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Soulballad" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1097332797@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1097332797" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1097332797" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
