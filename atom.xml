@@ -6,7 +6,7 @@
   <link href="https://soulballad.github.io/atom.xml" rel="self"/>
   
   <link href="https://soulballad.github.io/"/>
-  <updated>2020-12-06T14:38:05.043Z</updated>
+  <updated>2020-12-07T13:56:29.255Z</updated>
   <id>https://soulballad.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>5.扫码登录实现方案汇总</title>
+    <link href="https://soulballad.github.io/posts/c7222c0c"/>
+    <id>https://soulballad.github.io/posts/c7222c0c</id>
+    <published>2020-11-25T12:05:18.000Z</published>
+    <updated>2020-12-07T13:56:29.255Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-什么是扫码登录？&quot;&gt;&lt;a href=&quot;#1-什么是扫码登录？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/categories/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>6.JVM</title>
     <link href="https://soulballad.github.io/posts/312faddf"/>
     <id>https://soulballad.github.io/posts/312faddf</id>
     <published>2020-11-23T12:26:42.000Z</published>
-    <updated>2020-12-06T14:38:05.043Z</updated>
+    <updated>2020-12-06T14:38:36.950Z</updated>
     
     
       
@@ -38,6 +63,31 @@
     
     
     <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>4.扫码登录实现原理</title>
+    <link href="https://soulballad.github.io/posts/7b64cef5"/>
+    <id>https://soulballad.github.io/posts/7b64cef5</id>
+    <published>2020-11-23T12:05:18.000Z</published>
+    <updated>2020-12-07T13:56:29.257Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;需求介绍&quot;&gt;&lt;a href=&quot;#需求介绍&quot; class=&quot;headerlink&quot; title=&quot;需求介绍&quot;&gt;&lt;/a&gt;需求介绍&lt;/h2&gt;&lt;p&gt;​   </summary>
+        
+      
+    
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/categories/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
@@ -72,7 +122,7 @@
     <link href="https://soulballad.github.io/posts/29117629"/>
     <id>https://soulballad.github.io/posts/29117629</id>
     <published>2020-11-20T12:26:42.000Z</published>
-    <updated>2020-12-06T14:38:17.256Z</updated>
+    <updated>2020-12-06T14:38:36.948Z</updated>
     
     
       
@@ -122,7 +172,7 @@
     <link href="https://soulballad.github.io/posts/72dddfde"/>
     <id>https://soulballad.github.io/posts/72dddfde</id>
     <published>2020-11-18T12:26:42.000Z</published>
-    <updated>2020-12-06T14:36:41.076Z</updated>
+    <updated>2020-12-06T14:38:36.949Z</updated>
     
     
       
@@ -172,7 +222,7 @@
     <link href="https://soulballad.github.io/posts/20f314e"/>
     <id>https://soulballad.github.io/posts/20f314e</id>
     <published>2020-11-15T12:26:42.000Z</published>
-    <updated>2020-12-06T14:36:22.494Z</updated>
+    <updated>2020-12-06T14:38:36.947Z</updated>
     
     
       
@@ -197,7 +247,7 @@
     <link href="https://soulballad.github.io/posts/d88c9280"/>
     <id>https://soulballad.github.io/posts/d88c9280</id>
     <published>2020-11-13T12:26:42.000Z</published>
-    <updated>2020-12-06T14:35:58.970Z</updated>
+    <updated>2020-12-06T14:38:36.944Z</updated>
     
     
       
@@ -330,7 +380,7 @@
     <link href="https://soulballad.github.io/posts/34d499be"/>
     <id>https://soulballad.github.io/posts/34d499be</id>
     <published>2020-11-05T12:26:42.000Z</published>
-    <updated>2020-12-06T14:37:58.103Z</updated>
+    <updated>2020-12-06T14:38:36.946Z</updated>
     
     
       
@@ -381,7 +431,7 @@
     <link href="https://soulballad.github.io/posts/5e21c553"/>
     <id>https://soulballad.github.io/posts/5e21c553</id>
     <published>2020-11-02T02:45:18.000Z</published>
-    <updated>2020-11-02T04:16:39.589Z</updated>
+    <updated>2020-12-07T13:25:40.574Z</updated>
     
     
       
@@ -474,55 +524,6 @@
     
     
     <category term="Hexo" scheme="https://soulballad.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Hexo】-1.使用Github Pages和Hexo搭建博客</title>
-    <link href="https://soulballad.github.io/posts/aaa69aff"/>
-    <id>https://soulballad.github.io/posts/aaa69aff</id>
-    <published>2020-10-28T12:09:39.000Z</published>
-    <updated>2020-10-31T14:07:49.115Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;1-什么是-Hexo&quot;&gt;&lt;a href=&quot;#1-什么是-Hexo&quot; class=&quot;headerlink&quot; title=&quot;1.什么是 Hexo&quot;&gt;&lt;/a&gt;1.什么是 Hexo&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Hexo</summary>
-        
-      
-    
-    
-    
-    <category term="Hexo 博客" scheme="https://soulballad.github.io/categories/Hexo-%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-    <category term="Hexo" scheme="https://soulballad.github.io/tags/Hexo/"/>
-    
-    <category term="Github Pages" scheme="https://soulballad.github.io/tags/Github-Pages/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://soulballad.github.io/posts/4a17b156"/>
-    <id>https://soulballad.github.io/posts/4a17b156</id>
-    <published>2020-10-27T11:55:33.424Z</published>
-    <updated>2020-10-31T04:27:56.711Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
