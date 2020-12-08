@@ -6,7 +6,7 @@
   <link href="https://soulballad.github.io/atom.xml" rel="self"/>
   
   <link href="https://soulballad.github.io/"/>
-  <updated>2020-12-07T13:56:29.255Z</updated>
+  <updated>2020-12-08T14:16:53.973Z</updated>
   <id>https://soulballad.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>6.接口幂等性设计</title>
+    <link href="https://soulballad.github.io/posts/38221db1"/>
+    <id>https://soulballad.github.io/posts/38221db1</id>
+    <published>2020-12-01T12:05:18.000Z</published>
+    <updated>2020-12-08T14:16:53.973Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-幂等性定义&quot;&gt;&lt;a href=&quot;#1-幂等性定义&quot; class=&quot;headerlink&quot; title=&quot;1.幂等性定义&quot;&gt;&lt;/a&gt;1.幂等性定义&lt;/h2&gt;&lt;h3 id=&quot;1-1-数学定义&quot;&gt;&lt;a href=&quot;#1-1-数学定义&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/categories/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="方案设计" scheme="https://soulballad.github.io/tags/%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>5.扫码登录实现方案汇总</title>
     <link href="https://soulballad.github.io/posts/c7222c0c"/>
     <id>https://soulballad.github.io/posts/c7222c0c</id>
     <published>2020-11-25T12:05:18.000Z</published>
-    <updated>2020-12-07T13:56:29.255Z</updated>
+    <updated>2020-12-08T14:21:41.975Z</updated>
     
     
       
@@ -71,7 +96,7 @@
     <link href="https://soulballad.github.io/posts/7b64cef5"/>
     <id>https://soulballad.github.io/posts/7b64cef5</id>
     <published>2020-11-23T12:05:18.000Z</published>
-    <updated>2020-12-07T13:56:29.257Z</updated>
+    <updated>2020-12-08T14:21:05.109Z</updated>
     
     
       
@@ -147,7 +172,7 @@
     <link href="https://soulballad.github.io/posts/c4292d51"/>
     <id>https://soulballad.github.io/posts/c4292d51</id>
     <published>2020-11-20T12:05:18.000Z</published>
-    <updated>2020-11-29T13:58:08.549Z</updated>
+    <updated>2020-12-08T14:19:00.231Z</updated>
     
     
       
@@ -197,7 +222,7 @@
     <link href="https://soulballad.github.io/posts/346960d3"/>
     <id>https://soulballad.github.io/posts/346960d3</id>
     <published>2020-11-18T12:05:18.000Z</published>
-    <updated>2020-11-29T13:58:08.552Z</updated>
+    <updated>2020-12-08T14:18:10.197Z</updated>
     
     
       
@@ -288,9 +313,9 @@
     <category term="问题定位分析" scheme="https://soulballad.github.io/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/"/>
     
     
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
     <category term="JVM" scheme="https://soulballad.github.io/tags/JVM/"/>
+    
+    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
     
   </entry>
   
@@ -315,9 +340,9 @@
     <category term="问题定位分析" scheme="https://soulballad.github.io/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/"/>
     
     
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
     <category term="JVM" scheme="https://soulballad.github.io/tags/JVM/"/>
+    
+    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
     
   </entry>
   
@@ -342,9 +367,9 @@
     <category term="问题定位分析" scheme="https://soulballad.github.io/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/"/>
     
     
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
     <category term="JVM" scheme="https://soulballad.github.io/tags/JVM/"/>
+    
+    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
     
   </entry>
   
@@ -369,9 +394,9 @@
     <category term="问题定位分析" scheme="https://soulballad.github.io/categories/%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90/"/>
     
     
-    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
-    
     <category term="JVM" scheme="https://soulballad.github.io/tags/JVM/"/>
+    
+    <category term="Java" scheme="https://soulballad.github.io/tags/Java/"/>
     
   </entry>
   
@@ -490,31 +515,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;1-使用-hexo-new创建文章&quot;&gt;&lt;a href=&quot;#1-使用-hexo-new创建文章&quot; class=&quot;headerlink&quot; title=&quot;1. 使用 hexo new创建文章&quot;&gt;&lt;/a&gt;1. 使用 hexo new创建文章&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="Hexo 博客" scheme="https://soulballad.github.io/categories/Hexo-%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-    <category term="Hexo" scheme="https://soulballad.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Hexo】-2.Hexo常用命令</title>
-    <link href="https://soulballad.github.io/posts/11995a50"/>
-    <id>https://soulballad.github.io/posts/11995a50</id>
-    <published>2020-10-29T11:05:40.000Z</published>
-    <updated>2020-11-01T02:47:33.965Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;1-Hexo-命令&quot;&gt;&lt;a href=&quot;#1-Hexo-命令&quot; class=&quot;headerlink&quot; title=&quot;1. Hexo 命令&quot;&gt;&lt;/a&gt;1. Hexo 命令&lt;/h1&gt;&lt;p&gt;在 Hexo 目录下打开命令行，输入 hexo 回车，可以显示 hexo</summary>
         
       
     
