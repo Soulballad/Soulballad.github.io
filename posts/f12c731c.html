@@ -511,7 +511,7 @@
                 <blockquote>
 <p>Spring Boot WebMVC：<a href="8cee4bf5">【从零开始学Spring Boot】-3.Spring Boot WebMVC</a></p>
 </blockquote>
-<h2 id="1-Spring-WebMvc-运行流程是怎样的？"><a href="#1-Spring-WebMvc-运行流程是怎样的？" class="headerlink" title="1.Spring  WebMvc 运行流程是怎样的？"></a>1.Spring  WebMvc 运行流程是怎样的？</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712125443758.png" alt="image-20200712125443758"></p>
+<h2 id="1-Spring-WebMvc-运行流程是怎样的？"><a href="#1-Spring-WebMvc-运行流程是怎样的？" class="headerlink" title="1.Spring  WebMvc 运行流程是怎样的？"></a>1.Spring  WebMvc 运行流程是怎样的？</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712125443758.png"></p>
 <ol>
 <li>用户发送请求至前端控制器 DispatcherServlet。</li>
 <li>DispatcherServlet 收到请求调用 HandlerMapping 处理器映射器。</li>
@@ -526,10 +526,10 @@
 <li>DispatcherServlet 返回响应给用户。</li>
 </ol>
 <h2 id="2-Spring-WebMvc-的原理"><a href="#2-Spring-WebMvc-的原理" class="headerlink" title="2.Spring  WebMvc 的原理"></a>2.Spring  WebMvc 的原理</h2><p>DispatcherServlet 其实也是一个 HttpServlet，它的类图如下</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712130010099.png" alt="image-20200712130010099"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712130010099.png"></p>
 <p>在传统的 HttpServlet 中，它的生命周期包含 init、service、destroy，在 service 中一般有 doGet、doPost 分别来处理 get、post 请求。DispatcherServlet 即是在 HttpServlet 上面进行的扩展。</p>
 <p>SpringMvc 的初始化时序图：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712135114830.png" alt="image-20200712135114830"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712135114830.png"></p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">initStrategies</span><span class="token punctuation">(</span>ApplicationContext context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 初始化上传组件，用于文件上传等</span>
     <span class="token function">initMultipartResolver</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -551,7 +551,7 @@
     <span class="token function">initFlashMapManager</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>SpringMvc 的运行时序图：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712133642964.png" alt="image-20200712133642964"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712133642964.png"></p>
 <h2 id="3-DispatcherServlet-是如何初始化的？"><a href="#3-DispatcherServlet-是如何初始化的？" class="headerlink" title="3.DispatcherServlet 是如何初始化的？"></a>3.DispatcherServlet 是如何初始化的？</h2><p>在一般的 Spring WebMvc 项目中，通常会在 web.xml 中配置好 DispatcherServlet，如下所示</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">></span></span>  
     <span class="token comment" spellcheck="true">&lt;!-- 配置DispatcherServlet --></span>  
@@ -573,7 +573,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-mapping</span><span class="token punctuation">></span></span></code></pre>
 <p>那么，在 Spring Boot 项目中，DispatcherServlet 又是如何配置的呢？</p>
 <p>其实，在 <code>spring-boot-autoconfigure/META-INF/spring.factories</code> 中有这样一个配置</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712140206806.png" alt="image-20200712140206806"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712140206806.png"></p>
 <p>这个 DispatcherServletAutoConfiguration 即是 DispatcherServlet 的自动装配类</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@AutoConfigureOrder</span><span class="token punctuation">(</span>Ordered<span class="token punctuation">.</span>HIGHEST_PRECEDENCE<span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Configuration</span><span class="token punctuation">(</span>proxyBeanMethods <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>

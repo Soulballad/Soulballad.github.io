@@ -536,7 +536,7 @@
 <li>构建工具（apache maven 3.6.3）</li>
 <li>开发工具（IntelliJ IDEA ）</li>
 </ol>
-<h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200810222057805.png" alt="image-20200810222057805"></p>
+<h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200810222057805.png"></p>
 <ul>
 <li>nfx-ribbon-client：ribbon 客户端，通过 ribbon 负载均衡调用服务；</li>
 <li>nfx-ribbon-server：ribbon 服务端，负责提供服务供客户端调用。</li>
@@ -654,14 +654,14 @@
 <span class="token punctuation">}</span></code></pre>
 <h2 id="3-3-git-地址"><a href="#3-3-git-地址" class="headerlink" title="3.3 git 地址"></a>3.3 git 地址</h2><p><a href="https://github.com/Soulballad/spring-usage-examples/tree/master/spring-cloud/spring-cloud-01-netflix/spring-cloud-nfx-04-ribbon" target="_blank" rel="noopener">spring-cloud-nfx-04-ribbon</a>: Spring Cloud 整合 Ribbon实现的分布式负载均衡方案</p>
 <h1 id="4-效果展示"><a href="#4-效果展示" class="headerlink" title="4.效果展示"></a>4.效果展示</h1><p>启动三个 nfx-ribbon-server，端口分别为 8081/8082/8083；</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200810223000569.png" alt="image-20200810223000569"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200810223000569.png"></p>
 <p>然后再启动 nfx-ribbon-client ，在 spring-cloud-netflix-ribbon.http 访问下列地址，观察输出信息是否符合预期。</p>
 <pre class=" language-http"><code class="language-http">### GET /client/ribbon （每次返回的地址都是不一样的）
 GET http://localhost:8070/client/ribbon</code></pre>
 <p>可以看到，由于配置了 RoundRobinRule 的轮询策略，所以会依次输出：ribbon request: localhost:8081、ribbon request: localhost:8082、ribbon request: localhost:8083</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200810223247585.png" alt="image-20200810223247585"> </p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200810223247585.png"> </p>
 <p>在 nfx-ribbon-client 的控制台，可以看到如下内容</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200810223343819.png" alt="image-20200810223343819"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200810223343819.png"></p>
 <pre class=" language-http"><code class="language-http">### GET /client/rest
 GET http://localhost:8070/client/rest</code></pre>
 <p>同理，使用 restTemplate 调用 nfx-ribbon-server 的接口时，会分别在三个控制台打印：<code>ribbon server is calling!</code></p>

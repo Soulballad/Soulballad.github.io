@@ -537,9 +537,9 @@
 <span class="token punctuation">}</span></code></pre>
 <p>所以在 AnnotationConfigReactiveWebServerApplicationContext 中进行初始化和启动</p>
 <h2 id="2-Webflux-默认-Server-为何是-Netty？"><a href="#2-Webflux-默认-Server-为何是-Netty？" class="headerlink" title="2.Webflux 默认 Server 为何是 Netty？"></a>2.Webflux 默认 Server 为何是 Netty？</h2><p>先看下 spring-boot-starter-webflux 的依赖结构</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200728222250093.png" alt="image-20200728222250093"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200728222250093.png"></p>
 <p>在 spring-boot-autoconfigure/spring.factories 中有一个自动装配的类 ReactiveWebServerFactoryAutoConfiguration</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200728222459008.png" alt="image-20200728222459008"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200728222459008.png"></p>
 <p>它的内容如下</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@AutoConfigureOrder</span><span class="token punctuation">(</span>Ordered<span class="token punctuation">.</span>HIGHEST_PRECEDENCE<span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Configuration</span><span class="token punctuation">(</span>proxyBeanMethods <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>

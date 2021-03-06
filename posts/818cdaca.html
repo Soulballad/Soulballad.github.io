@@ -448,12 +448,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JVM/">
-                                <span class="chip bg-color">JVM</span>
-                            </a>
-                        
                             <a href="/tags/Java/">
                                 <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/JVM/">
+                                <span class="chip bg-color">JVM</span>
                             </a>
                         
                     </div>
@@ -511,13 +511,13 @@
                 <p>磁盘IO高分析方法<br>工具准备：<br>iotop: <a href="http://guichaz.free.fr/iotop/" target="_blank" rel="noopener">http://guichaz.free.fr/iotop/</a><br>pt-ioprofile:<a href="http://www.percona.com/downloads/percona-toolkit/2.2.1/" target="_blank" rel="noopener">http://www.percona.com/downloads/percona-toolkit/2.2.1/</a></p>
 <p>io高分析方法：</p>
 <p>1、查看磁盘使用率 df -lh<br>2、安装iostat 安装命令:yum install sysstat<br>3、iostat -d -k 2 查看IO情况，哪个磁盘的IO负载较高，接下来我们就来定位具体的负载来源</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/02aa0fac-90eb-4b02-930e-0b34de58f931.png!large" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/7a41il5prcc3yekitywrz0korn8d4aq7.png"></p>
 <p>%util: 一秒中有百分之多少的时间用于 I/O 操作，或者说一秒中有多少时间 I/O 队列是非空的。即 delta(use)/s/1000 (因为use的单位为毫秒)<br>如果 %util 接近 100%，说明产生的I/O请求太多，I/O系统已经满负荷，该磁盘可能存在瓶颈。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/a5effa2c-7113-4869-9cba-65f77e296794.png!large" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/3hb4shrbva0fgbedxywhnmhbkesoqskw.png"></p>
 <p>4、安装iotop 命令：安装命令：yum install iotop iotop 查看哪个线程耗IO比较高、按 o 只显示有磁盘 IO 活动的进程。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/4fd98713-27e7-4cf2-b916-ab96ef52f546.png!large" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/f0jcsfvdwv7pblvosgt9k5slp5ug2t07.png"></p>
 <p>5、pt-ioprofile定位负载来源文件<br>pt-ioprofile –profile-pid=1236 –cell=sizes<br>pt-ioprofile的原理是对某个pid附加一个strace进程进行IO分析。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/75c5e669-5440-44f2-9428-b24531e0ddbd.png!large" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/c4k344ar0ihfvz6b8de07rvllz9xd7kg.png"></p>
 <p>6、 对于定位问题更有用的是通过IO的吞吐量来进行定位。使用参数 –cell=sizes，该参数将结果已 B/s 的方式展示出来<br>pt-ioprofile –profile-pid=1236 –cell=sizes<br>从上图可以看出IO负载的主要来源是jetty。<br>并且压力主要集中在读取上。</p>
 <blockquote>
 <p>原文链接：<a href="https://urlify.cn/JNRVJb" target="_blank" rel="noopener">https://urlify.cn/JNRVJb</a></p>
@@ -585,12 +585,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JVM/">
-                                    <span class="chip bg-color">JVM</span>
-                                </a>
-                            
                                 <a href="/tags/Java/">
                                     <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/JVM/">
+                                    <span class="chip bg-color">JVM</span>
                                 </a>
                             
                         </div>
@@ -1061,12 +1061,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
-                    </a>
-                    
                     <a href="/tags/Java/">
                         <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>
@@ -1117,12 +1117,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
-                    </a>
-                    
                     <a href="/tags/Java/">
                         <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>

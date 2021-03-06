@@ -514,7 +514,7 @@
 <h2 id="1-注解校验如何生效的？"><a href="#1-注解校验如何生效的？" class="headerlink" title="1.注解校验如何生效的？"></a>1.注解校验如何生效的？</h2><p>在 UserController#add 方法上有使用 @Valid 注解，标明这个方法需要校验，同时也可以使用 @Validated 注解标明要校验的位置。那么 @Valid 是如何生效的呢？</p>
 <p>在 <a href="https://blog.csdn.net/u010139373/article/details/107303452" target="_blank" rel="noopener">SpringBoot学习(三)——WebMVC及其工作原理</a> 中，有跟踪 Spring MVC 的运行原理，@Valid 的注解校验就在 </p>
 <p>RequestMappingHandlerAdapter#invokeHandlerMethod 方法中</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712204316361.png" alt="image-20200712204316361"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712204316361.png"></p>
 <p>在 ConstraintTree#validateSingleConstraint 中使用具体的 Validator 对参数进行校验</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">final</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> V<span class="token operator">></span> Set<span class="token operator">&lt;</span>ConstraintViolation<span class="token operator">&lt;</span>T<span class="token operator">>></span> <span class="token function">validateSingleConstraint</span><span class="token punctuation">(</span>ValidationContext<span class="token operator">&lt;</span>T<span class="token operator">></span> executionContext<span class="token punctuation">,</span> ValueContext<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span> <span class="token operator">?</span><span class="token operator">></span> valueContext<span class="token punctuation">,</span> ConstraintValidatorContextImpl constraintValidatorContext<span class="token punctuation">,</span> ConstraintValidator<span class="token operator">&lt;</span>A<span class="token punctuation">,</span> V<span class="token operator">></span> validator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">boolean</span> isValid<span class="token punctuation">;</span>
@@ -531,7 +531,7 @@
 
     <span class="token keyword">return</span> <span class="token operator">!</span>isValid <span class="token operator">?</span> executionContext<span class="token punctuation">.</span><span class="token function">createConstraintViolations</span><span class="token punctuation">(</span>valueContext<span class="token punctuation">,</span> constraintValidatorContext<span class="token punctuation">)</span> <span class="token operator">:</span> Collections<span class="token punctuation">.</span><span class="token function">emptySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712204519662.png" alt="image-20200712204519662"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712204519662.png"></p>
 
             </div>
             <hr/>

@@ -448,12 +448,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JVM/">
-                                <span class="chip bg-color">JVM</span>
-                            </a>
-                        
                             <a href="/tags/Java/">
                                 <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/JVM/">
+                                <span class="chip bg-color">JVM</span>
                             </a>
                         
                     </div>
@@ -509,7 +509,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="0-背景"><a href="#0-背景" class="headerlink" title="0. 背景"></a>0. 背景</h1><p>经常做后端服务开发的同学，或多或少都遇到过 CPU 负载特别高的问题。尤其是在周末或大半夜，突然群里有人反馈线上机器负载特别高，不熟悉定位流程和思路的同学可能登上服务器一通手忙脚乱，定位过程百转千回。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/001158_Rbyb_568818.png" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/001158_Rbyb_568818.png"></p>
 <p>对此，也有不少同学曾经整理过相关流程或方法论，类似把大象放进冰箱要几步，传统的方案一般是4步：</p>
 <ol>
 <li>top oder by with P：1040 // 首先按进程负载排序找到  maxLoad(pid)</li>
@@ -563,7 +563,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>编译、运行上述代码之后，咱们就能观察到服务器多了一个 100% CPU 的 java 进程：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/002812_wnlg_568818.png" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/002812_wnlg_568818.png"></p>
 <p>怎么使用呢？</p>
 <blockquote>
 <p>show-busy-java-threads.sh<br># 从 所有的 Java进程中找出最消耗CPU的线程（缺省5个），打印出其线程栈。</p>
@@ -641,9 +641,9 @@ work@dev_zz_Master 10.48.186.32 23:46:04 ~/demo <span class="token operator">></
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>执行之后的效果：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/004024_1mKu_568818.png" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/004024_1mKu_568818.png"></p>
 <p>如何用工具定位：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/004314_1iHO_568818.png" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/004314_1iHO_568818.png"></p>
 <p>一键定位：可以清晰的看到线程互相锁住了对方等待的资源，导致死锁，直接定位到代码行和具体原因。</p>
 <p>通过上面两个例子，我想各位同学应该对这个工具和工具能解决什么问题有了比较深刻的了解了，遇到 CPU 100% 问题可以从此不再慌乱。但是更多的还是依赖大家自己去实践，毕竟实践出真知嘛~</p>
 <h1 id="3-免费实用的脚本工具大礼包"><a href="#3-免费实用的脚本工具大礼包" class="headerlink" title="3. 免费实用的脚本工具大礼包"></a>3. 免费实用的脚本工具大礼包</h1><p>除了正文提到的 show-busy-java-threads.sh，oldratlee 同学还整合和不少常见的开发、运维过程中涉及到的脚本工具，觉得特别有用的我简单列下：</p>
@@ -808,12 +808,12 @@ q : exit</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JVM/">
-                                    <span class="chip bg-color">JVM</span>
-                                </a>
-                            
                                 <a href="/tags/Java/">
                                     <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/JVM/">
+                                    <span class="chip bg-color">JVM</span>
                                 </a>
                             
                         </div>
@@ -1282,12 +1282,12 @@ q : exit</code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
-                    </a>
-                    
                     <a href="/tags/Java/">
                         <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>
@@ -1336,12 +1336,12 @@ i
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
-                    </a>
-                    
                     <a href="/tags/Java/">
                         <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>

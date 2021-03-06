@@ -510,21 +510,21 @@
             <div id="articleContent">
                 <h1 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h1><p><strong>需要已在本地安装好了 Gradle，并配置环境变量</strong></p>
 <h2 id="1-1-新建项目"><a href="#1-1-新建项目" class="headerlink" title="1.1 新建项目"></a>1.1 新建项目</h2><p>创建 spring boot 项目</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719124317076.png" alt="image-20200719124317076"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719124317076.png"></p>
 <p>Type 选择 Gradle Project</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719124446086.png" alt="image-20200719124446086"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719124446086.png"></p>
 <p>添加 web mvc 依赖</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719124503920.png" alt="image-20200719124503920"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719124503920.png"></p>
 <p>finish 创建完成</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719124519051.png" alt="image-20200719124519051"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719124519051.png"></p>
 <p>整个创建过程中，没法选择本地的 Gradle，所以要在项目创建完成后手动选择</p>
 <h2 id="1-2-选择本地-Gradle"><a href="#1-2-选择本地-Gradle" class="headerlink" title="1.2 选择本地 Gradle"></a>1.2 选择本地 Gradle</h2><p>进入项目后会开始联网下载 Gradle，这个是由 IDEA 里面的 Gradle 插件决定的。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719125116023.png" alt="image-20200719125116023"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719125116023.png"></p>
 <p>先停止下载，然后在 Settings -&gt; Build, Execution, Deployment -&gt; Gradle 中选择本地安装好的版本</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719125416052.png" alt="image-20200719125416052"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719125416052.png"></p>
 <p>然后保存，就不会再下载 Gradle，可以直接成功</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719125530354.png" alt="image-20200719125530354"></p>
-<h1 id="2-项目说明"><a href="#2-项目说明" class="headerlink" title="2. 项目说明"></a>2. 项目说明</h1><h2 id="2-1-项目结构"><a href="#2-1-项目结构" class="headerlink" title="2.1 项目结构"></a>2.1 项目结构</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719125908442.png" alt="image-20200719125908442"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719125530354.png"></p>
+<h1 id="2-项目说明"><a href="#2-项目说明" class="headerlink" title="2. 项目说明"></a>2. 项目说明</h1><h2 id="2-1-项目结构"><a href="#2-1-项目结构" class="headerlink" title="2.1 项目结构"></a>2.1 项目结构</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719125908442.png"></p>
 <h2 id="2-2-脚本说明"><a href="#2-2-脚本说明" class="headerlink" title="2.2 脚本说明"></a>2.2 脚本说明</h2><p>build.gradle 是整个项目的构建脚本，里面包含了项目依赖、项目属性、仓库、插件等多种配置。</p>
 <pre class=" language-groovy"><code class="language-groovy"><span class="token comment" spellcheck="true">// 配置插件</span>
 plugins <span class="token punctuation">{</span>
@@ -554,8 +554,8 @@ dependencies <span class="token punctuation">{</span>
 <span class="token punctuation">}</span></code></pre>
 <h2 id="2-3-执行构建"><a href="#2-3-执行构建" class="headerlink" title="2.3 执行构建"></a>2.3 执行构建</h2><p>在命令行中使用 <code>gradle build</code> 命令对整个项目进行构建，构建完成后会生成一个 <code>build</code> 文件夹，里面包含编译的class，打包的jar以及测试报告等一系列文件。</p>
 <p>初次构建时，需要编译生成所有文件，耗时较长。再次构建时，Gradle 会进行增量构建，耗时大大缩短。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719130743188.png" alt="image-20200719130743188"></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719130954520.png" alt="image-20200719130954520"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719130743188.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719130954520.png"></p>
 <h1 id="3-项目运行"><a href="#3-项目运行" class="headerlink" title="3. 项目运行"></a>3. 项目运行</h1><p>默认情况下，项目源文件中只包含一个 Spring Boot 的启动类，这里给它添加一个 DemoController，测试一下 Gradle 构建的项目是否能顺利运行。</p>
 <p>DemoController.java</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>soulballad<span class="token punctuation">.</span>usage<span class="token punctuation">.</span>controller<span class="token punctuation">;</span>
@@ -572,7 +572,7 @@ dependencies <span class="token punctuation">{</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>启动项目，访问 <a href="http://localhost:8080/demo" target="_blank" rel="noopener">http://localhost:8080/demo</a> ，查看输出信息</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719131547973.png" alt="image-20200719131547973"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719131547973.png"></p>
 
             </div>
             <hr/>

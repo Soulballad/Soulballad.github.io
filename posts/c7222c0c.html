@@ -526,9 +526,9 @@
 <p>何为短连接：客户端向后端发送请求，后端没有消息推送客户端，则阻塞当前线程，等N秒后，仍没有消息，response前端；</p>
 <p>前端：</p>
 <p>​        先看微信的前端场景：　　</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809151354455-65636721.png" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809151354455-65636721.png"></p>
 <p>​        如无消息，在阻塞20秒左右响应408，并开启新的请求：　　</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809151436762-762377656.png" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809151436762-762377656.png"></p>
 <p>​        则前端只需要保证收到错误的状态码，重新发起请求即可；</p>
 <p>后端：</p>
 <p>​        Tomcat连接数有限，如果一个连接需要占用连接20秒，那么用户一多连接数很快消耗殆尽，这里需要使用DeferredResult来异步实现；具体实现方法看：<a href="https://www.cnblogs.com/code-sayhi/articles/10191526.html" target="_blank" rel="noopener">https://www.cnblogs.com/code-sayhi/articles/10191526.html</a></p>
@@ -537,7 +537,7 @@
 <h3 id="4-第三方goeasy消息即时通信"><a href="#4-第三方goeasy消息即时通信" class="headerlink" title="4.第三方goeasy消息即时通信"></a>4.第三方goeasy消息即时通信</h3><p>即时，不占用服务器资源，开发简单，总知哪都好就是“要钱”；确定：并发量小，服务真的贵，自己使用websocket轻松可以实现2万的并发</p>
 <p>下面说下简单的实现：</p>
 <p>4.1：进入官网：<a href="https://www.goeasy.io/" target="_blank" rel="noopener">https://www.goeasy.io</a> ;创建免费应用</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809153207982-1122524761.png" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809153207982-1122524761.png"></p>
 <p>后端：下载相应依赖，代码如下：</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/goeasy"</span><span class="token punctuation">)</span>
@@ -560,10 +560,10 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>前端：导入对应的js文件：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809153827227-2109454931.png" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809153827227-2109454931.png"></p>
 <p> 由于我是使用的Angular，这里通过这个js对其简单的封装；在ts中在用到的地方 ，然后直接调用 goEasyUtils.getMessage(‘xxxx’);</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809154155923-361025570.png" alt="img"></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809154233191-2077260118.png" alt="img"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809154155923-361025570.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1191422-20190809154233191-2077260118.png"></p>
 <h3 id="5-基于SSE实现"><a href="#5-基于SSE实现" class="headerlink" title="5.基于SSE实现"></a>5.基于SSE实现</h3><p>我们曾如此渴望生命的波澜，到后来才发现，人生最曼妙的风景是内心的淡定与从容</p>
 <p>参考： <a href="https://www.cnblogs.com/code-sayhi/articles/11310870.html" target="_blank" rel="noopener">全网最全的扫码登录实现方案</a></p>
 

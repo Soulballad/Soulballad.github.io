@@ -448,12 +448,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JVM/">
-                                <span class="chip bg-color">JVM</span>
-                            </a>
-                        
                             <a href="/tags/Java/">
                                 <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/JVM/">
+                                <span class="chip bg-color">JVM</span>
                             </a>
                         
                     </div>
@@ -555,16 +555,16 @@
 <pre class=" language-bash"><code class="language-bash">pgm -A -f vm-shopbase <span class="token string">'cat /home/admin/shopbase/logs/shopbase.log.2017-01-17|grep 2069861630'</span></code></pre>
 <h3 id="tsar"><a href="#tsar" class="headerlink" title="tsar"></a>tsar</h3><p>tsar是咱公司自己的采集工具。很好用, 将历史收集到的数据持久化在磁盘上，所以我们快速来查询历史的系统数据。当然实时的应用情况也是可以查询的啦。大部分机器上都有安装。</p>
 <pre class=" language-bash"><code class="language-bash">tsar  <span class="token comment" spellcheck="true">##可以查看最近一天的各项指标</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/fc25b8f22e53818d5576c5d00dd52618.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/fc25b8f22e53818d5576c5d00dd52618.png"></p>
 <pre class=" language-bash"><code class="language-bash">tsar --live <span class="token comment" spellcheck="true">##可以查看实时指标，默认五秒一刷</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/b68910c5416fd85a99a49a092fc9ffbb.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/b68910c5416fd85a99a49a092fc9ffbb.png"></p>
 <pre class=" language-bash"><code class="language-bash">tsar -d 20161218 <span class="token comment" spellcheck="true">##指定查看某天的数据，貌似最多只能看四个月的数据</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/aafdbfb515b817a2aceb270d1d470c19.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/aafdbfb515b817a2aceb270d1d470c19.png"></p>
 <pre class=" language-bash"><code class="language-bash">tsar --mem
 tsar --load
 tsar --cpu
 <span class="token comment" spellcheck="true">##当然这个也可以和-d参数配合来查询某天的单个指标的情况 </span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/cb46ef4e374e1502d3b672d04d48099a.png" alt="screenshot.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/079f3fa722bfa1991557469eb97c7273.png" alt="screenshot.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/6dd77351ad4d1ad84cdbfba20c9d4c29.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/cb46ef4e374e1502d3b672d04d48099a.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/079f3fa722bfa1991557469eb97c7273.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/6dd77351ad4d1ad84cdbfba20c9d4c29.png"></p>
 <h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><p>top除了看一些基本信息之外，剩下的就是配合来查询vm的各种问题了</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> java
 <span class="token function">top</span> -H -p pid
@@ -572,7 +572,7 @@ tsar --cpu
 <p>获得线程10进制转16进制后jstack去抓看这个线程到底在干啥</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">netstat</span> -nat<span class="token operator">|</span><span class="token function">awk</span>  <span class="token string">'{print <span class="token variable">$6</span>}'</span><span class="token operator">|</span><span class="token function">sort</span><span class="token operator">|</span><span class="token function">uniq</span> -c<span class="token operator">|</span><span class="token function">sort</span> -rn 
 <span class="token comment" spellcheck="true">#查看当前连接，注意close_wait偏高的情况，比如如下</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/250a027410775cf5990d0db6e87ba927.png" alt="screenshot.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/639811da529750064e2f70867d6234e0.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/250a027410775cf5990d0db6e87ba927.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/639811da529750064e2f70867d6234e0.png"></p>
 <h2 id="排查利器"><a href="#排查利器" class="headerlink" title="排查利器"></a>排查利器</h2><h3 id="btrace"><a href="#btrace" class="headerlink" title="btrace"></a>btrace</h3><p>首当其冲的要说的是btrace。真是生产环境&amp;预发的排查问题大杀器。 简介什么的就不说了。直接上代码干</p>
 <ol>
 <li><p>查看当前谁调用了ArrayList的add方法，同时只打印当前ArrayList的size大于500的线程调用栈</p>
@@ -614,38 +614,38 @@ tsar --cpu
 <h3 id="zprofiler"><a href="#zprofiler" class="headerlink" title="zprofiler"></a>zprofiler</h3><p>集团内的开发应该是无人不知无人不晓了。简而言之一句话:有了zprofiler还要mat干嘛<br>详情请移步<a href="http://zprofiler.alibaba-inc.com/" target="_blank" rel="noopener">zprofiler.alibaba-inc.com</a></p>
 <h2 id="java三板斧，噢不对，是七把"><a href="#java三板斧，噢不对，是七把" class="headerlink" title="java三板斧，噢不对，是七把"></a>java三板斧，噢不对，是七把</h2><h3 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h3><p>我只用一条命令：</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/java/bin/jps -mlvV</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/7b156cb53250bf5f91811900c2575a91.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/7b156cb53250bf5f91811900c2575a91.png"></p>
 <h3 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h3><p>普通用法:</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jstack 2815</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/bc501bf424b3d2884e6ec118d14554a3.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/bc501bf424b3d2884e6ec118d14554a3.png"></p>
 <p>native+java栈:</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jstack -m 2815</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/4c59dc2971f3d8778e1898d64266266a.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/4c59dc2971f3d8778e1898d64266266a.png"></p>
 <h3 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a>jinfo</h3><p>可看系统启动的参数，如下</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jinfo -flags 2815</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/bc879145e2994e9a09327407ed88382c.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/bc879145e2994e9a09327407ed88382c.png"></p>
 <h3 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a>jmap</h3><p>两个用途</p>
 <p>1.查看堆的情况</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jmap -heap 2815</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/00d9eaef08cdb51263d202d26795036b.png" alt="screenshot.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/3c08bccf81fef8b7bcae2b321012b503.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/00d9eaef08cdb51263d202d26795036b.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/3c08bccf81fef8b7bcae2b321012b503.png"></p>
 <p>2.dump</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jmap -dump:live,format<span class="token operator">=</span>b,file<span class="token operator">=</span>/tmp/heap2.bin 2815</code></pre>
 <p>或者</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jmap -dump:format<span class="token operator">=</span>b,file<span class="token operator">=</span>/tmp/heap3.bin 2815</code></pre>
 <p>3.看看堆都被谁占了? 再配合zprofiler和btrace，排查问题简直是如虎添翼</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jmap -histo 2815 <span class="token operator">|</span> <span class="token function">head</span> -10</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/500ec6709fcd03a4fca2679615d54522.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/500ec6709fcd03a4fca2679615d54522.png"></p>
 <h3 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h3><p>jstat参数众多，但是使用一个就够了</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/install/ajdk-8_1_1_fp1-b52/bin/jstat -gcutil 2815 1000 </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/05743916a9187535c202fb410d30d50d.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/05743916a9187535c202fb410d30d50d.png"></p>
 <h3 id="jdb"><a href="#jdb" class="headerlink" title="jdb"></a>jdb</h3><p>时至今日，jdb也是经常使用的。<br>jdb可以用来预发debug,假设你预发的java_home是/opt/taobao/java/，远程调试端口是8000.那么<br><code>sudo -u admin /opt/taobao/java/bin/jdb -attach 8000</code>.</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/16332fcd45b20137bffc7a3b9a88b0f1.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/16332fcd45b20137bffc7a3b9a88b0f1.png"></p>
 <p>出现以上代表jdb启动成功。后续可以进行设置断点进行调试。<br>具体参数可见oracle官方说明<a href="http://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html" target="_blank" rel="noopener">http://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html</a></p>
 <h3 id="CHLSDB"><a href="#CHLSDB" class="headerlink" title="CHLSDB"></a>CHLSDB</h3><p>CHLSDB感觉很多情况下可以看到更好玩的东西，不详细叙述了。 查询资料听说jstack和jmap等工具就是基于它的。</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> -u admin /opt/taobao/java/bin/java -classpath /opt/taobao/java/lib/sa-jdi.jar sun.jvm.hotspot.CLHSDB</code></pre>
 <p>更详细的可见R大此贴<br><a href="http://rednaxelafx.iteye.com/blog/1847971" target="_blank" rel="noopener">http://rednaxelafx.iteye.com/blog/1847971</a></p>
 <h2 id="plugin-of-intellij-idea"><a href="#plugin-of-intellij-idea" class="headerlink" title="plugin of intellij idea"></a>plugin of intellij idea</h2><h3 id="key-promoter"><a href="#key-promoter" class="headerlink" title="key promoter"></a>key promoter</h3><p>快捷键一次你记不住，多来几次你总能记住了吧？</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/356c11885a95e28736a605aecdc8083e.png" alt="screenshot.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/356c11885a95e28736a605aecdc8083e.png"></p>
 <h3 id="maven-helper"><a href="#maven-helper" class="headerlink" title="maven helper"></a>maven helper</h3><p>分析maven依赖的好帮手。</p>
 <h2 id="VM-options"><a href="#VM-options" class="headerlink" title="VM options"></a>VM options</h2><ol>
 <li><p>你的类到底是从哪个文件加载进来的？</p>
@@ -669,7 +669,7 @@ tsar --cpu
 <p>curl <a href="http://localhost:8006/classloader/jars" target="_blank" rel="noopener">http://localhost:8006/classloader/jars</a></p>
 </li>
 <li><p>列出当前当当前类加载的实际jar包位置，解决类冲突时有用</p>
-<p>curl <a href="http://localhost:8006/classloader/locate?class=org.apache.xerces.xs.XSObject" target="_blank" rel="noopener">http://localhost:8006/classloader/locate?class=org.apache.xerces.xs.XSObject</a><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/4568b16d3db0daf98e852412b830f1a8.png" alt="screenshot.png"></p>
+<p>curl <a href="http://localhost:8006/classloader/locate?class=org.apache.xerces.xs.XSObject" target="_blank" rel="noopener">http://localhost:8006/classloader/locate?class=org.apache.xerces.xs.XSObject</a><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/4568b16d3db0daf98e852412b830f1a8.png"></p>
 </li>
 </ol>
 <h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><h3 id="gpref"><a href="#gpref" class="headerlink" title="gpref"></a>gpref</h3><p><a href="http://www.atatech.org/articles/33317" target="_blank" rel="noopener">http://www.atatech.org/articles/33317</a></p>
@@ -752,12 +752,12 @@ tsar --cpu
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JVM/">
-                                    <span class="chip bg-color">JVM</span>
-                                </a>
-                            
                                 <a href="/tags/Java/">
                                     <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/JVM/">
+                                    <span class="chip bg-color">JVM</span>
                                 </a>
                             
                         </div>
@@ -1278,12 +1278,12 @@ tsar --cpu
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
-                    </a>
-                    
                     <a href="/tags/Java/">
                         <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>

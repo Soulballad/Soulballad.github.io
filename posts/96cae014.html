@@ -518,12 +518,12 @@ include <span class="token string">'model'</span>
 <span class="token comment" spellcheck="true">// 将项目的字符串数组传给方法调用，而不是为每个单独的子项目调用include方法</span>
 include <span class="token string">'repository'</span><span class="token punctuation">,</span> <span class="token string">'web'</span></code></pre>
 <h2 id="1-2-settings-api"><a href="#1-2-settings-api" class="headerlink" title="1.2 settings api"></a>1.2 settings api</h2><p>Gradle组装构建之前，它会创建- - 个Settings类型的实例。Settings 接口是settings文件的直接表示。它的主要作用是添加Project实例参与多项目构建。<br>除了组装多项目构建之外，你可以在build.gradle脚本中做任何事情，因为你可以直接访问Gradle和Project接口。下图显示了Settings接口的相关方法及其联系。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718200953963.png" alt="image-20200718200953963"></p>
-<h2 id="1-3-settings-执行"><a href="#1-3-settings-执行" class="headerlink" title="1.3 settings 执行"></a>1.3 settings 执行</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718201046536.png" alt="image-20200718201046536"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718200953963.png"></p>
+<h2 id="1-3-settings-执行"><a href="#1-3-settings-执行" class="headerlink" title="1.3 settings 执行"></a>1.3 settings 执行</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718201046536.png"></p>
 <h1 id="2-配置子项目"><a href="#2-配置子项目" class="headerlink" title="2. 配置子项目"></a>2. 配置子项目</h1><h2 id="2-1-Project-API"><a href="#2-1-Project-API" class="headerlink" title="2.1 Project API"></a>2.1 Project API</h2><p>为了声明特定的项目构建代码，使用了project方法。至少必须提供项目路径(例如，:model)。</p>
 <p>很多时候，你想要为所有的项目或只有子项目定义一些公 共的行为。为实现这些用例，Project API提供了两个专门的方法: allprojects和subprojects.假设你想要把Java插件应用到所有子项目中，因为你需要编译Java源代码。你可以通过在subprojects闭包参数中定义代码来实现。</p>
 <p>在多项目构建中项目的默认执行顺序是基于它们的字母名称的。为了显式地控制在构建生命周期的配置阶段的执行顺序，你可以使用项目执行方法 evaluationDependsOn和evaluationDependsOnChildren。对于需要确保为一个项目设置的属性可以被其他项目使用的情况尤其如此。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718201332473.png" alt="image-20200718201332473"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718201332473.png"></p>
 <h2 id="2-2-定义特定行为"><a href="#2-2-定义特定行为" class="headerlink" title="2.2 定义特定行为"></a>2.2 定义特定行为</h2><p>可以通过 project 方法来定义特定的项目行为。为了给三个子项目 model、repository、web 搭建构建基础环境，你需要为它们分别创建–个项目配置块。下面的清单显示了在 build.gradle 文件中的项目定义。</p>
 <p>build.gradle</p>
 <pre class=" language-groovy"><code class="language-groovy">ext<span class="token operator">.</span>projectIds <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'group'</span><span class="token punctuation">:</span> <span class="token string">'com.manning.gia'</span><span class="token punctuation">,</span> <span class="token string">'version'</span><span class="token punctuation">:</span> <span class="token string">'0.1'</span><span class="token punctuation">]</span>
@@ -595,9 +595,9 @@ version <span class="token operator">=</span> projectIds<span class="token opera
 <h2 id="2-4-多项目部分构建"><a href="#2-4-多项目部分构建" class="headerlink" title="2.4 多项目部分构建"></a>2.4 多项目部分构建</h2><p>拥有几十个甚至上百个依赖的子项目的复杂多项目构建，将大大影响平均执行时间。Gradle 会遍历所有的项目依赖并确保它们是最新的。在开发阶段，通常知道在什么子项目中哪些源文件发生了变化。从技术上讲，不需要重新构建没有发生变化的子项目。</p>
 <p>针对这些情况，Gradle 提供了部分构建特性。部分构建是通过命令 行选项- a 或 –no-rebuild 启用的。假设在子项目 repository 中只改变了 代码，但不想重新构建子项目 model。通过使用部分构建，可以省去检查子项目model的成本并且降低构建执行时间。如果你正工作在-一个拥有上百个子项目依赖的企业级项目中，你会感激在执行构建时节省的每一秒。 </p>
 <pre class=" language-shell"><code class="language-shell">gradle :repository:build -a</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718202923606.png" alt="image-20200718202923606"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718202923606.png"></p>
 <pre class=" language-shell"><code class="language-shell">gradle :repository:buildNeeded</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718203013571.png" alt="image-20200718203013571"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718203013571.png"></p>
 <h2 id="2-5-跨项目task"><a href="#2-5-跨项目task" class="headerlink" title="2.5 跨项目task"></a>2.5 跨项目task</h2><p>假设在根项目和子项目中定义了一个名为 hello 的 task</p>
 <p>build.gradle</p>
 <pre class=" language-groovy"><code class="language-groovy">ext<span class="token operator">.</span>projectIds <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'group'</span><span class="token punctuation">:</span> <span class="token string">'com.manning.gia'</span><span class="token punctuation">,</span> <span class="token string">'version'</span><span class="token punctuation">:</span> <span class="token string">'0.1'</span><span class="token punctuation">]</span>
@@ -655,7 +655,7 @@ task hello <span class="token punctuation">{</span>
         runtime <span class="token string">'javax.servlet:jstl:1.1.2'</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718203415216.png" alt="image-20200718203415216"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718203415216.png"></p>
 <p><strong>控制task执行顺序</strong></p>
 <pre class=" language-groovy"><code class="language-groovy">task hello <span class="token punctuation">{</span>
     doLast<span class="token punctuation">{</span>
@@ -713,7 +713,7 @@ subprojects <span class="token punctuation">{</span>
         runtime <span class="token string">'javax.servlet:jstl:1.1.2'</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="2-7-每个项目创建构建文件"><a href="#2-7-每个项目创建构建文件" class="headerlink" title="2.7 每个项目创建构建文件"></a>2.7 每个项目创建构建文件</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718203945699.png" alt="image-20200718203945699"></p>
+<h2 id="2-7-每个项目创建构建文件"><a href="#2-7-每个项目创建构建文件" class="headerlink" title="2.7 每个项目创建构建文件"></a>2.7 每个项目创建构建文件</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718203945699.png"></p>
 <p>root -&gt; build.gradle</p>
 <pre class=" language-groovy"><code class="language-groovy">allprojects <span class="token punctuation">{</span>
     group <span class="token operator">=</span> <span class="token string">'com.manning.gia'</span>

@@ -517,7 +517,7 @@
 </blockquote>
 <p>Spring MVC使用HttpMessageConverter接口转换HTTP请求和响应。开箱即用中包含明智的默认设置。例如，可以将对象自动转换为JSON（通过使用Jackson库）或XML（通过使用Jackson XML扩展（如果可用）或通过使用JAXB（如果Jackson XML扩展不可用））。默认情况下，字符串以UTF-8编码。</p>
 <h2 id="1-2-特点"><a href="#1-2-特点" class="headerlink" title="1.2 特点"></a>1.2 特点</h2><p>HttpMessageConverter 是一个接口，它包含以下几个方法</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200729211313871.png" alt="image-20200729211313871"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200729211313871.png"></p>
 <ul>
 <li>canRead： 判断是否支持解析当前 MediaType</li>
 <li>canWrite： 判断是否支持输出当前 MediaType</li>
@@ -533,7 +533,7 @@
 <li>开发工具（IntelliJ IDEA ）</li>
 </ol>
 <h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><h2 id="3-1-代码说明"><a href="#3-1-代码说明" class="headerlink" title="3.1 代码说明"></a>3.1 代码说明</h2><p>自定义HttpMessageConverter消息转换器，实现消息的解析和输出</p>
-<h2 id="3-2-代码结构"><a href="#3-2-代码结构" class="headerlink" title="3.2 代码结构"></a>3.2 代码结构</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200729212037648.png" alt="image-20200729212037648"></p>
+<h2 id="3-2-代码结构"><a href="#3-2-代码结构" class="headerlink" title="3.2 代码结构"></a>3.2 代码结构</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200729212037648.png"></p>
 <h2 id="3-3-maven-依赖"><a href="#3-3-maven-依赖" class="headerlink" title="3.3 maven 依赖"></a>3.3 maven 依赖</h2><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
@@ -732,7 +732,7 @@ age=22
 birthday=1996-05-05
 salary=6666.66
 phone=13555555555</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200729212747549.png" alt="image-20200729212747549"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200729212747549.png"></p>
 <p><strong>接收 <code>application/json</code> 类型的参数，输出 <code>text/properties</code> 格式内容</strong></p>
 <pre class=" language-http"><code class="language-http">### POST /user/add2
 POST http://localhost:8080/user/add2
@@ -746,7 +746,7 @@ POST http://localhost:8080/user/add2
 <span class="token string">"salary"</span><span class="token punctuation">:</span> <span class="token string">"6666.66"</span><span class="token punctuation">,</span>
 <span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"13555555555"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200729212844773.png" alt="image-20200729212844773"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200729212844773.png"></p>
 <h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h1><ol>
 <li><a href="https://docs.spring.io/spring-boot/docs/2.2.8.RELEASE/reference/html/spring-boot-features.html#boot-features-spring-mvc-message-converters" target="_blank" rel="noopener">Spring Boot Features/message-converters</a></li>
 </ol>

@@ -532,7 +532,7 @@
 <li>开发工具（IntelliJ IDEA ）</li>
 </ol>
 <h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><h2 id="3-1-代码说明"><a href="#3-1-代码说明" class="headerlink" title="3.1 代码说明"></a>3.1 代码说明</h2><p>通过 <code>@RestController</code> 类似 Spring Mvc 的方式演示 Spring WebFlux 的使用</p>
-<h2 id="3-2-代码结构"><a href="#3-2-代码结构" class="headerlink" title="3.2 代码结构"></a>3.2 代码结构</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727203818388.png" alt="image-20200727203818388"></p>
+<h2 id="3-2-代码结构"><a href="#3-2-代码结构" class="headerlink" title="3.2 代码结构"></a>3.2 代码结构</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727203818388.png"></p>
 <h2 id="3-3-maven-依赖"><a href="#3-3-maven-依赖" class="headerlink" title="3.3 maven 依赖"></a>3.3 maven 依赖</h2><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
@@ -645,12 +645,12 @@
 <pre class=" language-http"><code class="language-http">### GET /user/list
 GET http://localhost:8080/user/list
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727204816422.png" alt="image-20200727204816422"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727204816422.png"></p>
 <p><strong>根据id查询用户</strong></p>
 <pre class=" language-http"><code class="language-http">### GET /user/find/{id}
 GET http://localhost:8080/user/find/1
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727204913432.png" alt="image-20200727204913432"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727204913432.png"></p>
 <p><strong>新增用户</strong></p>
 <pre class=" language-http"><code class="language-http">### POST /user/add
 POST http://localhost:8080/user/add
@@ -664,7 +664,7 @@ POST http://localhost:8080/user/add
   <span class="token string">"address"</span><span class="token punctuation">:</span> <span class="token string">"guangzhou"</span><span class="token punctuation">,</span>
   <span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"13777777777"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727204953806.png" alt="image-20200727204953806"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727204953806.png"></p>
 <p><strong>修改用户</strong></p>
 <pre class=" language-http"><code class="language-http">### PUT /user/update
 PUT http://localhost:8080/user/update
@@ -679,12 +679,12 @@ PUT http://localhost:8080/user/update
   <span class="token string">"address"</span><span class="token punctuation">:</span> <span class="token string">"shanghai2"</span><span class="token punctuation">,</span>
   <span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"13888888882"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727205119947.png" alt="image-20200727205119947"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727205119947.png"></p>
 <p><strong>根据id删除用户</strong></p>
 <pre class=" language-http"><code class="language-http">### DELETE /user/delete/{id}
 DELETE http://localhost:8080/user/delete/3
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727205246770.png" alt="image-20200727205246770"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200727205246770.png"></p>
 <h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h1><ol>
 <li><a href="https://docs.spring.io/spring-boot/docs/2.2.8.RELEASE/reference/html/spring-boot-features.html#boot-features" target="_blank" rel="noopener">Spring-Boot-Features/WebFlux</a></li>
 <li><a href="https://docs.spring.io/spring/docs/5.2.7.RELEASE/spring-framework-reference/web-reactive.html#webflux-new-framework" target="_blank" rel="noopener">Spring Framework/WebFlux</a></li>

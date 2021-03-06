@@ -510,10 +510,10 @@
             <div id="articleContent">
                 <h1 id="1-构建块"><a href="#1-构建块" class="headerlink" title="1. 构建块"></a>1. 构建块</h1><p>每个 Gradle 构建都包含三个基本构建块：project、task 和 property。每个构建包含至少-一个 project，进而又包含一个或 多个 task。 project 和 task 暴露的属性可以用来控制构建。</p>
 <h2 id="1-1-project"><a href="#1-1-project" class="headerlink" title="1.1 project"></a>1.1 project</h2><p>在 Gradle 术语中，一个项目(project) 代表一个正在构建的组件(比如，一个 JAR文件)，或一个想要完成的目标，如部署应用程序。如果你使用过 Maven， 那么这个概念应该听起来很熟悉。Gradle 的 build.gradle 文件相当于 Maven 的 pom. xml。每个 Gradle 构建脚本至少定义一个项目。当构建进程启动后，Gradle 基于 build.gradle 中的配置实例化 org.gradle.api.Project 类，并且能够通过 project 变量使其隐式可用。下图显示了API 接口及其最重要的方法。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718170007325.png" alt="image-20200718170007325"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718170007325.png"></p>
 <h2 id="1-2-task"><a href="#1-2-task" class="headerlink" title="1.2 task"></a>1.2 task</h2><p>task 的一 些重要功能：任务动作(task action)和任务依赖(task dependency)。任务动作定义了一个当任务执行时最小的工作单元。这可以简单到只打印文本如 “Hello world !” 或复杂到编译 Java 源代码。</p>
 <p>很多时候，运行一个task之前需要运行另一个task，尤其是当task的运行需要另一个task的输出作为输入来完成自己的行动时更是如此。比如，你已经看到过在打包成一个JAR文件之前需要先编译Java源代码。让我们看看Gradle task 的API表示，org.gradle.api .Task接口，如下所示。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718170352282.png" alt="image-20200718170352282"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718170352282.png"></p>
 <h2 id="1-3-property"><a href="#1-3-property" class="headerlink" title="1.3 property"></a>1.3 property</h2><p>每个 project 和 task 实例都提供了可以通过 getter 和 setter 方法访问的属性。一个属性可能是一个任务或项目的版本。</p>
 <p><strong>扩展属性</strong></p>
 <p>Gradle的很多领域模型类提供了特别的属性支持。在内部，这些属性以键值对的形式存储。为了添加属性，需要使用 ext 命名空间。</p>
@@ -572,7 +572,7 @@ task printVersion <span class="token punctuation">{</span>
 printVersion<span class="token operator">.</span>doFirst <span class="token punctuation">{</span> println <span class="token string">"First action"</span> <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// 在动作列表的最后添加闭包</span>
 printVersion<span class="token operator">.</span>doLast <span class="token punctuation">{</span> println <span class="token string">"Last action"</span> <span class="token punctuation">}</span> </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718172034922.png" alt="image-20200718172034922"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718172034922.png"></p>
 <h2 id="2-2-定义task依赖"><a href="#2-2-定义task依赖" class="headerlink" title="2.2 定义task依赖"></a>2.2 定义task依赖</h2><p>dependsOn 方法允许声明依赖一个或多个 task。</p>
 <pre class=" language-groovy"><code class="language-groovy">version <span class="token operator">=</span> <span class="token string">'0.1-SNAPSHOT'</span>
 
@@ -601,7 +601,7 @@ task third <span class="token punctuation">{</span>
 <span class="token comment" spellcheck="true">// 声明依赖时按名称引用task</span>
 third<span class="token operator">.</span><span class="token function">dependsOn</span><span class="token punctuation">(</span><span class="token string">'printVersion'</span><span class="token punctuation">)</span>     </code></pre>
 <p>通过调用 task third 来执行依赖链上其他 task，<code>gradle -q third</code></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718172555286.png" alt="image-20200718172555286"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718172555286.png"></p>
 <h2 id="2-3-终结器-task"><a href="#2-3-终结器-task" class="headerlink" title="2.3 终结器 task"></a>2.3 终结器 task</h2><p>在实践中，你会发现所依赖的 task 执行后需要清理某种资源。一个典型的例子 就是 Web 容器需要对已经部署的应用程序运行集成测试。针对这种情景 Gradle提供了终结器 task(finalizertask)，即使终结器 task 失败了，Gradle 的 task 也会按预 期运行。”下面的代码片段展示了如何通过使用 Task 方法 finalizedBy 来使用一个 特定的终结器task。</p>
 <pre class=" language-groovy"><code class="language-groovy">task first <span class="token punctuation">{</span>
     doLast <span class="token punctuation">{</span>
@@ -616,7 +616,7 @@ task second <span class="token punctuation">{</span>
 <span class="token comment" spellcheck="true">// 声明一个 task 被另一个终结</span>
 first<span class="token operator">.</span>finalizedBy second</code></pre>
 <p>gradle -q first</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718173150154.png" alt="image-20200718173150154"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718173150154.png"></p>
 <h2 id="2-4-task-配置"><a href="#2-4-task-配置" class="headerlink" title="2.4 task 配置"></a>2.4 task 配置</h2><p>version.properties</p>
 <pre class=" language-properties"><code class="language-properties"><span class="token attr-name">major</span><span class="token punctuation">=</span><span class="token attr-value">0</span>
 <span class="token attr-name">minor</span><span class="token punctuation">=</span><span class="token attr-value">1</span>
@@ -674,9 +674,9 @@ task printVersion <span class="token punctuation">{</span>
         <span class="token string">"$major.$minor${release ? '' : '-SNAPSHOT'}"</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718174053525.png" alt="image-20200718174053525"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718174053525.png"></p>
 <h2 id="2-5-task的input和output"><a href="#2-5-task的input和output" class="headerlink" title="2.5 task的input和output"></a>2.5 task的input和output</h2><p>Gradle通过比较两个构建task的inputs和outputs来决定task是否是最新的，如图4.6所示。自从最后一个task 执行以来，如果inputs和outputs没有发生变化，则认为task是最新的。因此，只有当inputs和outputs不同时，task 才运行；否则将跳过。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718174219332.png" alt="image-20200718174219332"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718174219332.png"></p>
 <p>version.properties</p>
 <pre class=" language-properties"><code class="language-properties"><span class="token attr-name">major</span><span class="token punctuation">=</span><span class="token attr-value">0</span>
 <span class="token attr-name">minor</span><span class="token punctuation">=</span><span class="token attr-value">1</span>
@@ -737,7 +737,7 @@ task <span class="token function">makeReleaseVersion</span><span class="token pu
         <span class="token string">"$major.$minor${release ? '' : '-SNAPSHOT'}"</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718175909781.png" alt="image-20200718175909781"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718175909781.png"></p>
 <h2 id="2-6-自定义task"><a href="#2-6-自定义task" class="headerlink" title="2.6 自定义task"></a>2.6 自定义task</h2><p><strong>编写自定的 task 类</strong></p>
 <p>编写一个继承自 Gradle 默认 DefaultTask 的类</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">ReleaseVersionTask</span> <span class="token keyword">extends</span> <span class="token class-name">DefaultTask</span> <span class="token punctuation">{</span>
@@ -845,12 +845,12 @@ task <span class="token function">release</span><span class="token punctuation">
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>使用 gradle tasks 查看</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718182548343.png" alt="image-20200718182548343"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718182548343.png"></p>
 <h1 id="3-构建"><a href="#3-构建" class="headerlink" title="3. 构建"></a>3. 构建</h1><p>假设你想在开发周期中尽可能早地获得失败构建的反馈信息。对失败构建一个典型的反应是发送邮件给团队中的所有开发人员，以使代码恢复正常。有两种方式可以编写回调生命周期事件：在闭包中，或者是通过 Gradle API 所提供的监听器接口实现。</p>
 <p>Gradle 不会引导你采用哪种方式去监听生命周期事件，这完全取决于你的选择。采用监听器实现最大的优势在于你处理的类通过编写单元测试是完全可测试的。下面为你提供一个有用的生命周期钩子(hook) 的想法，如图4.11 所示。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718182947161.png" alt="image-20200718182947161"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718182947161.png"></p>
 <h2 id="3-1-连接task执行"><a href="#3-1-连接task执行" class="headerlink" title="3.1 连接task执行"></a>3.1 连接task执行</h2><p>在配置时，Gradle 决定了在执行阶段要运行的task的顺序。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718183157569.png" alt="image-20200718183157569"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718183157569.png"></p>
 <p>通过生命周期钩子实现发布版本功能</p>
 <pre class=" language-groovy"><code class="language-groovy">gradle<span class="token operator">.</span>taskGraph<span class="token operator">.</span>whenReady <span class="token punctuation">{</span> TaskExecutionGraph taskGraph <span class="token operator">-></span>
     <span class="token comment" spellcheck="true">// 查看 task图 中是否包含 task release</span>

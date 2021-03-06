@@ -528,7 +528,7 @@
 </ol>
 <h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><h2 id="3-1-代码说明"><a href="#3-1-代码说明" class="headerlink" title="3.1 代码说明"></a>3.1 代码说明</h2><p>使用 JdbcTemplate 连接 mysql 数据库，进行常见的数据库操作，并在 web 项目中展示。</p>
 <p>同时配置了两个数据源，分别是：master、slave，可以方便的在二者之间切换。</p>
-<h2 id="3-2-代码结构"><a href="#3-2-代码结构" class="headerlink" title="3.2 代码结构"></a>3.2 代码结构</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200722221011781.png" alt="image-20200722221011781"></p>
+<h2 id="3-2-代码结构"><a href="#3-2-代码结构" class="headerlink" title="3.2 代码结构"></a>3.2 代码结构</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200722221011781.png"></p>
 <h2 id="3-3-maven-依赖"><a href="#3-3-maven-依赖" class="headerlink" title="3.3 maven 依赖"></a>3.3 maven 依赖</h2><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
@@ -830,17 +830,17 @@
 <pre class=" language-http"><code class="language-http">### GET /user/list
 GET http://localhost:8080/user/list
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726154942345.png" alt="image-20200726154942345"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726154942345.png"></p>
 <p><strong>根据姓名查询</strong></p>
 <pre class=" language-http"><code class="language-http">### GET /user/findByName/{name}
 GET http://localhost:8080/user/findByName/zhangsan
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155020898.png" alt="image-20200726155020898"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155020898.png"></p>
 <p><strong>根据id查询</strong></p>
 <pre class=" language-http"><code class="language-http">### GET /user/findById/{id}
 GET http://localhost:8080/user/findById/2
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155125169.png" alt="image-20200726155125169"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155125169.png"></p>
 <p><strong>添加用户</strong></p>
 <pre class=" language-http"><code class="language-http">### POST /user/add
 POST http://localhost:8080/user/add
@@ -854,7 +854,7 @@ POST http://localhost:8080/user/add
   <span class="token string">"address"</span><span class="token punctuation">:</span> <span class="token string">"hangzhou"</span><span class="token punctuation">,</span>
   <span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"15666666666"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155240977.png" alt="image-20200726155240977"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155240977.png"></p>
 <p><strong>添加用户2</strong></p>
 <pre class=" language-http"><code class="language-http">### POST /user/insert
 POST http://localhost:8080/user/insert
@@ -868,7 +868,7 @@ POST http://localhost:8080/user/insert
   <span class="token string">"address"</span><span class="token punctuation">:</span> <span class="token string">"xian"</span><span class="token punctuation">,</span>
   <span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"13455555555"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155320939.png" alt="image-20200726155320939"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155320939.png"></p>
 <p><strong>新增用户并返回主键</strong></p>
 <pre class=" language-http"><code class="language-http">POST http://localhost:8080/user/insertAndGet
 <span class="token header-name keyword">Accept:</span> application/json
@@ -881,7 +881,7 @@ POST http://localhost:8080/user/insert
   <span class="token string">"address"</span><span class="token punctuation">:</span> <span class="token string">"nanjing"</span><span class="token punctuation">,</span>
   <span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"13999999999"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155456317.png" alt="image-20200726155456317"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155456317.png"></p>
 <p><strong>更新用户地址</strong></p>
 <pre class=" language-http"><code class="language-http">### PUT /user/updateAddressById
 PUT http://localhost:8080/user/updateAddressById
@@ -892,12 +892,12 @@ PUT http://localhost:8080/user/updateAddressById
   <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
   <span class="token string">"address"</span><span class="token punctuation">:</span> <span class="token string">"suzhou"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155534709.png" alt="image-20200726155534709"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155534709.png"></p>
 <p><strong>根据id删除</strong></p>
 <pre class=" language-http"><code class="language-http">### DELETE /user/deleteById
 DELETE http://localhost:8080/user/deleteById/7
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155706289.png" alt="image-20200726155706289"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726155706289.png"></p>
 
             </div>
             <hr/>

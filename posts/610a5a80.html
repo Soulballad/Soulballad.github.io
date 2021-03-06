@@ -531,7 +531,7 @@
 <li>启动程序模块，它提供对自动配置模块的依赖以及“ acme”和通常有用的任何其他依赖。简而言之，添加启动程序应提供开始使用该库所需的一切。</li>
 </ul>
 <p>完全没有必要将这两个模块分开。如果“ acme”具有多种功能，选项或可选功能，则最好将自动配置分开，因为您可以清楚地表示某些功能是可选的。此外，您还可以制作一个启动器，以提供有关那些可选依赖项的意见。同时，其他人只能依靠自动配置模块并以不同的意见来制作自己的启动器。如果自动配置相对简单并且不具有可选功能，则将两个模块合并在启动器中绝对是一种选择。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200730193439123.png" alt="image-20200730193439123"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200730193439123.png"></p>
 <h1 id="2-演示环境"><a href="#2-演示环境" class="headerlink" title="2.演示环境"></a>2.演示环境</h1><ol>
 <li>JDK 1.8.0_201</li>
 <li>Spring Boot 2.2.0.RELEASE</li>
@@ -544,9 +544,9 @@
 <li>test-spring-boot-starter：依赖 demo-spring-boot-starter，测试它的功能</li>
 </ul>
 <h2 id="3-2-代码结构"><a href="#3-2-代码结构" class="headerlink" title="3.2 代码结构"></a>3.2 代码结构</h2><p><strong>demo-spring-boot-starter</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200730193759728.png" alt="image-20200730193759728"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200730193759728.png"></p>
 <p><strong>test-spring-boot-starter</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200730193916069.png" alt="image-20200730193916069"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200730193916069.png"></p>
 <h2 id="3-3-maven-依赖"><a href="#3-3-maven-依赖" class="headerlink" title="3.3 maven 依赖"></a>3.3 maven 依赖</h2><p><strong>demo-spring-boot-starter</strong></p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
@@ -695,7 +695,7 @@
 <p>启动 <code>test-spring-boot-starter</code> 中 TestSpringBootStarterApplication.main 方法，在 test-spring-boot-starter.http 访问下列地址，观察输出信息是否符合预期。</p>
 <pre class=" language-http"><code class="language-http">### GET /hello
 GET http://localhost:8080/hello</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200730195430873.png" alt="image-20200730195430873"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200730195430873.png"></p>
 <h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h1><ol>
 <li><a href="https://docs.spring.io/spring-boot/docs/2.2.8.RELEASE/reference/html/spring-boot-features.html#boot-features-custom-starter-naming" target="_blank" rel="noopener">Spring Boot Features/Starter</a></li>
 </ol>

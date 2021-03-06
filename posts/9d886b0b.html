@@ -528,7 +528,7 @@
 <li>构建工具（apache maven 3.6.3）</li>
 <li>开发工具（IntelliJ IDEA ）</li>
 </ol>
-<h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822214521079.png" alt="image-20200822214521079"></p>
+<h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822214521079.png"></p>
 <p>总体结构说明：spring cloud config 简单使用</p>
 <ul>
 <li>ofc-config-server： config 服务端，负责配置管理</li>
@@ -555,7 +555,7 @@
 <span class="token comment" spellcheck="true"># 本地仓库的git url配置</span>
 <span class="token attr-name">spring.cloud.config.server.git.uri</span><span class="token punctuation">=</span><span class="token attr-value">file:///E:/GitRepository/gitee/config-server-test</span></code></pre>
 <p>config-server-test 目录下包含4个配置文件</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822215657217.png" alt="image-20200822215657217"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822215657217.png"></p>
 <p>里面的内容如下</p>
 <pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># soulballad.properties</span>
 <span class="token attr-name">my.name</span><span class="token punctuation">=</span><span class="token attr-value">soulballad</span>
@@ -647,45 +647,45 @@
 <p><strong>默认配置</strong></p>
 <pre class=" language-http"><code class="language-http">### GET soulballad-default 默认配置
 GET http://localhost:11000/soulballad-default.properties</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822220049149.png" alt="image-20200822220049149"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822220049149.png"></p>
 <p><strong>dev配置</strong></p>
 <pre class=" language-http"><code class="language-http">### GET soulballad-dev dev环境配置
 GET http://localhost:11000/soulballad-dev.properties</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822220302029.png" alt="image-20200822220302029"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822220302029.png"></p>
 <p><strong>test配置</strong></p>
 <pre class=" language-http"><code class="language-http">### GET soulballad-test test环境配置
 GET http://localhost:11000/soulballad-test.properties</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822220327296.png" alt="image-20200822220327296"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822220327296.png"></p>
 <p><strong>prod配置</strong></p>
 <pre class=" language-http"><code class="language-http">### GET soulballad-prod prod环境配置
 GET http://localhost:11000/soulballad-prod.properties</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822220350930.png" alt="image-20200822220350930"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822220350930.png"></p>
 <h2 id="4-2-ofc-config-client"><a href="#4-2-ofc-config-client" class="headerlink" title="4.2 ofc-config-client"></a>4.2 ofc-config-client</h2><p>在 <code>ofc-config-client.http</code> 访问下列地址，观察输出的配置信息。</p>
 <pre class=" language-http"><code class="language-http">### 通过url获取配置结果
 ### GET /name
 GET http://localhost:11010/name</code></pre>
 <p>由于在 <code>bootstrap.properties</code> 中激活的配置是 dev，所以获取到 <code>soulballad-dev.properties</code> 中配置信息</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822220647113.png" alt="image-20200822220647113"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822220647113.png"></p>
 <h2 id="4-3-配置变更"><a href="#4-3-配置变更" class="headerlink" title="4.3 配置变更"></a>4.3 配置变更</h2><p>在实际环境中，配置中心管理的配置信息会有变动，并且希望能够在不重启的情况下使修改后的配置生效。这里模拟着个场景。</p>
 <p>修改本地 soulballad-dev.properties 中配置信息，内容如下：</p>
 <pre class=" language-properties"><code class="language-properties"><span class="token attr-name">my.name</span><span class="token punctuation">=</span><span class="token attr-value">soulballad-dev1234</span></code></pre>
 <p>查看服务端修改是否生效，发现服务端输出的已经是修改后的配置</p>
 <pre class=" language-http"><code class="language-http">### GET soulballad-dev dev环境配置
 GET http://localhost:11000/soulballad-dev.properties</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822221056875.png" alt="image-20200822221056875"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822221056875.png"></p>
 <p>查看客户端是否获取到最新配置，发现客户端获取的还是修改前的配置</p>
 <pre class=" language-http"><code class="language-http">### GET /name
 GET http://localhost:11010/name</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822221203583.png" alt="image-20200822221203583"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822221203583.png"></p>
 <p><strong>这是因为客户端缓存了服务端的配置，修改了配置文件只有服务端生效了，客户端没有生效</strong>。</p>
 <p><strong>在开启 actuator 的情况下，可以手动调用客户端接口，刷新客户端配置</strong></p>
 <pre class=" language-http"><code class="language-http">### GET /actuator/refresh 手动触发配置刷新
 POST http://localhost:11010/actuator/refresh</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822221415532.png" alt="image-20200822221415532"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822221415532.png"></p>
 <p>刷新完成后，再次在客户端访问配置信息，发现配置已经更新。</p>
 <pre class=" language-http"><code class="language-http">### GET /name
 GET http://localhost:11010/name</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822221531607.png" alt="image-20200822221531607"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200822221531607.png"></p>
 <p><strong>在分布式环境下，如果 config-client 有多个节点，那么只有调用了 <code>/actuator/refresh</code> 接口的节点，配置才能被刷新，未调用接口的节点，配置不会更新。</strong></p>
 <p><strong>针对这个问题，Spring Cloud 提供了另外一冲解决方案 <code>Spring-Cloud-Bus</code></strong></p>
 <p>且看下一篇  <a href="f2301729"><strong>【Spring Cloud学习】-6.Spring Cloud Bus 消息总线</strong></a></p>

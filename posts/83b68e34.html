@@ -509,19 +509,19 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="1-安装前检查"><a href="#1-安装前检查" class="headerlink" title="1. 安装前检查"></a>1. 安装前检查</h1><p>Gradle 依赖 JDK， 检查 JDK 是否已经安装 </p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718123347370.png" alt="image-20200718123347370"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718123347370.png"></p>
 <h1 id="2-安装-Gradle"><a href="#2-安装-Gradle" class="headerlink" title="2. 安装 Gradle"></a>2. 安装 Gradle</h1><h2 id="2-1-下载-Gradle"><a href="#2-1-下载-Gradle" class="headerlink" title="2.1 下载 Gradle"></a>2.1 下载 Gradle</h2><p><a href="https://gradle.org/releases/" target="_blank" rel="noopener">https://gradle.org/releases/</a></p>
 <p><a href="https://services.gradle.org/distributions/" target="_blank" rel="noopener">https://services.gradle.org/distributions/</a></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200715223051320.png" alt="image-20200715223051320"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200715223051320.png"></p>
 <h2 id="2-2-设置-Gradle-环境变量"><a href="#2-2-设置-Gradle-环境变量" class="headerlink" title="2.2 设置 Gradle 环境变量"></a>2.2 设置 Gradle 环境变量</h2><ol>
 <li><p>windows 下安装</p>
 <p>环境变量中增加名为 <code>GRADLE_HOME</code> 的变量名，值为 Gralde 的解压路径，例如： E:\Gradle</p>
 <p> <code>GRADLE_HOME = E:\Develop\OpenSource\gradle-6.5.1-all</code></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718123537773.png" alt="image-20200718123537773"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718123537773.png"></p>
 </li>
 </ol>
 <p>   在path的后追加  <code>%GRADLE_HOME%\bin</code>；</p>
-<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718123628530.png" alt="image-20200718123628530"></p>
+<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718123628530.png"></p>
 <ol start="2">
 <li><p>linux 下安装</p>
 <pre class=" language-shell"><code class="language-shell">export GRADLE_HOME=/opt/gradle
@@ -529,10 +529,10 @@ export PATH=$PATH:$GRADLE_HOME/bin</code></pre>
 </li>
 </ol>
 <h2 id="2-3-验证-Gradle-是否安装成功"><a href="#2-3-验证-Gradle-是否安装成功" class="headerlink" title="2.3 验证 Gradle 是否安装成功"></a>2.3 验证 Gradle 是否安装成功</h2><p>使用 gradle -v 命令查看 Gradle 版本信息</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718123746956.png" alt="image-20200718123746956"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718123746956.png"></p>
 <h2 id="2-4-修改默认缓存目录"><a href="#2-4-修改默认缓存目录" class="headerlink" title="2.4 修改默认缓存目录"></a>2.4 修改默认缓存目录</h2><p>gradle 默认缓存目录在 C:\Users\{user}\.gradle 目录下，类似 maven 默认的 .m2 目录，可以把它修改为其他地方</p>
 <p>使用命令 <code>[gradle -g 目录路径]</code> 进行修改，例如 gradle -g E:\gradle\repository</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718124043581.png" alt="image-20200718124043581"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718124043581.png"></p>
 <h1 id="3-hello-world"><a href="#3-hello-world" class="headerlink" title="3. hello world"></a>3. hello world</h1><p>新建 build.gradle 文件，内容如下</p>
 <pre class=" language-groovy"><code class="language-groovy">task helloWorld <span class="token punctuation">{</span>
     doLast <span class="token punctuation">{</span>
@@ -540,9 +540,9 @@ export PATH=$PATH:$GRADLE_HOME/bin</code></pre>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>这里新建了一个 task，它只有一个操作，就是 doLast，在调用 doLast 的时候打印 “hello World”，这里的 println 就相当于 java 中的 System.out.println；</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718125236469.png" alt="image-20200718125236469"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718125236469.png"></p>
 <p>使用 <code>gradle -q helloWorld</code> 命令运行 task，输出 <code>hello world</code></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718125415399.png" alt="image-20200718125415399"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718125415399.png"></p>
 <h1 id="4-常用命令"><a href="#4-常用命令" class="headerlink" title="4. 常用命令"></a>4. 常用命令</h1><h2 id="4-1-列出所有task"><a href="#4-1-列出所有task" class="headerlink" title="4.1 列出所有task"></a>4.1 列出所有task</h2><pre class=" language-shell"><code class="language-shell">gradle -q tasks</code></pre>
 <p>使用 –all 参数查看详细信息</p>
 <pre class=" language-shell"><code class="language-shell">gradle -q tasks --all</code></pre>
@@ -575,13 +575,13 @@ yayGradle2<span class="token operator">.</span>dependsOn yayGradle1<span class="
 task <span class="token function">groupTherapy</span><span class="token punctuation">(</span>dependsOn<span class="token punctuation">:</span> yayGradle2<span class="token punctuation">)</span></code></pre>
 <p>使用 <code>gradle yayGradle0 groupTherapy</code> 来进行调用，输出如下结果：</p>
 <pre class=" language-shell"><code class="language-shell">gradle yayGradle0 groupTherapy</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718131455303.png" alt="image-20200718131455303"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718131455303.png"></p>
 <p>结合输入结果和脚本，可以得到如下执行顺序：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718130518288.png" alt="image-20200718130518288"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718130518288.png"></p>
 <p>如果要排除一个任务，可以使用 -x 参数</p>
 <pre class=" language-shell"><code class="language-shell"># 排除 yayGradle0
 gradle groupTherapy -x yayGradle0 </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718131719071.png" alt="image-20200718131719071"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200718131719071.png"></p>
 <h2 id="4-3-命令行参数"><a href="#4-3-命令行参数" class="headerlink" title="4.3 命令行参数"></a>4.3 命令行参数</h2><p>部分参数</p>
 <pre class=" language-shell"><code class="language-shell">-?, -h, --help                     显示帮助信息.
 -b, --build-file                   默认构建文件是 build.gradle，可以使用该参数指定其他文件.
