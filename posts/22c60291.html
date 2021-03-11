@@ -519,55 +519,54 @@ Node上有一些关键的进程：kubelet，kube-proxy，docker等</code></pre>
 </blockquote>
 <pre class=" language-shell"><code class="language-shell">kubectl get nodes
 kubectl describe node node-name</code></pre>
-<h2 id="1-2-kubeadm"><a href="#1-2-kubeadm" class="headerlink" title="1.2 kubeadm"></a>1.2 kubeadm</h2><h3 id="1-2-1-kubeadm-init"><a href="#1-2-1-kubeadm-init" class="headerlink" title="1.2.1 kubeadm init"></a>1.2.1 kubeadm init</h3><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210752.png"></p>
+<h2 id="1-2-kubeadm"><a href="#1-2-kubeadm" class="headerlink" title="1.2 kubeadm"></a>1.2 kubeadm</h2><h3 id="1-2-1-kubeadm-init"><a href="#1-2-1-kubeadm-init" class="headerlink" title="1.2.1 kubeadm init"></a>1.2.1 kubeadm init</h3><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210752.png"></p>
 <blockquote>
 <ol>
 <li><p>进行一系列检查[init之前的检查]，以确定这台机器可以部署kubernetes</p>
 <pre class=" language-shell"><code class="language-shell">kubeadm init pre-flight check</code></pre>
 <ol>
-<li><p>kubeadm版本与要安装的kubernetes版本的检查</p>
-</li>
-<li><p>kubernetes安装的系统需求检查[centos版本、cgroup、docker等]</p>
-</li>
-<li><p>用户、主机、端口、swap等</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210810.png" alt="image-20191207162457152"></p>
-</li>
+<li>①kubeadm版本与要安装的kubernetes版本的检查</li>
+<li>②kubernetes安装的系统需求检查[centos版本、cgroup、docker等]</li>
+<li>③用户、主机、端口、swap等</li>
 </ol>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210810.png"></p>
 </li>
-<li><p>生成kubernetes对外提供服务所需要的各种证书可对应目录，也就是生成私钥和数字证书<br> <code>/etc/kubernetes/pki/*</code></p>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210813.png" alt="image-20191207162327165"></p>
+<li><p>生成kubernetes对外提供服务所需要的各种证书可对应目录，也就是生成私钥和数字证书<br><code>/etc/kubernetes/pki/*</code></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210813.png"></p>
 <ol>
-<li>自建ca，生成ca.key和ca.crt </li>
-<li>apiserver的私钥与公钥证书  </li>
-<li>apiserver访问kubelet使用的客户端私钥与证书</li>
-<li>sa.key和sa.pub</li>
-<li>etcd相关私钥和数字证书</li>
+<li>①自建ca，生成ca.key和ca.crt </li>
+<li>②apiserver的私钥与公钥证书  </li>
+<li>③apiserver访问kubelet使用的客户端私钥与证书</li>
+<li>④sa.key和sa.pub</li>
+<li>⑤etcd相关私钥和数字证书</li>
 </ol>
 </li>
 <li><p>为其他组件生成访问kube-ApiServer所需的配置文件xxx.conf</p>
 <pre class=" language-shell"><code class="language-shell">ls /etc/kubernetes/
 admin.conf  controller-manager.conf  kubelet.conf  scheduler.conf</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210816.png" alt="image-20191207162701199"></p>
-</li>
-<li><p>有了 $HOME/.kube/config 就可以使用kubectl和K8s集群打交道了，这个文件是来自于admin.config</p>
-</li>
-</ol>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210816.png"></p>
+<ol>
+<li><p>①有了 <code>\$HOME/.kube/config</code> 就可以使用kubectl和K8s集群打交道了，这个文件是来自于admin.config</p>
 <pre class=" language-shell"><code class="language-shell">mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210930.png" alt="image-20191207162757134"></p>
-<pre><code>1. kubeconfig中包含了cluster、user和context信息：kubectl config view
-2. 允许kubectl快速切换context，管理多集群</code></pre>
-<ol start="3">
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210930.png"></p>
+</li>
+<li><p>②kubeconfig中包含了cluster、user和context信息：kubectl config view</p>
+</li>
+<li><p>③允许kubectl快速切换context，管理多集群</p>
+</li>
+</ol>
+</li>
 <li><p>为master生成Pod配置文件，这些组件会被master节点上的kubelet读取到，并且创建对应资源</p>
 <pre class=" language-shell"><code class="language-shell">ls /etc/kubernetes/manifests/*.yaml
 kube-apiserver.yaml 
 kube-controller-manager.yaml
 kube-scheduler.yaml</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210819.png" alt="image-20191207163316255"></p>
-<p>这些pod由kubelet直接管理，是静态pod，直接使用主机网络<br>kubelet读取manifests目录并管理各控制平台组件pod的启动与停止<br>要想修改这些pod，直接修改manifests下的yaml文件即可</p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210819.png"></p>
+<p>  这些pod由kubelet直接管理，是静态pod，直接使用主机网络<br>  kubelet读取manifests目录并管理各控制平台组件pod的启动与停止<br>  要想修改这些pod，直接修改manifests下的yaml文件即可</p>
 </li>
-<li><p>下载镜像[这里的镜像我们已经提前准备好了]，等待控制平面启动<br> k8s.gcr.io下载不了，所以我们先提前下载并且tag好了</p>
+<li><p>下载镜像[这里的镜像我们已经提前准备好了]，等待控制平面启动 k8s.gcr.io下载不了，所以我们先提前下载并且tag好了</p>
 </li>
 <li><p>一旦这些 YAML 文件出现在被 kubelet 监视的/etc/kubernetes/manifests/目录下，kubelet就会自动创建这些yaml文件定义的pod，即master组件的容器。master容器启动后，kubeadm会通过检查<code>localhost:6443/healthz</code> 这个master组件的健康状态检查URL，等待master组件完全运行起来</p>
 <pre class=" language-shell"><code class="language-shell">cat kube-apiserver.yaml # 里面有健康检查的配置</code></pre>
@@ -582,9 +581,8 @@ kube-scheduler.yaml</code></pre>
 </li>
 </ol>
 </blockquote>
-<h3 id="1-2-2-kubeadm-join"><a href="#1-2-2-kubeadm-join" class="headerlink" title="1.2.2 kubeadm join"></a>1.2.2 kubeadm join</h3><blockquote>
-<p>kubeadm join 192.168.0.51:6443 –token yu1ak0.2dcecvmpozsy8loh \ –discovery-token-ca-cert-hash<br>sha256:5c4a69b3bb05b81b675db5559b0e4d7972f1d0a61195f217161522f464c307b0</p>
-</blockquote>
+<h3 id="1-2-2-kubeadm-join"><a href="#1-2-2-kubeadm-join" class="headerlink" title="1.2.2 kubeadm join"></a>1.2.2 kubeadm join</h3><pre class=" language-shell"><code class="language-shell">kubeadm join 192.168.0.51:6443 --token yu1ak0.2dcecvmpozsy8loh \ --discovery-token-ca-cert-hash
+sha256:5c4a69b3bb05b81b675db5559b0e4d7972f1d0a61195f217161522f464c307b0</code></pre>
 <blockquote>
 <ol>
 <li><p>join前检查</p>
@@ -607,18 +605,18 @@ kggzhc.4tsdztcdbt4fwe9w</code></pre>
 </li>
 <li><p>实在忘了怎么办？<br> 如果没有及时保存最后的join信息，或者24小时之后过期了，这时候可以重新生成</p>
 <ol>
-<li>重新生成token<pre class=" language-shell"><code class="language-shell">kubeadm token create</code></pre>
+<li>①重新生成token<pre class=" language-shell"><code class="language-shell">kubeadm token create</code></pre>
 </li>
-<li>获取ca证书sha256编码hash值<pre class=" language-shell"><code class="language-shell">openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'</code></pre>
+<li>②获取ca证书sha256编码hash值<pre class=" language-shell"><code class="language-shell">openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'</code></pre>
 </li>
-<li>重新生成join信息<pre class=" language-shell"><code class="language-shell">kubeadm join 主节点ip地址:6443 --token token填这里  --discovery-token-ca-cert-hash sha256:哈希值填这里</code></pre>
+<li>③重新生成join信息<pre class=" language-shell"><code class="language-shell">kubeadm join 主节点ip地址:6443 --token token填这里  --discovery-token-ca-cert-hash sha256:哈希值填这里</code></pre>
 </li>
 </ol>
 </li>
 </ol>
 </blockquote>
 <h2 id="1-3-先把核心组件总体过一遍"><a href="#1-3-先把核心组件总体过一遍" class="headerlink" title="1.3 先把核心组件总体过一遍"></a>1.3 先把核心组件总体过一遍</h2><p>不妨查看一下之前的K8s架构图，勾起回忆</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210824.png" alt="image-20191206211423255"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210824.png"></p>
 <blockquote>
 <p><strong>对之前理解的优化，先是整体</strong></p>
 <ol>
@@ -644,37 +642,25 @@ kggzhc.4tsdztcdbt4fwe9w</code></pre>
 </li>
 <li><p><strong>kubelet</strong> </p>
 <p> 集群中的所有节点都有运行，用于管理pod和container，每个kubelet会向apiserver注册本节<br> 点的信息，并向master节点上报本节点资源使用的情况</p>
-<pre class=" language-shell"><code class="language-shell">1. `kubelet由操作系统init[systemd]进行启动`
+<pre class=" language-shell"><code class="language-shell">1. kubelet由操作系统init[systemd]进行启动
 2. ls /lib/systemd/system/kubelet.service
 3. systemctl daemon-reload & systemctl restart kubelet</code></pre>
 </li>
 <li><p><strong>kube-proxy</strong><br> 集群中的所有节点都有运行，像service的操作都是由kube-proxy代理的，对于客户端是透明的</p>
-<p>```shell</p>
-</li>
-<li><p>kube-proxy由daemonset控制器在各个节点上启动唯一实例</p>
-</li>
-<li><p><code>配置参数：/var/lib/kube-proxy/config.confpod内.</code>   # 不是静态pod</p>
-</li>
-<li><p>kubectl get pods -n kube-system</p>
-</li>
-<li><p>kubectl exec kube-proxy-jt9n4 -n kube-system – cat /var/lib/kube-proxy/config.conf</p>
-</li>
-<li><p>mode:””   —&gt;# iptables</p>
-<pre><code></code></pre>
+<pre class=" language-shell"><code class="language-shell">1. kube-proxy由daemonset控制器在各个节点上启动唯一实例
+2. `配置参数：/var/lib/kube-proxy/config.confpod内.`   # 不是静态pod
+3. kubectl get pods -n kube-system
+4. kubectl exec kube-proxy-jt9n4 -n kube-system -- cat /var/lib/kube-proxy/config.conf
+5. mode:""   ---># iptables</code></pre>
 </li>
 <li><p><strong>DNS</strong><br> 域名解析的问题</p>
 </li>
 <li><p><strong>dashboard</strong><br> 需要有监控面板能够监测整个集群的状态</p>
 </li>
 <li><p><strong>etcd</strong><br> 整个集群的配置中心，所有集群的状态数据，对象数据都存储在etcd中<br> kubeadm引导启动的K8s集群，默认只启动一个etcd节点</p>
-<p>```shell</p>
-</li>
-<li><p>/etc/kubernetes/manifests/etcd.yaml   # kubelet管理的静态pod</p>
-</li>
-<li><p>etcd所使用的相关秘钥在/etc/kubernetes/pki/etcd里面</p>
-</li>
-<li><p>etcd挂载master节点本地路径/var/lib/etcd用于运行时数据存储，tree</p>
-<pre><code></code></pre>
+<pre class=" language-shell"><code class="language-shell">1. /etc/kubernetes/manifests/etcd.yaml   # kubelet管理的静态pod
+2. etcd所使用的相关秘钥在/etc/kubernetes/pki/etcd里面
+3. etcd挂载master节点本地路径/var/lib/etcd用于运行时数据存储，tree</code></pre>
 </li>
 </ol>
 </blockquote>
@@ -698,7 +684,7 @@ kggzhc.4tsdztcdbt4fwe9w</code></pre>
 kubectl config view
 # 查看cluster的信息
 kubectl config get-clusters</code></pre>
-<p>  <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210831.png" alt="image-20191207165758158"></p>
+<p>  <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210831.png"></p>
 </li>
 <li><p>创建资源</p>
 <pre class=" language-shell"><code class="language-shell">kubectl apply -f xxx.yaml
@@ -744,7 +730,7 @@ kubectl attach</code></pre>
 <p>api官网：<a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/overview/kubernetes-api/</a></p>
 <p>v1.14 ：<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/" target="_blank" rel="noopener">https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/</a></p>
 </blockquote>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210836.png" alt="image-20191206212836564"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210836.png"></p>
 </li>
 <li><p>想要写Pod的yaml文件</p>
 <pre class=" language-http"><code class="language-http"><span class="token header-name keyword">https:</span>//kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#pod-v1-core</code></pre>
@@ -756,7 +742,7 @@ vi /etc/kubernetes/manifests/kube-apiserver.yaml    [kubeadm安装方式]
 insecure-port=8080
 # kubect apply生效，需要等待一会
 kubectl apply -f kube-apiserver.yaml</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210839.png" alt="image-20191207171654245"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210839.png"></p>
 </li>
 <li><p>查看端口以及访问测试<br> 可以发现结果和kubectl使用一样</p>
 <pre class=" language-shell"><code class="language-shell">lsof -i tcp:8080
@@ -765,7 +751,7 @@ curl localhost:8080/api
 curl localhost:8080/api/v1
 curl localhost:8080/api/v1/pods
 curl localhost:8080/api/v1/services</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210842.png" alt="image-20191207172354870"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210842.png"></p>
 </li>
 <li><p>设计一个Pod的url请求</p>
 <pre class=" language-http"><code class="language-http"><span class="token header-name keyword">https:</span>//kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#-strong-write-operations-pod-v1-core-strong-</code></pre>
@@ -781,7 +767,7 @@ curl localhost:8080/api/v1/services</code></pre>
 <p><code>官网</code>：<a href="https://v1-12.docs.kubernetes.io/docs/reference/access-authn-authz/controlling-access/" target="_blank" rel="noopener">https://v1-12.docs.kubernetes.io/docs/reference/access-authn-authz/controlling-access/</a></p>
 <p>对于k8s集群的访问操作，都是通过api server的rest api来实现的，难道所有的操作都允许吗？当然不行，这<br>里就涉及到认证、授权和准入等操作。</p>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210845.png" alt="image-20191206213054826"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210845.png"></p>
 <h3 id="1-7-1-API-Server认证"><a href="#1-7-1-API-Server认证" class="headerlink" title="1.7.1 API Server认证"></a>1.7.1 API Server认证</h3><blockquote>
 <p>API Server认证(Authentication) </p>
 </blockquote>
@@ -799,10 +785,10 @@ curl localhost:8080/api/v1/services</code></pre>
 <li><p>集群内部组件调用认证：</p>
 <ul>
 <li><p>系统组件之间通过 Service Account 进行认证，k8s 集群在创建的时候回默认创建一个 Service Account，Service Account 会创建一个 secret</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210848.png" alt="image-20191207173942130"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210848.png"></p>
 </li>
 <li><p>每当创建 Pod 的时候，Service Account 创建的secret会被自动放到pod中，路径 <code>/run/secrets/kubernetes.io/serviceaccount</code></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210850.png" alt="image-20191207174214880"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210850.png"></p>
 </li>
 </ul>
 </li>
@@ -819,7 +805,7 @@ curl localhost:8080/api/v1/services</code></pre>
 <li>RBAC 授权模式：Role Based Access Control</li>
 </ul>
 <p>Role、ClusterRole、RoleBinding和ClusterRoleBinding<br>用户可以使用kubectl或者API调用等方式操作这些资源对象。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210854.png" alt="image-20191207174757711"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210854.png"></p>
 <p><code>rbac.yaml</code></p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRole
 <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> rbac.authorization.k8s.io/v1
@@ -899,7 +885,7 @@ curl localhost:8080/api/v1/services</code></pre>
 <pre><code>In Kubernetes, scheduling refers to making sure that Pods are matched to Nodes so that Kubelet can run them.</code></pre>
 <p>通过调度算法，为待调度Pod列表的每个Pod，从Node列表中选择一个最合适的Node。<br>然后，目标节点上的kubelet通过API Server监听到Kubernetes Scheduler产生的Pod绑定事件，获取对应的<br>Pod清单，下载Image镜像，并启动容器。</p>
 </blockquote>
-<h3 id="1-8-1-架构图"><a href="#1-8-1-架构图" class="headerlink" title="1.8.1 架构图"></a>1.8.1 架构图</h3><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210859.png" alt="image-20191206213612259"></p>
+<h3 id="1-8-1-架构图"><a href="#1-8-1-架构图" class="headerlink" title="1.8.1 架构图"></a>1.8.1 架构图</h3><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210859.png"></p>
 <h3 id="1-8-2-流程描述"><a href="#1-8-2-流程描述" class="headerlink" title="1.8.2 流程描述"></a>1.8.2 流程描述</h3><blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/scheduling/kube-scheduler/#kube-scheduler-implementation" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/scheduling/kube-scheduler/#kube-scheduler-implementation</a></p>
 <pre><code>01-Filtering
@@ -995,34 +981,30 @@ kubectl describe pod pod-name</code></pre>
                <span class="token punctuation">-</span> ssd</code></pre>
 <pre class=" language-shell"><code class="language-shell">kubectl get nodes w1 -o yaml
 找到labels</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210905.png" alt="image-20191207182546525"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210905.png"></p>
 <pre class=" language-shell"><code class="language-shell">[root@master-kubeadm-k8s ~]# kubectl apply -f schdeuler-node.yaml
 [root@master-kubeadm-k8s ~]# kubectl get pods
 NAME                              READY   STATUS    RESTARTS   AGE
 scheduler-node-84845c99d4-fvw9d   0/1     Pending   0          7s</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309210908.png" alt="image-20191207182710009"></p>
-<p>```shell<br>kubectl describe pod scheduler-node-84845c99d4-fvw9d<br>Events:<br>Type     Reason            Age                From               Message</p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210908.png"></p>
+<pre class=" language-shell"><code class="language-shell">kubectl describe pod scheduler-node-84845c99d4-fvw9d
+Events:
+Type     Reason            Age                From               Message
+----     ------            ----               ----               -------
+Warning  FailedScheduling  37s (x2 over 37s)  default-scheduler  0/3 nodes are available: 3 node(s) didn't match node selector.</code></pre>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210911.png"></p>
 </li>
 </ol>
-<hr>
-<p>  Warning  FailedScheduling  37s (x2 over 37s)  default-scheduler  0/3 nodes are available: 3 node(s) didn’t match node selector.</p>
-<pre><code>![image-20191207182832997](https://gitee.com/soulballad/PicGo/raw/master/img//20210309210911.png)
-
-
-
-#### 1.8.4.2 Pod 
-
-```yaml
-affinity:
- &nbsp; &nbsp;  podAffinity:
- &nbsp; &nbsp; &nbsp;  requiredDuringSchedulingIgnoredDuringExecution:
- &nbsp; &nbsp; &nbsp;  - labelSelector:
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  matchExpressions:
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  - key: app
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  operator: In
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  values:
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  - k8s
- &nbsp; &nbsp; &nbsp; &nbsp;  topologyKey: kubernetes.io/hostname</code></pre>
+<h4 id="1-8-4-2-Pod"><a href="#1-8-4-2-Pod" class="headerlink" title="1.8.4.2 Pod"></a>1.8.4.2 Pod</h4><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">affinity</span><span class="token punctuation">:</span>
+ <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>;  podAffinity<span class="token punctuation">:</span>
+ <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>;  requiredDuringSchedulingIgnoredDuringExecution<span class="token punctuation">:</span>
+ <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>;  <span class="token punctuation">-</span> <span class="token key atrule">labelSelector</span><span class="token punctuation">:</span>
+ <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>;  matchExpressions<span class="token punctuation">:</span>
+ <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>;  <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> app
+ <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>;  operator<span class="token punctuation">:</span> In
+ <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>;  values<span class="token punctuation">:</span>
+ <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>;  <span class="token punctuation">-</span> k8s
+ <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>; <span class="token important">&amp;nbsp</span>;  topologyKey<span class="token punctuation">:</span> kubernetes.io/hostname</code></pre>
 <h2 id="1-9-kubelet"><a href="#1-9-kubelet" class="headerlink" title="1.9 kubelet"></a>1.9 kubelet</h2><blockquote>
 <p><code>官网</code>：<a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/" target="_blank" rel="noopener">https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/</a></p>
 </blockquote>
@@ -1551,11 +1533,10 @@ affinity:
 重新创建
 先停止旧的pod，然后再创建新的pod，这个过程服务是会间断的。
 
-蓝绿  ```
-
-
+蓝绿
 无需停机，风险较小
-01-部署v1的
+
+01-部署v1的应用（一开始
                         
                     </div>
                     <div class="publish-info">

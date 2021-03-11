@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    779
+                    781
                 </div>
                 
 
@@ -505,17 +505,17 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>【官网】<a href="https://about.gitlab.com/install/#centos-7" target="_blank" rel="noopener">https://about.gitlab.com/install/#centos-7</a><br>【这块需要自己搭建gitlab的小伙伴可以操作一下，上面也放了官网中的链接步骤】</p>
-<h2 id="01-说明"><a href="#01-说明" class="headerlink" title="01 说明"></a>01 说明</h2><p>安装gitlab的机器至少要有4G的内存，因为gitlab比较消耗内存</p>
-<h2 id="02-安装必要的依赖"><a href="#02-安装必要的依赖" class="headerlink" title="02 安装必要的依赖"></a>02 安装必要的依赖</h2><pre class=" language-shell"><code class="language-shell">sudo yum install -y curl policycoreutils-python openssh-server
+<h2 id="1-说明"><a href="#1-说明" class="headerlink" title="1 说明"></a>1 说明</h2><p>安装gitlab的机器至少要有4G的内存，因为gitlab比较消耗内存</p>
+<h2 id="2-安装必要的依赖"><a href="#2-安装必要的依赖" class="headerlink" title="2 安装必要的依赖"></a>2 安装必要的依赖</h2><pre class=" language-shell"><code class="language-shell">sudo yum install -y curl policycoreutils-python openssh-server
 sudo systemctl enable sshd
 sudo systemctl start sshd
 sudo firewall-cmd --permanent --add-service=http
 sudo systemctl reload firewalld</code></pre>
-<h2 id="03-发送邮件设置"><a href="#03-发送邮件设置" class="headerlink" title="03 发送邮件设置"></a>03 发送邮件设置</h2><p>如果想要发送邮件，就跑一下下面的内容</p>
+<h2 id="3-发送邮件设置"><a href="#3-发送邮件设置" class="headerlink" title="3 发送邮件设置"></a>3 发送邮件设置</h2><p>如果想要发送邮件，就跑一下下面的内容</p>
 <pre class=" language-shell"><code class="language-shell">sudo yum install postfix
 sudo systemctl enable postfix
 sudo systemctl start postfix</code></pre>
-<h2 id="04-添加gitlab的仓库地址"><a href="#04-添加gitlab的仓库地址" class="headerlink" title="04 添加gitlab的仓库地址"></a>04 添加gitlab的仓库地址</h2><pre class=" language-shell"><code class="language-shell">curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash</code></pre>
+<h2 id="4-添加gitlab的仓库地址"><a href="#4-添加gitlab的仓库地址" class="headerlink" title="4 添加gitlab的仓库地址"></a>4 添加gitlab的仓库地址</h2><pre class=" language-shell"><code class="language-shell">curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash</code></pre>
 <p>注意：这个下载仓库可能速度会很慢，此时可以用国内的仓库地址</p>
 <blockquote>
 <p>新建文件   <code>/etc/yum.repos.d/gitlab-ce.repo</code><br>内容为</p>
@@ -526,7 +526,7 @@ sudo systemctl start postfix</code></pre>
 <span class="token attr-name">enabled</span><span class="token punctuation">=</span><span class="token attr-value">1</span></code></pre>
 </blockquote>
 <p>更新本地的yum缓存：sudo yum makecache</p>
-<h2 id="05-设置域名和安装"><a href="#05-设置域名和安装" class="headerlink" title="05 设置域名和安装"></a>05 设置域名和安装</h2><blockquote>
+<h2 id="5-设置域名和安装"><a href="#5-设置域名和安装" class="headerlink" title="5 设置域名和安装"></a>5 设置域名和安装</h2><blockquote>
 <p>设置gitlab的域名和安装gitlab</p>
 </blockquote>
 <blockquote>
@@ -539,11 +539,11 @@ sudo EXTERNAL_URL="http://gitlab.chris-king.com" yum install -y gitlab-ce</code>
 <pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># gitlab host</span>
 <span class="token attr-name">172.16.11.125</span> <span class="token attr-value">  gitlab.chris-king.com</span></code></pre>
 <p>假如不想设置域名，可以直接安装  yum install -y gitlab-ee</p>
-<h2 id="06-重新configure"><a href="#06-重新configure" class="headerlink" title="06 重新configure"></a>06 重新configure</h2><p>如果没有成功，可以运行gitlab-ctl reconfigure</p>
-<h2 id="07-查看gitlab运行的情况"><a href="#07-查看gitlab运行的情况" class="headerlink" title="07 查看gitlab运行的情况"></a>07 查看gitlab运行的情况</h2><p>gitlab-ctl status 可以看到运行gitlab服务所需要的进程</p>
-<h2 id="08-访问"><a href="#08-访问" class="headerlink" title="08 访问"></a>08 访问</h2><p>浏览器输入gitlab.itcrazy2016.com，此时需要修改root账号的密码</p>
+<h2 id="6-重新configure"><a href="#6-重新configure" class="headerlink" title="6 重新configure"></a>6 重新configure</h2><p>如果没有成功，可以运行gitlab-ctl reconfigure</p>
+<h2 id="7-查看gitlab运行的情况"><a href="#7-查看gitlab运行的情况" class="headerlink" title="7 查看gitlab运行的情况"></a>7 查看gitlab运行的情况</h2><p>gitlab-ctl status 可以看到运行gitlab服务所需要的进程</p>
+<h2 id="8-访问"><a href="#8-访问" class="headerlink" title="8 访问"></a>8 访问</h2><p>浏览器输入gitlab.itcrazy2016.com，此时需要修改root账号的密码</p>
 <pre><code>第一次登录使用的用户名和密码为 root 和 5iveL!fe，登录后默认叫你修改密码。</code></pre>
-<h2 id="09-配置已经安装好的gitlab"><a href="#09-配置已经安装好的gitlab" class="headerlink" title="09 配置已经安装好的gitlab"></a>09 配置已经安装好的gitlab</h2><p>vim /etc/gitlab/gitlab.rb<br>修改完成之后一定要 gitlab-ctl reconfigure</p>
+<h2 id="9-配置已经安装好的gitlab"><a href="#9-配置已经安装好的gitlab" class="headerlink" title="9 配置已经安装好的gitlab"></a>9 配置已经安装好的gitlab</h2><p>vim /etc/gitlab/gitlab.rb<br>修改完成之后一定要 gitlab-ctl reconfigure</p>
 <h2 id="10-常用命令"><a href="#10-常用命令" class="headerlink" title="10 常用命令"></a>10 常用命令</h2><pre class=" language-shell"><code class="language-shell">sudo gitlab-ctl start    # 启动所有 gitlab 组件；
 sudo gitlab-ctl stop        # 停止所有 gitlab 组件；
 sudo gitlab-ctl restart        # 重启所有 gitlab 组件；
@@ -555,15 +555,15 @@ sudo gitlab-ctl tail        # 查看日志；</code></pre>
 <h2 id="11-修改端口"><a href="#11-修改端口" class="headerlink" title="11 修改端口"></a>11 修改端口</h2><p>若linux服务器的80和8080端口都已经被使用，则需修改gitlab监听的端口</p>
 <p>修改路径文件：vim /etc/gitlab/gitlab.rb</p>
 <ol>
-<li><p>修改external_url ‘<a href="http://ip:端口号'">http://ip:端口号'</a>   （将前面的#注释符号去掉）,我改成了8099<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205838.png" alt="img"></p>
+<li><p>修改external_url ‘<a href="http://ip:端口号'">http://ip:端口号'</a>   （将前面的#注释符号去掉）,这里改成了8099<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205838.png"></p>
 </li>
-<li><p>找到Advanced settings 下的8080端口 将端口改成自己备用端口号（不能和上面url端口号相同，会冲突占用！），我改的28080<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205850.png" alt="img"></p>
+<li><p>找到Advanced settings 下的8080端口 将端口改成自己备用端口号（不能和上面url端口号相同，会冲突占用！），这里改成28080<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205850.png"></p>
 </li>
 <li><p>运行下面命令</p>
 <pre class=" language-shell"><code class="language-shell">1. sudo gitlab-ctl stop # --停止服务
 2. sudo gitlab-ctl reconfigure # --启动服务
 3. sudo gitlab-ctl start # --启动所有gitlab组件</code></pre>
-<p>启动需要一段时间，上边启动完基本就可以了。<br>期间可以查看端口进程：<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205855.png" alt="img"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205901.png" alt="img"></p>
+<p>启动需要一段时间，上边启动完基本就可以了。<br>期间可以查看端口进程：<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205855.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205901.png"></p>
 </li>
 <li><p>若访问不了gitlab，尝试关闭或开放防火墙</p>
 </li>

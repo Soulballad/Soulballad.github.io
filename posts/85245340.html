@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.6k
                 </div>
                 
 
@@ -504,18 +504,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Docker网络大揭秘"><a href="#Docker网络大揭秘" class="headerlink" title="Docker网络大揭秘"></a>Docker网络大揭秘</h1><blockquote>
+                <blockquote>
 <p>docker网络官网<a href="https://docs.docker.com/network/" target="_blank" rel="noopener">https://docs.docker.com/network/</a></p>
 </blockquote>
-<h1 id="1-计算机网络模型"><a href="#1-计算机网络模型" class="headerlink" title="1 计算机网络模型"></a>1 计算机网络模型</h1><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213138.png" alt="1574563309355"></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213201.png" alt="1574563341914"></p>
+<h1 id="1-计算机网络模型"><a href="#1-计算机网络模型" class="headerlink" title="1 计算机网络模型"></a>1 计算机网络模型</h1><pre><code>![](https://gitee.com/soulballad/PicGo/raw/master/img/20210308213138.png)
+
+![](https://gitee.com/soulballad/PicGo/raw/master/img/20210308213201.png)</code></pre>
 <h1 id="2-Linux中网卡"><a href="#2-Linux中网卡" class="headerlink" title="2 Linux中网卡"></a>2 Linux中网卡</h1><h2 id="2-1-查看网卡-网络接口"><a href="#2-1-查看网卡-网络接口" class="headerlink" title="2.1 查看网卡[网络接口]"></a>2.1 查看网卡[网络接口]</h2><blockquote>
 <p>01-ip link show</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213216.png" alt="1574566972722"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213216.png"></p>
 <p>02-ls /sys/class/net</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213220.png" alt="1574566992664"></p>
+<p>(<a href="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213220.png" target="_blank" rel="noopener">https://gitee.com/soulballad/PicGo/raw/master/img/20210308213220.png</a>)</p>
 <p>03-ip a</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213223.png" alt="1574567016722"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213223.png"></p>
 </blockquote>
 <h2 id="2-2-网卡"><a href="#2-2-网卡" class="headerlink" title="2.2 网卡"></a>2.2 网卡</h2><h3 id="2-2-1-ip-a解读"><a href="#2-2-1-ip-a解读" class="headerlink" title="2.2.1 ip a解读"></a>2.2.1 ip a解读</h3><blockquote>
 <p>状态：UP/DOWN/UNKOWN等<br>link/ether：MAC地址<br>inet：绑定的IP地址</p>
@@ -547,7 +548,7 @@ ip netns delete ns1  #删除</code></pre>
 </li>
 <li><p>查看该namespace下网卡的情况</p>
 <pre class=" language-shell"><code class="language-shell">ip netns exec ns1 ip a</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213642.png" alt="1574567890599"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213642.png"></p>
 </li>
 <li><p>启动ns1上的lo网卡</p>
 <pre class=" language-shell"><code class="language-shell">ip netns exec ns1 ifup lo
@@ -556,63 +557,61 @@ ip netns exec ns1 ip link set lo up</code></pre>
 </li>
 <li><p>再次查看<br>可以发现state变成了UNKOWN</p>
 <pre class=" language-shell"><code class="language-shell">ip netns exec ns1 ip a</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213654.png" alt="1574567864305"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213654.png"></p>
 </li>
 <li><p>再次创建一个network namespace</p>
 <pre class=" language-shell"><code class="language-shell">ip netns add ns2
 ip netns exec ns2 ifup lo</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213659.png" alt="1574563785361"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213659.png"></p>
 </li>
 <li><p>此时想让两个namespace网络连通起来<br><code>veth pair</code> ：Virtual Ethernet Pair，是一个成对的端口，可以实现上述功能</p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213714.png"></p>
 </li>
-</ol>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213714.png" alt="1574563810478"></p>
-<ol start="7">
 <li><p>创建一对link，也就是接下来要通过veth pair连接的link</p>
 <pre class=" language-shell"><code class="language-shell">ip link add veth-ns1 type veth peer name veth-ns2</code></pre>
 </li>
 <li><p>查看link情况</p>
 <pre class=" language-shell"><code class="language-shell">ip link </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213733.png" alt="1574568282475"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213733.png"></p>
 </li>
 <li><p>将veth-ns1加入ns1中，将veth-ns2加入ns2中</p>
 <pre class=" language-shell"><code class="language-shell">ip link set veth-ns1 netns ns1 
 ip link set veth-ns2 netns ns2 
 ip link show</code></pre>
 <p>发现少了两块网卡，这两块网卡分别被派给 ns1 和 ns2</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213744.png" alt="1574568439820"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213744.png"></p>
 </li>
 <li><p>查看宿主机和ns1，ns2的link情况</p>
 <pre class=" language-shell"><code class="language-shell">ip link 
 ip netns exec ns1 ip link 
 ip netns exec ns2 ip link </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213748.png" alt="1574568573117"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213748.png"></p>
 </li>
 <li><p>此时veth-ns1和veth-ns2还没有ip地址，显然通信还缺少点条件</p>
 <pre class=" language-shell"><code class="language-shell"> ip netns exec ns1 ip addr add 192.168.0.11/24 dev veth-ns1 
  ip netns exec ns2 ip addr add 192.168.0.12/24 dev veth-ns2 </code></pre>
 <p>这里根据实际情况添加的ip是 172.16.11.11/24 </p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213801.png" alt="1574568861400"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213801.png"></p>
 </li>
 <li><p>再次查看，发现state是DOWN，并且还是没有IP地址</p>
 <pre class=" language-shell"><code class="language-shell"> ip netns exec ns1 ip link 
  ip netns exec ns2 ip link </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213807.png" alt="1574568830352"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213807.png"></p>
 </li>
 <li><p>启动veth-ns1和veth-ns2</p>
 <pre class=" language-shell"><code class="language-shell"> ip netns exec ns1 ip link set veth-ns1 up 
  ip netns exec ns2 ip link set veth-ns2 up </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213812.png" alt="1574568880344"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213812.png"></p>
 </li>
 <li><p>再次查看，发现state是UP，同时有IP</p>
 <pre class=" language-shell"><code class="language-shell"> ip netns exec ns1 ip a 
  ip netns exec ns2 ip a </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213815.png" alt="1574569122789"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213815.png"></p>
 </li>
 <li><p>此时两个network namespace互相ping一下，发现是可以ping通的</p>
 <pre class=" language-shell"><code class="language-shell"> ip netns exec ns1 ping 192.168.0.12 
  ip netns exec ns2 ping 192.168.0.11 </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213818.png" alt="1574569175046"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213818.png"></p>
 </li>
 </ol>
 <h2 id="2-2-Container的NS"><a href="#2-2-Container的NS" class="headerlink" title="2.2 Container的NS"></a>2.2 Container的NS</h2><p>按照上面的描述，实际上每个container，都会有自己的network namespace，并且是独立的，我们可以进入<br>到容器中进行验证</p>
@@ -620,12 +619,12 @@ ip netns exec ns2 ip link </code></pre>
 <li><p>不妨创建两个container看看？</p>
 <pre class=" language-shell"><code class="language-shell">docker run -d --name tomcat01 -p 8081:8080 tomcat 
 docker run -d --name tomcat02 -p 8082:8080 tomcat </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213833.png" alt="1574569564515"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213833.png"></p>
 </li>
 <li><p>进入到两个容器中，并且查看ip</p>
 <pre class=" language-shell"><code class="language-shell">docker exec -it tomcat01 ip a 
 docker exec -it tomcat02 ip a </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213853.png" alt="1574569609338"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213853.png"></p>
 </li>
 <li><p>互相 ping一下是可以ping通的</p>
 </li>
@@ -668,19 +667,19 @@ PING 172.17.0.2 (172.17.0.2) 56(84) bytes of data.
 64 bytes from 172.17.0.2: icmp_seq=3 ttl=64 time=0.056 ms </code></pre>
 </li>
 <li><p>既然可以ping通，而且centos和tomcat1又属于不同的network namespace，是怎么连接的？<br>很显然，跟之前的实战是一样的，画个图</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308213943.png" alt="1574564447302"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308213943.png"></p>
 </li>
 <li><p>也就是说，在tomcat01中有一个eth0和centos的docker0中有一个veth3是成对的，类似于之前实战中的<br>veth-ns1和veth-ns2，不妨再通过一个命令确认下：<code>brctl</code></p>
 <pre class=" language-shell"><code class="language-shell"> # 安装一下：
 yum install bridge-utils 
 brctl show </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214021.png" alt="1574570287629"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214021.png"></p>
 </li>
 <li><p>那为什么tomcat01和tomcat02能ping通呢？不多说，直接上图</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214036.png" alt="1574564504647"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214036.png"></p>
 </li>
 <li><p>这种网络连接方法我们称之为Bridge，其实也可以通过命令查看docker中的网络模式：docker network ls<br>bridge也是docker中默认的网络模式</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214044.png" alt="1574570820455"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214044.png"></p>
 </li>
 <li><p>不妨检查一下bridge：docker network inspect bridge</p>
 <pre class=" language-json"><code class="language-json"><span class="token property">"Containers"</span><span class="token operator">:</span> <span class="token punctuation">{</span> 
@@ -703,7 +702,7 @@ brctl show </code></pre>
 <span class="token punctuation">}</span> </code></pre>
 </li>
 <li><p>在tomcat01容器中是可以访问互联网的，顺便把这张图画一下咯，NAT是通过iptables实现的</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214104.png" alt="1574564607653"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214104.png"></p>
 </li>
 </ol>
 <h2 id="4-2-创建自己的network"><a href="#4-2-创建自己的network" class="headerlink" title="4.2 创建自己的network"></a>4.2 创建自己的network</h2><ol>
@@ -721,23 +720,23 @@ a1aa0d802154        bridge              bridge              local
 </li>
 <li><p>查看tomcat-net详情信息：</p>
 <pre class=" language-shell"><code class="language-shell">docker network inspect tomcat-net</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214135.png" alt="1574571059011"></p>
-<p>可以发现 tomcat-net 的网段在 172.18.0.*</p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214135.png"></p>
+<p> 可以发现 tomcat-net 的网段在 172.18.0.*</p>
 </li>
 <li><p>创建tomcat的容器，并且指定使用 tomcat-net</p>
 <pre class=" language-shell"><code class="language-shell">docker run -d --name custom-net-tomcat --network tomcat-net tomcat </code></pre>
 </li>
 <li><p>查看custom-net-tomcat的网络信息</p>
 <pre class=" language-shell"><code class="language-shell">docker exec -it custom-net-tomcat ip a </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214150.png" alt="1574571219989"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214150.png"></p>
 <p>custom-net-tomcat 的 ip 是 172.18.0.2，在 172.18 网段</p>
 </li>
 <li><p>查看网卡信息</p>
 <pre class=" language-shell"><code class="language-shell">ip a </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214156.png" alt="1574571438805"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214156.png"></p>
 </li>
 <li><p>查看网卡接口  <code>brctl show</code> </p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214201.png" alt="1574571555229"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214201.png"></p>
 </li>
 <li><p>此时在custom-net-tomcat容器中ping一下tomcat01的ip会如何？发现无法ping通</p>
 <pre class=" language-shell"><code class="language-shell">docker exec -it custom-net-tomcat ping 172.17.0.2 
@@ -750,14 +749,14 @@ PING 172.17.0.2 (172.17.0.2) 56(84) bytes of data.
 <pre class=" language-shell"><code class="language-shell">docker network connect tomcat-net tomcat01 </code></pre>
 </li>
 <li><p>查看tomcat-net网络，可以发现tomcat01这个容器也在其中</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214217.png" alt="1574571903558"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214217.png"></p>
 </li>
 <li><p>此时进入到tomcat01或者custom-net-tomcat中，不仅可以通过ip地址ping通，而且可以通过名字ping<br>到，这时候因为都连接到了用户自定义的tomcat-net bridge上</p>
 <pre class=" language-shell"><code class="language-shell">docker exec -it tomcat01 bash </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214228.png" alt="1574572062945"></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214233.png" alt="1574572113713"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214228.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214233.png"></p>
 <p><strong>但是ping tomcat02是不通的</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214236.png" alt="1574572288284"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214236.png"></p>
 </li>
 </ol>
 <h1 id="5-深入分析Container网络-Host-amp-None"><a href="#5-深入分析Container网络-Host-amp-None" class="headerlink" title="5 深入分析Container网络-Host &amp; None"></a>5 深入分析Container网络-Host &amp; None</h1><h2 id="5-1-Host"><a href="#5-1-Host" class="headerlink" title="5.1 Host"></a>5.1 Host</h2><ol>
@@ -847,14 +846,16 @@ config.vm.network"forwarded_port",guest:8098,host:8090
 #记得vagrant reload生效一下 
 win10：浏览器访问   localhost：8098 </code></pre>
 <h2 id="6-3-画个图强化一下"><a href="#6-3-画个图强化一下" class="headerlink" title="6.3 画个图强化一下"></a>6.3 画个图强化一下</h2><p>什么？上面的过程还是觉得有些难理解？不急，画个图展现一下</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214417.png" alt="1574565654107"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214417.png"></p>
 <h1 id="7-多机之间的container通信"><a href="#7-多机之间的container通信" class="headerlink" title="7 多机之间的container通信"></a>7 多机之间的container通信</h1><blockquote>
 <p>多机之间的container通信[放到Docker Swarm中详细聊] </p>
 </blockquote>
 <blockquote>
 <p>在同一台centos7机器上，发现无论怎么折腾，我们一定有办法让两个container通信。<br>那如果是在两台centos7机器上呢？画个图</p>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214428.png" alt="1574565684257"></p>
+<blockquote>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214428.png"></p>
+</blockquote>
 <pre><code>(1)使得两边的eth0能够通信 
 
 (2)前提要确保spring-boot-project container和mysql container的IP地址不一样 
@@ -866,7 +867,7 @@ win10：浏览器访问   localhost：8098 </code></pre>
 
 (5)处在vxlan的底层:underlay 
    处在xxlan的上层:overlay </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214445.png" alt="1574565701714"></p>
+<pre><code>![](https://gitee.com/soulballad/PicGo/raw/master/img/20210308214445.png)</code></pre>
 
             </div>
             <hr/>
@@ -1366,23 +1367,20 @@ win10：浏览器访问   localhost：8098 </code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/8bc952e4">
+                <a href="/posts/884d409a">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="4.Docker项目实战">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="2.K8s集群搭建及使用">
                         
-                        <span class="card-title">4.Docker项目实战</span>
+                        <span class="card-title">2.K8s集群搭建及使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1 Docker数据持久化1.1 Volume
-创建mysql数据库的container
-docker run -d --name mysql01 -e MYSQL_ROOT_PASSWORD=jack123  mysql
-
-创建volum
+                            1. 搭建K8s集群[无需科学上网]
+官网：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-
                         
                     </div>
                     <div class="publish-info">
@@ -1404,8 +1402,8 @@ docker run -d --name mysql01 -e MYSQL_ROOT_PASSWORD=jack123  mysql
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/Kubernetes/">
+                        <span class="chip bg-color">Kubernetes</span>
                     </a>
                     
                 </div>
@@ -1419,28 +1417,26 @@ docker run -d --name mysql01 -e MYSQL_ROOT_PASSWORD=jack123  mysql
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/b7f0d5ad">
+                <a href="/posts/c21efa77">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="2.Docker镜像和容器">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="1.K8s初体验">
                         
-                        <span class="card-title">2.Docker镜像和容器</span>
+                        <span class="card-title">1.K8s初体验</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Image and Container1 深入探讨Image
+                            1. K8S核心组件和架构图
+K8S Docs Concepts：https://kubernetes.io/docs/concepts/
 
-说白了，image就是由一层一层的layer组成的。
 
-1.1 官方image
-https://github.com/docker-library
+先以container为起点，k8s既然是容器编排工具，那么一定会有container
 
-mysql
 
-https:
+那k
                         
                     </div>
                     <div class="publish-info">
@@ -1462,8 +1458,8 @@ https:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/Kubernetes/">
+                        <span class="chip bg-color">Kubernetes</span>
                     </a>
                     
                 </div>

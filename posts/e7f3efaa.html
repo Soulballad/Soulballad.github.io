@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    2.7k
                 </div>
                 
 
@@ -504,7 +504,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="服务部署到Kubernetes"><a href="#服务部署到Kubernetes" class="headerlink" title="服务部署到Kubernetes"></a>服务部署到Kubernetes</h1><h2 id="部署wordpress-mysql"><a href="#部署wordpress-mysql" class="headerlink" title="部署wordpress+mysql"></a>部署wordpress+mysql</h2><ol>
+                <h1 id="1-服务部署到Kubernetes"><a href="#1-服务部署到Kubernetes" class="headerlink" title="1. 服务部署到Kubernetes"></a>1. 服务部署到Kubernetes</h1><h2 id="1-1-部署wordpress-mysql"><a href="#1-1-部署wordpress-mysql" class="headerlink" title="1.1 部署wordpress+mysql"></a>1.1 部署wordpress+mysql</h2><ol>
 <li><p>创建wordpress命名空间</p>
 <pre class=" language-shell"><code class="language-shell">kubectl create namespace wordpress</code></pre>
 </li>
@@ -565,11 +565,11 @@
 kubectl get pods -n wordpress      # 记得获取ip，因为wordpress.yaml文件中要修改
 kubectl get svc mysql -n wordpress
 kubectl describe svc mysql -n wordpress</code></pre>
-<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205252.png" alt="1575194362553"></p>
+<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205252.png"></p>
 <pre class=" language-shell"><code class="language-shell">kubectl describe pod mysql-deploy-78cd6964bd-pnstt -n wordpress</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205319.png" alt="1575194447767"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205319.png"></p>
 </li>
-<li><p>创建 wordpress.yaml 文件：<br>需要修改yaml中mysql的host，可以修改为pod的host或者service的host，这里使用pos的host<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205323.png" alt="1575194666937"></p>
+<li><p>创建 wordpress.yaml 文件：<br>需要修改yaml中mysql的host，可以修改为pod的host或者service的host，这里使用pos的host<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205323.png"></p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1beta1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
@@ -617,23 +617,23 @@ kubectl describe svc mysql -n wordpress</code></pre>
 <pre class=" language-shell"><code class="language-shell">kubectl apply -f wordpress.yaml    #修改其中mysql的ip地址,其实也可以使用service的name:mysql
 kubectl get pods -n wordpress 
 kubectl get svc -n wordpress   # 获取到转发后的端口，如30063</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205328.png" alt="1575194961401"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205328.png"></p>
 </li>
 <li><p>访问测试</p>
 <pre class=" language-shell"><code class="language-shell">kubectl get pods -n wordpress -o wide # 查看pod
 kubectl get svc -n wordpress -o wide # 查看service</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205331.png" alt="1575195316844"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205331.png"></p>
 <pre class=" language-shell"><code class="language-shell">lsof -i tcp:31866
 netstat -nltp|grep 31866</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205540.png" alt="1575195715942"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205540.png"></p>
 </li>
-<li><p>浏览器访问 172.16.11.129:31866<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205333.png" alt="1575195784611"><br>填写完成之后页面<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205336.png" alt="1575196558600"><br> win上访问集群中任意宿主机节点的IP:30063</p>
+<li><p>浏览器访问 172.16.11.129:31866<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205333.png"><br>填写完成之后页面<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205336.png"><br> win上访问集群中任意宿主机节点的IP:30063</p>
 </li>
 <li><p>在集群中，mysql的地址不仅可以通过ip来配置，也可以通过serviceName来访问</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205339.png" alt="1575292737611"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205339.png"></p>
 </li>
 </ol>
-<h2 id="部署Spring-Boot项目"><a href="#部署Spring-Boot项目" class="headerlink" title="部署Spring Boot项目"></a>部署Spring Boot项目</h2><blockquote>
+<h2 id="1-2-部署Spring-Boot项目"><a href="#1-2-部署Spring-Boot项目" class="headerlink" title="1.2 部署Spring Boot项目"></a>1.2 部署Spring Boot项目</h2><blockquote>
 <p><code>流程</code>：确定服务–&gt;编写Dockerfile制作镜像–&gt;上传镜像到仓库–&gt;编写K8S文件–&gt;创建</p>
 <p><code>网盘/Kubernetes实战走起/课堂源码/springboot-demo</code></p>
 </blockquote>
@@ -680,7 +680,7 @@ ENTRYPOINT ["java","-jar","/springboot-demo.jar"]</code></pre>
 <li><p>访问测试</p>
 <pre class=" language-shell"><code class="language-shell">docker inspect s1
 curl ip:8080/k8s</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205344.png" alt="1575293090282"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205344.png"></p>
 </li>
 <li><p>将镜像推送到镜像仓库</p>
 <pre class=" language-shell"><code class="language-shell"># 登录阿里云镜像仓库
@@ -688,7 +688,7 @@ docker login --username=itcrazy2016@163.com registry.cn-hangzhou.aliyuncs.com
 docker tag springboot-demo-image registry.cn-hangzhou.aliyuncs.com/itcrazy2016/springboot-demo-image:v1.0
 docker push registry.cn-hangzhou.aliyuncs.com/itcrazy2016/springboot-demo-image:v1.0</code></pre>
 <p> 这里是推送到 harbor 私服</p>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205350.png" alt="1575293151229"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205350.png"></p>
 </li>
 <li><p>编写Kubernetes配置文件</p>
 <blockquote>
@@ -750,7 +750,7 @@ kubectl get pods -o wide
 curl pod_id:8080/k8s
 kubectl get svc
 kubectl scale deploy springboot-demo --replicas=5</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205354.png" alt="1575293751464"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205354.png"></p>
 </li>
 <li><p>win配置hosts文件[一定要记得提前创建好nginx ingress controller]</p>
 <pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 192.168.0.61 springboot.jack.com</span>
@@ -759,10 +759,10 @@ kubectl scale deploy springboot-demo --replicas=5</code></pre>
 <li><p>win浏览器访问</p>
 <pre class=" language-shell"><code class="language-shell"># http://springboot.jack.com/k8s
 http://k8s.demo.gper.club/k8s</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205357.png" alt="1575293795784"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205357.png"></p>
 </li>
 </ol>
-<h2 id="部署Nacos项目"><a href="#部署Nacos项目" class="headerlink" title="部署Nacos项目"></a>部署Nacos项目</h2><h3 id="传统方式"><a href="#传统方式" class="headerlink" title="传统方式"></a>传统方式</h3><ol>
+<h2 id="1-3-部署Nacos项目"><a href="#1-3-部署Nacos项目" class="headerlink" title="1.3 部署Nacos项目"></a>1.3 部署Nacos项目</h2><h3 id="1-3-1-传统方式"><a href="#1-3-1-传统方式" class="headerlink" title="1.3.1 传统方式"></a>1.3.1 传统方式</h3><ol>
 <li><p>准备两个Spring Boot项目，名称为user和order，表示两个服务</p>
 <blockquote>
 <p><code>网盘/Kubernetes实战走起/课堂源码/user</code></p>
@@ -911,7 +911,7 @@ http://k8s.demo.gper.club/k8s</code></pre>
 <li><p>浏览器访问：39.100.39.63:8848/nacos</p>
 </li>
 <li><p>用户名和密码：nacos</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205414.png" alt="1575295176246"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205414.png"></p>
 </li>
 <li><p>将应用注册到nacos，记得修改Spring Boot项目中application.yml文件</p>
 </li>
@@ -920,14 +920,14 @@ http://k8s.demo.gper.club/k8s</code></pre>
 <li><p>user服务能够找到order服务</p>
 </li>
 <li><p>启动两个Spring Boot项目，然后查看nacos server的服务列表</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205418.png" alt="1575295298232"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205418.png"></p>
 </li>
 <li><p>为了验证user能够发现order的地址</p>
 <p>访问localhost:8080/user/test，查看日志输出，从而测试是否可以ping通order地址</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205420.png" alt="1575295366695"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205420.png"></p>
 </li>
 </ol>
-<h3 id="K8s方式"><a href="#K8s方式" class="headerlink" title="K8s方式"></a>K8s方式</h3><h4 id="user和order是K8s中的Pod"><a href="#user和order是K8s中的Pod" class="headerlink" title="user和order是K8s中的Pod"></a>user和order是K8s中的Pod</h4><blockquote>
+<h3 id="1-3-2-K8s方式"><a href="#1-3-2-K8s方式" class="headerlink" title="1.3.2 K8s方式"></a>1.3.2 K8s方式</h3><h4 id="1-3-2-1-user和order是K8s中的Pod"><a href="#1-3-2-1-user和order是K8s中的Pod" class="headerlink" title="1.3.2.1 user和order是K8s中的Pod"></a>1.3.2.1 user和order是K8s中的Pod</h4><blockquote>
 <p><code>思考</code>：如果将user和order都迁移到K8s中，那服务注册与发现会有问题吗？</p>
 </blockquote>
 <ol>
@@ -957,7 +957,7 @@ docker build -t order-image:v1.0 .</code></pre>
 docker login --username=itcrazy2016@163.com registry.cn-hangzhou.aliyuncs.com
 docker tag user-image:v1.0 registry.cn-hangzhou.aliyuncs.com/itcrazy2016/user-image:v1.0
 docker push registry.cn-hangzhou.aliyuncs.com/itcrazy2016/user-image:v1.0</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205430.png" alt="1575297098975"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205430.png"></p>
 </li>
 <li><p>编写Kubernetes配置文件</p>
 <blockquote>
@@ -1046,21 +1046,21 @@ docker push registry.cn-hangzhou.aliyuncs.com/itcrazy2016/user-image:v1.0</code>
     <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">9090</span>
   <span class="token key atrule">selector</span><span class="token punctuation">:</span> 
     <span class="token key atrule">app</span><span class="token punctuation">:</span> order</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205439.png" alt="1575297438234"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205439.png"></p>
 </li>
 <li><p>查看资源</p>
 <pre class=" language-shell"><code class="language-shell">kubectl get pods
 kubectl get pods -o wide
 kubectl get svc
 kubectl get ingress</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205442.png" alt="1575297454570"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205442.png"></p>
 </li>
 <li><p>查看nacos server上的服务信息</p>
 <blockquote>
 <p>可以发现，注册到nacos server上的服务ip地址为pod的ip，比如192.168.80.206/192.168.190.82</p>
 </blockquote>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205444.png" alt="1575297502396"></p>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205447.png" alt="1575297526089"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205444.png"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205447.png"></p>
 </li>
 <li><p>访问测试</p>
 <pre class=" language-shell"><code class="language-shell"># 01 集群内
@@ -1068,12 +1068,12 @@ curl user-pod-ip:8080/user/test
 kubectl logs -f <pod-name> -c <container-name>   [主要是为了看日志输出，证明user能否访问order]
 # 02 集群外，比如win的浏览器，可以把集群中原来的ingress删除掉
 http://k8s.demo.gper.club/user/test</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205455.png" alt="1575298225343"></p>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205457.png" alt="1575297804911"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205455.png"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205457.png"></p>
 </li>
 </ol>
 <p><strong>结论</strong>：如果服务都是在K8s集群中，最终将pod ip注册到了nacos server，那么最终服务通过pod ip发现so easy。</p>
-<h4 id="user传统和order迁移K8s"><a href="#user传统和order迁移K8s" class="headerlink" title="user传统和order迁移K8s"></a>user传统和order迁移K8s</h4><blockquote>
+<h4 id="1-3-2-2-user传统和order迁移K8s"><a href="#1-3-2-2-user传统和order迁移K8s" class="headerlink" title="1.3.2.2 user传统和order迁移K8s"></a>1.3.2.2 user传统和order迁移K8s</h4><blockquote>
 <p>假如user现在不在K8s集群中，order在K8s集群中</p>
 <p>比如user使用本地idea中的，order使用上面K8s中的</p>
 </blockquote>
@@ -1082,7 +1082,7 @@ http://k8s.demo.gper.club/user/test</code></pre>
 </li>
 <li><p>查看nacos server中的user服务列表</p>
 </li>
-<li><p>访问本地的localhost:8080/user/test，并且观察idea中的日志打印，发现访问的是order的pod id，此时肯定是不能进行服务调用的，怎么解决呢？<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205502.png" alt="1575371721867"></p>
+<li><p>访问本地的localhost:8080/user/test，并且观察idea中的日志打印，发现访问的是order的pod id，此时肯定是不能进行服务调用的，怎么解决呢？<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205502.png"></p>
 </li>
 <li><p>解决思路</p>
 <blockquote>
@@ -1114,10 +1114,10 @@ http://k8s.demo.gper.club/user/test</code></pre>
 <blockquote>
 <ul>
 <li><p>kubectl get pods -o wide   —&gt;找到pod运行在哪个机器上，比如w2</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205516.png" alt="1575372314854"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205516.png"></p>
 </li>
 <li><p>查看w2上的9090端口是否启动</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205535.png" alt="1575372342885"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205535.png"></p>
 </li>
 </ul>
 </blockquote>
@@ -1125,14 +1125,14 @@ http://k8s.demo.gper.club/user/test</code></pre>
 <li><p>查看nacos server上order服务</p>
 <blockquote>
 <p>可以发现此时用的是w2宿主机的9090端口</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205520.png" alt="1575372374764"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205520.png"></p>
 </blockquote>
 </li>
 <li><p>本地idea访问测试</p>
 <blockquote>
 <p>localhost:8080/user/test</p>
 </blockquote>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210309205523.png" alt="1575372409794"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205523.png"></p>
 </li>
 </ol>
 

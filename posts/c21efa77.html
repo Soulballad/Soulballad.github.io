@@ -482,7 +482,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.1k
                 </div>
                 
 
@@ -504,29 +504,29 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="K8S核心组件和架构图"><a href="#K8S核心组件和架构图" class="headerlink" title="K8S核心组件和架构图"></a>K8S核心组件和架构图</h1><blockquote>
+                <h1 id="1-K8S核心组件和架构图"><a href="#1-K8S核心组件和架构图" class="headerlink" title="1. K8S核心组件和架构图"></a>1. K8S核心组件和架构图</h1><blockquote>
 <p>K8S Docs Concepts：<a href="https://kubernetes.io/docs/concepts/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/</a></p>
 </blockquote>
 <ol>
 <li><p>先以container为起点，k8s既然是容器编排工具，那么一定会有container</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308220807.png" alt="1574768918418"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220807.png"></p>
 </li>
 <li><p>那k8s如何操作这些container呢？从感性的角度来讲，得要有点逼格，k8s不想直接操作 container，因为操作container的事情是docker来做的，k8s中要有自己的最小操作单位，称之为Pod 说白了，Pod就是一个或多个Container的组合</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308220809.png" alt="1574768937480"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220809.png"></p>
 <p><code>看看官网怎么描述的</code> ：<a href="https://kubernetes.io/docs/concepts/workloads/pods/pod/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/workloads/pods/pod/</a></p>
 <blockquote>
 <p>A Pod (as in a pod of whales or pea pod) is a group of one or more containers (such as Docker containers),  with shared storage/network, and a specification for how to run the containers. </p>
 </blockquote>
 </li>
 <li><p>那Pod的维护谁来做呢？那就是ReplicaSet，通过selector来进行管理</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308220818.png" alt="1574768961033"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220818.png"></p>
 <p><code>看看官网怎么描述的</code> ：<a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/</a></p>
 <blockquote>
 <p>A ReplicaSet is defined with fields, including a selector that specifies how to identify Pods it can acquire, a number of replicas indicating how many Pods it should be maintaining, and a pod template specifying the data of new Pods it should create to meet the number of replicas criteria.</p>
 </blockquote>
 </li>
 <li><p>Pod和ReplicaSet的状态如何维护和监测呢？Deployment</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308220832.png" alt="1574769005569"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220832.png"></p>
 <p><code>官网是如何描述的</code> ：<a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/workloads/controllers/deployment/</a></p>
 <blockquote>
 <p>A Deployment controller provides declarative updates for Pods and ReplicaSets. </p>
@@ -534,14 +534,14 @@
 </blockquote>
 </li>
 <li><p>不妨把相同或者有关联的Pod分门别类一下，那怎么分门别类呢？Label</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308220858.png" alt="1574769061160"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220858.png"></p>
 <p><code>官网是如何描述的</code> ：<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/</a></p>
 <blockquote>
 <p>Labels are key/value pairs that are attached to objects, such as pods.</p>
 </blockquote>
 </li>
 <li><p>具有相同label的service要是能够有个名称就好了，Service</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308220920.png" alt="1574769094822"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220920.png"></p>
 <p><code>看官网上怎么说</code> ：<a href="https://kubernetes.io/docs/concepts/services-networking/service/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/services-networking/service/</a></p>
 <blockquote>
 <p>An abstract way to expose an application running on a set of Pods as a network service.</p>
@@ -549,30 +549,27 @@
 </blockquote>
 </li>
 <li><p>上述说了这么多，Pod运行在哪里呢？当然是机器咯，比如一台centos机器，我们把这个机器称作为Node</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308220932.png" alt="1574769128069"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220932.png"></p>
 <p><code>看看官网怎么说</code> ：<a href="https://kubernetes.io/docs/concepts/architecture/nodes/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/architecture/nodes/</a></p>
 <blockquote>
 <p>A node is a worker machine in Kubernetes, previously known as a minion. A node may be a VM or physical machine, depending on the cluster. Each node contains the services necessary to run pods and is managed by the master components.</p>
 </blockquote>
 </li>
 <li><p>难道只有一个Node吗？显然不太合适，多台Node共同组成集群才行嘛<br> 画个图表示一下咯，最好能把之前的Label，Service也一起画上去，整体感受一下</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308220940.png" alt="1574769157729"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220940.png"></p>
 </li>
 <li><p>此时，我们把目光转移到由3个Node节点组成的Master-Node集群</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308221049.png" alt="1574769165280"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221049.png"></p>
 </li>
 <li><p>这个集群要配合完成一些工作，总要有一些组件的支持吧？接下来我们来想想有哪些组件，然后画一个相对完整的架构图</p>
 <blockquote>
 <ol>
-<li>总得要有一个操作集群的客户端，也就是和集群打交道</li>
-</ol>
-<p> <strong>kubectl</strong></p>
-<ol start="2">
+<li><p>总得要有一个操作集群的客户端，也就是和集群打交道<br>  <strong>kubectl</strong></p>
+</li>
 <li><p>请求肯定是到达Master Node，然后再分配给Worker Node创建Pod之类的关键是命令通过kubectl过来之后，是不是要认证授权一下？</p>
 <p> <strong>需要认证/授权</strong></p>
 </li>
-<li><p>请求过来之后，Master Node中谁来接收？</p>
-<pre><code>**APIServer** 接收kubectl 传过来的请求</code></pre>
+<li><p>请求过来之后，Master Node中谁来接收？<br> <strong>APIServer</strong> 接收kubectl 传过来的请求</p>
 </li>
 <li><p>API收到请求之后，接下来调用哪个Worker Node创建Pod，Container之类的，得要有调度策略 <strong>Scheduler</strong><br> [<a href="https://kubernetes.io/docs/concepts/scheduling/kube-scheduler/]" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/scheduling/kube-scheduler/]</a>    </p>
 </li>
@@ -591,23 +588,23 @@
 </li>
 </ol>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308221116.png" alt="1574943008281"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221116.png"></p>
 </li>
 <li><p>不妨把这个图翻转一下方便查看</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308221146.png" alt="1574769331383"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221146.png"></p>
 </li>
 <li><p>官网K8S架构图</p>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/architecture/cloud-controller/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/architecture/cloud-controller/</a></p>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308221153.png" alt="1574769343621"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221153.png"></p>
 </li>
 </ol>
 <p><code>小结</code> ：有些小伙伴可能会想，有些组件知道它的作用了，有些有些模糊。没关系，目前我们只是停留在理论层面的推断和分析，毕竟一点实际操作都没有，现在能够有个感性的认知就已经很不错了</p>
-<h1 id="The-Common-Ways-of-Installing-Kubernetes"><a href="#The-Common-Ways-of-Installing-Kubernetes" class="headerlink" title="The Common Ways of Installing Kubernetes"></a>The Common Ways of Installing Kubernetes</h1><h2 id="The-hard-way"><a href="#The-hard-way" class="headerlink" title="The hard way"></a>The hard way</h2><blockquote>
+<h1 id="2-安装Kubernetes的常用方法"><a href="#2-安装Kubernetes的常用方法" class="headerlink" title="2. 安装Kubernetes的常用方法"></a>2. 安装Kubernetes的常用方法</h1><h2 id="2-1-The-hard-way"><a href="#2-1-The-hard-way" class="headerlink" title="2.1 The hard way"></a>2.1 The hard way</h2><blockquote>
 <p><code>Kelsey Hightower</code> ：<a href="https://github.com/kelseyhightower" target="_blank" rel="noopener">https://github.com/kelseyhightower</a></p>
 </blockquote>
-<h2 id="在线play-with-k8s"><a href="#在线play-with-k8s" class="headerlink" title="在线play-with-k8s"></a>在线play-with-k8s</h2><blockquote>
+<h2 id="2-2-在线play-with-k8s"><a href="#2-2-在线play-with-k8s" class="headerlink" title="2.2 在线play-with-k8s"></a>2.2 在线play-with-k8s</h2><blockquote>
 <p><code>网址</code> ：<a href="https://labs.play-with-k8s.com/" target="_blank" rel="noopener">https://labs.play-with-k8s.com/</a></p>
 </blockquote>
 <pre><code>This is a sandbox environment. Using personal credentials  is HIGHLY! discouraged. Any consequences of doing so, are completely the user's responsibilites.
@@ -625,19 +622,19 @@ kubectl apply -n kube-system -f \
 kubectl apply -f 
 https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/
 application/nginx-app.yaml</code></pre>
-<h2 id="Cloud上搭建"><a href="#Cloud上搭建" class="headerlink" title="Cloud上搭建"></a>Cloud上搭建</h2><blockquote>
+<h2 id="2-3-Cloud上搭建"><a href="#2-3-Cloud上搭建" class="headerlink" title="2.3 Cloud上搭建"></a>2.3 Cloud上搭建</h2><blockquote>
 <p><code>GitHub</code> ：<a href="https://github.com/kubernetes/kops" target="_blank" rel="noopener">https://github.com/kubernetes/kops</a></p>
 </blockquote>
-<h2 id="企业级解决方案CoreOS"><a href="#企业级解决方案CoreOS" class="headerlink" title="企业级解决方案CoreOS"></a>企业级解决方案CoreOS</h2><blockquote>
+<h2 id="2-4-企业级解决方案CoreOS"><a href="#2-4-企业级解决方案CoreOS" class="headerlink" title="2.4 企业级解决方案CoreOS"></a>2.4 企业级解决方案CoreOS</h2><blockquote>
 <p><code>coreos</code> ：<a href="https://coreos.com/tectonic/" target="_blank" rel="noopener">https://coreos.com/tectonic/</a></p>
 </blockquote>
-<h2 id="Minikube-Y"><a href="#Minikube-Y" class="headerlink" title="Minikube[Y]"></a>Minikube[Y]</h2><blockquote>
+<h2 id="2-5-Minikube-Y"><a href="#2-5-Minikube-Y" class="headerlink" title="2.5 Minikube[Y]"></a>2.5 Minikube[Y]</h2><blockquote>
 <p>K8S单节点，适合在本地学习使用<br>官网 ：<a href="https://kubernetes.io/docs/setup/learning-environment/minikube/" target="_blank" rel="noopener">https://kubernetes.io/docs/setup/learning-environment/minikube/</a><br>GitHub ：<a href="https://github.com/kubernetes/minikube" target="_blank" rel="noopener">https://github.com/kubernetes/minikube</a></p>
 </blockquote>
-<h2 id="kubeadm-Y"><a href="#kubeadm-Y" class="headerlink" title="kubeadm[Y]"></a>kubeadm[Y]</h2><blockquote>
+<h2 id="2-6-kubeadm-Y"><a href="#2-6-kubeadm-Y" class="headerlink" title="2.6 kubeadm[Y]"></a>2.6 kubeadm[Y]</h2><blockquote>
 <p>本地多节点<br>GitHub ：<a href="https://github.com/kubernetes/kubeadm" target="_blank" rel="noopener">https://github.com/kubernetes/kubeadm</a></p>
 </blockquote>
-<h1 id="使用Minikube搭建单节点K8s"><a href="#使用Minikube搭建单节点K8s" class="headerlink" title="使用Minikube搭建单节点K8s"></a>使用Minikube搭建单节点K8s</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><blockquote>
+<h1 id="3-使用Minikube搭建单节点K8s"><a href="#3-使用Minikube搭建单节点K8s" class="headerlink" title="3. 使用Minikube搭建单节点K8s"></a>3. 使用Minikube搭建单节点K8s</h1><h2 id="3-1-Windows"><a href="#3-1-Windows" class="headerlink" title="3.1 Windows"></a>3.1 Windows</h2><blockquote>
 <p>kubectl官网 ：<a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-windows" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-windows</a></p>
 <p>minikube官网 ：<a href="https://kubernetes.io/docs/tasks/tools/install-minikube/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/tools/install-minikube/</a></p>
 </blockquote>
@@ -645,7 +642,7 @@ application/nginx-app.yaml</code></pre>
 <ul>
 <li><p>选择任意一种虚拟化的方式</p>
 <pre><code>• Hyper-V
-• VirtualBox[课上选择的]</code></pre>
+• VirtualBox[演示所用]</code></pre>
 </li>
 <li><p>安装kubectl</p>
 <ol>
@@ -667,8 +664,6 @@ application/nginx-app.yaml</code></pre>
 </li>
 <li><p>小结</p>
 <p>其实就是通过minikube创建一个虚拟机<br>这个虚拟机中安装好了单节点的K8S环境然后通过kubectl进行交互</p>
-</li>
-</ul>
 <pre class=" language-shell"><code class="language-shell"># 创建K8S
 minikube start
 
@@ -683,13 +678,18 @@ minikube status
 
 # 进入dashboard
 minikube dashboard</code></pre>
-<h2 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h2><blockquote>
+</li>
+</ul>
+<h2 id="3-2-CentOS"><a href="#3-2-CentOS" class="headerlink" title="3.2 CentOS"></a>3.2 CentOS</h2><blockquote>
 <p>kubectl官网 ：<a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux</a></p>
 <p>minikube官网 ：<a href="https://kubernetes.io/docs/tasks/tools/install-minikube/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/tools/install-minikube/</a></p>
 </blockquote>
 <p>安装步骤：</p>
 <ul>
 <li><p>安装docker</p>
+<blockquote>
+<p><a href="/posts/41ccce2c#toc-heading-16">请看前面的文章</a></p>
+</blockquote>
 </li>
 <li><p>安装kubectl</p>
 <blockquote>
@@ -729,30 +729,30 @@ linux-amd64</code></pre>
 <pre class=" language-shell"><code class="language-shell">minikube start --vm-driver=none --image-repository=gcr.azk8s.cn/google-containers</code></pre>
 </li>
 </ul>
-<h2 id="Mac-OS"><a href="#Mac-OS" class="headerlink" title="Mac OS"></a>Mac OS</h2><p>也是下载安装kubectl和minikube，选择virtualbox，然后minikube start，就可以通过kubectl操作咯</p>
-<h2 id="先感受一下Kubernetes"><a href="#先感受一下Kubernetes" class="headerlink" title="先感受一下Kubernetes"></a>先感受一下Kubernetes</h2><blockquote>
+<h2 id="3-3-Mac-OS"><a href="#3-3-Mac-OS" class="headerlink" title="3.3 Mac OS"></a>3.3 Mac OS</h2><p>也是下载安装kubectl和minikube，选择virtualbox，然后minikube start，就可以通过kubectl操作咯</p>
+<h2 id="3-4-先感受一下Kubernetes"><a href="#3-4-先感受一下Kubernetes" class="headerlink" title="3.4 先感受一下Kubernetes"></a>3.4 先感受一下Kubernetes</h2><blockquote>
 <p>既然已经通过Minikube搭建了单节点的Kubernetes，不妨先感受一些组件的存在以及操作咯</p>
 </blockquote>
-<h3 id="查看连接信息"><a href="#查看连接信息" class="headerlink" title="查看连接信息"></a>查看连接信息</h3><pre class=" language-shell"><code class="language-shell">kubectl config view
+<h3 id="3-4-1-查看连接信息"><a href="#3-4-1-查看连接信息" class="headerlink" title="3.4.1 查看连接信息"></a>3.4.1 查看连接信息</h3><pre class=" language-shell"><code class="language-shell">kubectl config view
 kubectl config get-contexts
 kubectl cluster-info</code></pre>
-<h3 id="体验Pod"><a href="#体验Pod" class="headerlink" title="体验Pod"></a>体验Pod</h3><ol>
+<h3 id="3-4-2-体验Pod"><a href="#3-4-2-体验Pod" class="headerlink" title="3.4.2 体验Pod"></a>3.4.2 体验Pod</h3><ol>
 <li><p>创建pod_nginx.yaml</p>
 <blockquote>
 <p>resources/basic/pod_nginx.yaml</p>
 </blockquote>
-<pre class=" language-yaml"><code class="language-yaml">  <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
-  <span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
-  <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-    <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
-    <span class="token key atrule">labels</span><span class="token punctuation">:</span>
-   <span class="token important">&amp;nbsp</span>;  app<span class="token punctuation">:</span> nginx
-  <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-    <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
-   <span class="token important">&amp;nbsp</span>;  image<span class="token punctuation">:</span> nginx
-   <span class="token important">&amp;nbsp</span>;  ports<span class="token punctuation">:</span>
-   <span class="token important">&amp;nbsp</span>;  <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span></code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span></code></pre>
 </li>
 <li><p>根据pod_nginx.yaml文件创建pod</p>
 <pre class=" language-shell"><code class="language-shell">kubectl apply -f pod_nginx.yaml</code></pre>
@@ -775,7 +775,7 @@ docker exec -it containerid bash</code></pre>
 <pre class=" language-shell"><code class="language-shell"># 若在minikube中，直接访问
 
 # 若在物理主机上，要做端口转发
-    kubectl port-forward nginx 8080:80</code></pre>
+kubectl port-forward nginx 8080:80</code></pre>
 </li>
 <li><p>删除pod</p>
 <pre class=" language-shell"><code class="language-shell">kubectl delete -f pod_nginx.yaml</code></pre>
@@ -1281,20 +1281,22 @@ docker exec -it containerid bash</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/884d409a">
+                <a href="/posts/85245340">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="2.K8s集群搭建及使用">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="3.Docker网络大揭秘">
                         
-                        <span class="card-title">2.K8s集群搭建及使用</span>
+                        <span class="card-title">3.Docker网络大揭秘</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            01 搭建K8s集群[无需科学上网]
-官网：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-
+                            
+docker网络官网https://docs.docker.com/network/
+
+1 计算机网络模型![](https://gitee.com/soulballad/PicGo/raw/master/img/202103082131
                         
                     </div>
                     <div class="publish-info">
@@ -1316,8 +1318,8 @@ docker exec -it containerid bash</code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Kubernetes/">
-                        <span class="chip bg-color">Kubernetes</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                 </div>

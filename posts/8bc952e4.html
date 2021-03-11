@@ -522,10 +522,10 @@ docker volume rm -f $(docker volume ls)</code></pre>
 </li>
 <li><p>具体查看该volume</p>
 <pre class=" language-shell"><code class="language-shell">docker volume inspect 2fda8b112808f57852eddfd8984c1deba0bdcf91c65be4e1139d85a749165682</code></pre>
-<p>  <img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308214941.png" alt="1574580102318"></p>
+<p>  <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214941.png"></p>
 </li>
 <li><p>名字不好看，name太长，修改一下</p>
-<pre><code>"-v mysql01_volume:/var/lib/mysql"表示给上述的 volume 起一个能识别的名字</code></pre>
+<pre><code>"-v mysql01_volume:/var/lib/mysql" 表示给上述的 volume 起一个能识别的名字</code></pre>
 <pre class=" language-shell"><code class="language-shell">docker run -d --name mysql01 -v mysql01_volume:/var/lib/mysql -e 
 MYSQL_ROOT_PASSWORD=jack123  mysql</code></pre>
 </li>
@@ -589,7 +589,7 @@ tomcat容器：cd /usr/local/tomcat/webapps/test</code></pre>
 <li><p>在centos7上访问该路径：curl localhost:9090/test/1.html</p>
 </li>
 <li><p>在win浏览器中通过ip访问</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308215033.png" alt="1574581470347"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308215033.png"></p>
 </li>
 </ol>
 <h1 id="2-Docker实战"><a href="#2-Docker实战" class="headerlink" title="2 Docker实战"></a>2 Docker实战</h1><h2 id="2-1-MySQL高可用集群搭建"><a href="#2-1-MySQL高可用集群搭建" class="headerlink" title="2.1 MySQL高可用集群搭建"></a>2.1 MySQL高可用集群搭建</h2><ol>
@@ -621,18 +621,13 @@ tomcat容器：cd /usr/local/tomcat/webapps/test</code></pre>
 <li><p>[CLUSTER_NAME PXC集群名字]</p>
 </li>
 <li><p>[XTRABACKUP_PASSWORD数据库同步需要用到的密码]</p>
-<p>```shell<br>docker run -d -p 3301:3306 </p>
-</li>
-<li><p>v v1:/var/lib/mysql</p>
-</li>
-<li><p>e MYSQL_ROOT_PASSWORD=jack123</p>
-</li>
-<li><p>e CLUSTER_NAME=PXC</p>
-</li>
-<li><p>e XTRABACKUP_PASSWORD=jack123</p>
-</li>
-<li><p>-privileged –name=node1 –net=pxc-net –ip 172.18.0.2<br>pxc</p>
-<pre><code></code></pre>
+<pre class=" language-shell"><code class="language-shell">  docker run -d -p 3301:3306 
+  -v v1:/var/lib/mysql
+  -e MYSQL_ROOT_PASSWORD=jack123
+  -e CLUSTER_NAME=PXC
+  -e XTRABACKUP_PASSWORD=jack123
+  --privileged --name=node1 --net=pxc-net --ip 172.18.0.2
+  pxc</code></pre>
 </li>
 </ul>
 </li>
@@ -742,7 +737,7 @@ haproxy -f /usr/local/etc/haproxy/haproxy.cfg</code></pre>
 <li><p>win浏览器访问</p>
 <pre><code>http://centos_ip:8888/dbs_monitor
 用户名密码都是:admin</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308215234.png" alt="1574584344082"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308215234.png"></p>
 </li>
 <li><p>win上的datagrip连接haproxy01</p>
 <pre class=" language-properties"><code class="language-properties"><span class="token attr-name">ip</span><span class="token punctuation">:</span><span class="token attr-value">centos_ip</span>
@@ -765,7 +760,7 @@ haproxy -f /usr/local/etc/haproxy/haproxy.cfg</code></pre>
 </ul>
 </li>
 </ol>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img//20210308215256.png" alt="1574578294615"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308215256.png"></p>
 <h3 id="2-2-2-MySQL"><a href="#2-2-2-MySQL" class="headerlink" title="2.2.2 MySQL"></a>2.2.2 MySQL</h3><blockquote>
 <p>(1)创建volume</p>
 </blockquote>
@@ -844,7 +839,6 @@ docker run -d --name sb03 -p 8083:8080 --net=pro-net --ip 172.18.0.13 sbm-image<
 <span class="token attr-name">    default_type</span> <span class="token attr-value"> application/octet-stream;</span>
 <span class="token attr-name">    sendfile</span> <span class="token attr-value">       on;</span>
 <span class="token attr-name">    keepalive_timeout</span> <span class="token attr-value"> 65; </span>
-
 
 <span class="token attr-name">    server</span> <span class="token attr-value">{</span>
 <span class="token attr-name">        listen</span> <span class="token attr-value">80;</span>
@@ -1422,27 +1416,28 @@ docker run -d --name sb03 -p 8083:8080 --net=pro-net --ip 172.18.0.13 sbm-image<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/85245340">
+                <a href="/posts/b7f0d5ad">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="3.Docker网络大揭秘">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="2.Docker镜像和容器">
                         
-                        <span class="card-title">3.Docker网络大揭秘</span>
+                        <span class="card-title">2.Docker镜像和容器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Docker网络大揭秘
-docker网络官网https://docs.docker.com/network/
+                            1 深入探讨Image
 
-1 计算机网络模型
+说白了，image就是由一层一层的layer组成的。
 
-2 Linux中网卡2.1 查看网卡[网络接口]
-01-ip link show
+1.1 官方image
+https://github.com/docker-library
 
-02-ls /sys/
+mysql
+
+https://github.com/docker
                         
                     </div>
                     <div class="publish-info">
