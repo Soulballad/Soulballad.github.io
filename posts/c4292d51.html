@@ -599,7 +599,7 @@
 <li>节点与主站间网络质量良好的地区</li>
 </ol>
 </blockquote>
-<p>基于以上因素，选择 CDN 的二级缓存比较合适，因为二级缓存数量偏少，容量也更大，访问量相对集中，这样就可以较好解决缓存的失效问题以及命中率问题，是当前比较理想的一种 CDN 化方案。部署方式如下图所示：<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/bVbz9yC123.png" alt="image"></p>
+<p>基于以上因素，选择 CDN 的二级缓存比较合适，因为二级缓存数量偏少，容量也更大，访问量相对集中，这样就可以较好解决缓存的失效问题以及命中率问题，是当前比较理想的一种 CDN 化方案。部署方式如下图所示：<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/bVbz9yC123.png"></p>
 <h3 id="2-1-3-数据整合"><a href="#2-1-3-数据整合" class="headerlink" title="2.1.3 数据整合"></a>2.1.3 数据整合</h3><p>分离出动静态数据之后，前端如何组织数据页就是一个新的问题，主要在于动态数据的加载处理，通常有两种方案：ESI（Edge Side Includes）方案和 CSI（Client Side Include）方案。</p>
 <blockquote>
 <ol>
@@ -716,7 +716,7 @@
 <p>过滤的核心目的是通过减少无效请求的数据IO保障有效请求的IO性能。</p>
 <h3 id="4-1-4-小结"><a href="#4-1-4-小结" class="headerlink" title="4.1.4 小结"></a>4.1.4 小结</h3><p>系统可以通过入口层的答题、业务层的排队、数据层的过滤达到流量削峰的目的，本质是在寻求商业诉求与架构性能之间的平衡。另外，新的削峰手段也层出不穷，以业务切入居多，比如零点大促时同步发放优惠券或发起抽奖活动，将一部分流量分散到其他系统，这样也能起到削峰的作用。</p>
 <h2 id="4-2-Plan-B"><a href="#4-2-Plan-B" class="headerlink" title="4.2 Plan B"></a>4.2 Plan B</h2><p>当一个系统面临持续的高峰流量时，其实是很难单靠自身调整来恢复状态的，日常运维没有人能够预估所有情况，意外总是无法避免。尤其在秒杀这一场景下，为了保证系统的高可用，必须设计一个 Plan B 方案来进行兜底。</p>
-<p>高可用建设，其实是一个系统工程，贯穿在系统建设的整个生命周期。<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/bVbz9yR123.png" alt="image"></p>
+<p>高可用建设，其实是一个系统工程，贯穿在系统建设的整个生命周期。<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/bVbz9yR123.png"></p>
 <p>具体来说，系统的高可用建设涉及架构阶段、编码阶段、测试阶段、发布阶段、运行阶段，以及故障发生时，逐一进行分析：</p>
 <ol>
 <li>架构阶段：考虑系统的可扩展性和容错性，避免出现单点问题。例如多地单元化部署，即使某个IDC甚至地市出现故障，仍不会影响系统运转</li>
@@ -736,7 +736,7 @@
 <p>在系统建设的整个生命周期中，每个环节中都可能犯错，甚至有些环节犯的错，后面是无法弥补的或者成本极高的。所以高可用是一个系统工程，必须放到整个生命周期中进行全面考虑。同时，考虑到服务的增长性，高可用更需要长期规划并进行体系化建设。</p>
 <h3 id="4-3-总结"><a href="#4-3-总结" class="headerlink" title="4.3 总结"></a>4.3 总结</h3><p>高可用其实是在说 “稳定性”，稳定性是一个平时不重要，但出了问题就要命的事情，然而它的落地又是一个问题——平时业务发展良好，稳定性建设就会降级给业务让路。解决这个问题必须在组织上有所保障，比如让业务负责人背上稳定性绩效指标，同时在部门中建立稳定性建设小组，小组成员由每条线的核心力量兼任，绩效由稳定性负责人来打分，这样就可以把体系化的建设任务落实到具体的业务系统中了。</p>
 <h1 id="5-个人总结"><a href="#5-个人总结" class="headerlink" title="5. 个人总结"></a>5. 个人总结</h1><p>一个秒杀系统的设计，可以根据不同级别的流量，由简单到复杂打造出不同的架构，本质是各方面的取舍和权衡。当然，你可能注意到，本文并没有涉及具体的选型方案，因为这些对于架构来说并不重要，作为架构师，应该时刻提醒自己主线是什么。</p>
-<p>同时也在这里抽象、提炼一下，主要是个人对于秒杀设计的提纲式整理，方便各位同学进行参考——!<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1460000021026492.png" alt="image"></p>
+<p>同时也在这里抽象、提炼一下，主要是个人对于秒杀设计的提纲式整理，方便各位同学进行参考——!<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1460000021026492.png"></p>
 <p>参考：<a href="https://segmentfault.com/a/1190000020970562" target="_blank" rel="noopener">一个秒杀系统的设计思考</a></p>
 
             </div>
@@ -1388,7 +1388,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
+            collapseDepth: Number('4'),
             headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
@@ -1530,7 +1530,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178.8k</span>&nbsp;字
+                class="white-color">186.1k</span>&nbsp;字
             
             
             

@@ -642,18 +642,18 @@
 </ol>
 </blockquote>
 <h3 id="4-3-1-用户请求预处理模块"><a href="#4-3-1-用户请求预处理模块" class="headerlink" title="4.3.1 用户请求预处理模块"></a>4.3.1 用户请求预处理模块</h3><p>经过HTTP服务器的分发后，单个服务器的负载相对低了一些，但总量依然可能很大，如果后台商品已经被秒杀完毕，那么直接给后来的请求返回秒杀失败即可，不必再进一步发送事务了，示例代码可以如下所示：</p>
-<pre class=" language-cpp"><code class="language-cpp">package seckill<span class="token punctuation">;</span>
-import org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpRequest<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> seckill<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpRequest<span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">/**
  * 预处理阶段，把不必要的请求直接驳回，必要的请求添加到队列中进入下一阶段.
  */</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PreProcessor</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 商品是否还有剩余</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> boolean reminds <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> reminds <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">forbidden</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">// Do something.</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> boolean <span class="token function">checkReminds</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">checkReminds</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>reminds<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">// 远程检测是否还有剩余，该RPC接口应由数据库服务器提供，不必完全严格检查.</span>
             <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>RPC<span class="token punctuation">.</span><span class="token function">checkReminds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -869,19 +869,19 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 <p>这样，即使有脏数据如cache，一个小的时间窗口之后，脏数据还是会被淘汰。带来的代价是，多引入一次读miss（成本可以忽略）。</p>
 <p>除此之外，最佳实践之一是：<strong>建议为所有cache中的item设置一个超时时间</strong>。</p>
 </li>
-<li><p><strong>如何提高数据库的扩展性？</strong></p>
-<p>原来用hash的方式路由，分为2个库，数据量还是太大，要分为3个库，势必需要进行数据迁移，有一个很帅气的“数据库秒级扩容”方案。</p>
-<p><strong>如何秒级扩容？</strong></p>
-<p>首先，<strong>我们不做2库变3库的扩容，我们做2库变4库（库加倍）的扩容（未来4-&gt;8-&gt;16）</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000015.webp"></p>
-<p>服务+数据库是一套（省去了缓存），<strong>数据库采用“双主”的模式</strong>。</p>
-<p><strong>扩容步骤：</strong></p>
+</ol>
+<h4 id="4-4-2-6-如何提高数据库的扩展性？"><a href="#4-4-2-6-如何提高数据库的扩展性？" class="headerlink" title="4.4.2.6. 如何提高数据库的扩展性？"></a>4.4.2.6. 如何提高数据库的扩展性？</h4><p>   原来用hash的方式路由，分为2个库，数据量还是太大，要分为3个库，势必需要进行数据迁移，有一个很帅气的“数据库秒级扩容”方案。</p>
+<p>   <strong>如何秒级扩容？</strong></p>
+<p>   首先，<strong>我们不做2库变3库的扩容，我们做2库变4库（库加倍）的扩容（未来4-&gt;8-&gt;16）</strong></p>
+<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000015.webp"></p>
+<p>   服务+数据库是一套（省去了缓存），<strong>数据库采用“双主”的模式</strong>。</p>
+<p>   <strong>扩容步骤：</strong></p>
 <blockquote>
 <p><strong>第一步</strong>，将一个主库提升;</p>
 <p><strong>第二步</strong>，修改配置，2库变4库（原来MOD2，现在配置修改后MOD4），扩容完成；</p>
 </blockquote>
-<p><strong>原MOD2为偶的部分，现在会MOD4余0或者2；原MOD2为奇的部分，现在会MOD4余1或者3</strong>；数据不需要迁移，同时，双主互相同步，一遍是余0，一边余2，两边数据同步也不会冲突，秒级完成扩容！</p>
-<p>最后，要做一些收尾工作：</p>
+<p>   <strong>原MOD2为偶的部分，现在会MOD4余0或者2；原MOD2为奇的部分，现在会MOD4余1或者3</strong>；数据不需要迁移，同时，双主互相同步，一遍是余0，一边余2，两边数据同步也不会冲突，秒级完成扩容！</p>
+<p>   最后，要做一些收尾工作：</p>
 <blockquote>
 <ol>
 <li>将旧的双主同步解除；</li>
@@ -889,10 +889,8 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 <li>删除多余的数据（余0的主，可以将余2的数据删除掉）；</li>
 </ol>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000016.webp"></p>
-<p>这样，秒级别内，我们就完成了2库变4库的扩展。</p>
-</li>
-</ol>
+<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000016.webp"></p>
+<p>   这样，秒级别内，我们就完成了2库变4库的扩展。</p>
 <h1 id="5-大并发带来的挑战"><a href="#5-大并发带来的挑战" class="headerlink" title="5. 大并发带来的挑战"></a>5. 大并发带来的挑战</h1><h2 id="5-1-请求接口的合理设计"><a href="#5-1-请求接口的合理设计" class="headerlink" title="5.1 请求接口的合理设计"></a>5.1 请求接口的合理设计</h2><p>一个秒杀或者抢购页面，通常分为2个部分，一个是<strong>静态的HTML等内容</strong>，另一个就是<strong>参与秒杀的Web后台请求接口</strong>。</p>
 <p><strong>通常静态HTML等内容，是通过CDN的部署，一般压力不大，核心瓶颈实际上在后台请求接口上</strong>。这个后端接口，必须能够支持高并发请求，同时，非常重要的一点，必须尽可能“快”，在最短的时间里返回用户的请求结果。<strong>为了实现尽可能快这一点，接口的后端存储使用内存级别的操作会更好一点</strong>。仍然直接面向MySQL之类的存储是不合适的，<strong>如果有这种复杂业务的需求，都建议采用异步写入</strong>。</p>
 <p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000017.webp"></p>
@@ -1610,7 +1608,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
+            collapseDepth: Number('4'),
             headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
@@ -1752,7 +1750,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178.8k</span>&nbsp;字
+                class="white-color">186.1k</span>&nbsp;字
             
             
             
