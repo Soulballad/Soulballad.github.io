@@ -509,7 +509,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="一、发现问题"><a href="#一、发现问题" class="headerlink" title="一、发现问题"></a>一、发现问题</h1><p> 下面是线上机器的cpu使用率，可以看到从4月8日开始，随着时间cpu使用率在逐步增高，最终使用率达到100%导致线上服务不可用，后面重启了机器后恢复。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1196330-20180514003417351-1333416698.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291949102181.png"></p>
 <h1 id="二、排查思路"><a href="#二、排查思路" class="headerlink" title="二、排查思路"></a>二、排查思路</h1><p>简单分析下可能出问题的地方，分为5个方向：</p>
 <p>1.系统本身代码问题</p>
 <p>2.内部下游系统的问题导致的雪崩效应</p>
@@ -524,32 +524,32 @@
 <p> <strong>即通过上述方法没有直接定位到问题。</strong></p>
 <h1 id="四、解决方案"><a href="#四、解决方案" class="headerlink" title="四、解决方案"></a>四、解决方案</h1><p>1.重启了6台中问题比较严重的5台机器，先恢复业务。保留一台现场，用来分析问题。</p>
 <p>2.查看当前的tomcat线程pid</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1196330-20180514004234948-269659542.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291949102531.png"></p>
 <p>3.查看该pid下线程对应的系统占用情况。top -Hp 384</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1196330-20180514100850741-1821148052.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291949102391.png"></p>
 <p>4.发现pid 4430 4431 4432 4433 线程分别占用了约40%的cpu</p>
 <p>5.将这几个pid转为16进制，分别为114e 114f 1150 1151</p>
 <p>6.下载当前的java线程栈 sudo -u tomcat jstack -l 384&gt;/1.txt</p>
 <p>7.查询5中对应的线程情况，发现都是gc线程导致的</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1196330-20180514100916449-1325278223.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291949103511.png"></p>
 <p>8.dump java堆数据</p>
 <p>sudo -u tomcat jmap -dump:live,format=b,file=/dump201612271310.dat 384</p>
 <p>9.使用MAT加载堆文件，可以看到javax.crypto.JceSecurity对象占用了95%的内存空间，初步定位到问题。</p>
 <p>MAT下载地址：<a href="http://www.eclipse.org/mat/" target="_blank" rel="noopener">http://www.eclipse.org/mat/</a></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1196330-20180514101651715-90687757.png"></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1196330-20180514101016818-56682802.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291949102541.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291949102551.png"></p>
 <p>10.查看类的引用树，看到BouncyCastleProvider对象持有过多。即我们代码中对该对象的处理方式是错误的，定位到问题。</p>
 <h1 id="五、代码分析"><a href="#五、代码分析" class="headerlink" title="五、代码分析"></a>五、代码分析</h1><p>我们代码中有一块是这样写的</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1196330-20180514101048185-1240846024.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291949103231.png"></p>
 <p>这是加解密的功能，每次运行加解密都会new一个BouncyCastleProvider对象,放倒Cipher.getInstance()方法中。</p>
 <p>看下Cipher.getInstance()的实现，这是jdk的底层代码实现，追踪到JceSecurity类中</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1196330-20180514101116518-700840740.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291949102861.png"></p>
 <p>verifyingProviders每次put后都会remove,verificationResults只会put，不会remove.</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1196330-20180514101143847-178910545.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291949102911.png"></p>
 <p>看到verificationResults是一个static的map，即属于JceSecurity类的。</p>
 <p><strong>所以每次运行到加解密都会向这个map put一个对象，而这个map属于类的维度，所以不会被GC回收。这就导致了大量的new的对象不被回收。</strong></p>
 <h1 id="六、代码改进"><a href="#六、代码改进" class="headerlink" title="六、代码改进"></a>六、代码改进</h1><p><strong>将有问题的对象置为static，每个类持有一个，不会多次新建。</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1196330-20180514101210937-1764782322.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291949102891.png"></p>
 <h1 id="七、本文总结"><a href="#七、本文总结" class="headerlink" title="七、本文总结"></a>七、本文总结</h1><p>遇到线上问题不要慌，首先确认排查问题的思路：</p>
 <ol>
 <li>查看日志</li>

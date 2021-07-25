@@ -513,7 +513,7 @@
 </blockquote>
 <h2 id="1-web-endpoint-请求原理"><a href="#1-web-endpoint-请求原理" class="headerlink" title="1.web endpoint 请求原理"></a>1.web endpoint 请求原理</h2><p>spring boot actuator 中有很多 endpoints，这里以 web endpoints 来简单分析一下原理。</p>
 <p>spring-boot-starter-actuator.jar 依赖于 spring-boot-starter-actuator-autoconfigure.jar，spring-boot-starter-actuator-autoconfigure.jar 的结构如下，其中有用于自动装配的 spring.factories、源码、元数据的json信息以及元数据的配置信息。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719182234844.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/19/20200719182234844.png"></p>
 <p>在 spring.factories 中配置了很多的自动装配类，其中有一个叫 WebMvcEndpointManagementContextConfiguration，这个类中声明了 WebMvcEndpointHandlerMapping 的Bean。</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ManagementContextConfiguration</span><span class="token punctuation">(</span>proxyBeanMethods <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@ConditionalOnWebApplication</span><span class="token punctuation">(</span>type <span class="token operator">=</span> Type<span class="token punctuation">.</span>SERVLET<span class="token punctuation">)</span>
@@ -552,7 +552,7 @@
 
 <span class="token punctuation">}</span></code></pre>
 <p>WebMvcEndpointHandlerMapping 的类图如下</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719183030011.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/19/20200719183030011.png"></p>
 <p>它有一个内部类 WebMvcLinksHandler，实现了 links 方法，通过 request 请求中的 url 找到对应的 handler，这里的 linksResolver 是一个 EndpointLinksResolver，他里面包含所有已经开启的 endpoint 信息</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebMvcEndpointHandlerMapping</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractWebMvcEndpointHandlerMapping</span> <span class="token punctuation">{</span>
 
@@ -636,7 +636,7 @@
    <span class="token punctuation">}</span>
    <span class="token keyword">this</span><span class="token punctuation">.</span>mappingRegistry<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>mapping<span class="token punctuation">,</span> handler<span class="token punctuation">,</span> method<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719184717237.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/19/20200719184717237.png"></p>
 <p>在请求 <a href="http://localhost:8080/actuator" target="_blank" rel="noopener">http://localhost:8080/actuator</a> 时，通过 DispatcherServlet 获取到一个 HandlerMapping，即为 AbstractWebMvcEndpointHandlerMapping，然后再调用  invokeHandlerMethod 方法时，最终调用到 </p>
 <p>WebMvcEndpointHandlerMapping.WebMvcLinksHandler#links 方法，它的实现如下</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
@@ -646,7 +646,7 @@
          WebMvcEndpointHandlerMapping<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>linksResolver<span class="token punctuation">.</span><span class="token function">resolveLinks</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getRequestURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>最终返回 endpoints 对应的映射关系</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719185348091.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/19/20200719185348091.png"></p>
 <p>根据这里的返回结果，会调用到 HandlerMethodReturnValueHandlerComposite#handleReturnValue ，选择一个具体的 Handler 实现为 RequestResponseBodyMethodProcessor，最终调用 它的 handleReturnValue 方法</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handleReturnValue</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Object returnValue<span class="token punctuation">,</span> MethodParameter returnType<span class="token punctuation">,</span> ModelAndViewContainer mavContainer<span class="token punctuation">,</span> NativeWebRequest webRequest<span class="token punctuation">)</span>

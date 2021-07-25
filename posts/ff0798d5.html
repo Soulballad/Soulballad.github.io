@@ -548,7 +548,7 @@
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/3-1.Hystrix%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91%E7%86%94%E6%96%AD.jpg"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/20/202008202143419961.jpg"></p>
 <p>CommandExecutor.execute 实现如下</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> Object <span class="token function">execute</span><span class="token punctuation">(</span>HystrixInvokable invokable<span class="token punctuation">,</span> ExecutionType executionType<span class="token punctuation">,</span> MetaHolder metaHolder<span class="token punctuation">)</span> <span class="token keyword">throws</span> RuntimeException <span class="token punctuation">{</span>
     Validate<span class="token punctuation">.</span><span class="token function">notNull</span><span class="token punctuation">(</span>invokable<span class="token punctuation">)</span><span class="token punctuation">;</span>

@@ -512,7 +512,7 @@
 <p>Spring Boot MessageConverter：<a href="d815b741">【从零开始学Spring Boot】-16.Spring Boot MessageConverter消息转</a></p>
 </blockquote>
 <h2 id="1-自定义MessageConverter执行流程"><a href="#1-自定义MessageConverter执行流程" class="headerlink" title="1.自定义MessageConverter执行流程"></a>1.自定义MessageConverter执行流程</h2><p>以 UserController#add1 为例，简单分析一下源码</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200729214822124.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/29/20200729214822124.png"></p>
 <p>在 AbstractMessageConverterMethodArgumentResolver#readWithMessageConverters 中有这样一段</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> Object <span class="token function">readWithMessageConverters</span><span class="token punctuation">(</span>HttpInputMessage inputMessage<span class="token punctuation">,</span> MethodParameter parameter<span class="token punctuation">,</span> Type targetType<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> HttpMediaTypeNotSupportedException<span class="token punctuation">,</span> HttpMessageNotReadableException <span class="token punctuation">{</span>
 
@@ -623,7 +623,7 @@
     <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>messageConverters<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>这里的 messageConverters 通过构造函数加入了一部分，也在 WebMvcAutoConfiguration 中进行了扩展。</p>
-<h2 id="2-自定义MessageConverter加载"><a href="#2-自定义MessageConverter加载" class="headerlink" title="2.自定义MessageConverter加载"></a>2.自定义MessageConverter加载</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200729222813002.png"></p>
+<h2 id="2-自定义MessageConverter加载"><a href="#2-自定义MessageConverter加载" class="headerlink" title="2.自定义MessageConverter加载"></a>2.自定义MessageConverter加载</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/29/20200729222813002.png"></p>
 <p>在 spring boot 启动的时候，会加载到 WebMvcAutoConfiguration.EnableWebMvcConfiguration 中 requestMappingHandlerAdapter 方法，这个方法用来声明一个 RequestMappingHandlerAdapter 的 bean，它又通过调用 super.requestMappingHandlerAdapter 来进行实例化。</p>
 <p>在 super.requestMappingHandlerAdapter 通过<code>adapter.setMessageConverters(getMessageConverters());</code> 将 messageConverters 设置到 adapter 上，这里的 getMessageConverters 实现如下</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">final</span> List<span class="token operator">&lt;</span>HttpMessageConverter<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">>></span> <span class="token function">getMessageConverters</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

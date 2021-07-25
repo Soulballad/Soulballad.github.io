@@ -528,7 +528,7 @@
 <li>构建工具（apache maven 3.6.3）</li>
 <li>开发工具（IntelliJ IDEA ）</li>
 </ol>
-<h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200811220929570.png"></p>
+<h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/11/20200811220929570.png"></p>
 <ul>
 <li>nfx-eureka-client： eureka 客户端，注册到 eureka 服务端：<ul>
 <li>user-api： 公共api，定义实体和接口；</li>
@@ -859,21 +859,21 @@
 <span class="token punctuation">}</span></code></pre>
 <h2 id="3-3-git-地址"><a href="#3-3-git-地址" class="headerlink" title="3.3 git 地址"></a>3.3 git 地址</h2><p><a href="https://github.com/Soulballad/spring-usage-examples/tree/master/spring-cloud/spring-cloud-01-netflix/spring-cloud-nfx-02-eureka" target="_blank" rel="noopener">spring-cloud-nfx-02-eureka</a>: Spring Cloud 整合 Eureka 实现的分布式注册中心方案</p>
 <h1 id="4-效果展示"><a href="#4-效果展示" class="headerlink" title="4.效果展示"></a>4.效果展示</h1><h2 id="4-1-nfx-eureka-server"><a href="#4-1-nfx-eureka-server" class="headerlink" title="4.1 nfx-eureka-server"></a>4.1 nfx-eureka-server</h2><p>启动 eureka 服务端 nfx-eureka-server，访问 <a href="http://localhost:9090，">http://localhost:9090，</a> 可以看到如下页面</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200811222357590.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/11/20200811222357590.png"></p>
 <p>没有任何服务注册到 nfx-eureka-server 上面来。</p>
 <h2 id="4-2-user-service-provider"><a href="#4-2-user-service-provider" class="headerlink" title="4.2 user-service-provider"></a>4.2 user-service-provider</h2><p>然后再启动 user-service-provider，再次访问 <a href="http://localhost:9090，可以看到服务提供者已经注册上来了">http://localhost:9090，可以看到服务提供者已经注册上来了</a></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200811222733807.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/11/20200811222733807.png"></p>
 <p>在 netflix-eureka-client-provider 访问下列地址，观察输出信息是否符合预期。</p>
 <p><strong>查询用户列表</strong></p>
 <pre class=" language-http"><code class="language-http">###  GET /provider/user/list
 GET http://localhost:8090/provider/user/list
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812205346758.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812205346758.png"></p>
 <p><strong>根据id查询用户</strong></p>
 <pre class=" language-http"><code class="language-http">###  GET /provider/user/query/{id}
 GET http://localhost:8090/provider/user/query/1
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812205411260.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812205411260.png"></p>
 <p><strong>新增用户</strong></p>
 <pre class=" language-http"><code class="language-http">###  POST /provider/user/add
 POST http://localhost:8090/provider/user/add
@@ -887,7 +887,7 @@ POST http://localhost:8090/provider/user/add
   <span class="token string">"address"</span><span class="token punctuation">:</span> <span class="token string">"wuhan"</span><span class="token punctuation">,</span>
   <span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"15999999999"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812205752360.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812205752360.png"></p>
 <p><strong>更新用户</strong></p>
 <pre class=" language-http"><code class="language-http">###  PUT /provider/user/update
 PUT http://localhost:8090/provider/user/update
@@ -902,26 +902,26 @@ PUT http://localhost:8090/provider/user/update
   <span class="token string">"address"</span><span class="token punctuation">:</span> <span class="token string">"guangzhou"</span><span class="token punctuation">,</span>
   <span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"13888888888"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812205523126.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812205523126.png"></p>
 <p><strong>根据id删除用户</strong></p>
 <pre class=" language-http"><code class="language-http">###  DELETE /provider/user/delete/{id}
 DELETE http://localhost:8090/provider/user/delete/3
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812205818683.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812205818683.png"></p>
 <p>可以看到 user-service-provider 提供的接口都可以正常运行</p>
 <h2 id="4-3-user-service-consumer"><a href="#4-3-user-service-consumer" class="headerlink" title="4.3 user-service-consumer"></a>4.3 user-service-consumer</h2><p>然后再启动 user-service-consumer，再次访问 <a href="http://localhost:9090，可以看到服务提供者已经注册上来了">http://localhost:9090，可以看到服务提供者已经注册上来了</a></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812215328355.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812215328355.png"></p>
 <p>在 netflix-eureka-client-consumer 访问下列地址，观察输出信息是否符合预期。</p>
 <p><strong>查询用户列表</strong></p>
 <pre class=" language-http"><code class="language-http">###  GET /consumer/user/list
 GET http://localhost:8080/consumer/user/list
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812214433717.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812214433717.png"></p>
 <p><strong>根据id查询用户</strong></p>
 <pre class=" language-http"><code class="language-http">###  GET /consumer/user/query/{id}
 GET http://localhost:8080/consumer/user/query/1
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812214516798.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812214516798.png"></p>
 <p><strong>新增用户</strong></p>
 <pre class=" language-http"><code class="language-http">###  POST /consumer/user/add
 POST http://localhost:8080/consumer/user/add
@@ -935,7 +935,7 @@ POST http://localhost:8080/consumer/user/add
   <span class="token string">"address"</span><span class="token punctuation">:</span> <span class="token string">"wuhan"</span><span class="token punctuation">,</span>
   <span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"15999999999"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812214548195.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812214548195.png"></p>
 <p><strong>更新用户</strong></p>
 <pre class=" language-http"><code class="language-http">###  PUT /consumer/user/update
 PUT http://localhost:8080/consumer/user/update
@@ -950,12 +950,12 @@ PUT http://localhost:8080/consumer/user/update
   <span class="token string">"address"</span><span class="token punctuation">:</span> <span class="token string">"shanghang-pudong"</span><span class="token punctuation">,</span>
   <span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"13888888888"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812214626683.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812214626683.png"></p>
 <p><strong>根据id删除用户</strong></p>
 <pre class=" language-http"><code class="language-http">###  DELETE /consumer/user/delete/{id}
 DELETE http://localhost:8080/consumer/user/delete/4
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200812214712772.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/12/20200812214712772.png"></p>
 <h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h1><ol>
 <li><a href="https://docs.spring.io/spring-cloud-netflix/docs/2.2.4.RELEASE/reference/html/#spring-cloud-eureka-server" target="_blank" rel="noopener">官方文档-Spring Cloud Netflix/Eureka</a></li>
 </ol>

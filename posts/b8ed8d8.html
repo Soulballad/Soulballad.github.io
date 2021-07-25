@@ -513,7 +513,7 @@
 </blockquote>
 <p>JdbcTemplate 是 spring 提供的一个操作数据库的工具类，它是模板方法模式的一种实现。它本身不会注入到 spring 容器中，需要在使用时声明。在创建 JdbcTemplate 对象时一般需要传入一个 datasource，所以在 DataSourceConfig 中同时读二者进行了声明。</p>
 <h2 id="1-JdbcTemplate-查询执行流程"><a href="#1-JdbcTemplate-查询执行流程" class="headerlink" title="1.JdbcTemplate 查询执行流程"></a>1.JdbcTemplate 查询执行流程</h2><p>这里以 UserService#findUserById 为例说明，其他类似</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200726163317151.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/26/20200726163317151.png"></p>
 <p>主要流程还是 jdbc 连接数据的操作，需要用户自己实现结果集映射，重写 RowMapper 中的 mapRow 方法。</p>
 
             </div>

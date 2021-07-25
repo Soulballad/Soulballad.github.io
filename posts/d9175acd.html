@@ -509,7 +509,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="1-Arthas-简介"><a href="#1-Arthas-简介" class="headerlink" title="1. Arthas 简介"></a>1. Arthas 简介</h1><p>Arthas 是 Alibaba 开源的 Java 诊断工具，根据官方介绍，它提供了如下工功能：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517111859.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517111859.png"></p>
 <p>官方文档地址： <a href="https://alibaba.github.io/arthas/" target="_blank" rel="noopener">https://alibaba.github.io/arthas/</a></p>
 <p>github 源码地址： <a href="https://github.com/alibaba/arthas" target="_blank" rel="noopener">https://github.com/alibaba/arthas</a></p>
 <br>
@@ -518,11 +518,11 @@
 curl -O https://alibaba.github.io/arthas/arthas-boot.jar
 # 通过如下命令启动
 java -jar arthas-boot.jar</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517161911.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517161911.png"></p>
 <p>选择进程 id 按下回车，就可以连接到对应的 java 应用，首次启动会下载一些文件到 “<code>C:/Users/${user}/.arthas/lib/3.2.0/arthas</code>“ 目录</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200517154635722.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/17/20200517154635722.png"></p>
 <p>arthas 启动支持多个参数，可以使用 <code>-h</code> 查看</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517161841.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517161841.png"></p>
 <pre class=" language-shell"><code class="language-shell">EXAMPLES:
   java -jar arthas-boot.jar <pid>
   java -jar arthas-boot.jar --target-ip 0.0.0.0
@@ -543,13 +543,13 @@ WIKI:
 <br>
 
 <h2 id="help"><a href="#help" class="headerlink" title="help"></a>help</h2><p>arthas 连接成功后，使用 help 可以看到提供的一些命令</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517161913.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517161913.png"></p>
 <p>每个命令可以使用 <code>-h</code> 参数查看帮助信息，里面有<code>EXAMPLES</code>和<code>WIKI</code>链接</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517161912.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517161912.png"></p>
 <br>
 
 <h2 id="webconsole"><a href="#webconsole" class="headerlink" title="webconsole"></a>webconsole</h2><p>arthas 启动后，可以通过浏览器进行访问，地址 <a href="http://localhost:8563/" target="_blank" rel="noopener">http://localhost:8563/</a></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194019.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194019.png"></p>
 <br>
 
 <h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><p>如果只是退出当前的连接，可以用<code>quit</code>或者<code>exit</code>命令。Attach到目标进程上的arthas还会继续运行，端口会保持开放，下次连接时可以直接连接上。</p>
@@ -557,7 +557,7 @@ WIKI:
 <br>
 
 <h1 id="3-Arthas-命令"><a href="#3-Arthas-命令" class="headerlink" title="3. Arthas 命令"></a>3. Arthas 命令</h1><h2 id="dashboard"><a href="#dashboard" class="headerlink" title="dashboard"></a>dashboard</h2><p>查看面板信息，主要包含cpu 内存使用信息，可以按  <code>Ctrl+C</code> 或者 输入 <code>q</code> 退出</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517163427.png" alt="_images/dashboard.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517163427.png"></p>
 <p>数据说明</p>
 <ul>
 <li>ID: Java级别的线程ID，注意这个ID不能跟jstack中的nativeID一一对应</li>
@@ -583,7 +583,7 @@ thread -n 3
 thread -n 3 -i 5000
 # 查找线程是否有阻塞
 thread -b</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517163428.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517163428.png"></p>
 <br>
 
 <h2 id="sysprop"><a href="#sysprop" class="headerlink" title="sysprop"></a>sysprop</h2><p>查看当前JVM的系统属性，支持 pipeline</p>
@@ -592,19 +592,19 @@ sysprop key # 查看key对应的属性
 sysprop key value # 修改属性值
 sysprop | grep java # 查询包含java的属性
 sysprop | wc -l # 统计数量</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194020.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194020.png"></p>
 <br>
 
 <h2 id="sysenv"><a href="#sysenv" class="headerlink" title="sysenv"></a>sysenv</h2><p>查看当前JVM的环境属性</p>
 <p>用法和 sysprop 类似，不支持修改</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194024.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194024.png"></p>
 <br>
 
 <h2 id="logger"><a href="#logger" class="headerlink" title="logger"></a>logger</h2><p>查看logger信息，更新logger level</p>
 <pre class=" language-shell"><code class="language-shell">logger # 查看所有logger对象信息
 logger -n [name] # 查看名为name的logger信息
 logger -c [classloader] -n [name] -l ERROR # 修改名为name的logger级别为ERROR，需指定类加载器</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194023.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194023.png"></p>
 <br>
 
 <h2 id="sc"><a href="#sc" class="headerlink" title="sc"></a>sc</h2><p>查看JVM已加载的类信息</p>
@@ -612,7 +612,7 @@ logger -c [classloader] -n [name] -l ERROR # 修改名为name的logger级别为E
 sc -d org/apache/commons/lang/StringUtils # 查看StringUtils详细信息
 sc -d *StringUtils # 查看StringUtils，根据*匹配
 sc -d -f org.apache.commons.lang.StringUtils # 查看类及成员变量信息，f要配合d使用才有效</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194022.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194022.png"></p>
 <br>
 
 <h2 id="sm"><a href="#sm" class="headerlink" title="sm"></a>sm</h2><p>查看已加载类的方法信息，用法和 <code>sc</code> 类似</p>
@@ -620,7 +620,7 @@ sc -d -f org.apache.commons.lang.StringUtils # 查看类及成员变量信息，
 sm -d org.apache.commons.lang.StringUtils # 查看String方法详情
 sm -d org/apache/commons/lang/StringUtils # 查看String方法详情
 sm *StringUtils *  # 查看String方法，根据*匹配</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194025.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194025.png"></p>
 <br>
 
 <h2 id="dump"><a href="#dump" class="headerlink" title="dump"></a>dump</h2><p>dump 已加载类的 bytecode 到特定目录</p>
@@ -629,7 +629,7 @@ dump java.lang.* # dump 批量dump
 dump -d /tmp/output java.lang.String # dump到指定目录
 dump org/apache/commons/lang/StringUtils # dump，支持目录格式
 dump *StringUtils # dump，根据*匹配</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194021.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194021.png"></p>
 <br>
 
 <h2 id="jad"><a href="#jad" class="headerlink" title="jad"></a>jad</h2><p>反编译指定已加载类的源码</p>
@@ -637,7 +637,7 @@ dump *StringUtils # dump，根据*匹配</code></pre>
 jad java.lang.String toString # 反编译指定方法
 jad --source-only java.lang.String # 反编绎时只显示源代码
 jad -c 39eb305e org/apache/log4j/Logger # 反编译指定classloader</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194027.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194027.png"></p>
 <br>
 
 <h2 id="classloader"><a href="#classloader" class="headerlink" title="classloader"></a>classloader</h2><p>查看classloader的继承树，urls，类加载信息</p>
@@ -647,7 +647,7 @@ classloader -l # 统计每个classLoader加载类数量
 classloader -c 327a647b # 查看具体的classLoader
 classloader -a # 列出所有加载的类
 classloader -c 659e0bfd --load demo.MathGame # 使用指定classLoader加载类</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194026.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194026.png"></p>
 <br>
 
 <h2 id="mc"><a href="#mc" class="headerlink" title="mc"></a>mc</h2><p>编译<code>.java</code>文件生成<code>.class</code></p>
@@ -699,7 +699,7 @@ watch *StringUtils isBlank params '#cost>100'</code></pre>
 <span class="token punctuation">}</span></code></pre>
 <p>使用如下 watch 命令，然后访问 <a href="http://localhost:9090/user/10" target="_blank" rel="noopener">http://localhost:9090/user/10</a></p>
 <pre class=" language-shell"><code class="language-shell">watch com.soulballad.usage.arthasdemo.web.UserController getUser "{params,target,returnObj}" -x 2 -b -s -n 2</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194029.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194029.png"></p>
 <ul>
 <li>参数里<code>-n 2</code>，表示只执行两次</li>
 <li>输出结果中，第一次输出的是方法调用前的观察结果，第二次输出的是方法返回后的表达式的结果</li>
@@ -715,11 +715,11 @@ trace *StringUtils isBlank '#cost>100' # 过滤只输出耗时大于100ms的记�
 trace -E com.test.ClassA|org.test.ClassB method1|method2|method3 
 trace demo.MathGame run -n 5 # 只执行5次
 trace demo.MathGame run --skipJDKMethod false # 不跳过jdk中方法，默认为true</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194028.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194028.png"></p>
 <br>
 
 <h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><p>输出当前方法被调用的调用路径</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194031.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194031.png"></p>
 <p>支持条件过滤和 ognl 表达式</p>
 <br>
 
@@ -731,7 +731,7 @@ tt -i 1000 # 查询index为1000的记录详情
 tt -i 1000 -p # 根据index重新触发调用
 tt -i 1000 -p --replay-times 3 --replay-interval 3000 # 指定触发间隔和次数
 tt --delete-all # 删除所有记录</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20200517194030.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/03/07/20200517194030.png"></p>
 <br>
 
 <h2 id="ognl"><a href="#ognl" class="headerlink" title="ognl"></a>ognl</h2><p>执行ognl表达式</p>

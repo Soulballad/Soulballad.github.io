@@ -509,24 +509,24 @@
 </blockquote>
 <ol>
 <li><p>先以container为起点，k8s既然是容器编排工具，那么一定会有container</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220807.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308220807.png"></p>
 </li>
 <li><p>那k8s如何操作这些container呢？从感性的角度来讲，得要有点逼格，k8s不想直接操作 container，因为操作container的事情是docker来做的，k8s中要有自己的最小操作单位，称之为Pod 说白了，Pod就是一个或多个Container的组合</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220809.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308220809.png"></p>
 <p><code>看看官网怎么描述的</code> ：<a href="https://kubernetes.io/docs/concepts/workloads/pods/pod/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/workloads/pods/pod/</a></p>
 <blockquote>
 <p>A Pod (as in a pod of whales or pea pod) is a group of one or more containers (such as Docker containers),  with shared storage/network, and a specification for how to run the containers. </p>
 </blockquote>
 </li>
 <li><p>那Pod的维护谁来做呢？那就是ReplicaSet，通过selector来进行管理</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220818.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308220818.png"></p>
 <p><code>看看官网怎么描述的</code> ：<a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/</a></p>
 <blockquote>
 <p>A ReplicaSet is defined with fields, including a selector that specifies how to identify Pods it can acquire, a number of replicas indicating how many Pods it should be maintaining, and a pod template specifying the data of new Pods it should create to meet the number of replicas criteria.</p>
 </blockquote>
 </li>
 <li><p>Pod和ReplicaSet的状态如何维护和监测呢？Deployment</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220832.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308220832.png"></p>
 <p><code>官网是如何描述的</code> ：<a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/workloads/controllers/deployment/</a></p>
 <blockquote>
 <p>A Deployment controller provides declarative updates for Pods and ReplicaSets. </p>
@@ -534,14 +534,14 @@
 </blockquote>
 </li>
 <li><p>不妨把相同或者有关联的Pod分门别类一下，那怎么分门别类呢？Label</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220858.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308220858.png"></p>
 <p><code>官网是如何描述的</code> ：<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/</a></p>
 <blockquote>
 <p>Labels are key/value pairs that are attached to objects, such as pods.</p>
 </blockquote>
 </li>
 <li><p>具有相同label的service要是能够有个名称就好了，Service</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220920.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308220920.png"></p>
 <p><code>看官网上怎么说</code> ：<a href="https://kubernetes.io/docs/concepts/services-networking/service/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/services-networking/service/</a></p>
 <blockquote>
 <p>An abstract way to expose an application running on a set of Pods as a network service.</p>
@@ -549,17 +549,17 @@
 </blockquote>
 </li>
 <li><p>上述说了这么多，Pod运行在哪里呢？当然是机器咯，比如一台centos机器，我们把这个机器称作为Node</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220932.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308220932.png"></p>
 <p><code>看看官网怎么说</code> ：<a href="https://kubernetes.io/docs/concepts/architecture/nodes/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/architecture/nodes/</a></p>
 <blockquote>
 <p>A node is a worker machine in Kubernetes, previously known as a minion. A node may be a VM or physical machine, depending on the cluster. Each node contains the services necessary to run pods and is managed by the master components.</p>
 </blockquote>
 </li>
 <li><p>难道只有一个Node吗？显然不太合适，多台Node共同组成集群才行嘛<br> 画个图表示一下咯，最好能把之前的Label，Service也一起画上去，整体感受一下</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308220940.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308220940.png"></p>
 </li>
 <li><p>此时，我们把目光转移到由3个Node节点组成的Master-Node集群</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221049.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221049.png"></p>
 </li>
 <li><p>这个集群要配合完成一些工作，总要有一些组件的支持吧？接下来我们来想想有哪些组件，然后画一个相对完整的架构图</p>
 <blockquote>
@@ -588,16 +588,16 @@
 </li>
 </ol>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221116.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221116.png"></p>
 </li>
 <li><p>不妨把这个图翻转一下方便查看</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221146.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221146.png"></p>
 </li>
 <li><p>官网K8S架构图</p>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/architecture/cloud-controller/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/architecture/cloud-controller/</a></p>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221153.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221153.png"></p>
 </li>
 </ol>
 <p><code>小结</code> ：有些小伙伴可能会想，有些组件知道它的作用了，有些有些模糊。没关系，目前我们只是停留在理论层面的推断和分析，毕竟一点实际操作都没有，现在能够有个感性的认知就已经很不错了</p>
@@ -1296,7 +1296,7 @@ kubectl port-forward nginx 8080:80</code></pre>
                             
 docker网络官网https://docs.docker.com/network/
 
-1 计算机网络模型![](https://gitee.com/soulballad/PicGo/raw/master/img/202103082131
+1 计算机网络模型![](https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/2
                         
                     </div>
                     <div class="publish-info">

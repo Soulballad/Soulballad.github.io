@@ -560,12 +560,12 @@
 </li>
 </ol>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519154539999.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/19/20200519154539999.png"></p>
 <br>
 
 <h1 id="2-watch观测方法调用"><a href="#2-watch观测方法调用" class="headerlink" title="2. watch观测方法调用"></a>2. watch观测方法调用</h1><pre class=" language-shell"><code class="language-shell"># 查看 UserController 下所有方法的 参数、对象、返回值
 watch com.soulballad.usage.arthasdemo.web.UserController * '{params,target,returnObj}'</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519155222425.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/19/20200519155222425.png"></p>
 <p>watch 支持方法调用前、调用后、异常抛出等多个场景观测，同时还可以在第四个参数中使用条件进行过滤，比如：</p>
 <pre class=" language-shell"><code class="language-shell">watch com.soulballad.usage.arthasdemo.web.UserController * '{returnObj}' 'params[0]>10'
 watch com.soulballad.usage.arthasdemo.web.UserController * '{returnObj}' '#cost>10'</code></pre>
@@ -614,15 +614,15 @@ jad --source-only com.soulballad.usage.arthasdemo.web.UserController > UserContr
 sc -d com.soulballad.usage.arthasdemo.web.UserController | grep classLoaderHash
 mc -c 18b4aac2 UserController.java</code></pre>
 <p>编译完成会出现一个路径，这个路径就是编译后class文件的位置</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519160730384.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/19/20200519160730384.png"></p>
 </li>
 <li><p>使用redefine重新加载</p>
 <pre class=" language-shell"><code class="language-shell"># redefine 后面使用上一步的路径，需要将 \ 转成 /
 redefine ../UserController.class</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519160948601.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/19/20200519160948601.png"></p>
 </li>
 <li><p>更新后结果</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519161238976.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/19/20200519161238976.png"></p>
 </li>
 </ol>
 </blockquote>
@@ -632,23 +632,23 @@ redefine ../UserController.class</code></pre>
 <pre class=" language-shell"><code class="language-shell">sc -d *UserController | grep classLoaderHash</code></pre>
 <p>查看更新前日志级别</p>
 <pre class=" language-shell"><code class="language-shell">ognl -c 18b4aac2 '@com.soulballad.usage.arthasdemo.web.UserController@LOGGER'</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519161959204.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/19/20200519161959204.png"></p>
 <p>更新日志级别为 DEBUG</p>
 <pre class=" language-shell"><code class="language-shell">ognl -c 18b4aac2 '@com.soulballad.usage.arthasdemo.web.UserController@LOGGER.setLevel(@ch.qos.logback.classic.Level@DEBUG)'</code></pre>
 <p>查看更新后日志级别</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519163825883.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/19/20200519163825883.png"></p>
 <br>
 
 <h1 id="5-tt获取spring上下文"><a href="#5-tt获取spring上下文" class="headerlink" title="5. tt获取spring上下文"></a>5. tt获取spring上下文</h1><p>执行 <code>tt</code> 命令来记录 <code>RequestMappingHandlerAdapter#invokeHandlerMethod</code> 的请求</p>
 <pre class=" language-shell"><code class="language-shell">tt -t org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter invokeHandlerMethod</code></pre>
 <p>然后访问 <code>user/1</code>，arthas 会记录访问时间片（time fragment）</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519164201326.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/19/20200519164201326.png"></p>
 <p>可以用 <code>tt</code> 命令的 <code>-i</code> 参数来指定index，并且用 <code>-w</code> 参数来执行ognl表达式来获取spring context：</p>
 <pre class=" language-shell"><code class="language-shell">tt -i 1000 -w 'target.getApplicationContext()'</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519164620433.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/19/20200519164620433.png"></p>
 <p>可以从 applicationContext 中获取 bean，触发方法调用</p>
 <pre class=" language-shell"><code class="language-shell">tt -i 1000 -w 'target.getApplicationContext().getBean("userController").getUser(2)'</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200519164751963.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/05/19/20200519164751963.png"></p>
 <br>
 
 <h1 id="6-链接"><a href="#6-链接" class="headerlink" title="6. 链接"></a>6. 链接</h1><ul>

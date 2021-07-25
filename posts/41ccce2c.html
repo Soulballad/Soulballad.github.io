@@ -517,15 +517,15 @@
 </blockquote>
 <ul>
 <li><p>远古时代</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308204011.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308204011.png"></p>
 <p><code>问题</code> ：成本高、部署慢、浪费资源、硬件限制、不利于迁移扩展</p>
 </li>
 <li><p>虚拟化时代</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308211016.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308211016.png"></p>
 <p><code>优点</code> ：相对利用好资源，相对容易扩展等。<br><code>缺点</code> ：虚拟机太重了，一上来占用较多物理资源，移植性差，资源利用率低等。</p>
 </li>
 <li><p>容器时代</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308211022.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308211022.png"></p>
 </li>
 </ul>
 <h2 id="1-4-再次理解Docker"><a href="#1-4-再次理解Docker" class="headerlink" title="1.4 再次理解Docker"></a>1.4 再次理解Docker</h2><blockquote>
@@ -562,7 +562,7 @@ A container is a runtime instance of an image--what the image becomes in memory 
 
 By contrast, a virtual machine (VM) runs a full-blown “guest” operating system with virtual access to host resources through a hypervisor. In general, VMs provide an environment with more resources than most applications need.</code></pre>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308211045.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308211045.png"></p>
 <h1 id="4-Docker-Engine-and-Architecture"><a href="#4-Docker-Engine-and-Architecture" class="headerlink" title="4 Docker Engine and Architecture"></a>4 Docker Engine and Architecture</h1><blockquote>
 <p><a href="https://docs.docker.com/engine/docker-overview/" target="_blank" rel="noopener">https://docs.docker.com/engine/docker-overview/</a></p>
 </blockquote>
@@ -572,11 +572,11 @@ By contrast, a virtual machine (VM) runs a full-blown “guest” operating syst
 <li>A REST API which speciﬁes interfaces that programs can use to talk to the daemon and instruct it what to do.</li>
 <li>A command line interface (CLI) client (the docker command).</li>
 </ul>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308211055.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308211055.png"></p>
 <h2 id="4-2-Docker-Architecture"><a href="#4-2-Docker-Architecture" class="headerlink" title="4.2 Docker Architecture"></a>4.2 Docker Architecture</h2><pre><code>Docker uses a client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308211110.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308211110.png"></p>
 <h1 id="5-Install-and-Experience"><a href="#5-Install-and-Experience" class="headerlink" title="5 Install and Experience"></a>5 Install and Experience</h1><p><a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308211156.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308211156.png"></p>
 <h2 id="5-1-在Win10上准备centos7"><a href="#5-1-在Win10上准备centos7" class="headerlink" title="5.1 在Win10上准备centos7"></a>5.1 在Win10上准备centos7</h2><pre><code>和大家说明一下，我们的目的仅仅是要安装一个centos7，然后在centos7上安装docker
 
 如果搞不定vagrant+virtualbox的方式，也可以直接使用VM搭建一个centos7

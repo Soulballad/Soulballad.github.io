@@ -524,11 +524,11 @@
 </ul>
 <pre class=" language-shell"><code class="language-shell">npm install hexo-cli -g  
 npm install hexo-deployer-git --save  </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20201031165008970.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/10/31/20201031165008970.png"></p>
 <h2 id="3-2-Hexo-初始化"><a href="#3-2-Hexo-初始化" class="headerlink" title="3.2 Hexo 初始化"></a>3.2 Hexo 初始化</h2><p>在当前目录下新建 Hexo 文件夹，即 <code>E:\笔记\博客\GiteePages\Hexo</code>，并进入该文件夹，执行如下命令初始化 hexo，hexo 的初始化需要在一个干净的目录下</p>
 <pre class=" language-shell"><code class="language-shell">hexo init</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20201031170105600.png"></p>
-<p>Hexo 安装完成后，当前目录下新建所需要的文件，Hexo 文件夹内容如下：<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20201031170239901.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/10/31/20201031170105600.png"></p>
+<p>Hexo 安装完成后，当前目录下新建所需要的文件，Hexo 文件夹内容如下：<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/10/31/20201031170239901.png"></p>
 <h2 id="3-3-本地查看效果"><a href="#3-3-本地查看效果" class="headerlink" title="3.3 本地查看效果"></a>3.3 本地查看效果</h2><p>在 Hexo 目录下打开命令行，使用如下命令生成静态资源文件，并启动 hexo server。然后可以通过 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000</a> 进行访问</p>
 <pre class=" language-shell"><code class="language-shell">hexo generate  
 hexo server  </code></pre>
@@ -538,18 +538,18 @@ INFO  Validating config
 INFO  <span class="token function">Start</span> processing
 INFO  Hexo is running at http:<span class="token operator">/</span><span class="token operator">/</span>localhost:4000 <span class="token punctuation">.</span> Press Ctrl<span class="token operator">+</span>C to stop<span class="token punctuation">.</span></code></pre>
 <p>访问 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 查看效果：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20201031170519350.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/10/31/20201031170519350.png"></p>
 <h1 id="4-在-Github-Pages-上部署-Hexo"><a href="#4-在-Github-Pages-上部署-Hexo" class="headerlink" title="4. 在 Github Pages 上部署 Hexo"></a>4. 在 Github Pages 上部署 Hexo</h1><p>本地的 Hexo 博客已经安装成功了，如果需要让博客被其他人访问到，可以部署到 Github Pages 或者 云服务器上。这里先将它部署到 Github Pages。</p>
 <h2 id="4-1-在Github创建仓库"><a href="#4-1-在Github创建仓库" class="headerlink" title="4.1 在Github创建仓库"></a>4.1 在Github创建仓库</h2><p>在 Github 上创建仓库，在创建时按照如下步骤，需要指定仓库名并勾选 readme 初始化</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20201031171607156.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/10/31/20201031171607156.png"></p>
 <h2 id="4-2-将Hexo推送到Github仓库"><a href="#4-2-将Hexo推送到Github仓库" class="headerlink" title="4.2 将Hexo推送到Github仓库"></a>4.2 将Hexo推送到Github仓库</h2><ol>
 <li><p>复制仓库地址，使用SSH协议</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20201031172348649.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/10/31/20201031172348649.png"></p>
 </li>
 <li><p>将仓库地址配置到Hexo中</p>
 <p>在 Hexo 目录下，有一个 <code>_config.yml</code> 的配置文件，里面保存了 Hexo 相关的配置信息。</p>
 <p>找了 deploy 配置项，按照如下方式进行配置</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20201031172754942.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/10/31/20201031172754942.png"></p>
 </li>
 <li><p>推送Hexo文件到Github</p>
 <p>使用如下命令生成 hexo 文件，并推送到 Github</p>

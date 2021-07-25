@@ -524,7 +524,7 @@
 <li>开发工具（IntelliJ IDEA ）</li>
 <li>Kafka 2.11-2.0.0</li>
 </ol>
-<h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823102848138.png"></p>
+<h1 id="3-演示代码"><a href="#3-演示代码" class="headerlink" title="3.演示代码"></a>3.演示代码</h1><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823102848138.png"></p>
 <p>总体结构说明：</p>
 <ul>
 <li>config-repo： 配置文件仓库</li>
@@ -835,16 +835,16 @@ management:
 <h2 id="4-1-ofc-bus-eureka"><a href="#4-1-ofc-bus-eureka" class="headerlink" title="4.1 ofc-bus-eureka"></a>4.1 ofc-bus-eureka</h2><p>访问 eureka 管理台，查看 config-server 和 config-client 注册信息</p>
 <pre class=" language-http"><code class="language-http">### GET
 GET http://localhost:11070/</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823113209334.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823113209334.png"></p>
 <h2 id="4-2-ofc-bus-config-server"><a href="#4-2-ofc-bus-config-server" class="headerlink" title="4.2 ofc-bus-config-server"></a>4.2 ofc-bus-config-server</h2><p>访问 <code>spring-cloud-ofc-bus.http</code> 中 ofc-bus-config-server 对应部分，查看输出的配置信息</p>
 <p><strong>查看profile=test的配置信息</strong></p>
 <pre class=" language-http"><code class="language-http">### GET /soulballad/{profile} 获取配置信息
 <span class="token header-name keyword">http:</span>//localhost:11072/soulballad/test</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823114217360.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823114217360.png"></p>
 <p><strong>查看配置文件内容</strong></p>
 <pre class=" language-http"><code class="language-http">### GET /soulballad-{profile}.properties 获取指定文件内容
 <span class="token header-name keyword">http:</span>//localhost:11072/soulballad-test.properties</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823114312436.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823114312436.png"></p>
 <p><strong>其他方式查看配置文件内容</strong></p>
 <pre class=" language-http"><code class="language-http">### 接口访问支持以下几种格式
 ### /{application}/{profile}[/{label}]
@@ -857,35 +857,35 @@ GET http://localhost:11072/master/soulballad-dev.yml
 GET http://localhost:11072/soulballad-dev.properties
 ### /{label}/{application}-{profile}.properties
 GET http://localhost:11072/master/soulballad-dev.properties</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823114415741.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823114415741.png"></p>
 <h2 id="4-3-ofc-bus-config-client"><a href="#4-3-ofc-bus-config-client" class="headerlink" title="4.3 ofc-bus-config-client"></a>4.3 ofc-bus-config-client</h2><p>访问 <code>spring-cloud-ofc-bus.http</code>  中如下请求，查看输出的配置信息</p>
 <p><strong>使用http请求访问配置</strong></p>
 <pre class=" language-http"><code class="language-http">### GET /name
 GET http://localhost:11073/name</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823114441336.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823114441336.png"></p>
 <h2 id="4-4-配置变更"><a href="#4-4-配置变更" class="headerlink" title="4.4 配置变更"></a>4.4 配置变更</h2><p>修改 server 上 soulballad-dev.properties 内容：soulballad-dev -&gt; soulballad-dev…changed</p>
 <pre class=" language-properties"><code class="language-properties"><span class="token attr-name">my.name</span><span class="token punctuation">=</span><span class="token attr-value">soulballad-dev...changed</span></code></pre>
 <p>在服务端访问，查看修改是否生效</p>
 <pre class=" language-http"><code class="language-http">### /{application}-{profile}.yml
 GET http://localhost:11072/soulballad-dev.yml</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823114702284.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823114702284.png"></p>
 <p>在客户端访问 <code>/name</code>，还是获取到修改前的值： soulballad-dev</p>
 <pre class=" language-http"><code class="language-http">### GET /name
 GET http://localhost:11073/name</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823114730896.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823114730896.png"></p>
 <p>调用 <code>/actuator/bus-refresh</code> 进行刷新</p>
 <pre class=" language-http"><code class="language-http">### POST /actuator/bus-refresh
 POST http://localhost:11072/actuator/bus-refresh</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823114813568.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823114813568.png"></p>
 <p>再次访问 /name，获取到 soulballad-dev…changed</p>
 <pre class=" language-http"><code class="language-http">### GET /name
 GET http://localhost:11073/name</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823114840761.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823114840761.png"></p>
 <p>当有多个 config-client 时，也可以只刷新单个 config-client 的取值，使用如下方式</p>
 <pre class=" language-http"><code class="language-http">### POST http://localhost:11072/actuator/bus-refresh/${spring.application.name}:{server.port}，
 ### spring.application.name 和 server.port都是要刷新client的
 POST http://localhost:11072/actuator/bus-refresh/ofc-bus-config-client:11073</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200823114933216.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/23/20200823114933216.png"></p>
 <p><strong>如果要想在配置文件提交 git 后自动刷新配置，可以使用 <code>Webhook</code></strong></p>
 <h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h1><ol>
 <li><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-bus/2.2.2.RELEASE/reference/html/" target="_blank" rel="noopener">官方文档–Spring-Cloud-Bus</a></li>

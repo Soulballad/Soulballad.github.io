@@ -512,9 +512,9 @@
 <p>Spring Cloud Feign：<a href="95f7c0a4">【Spring Cloud学习】-4.Spring Cloud Feign 服务调用</a></p>
 </blockquote>
 <h2 id="1-Feign-是如何调用服务的？"><a href="#1-Feign-是如何调用服务的？" class="headerlink" title="1.Feign 是如何调用服务的？"></a>1.Feign 是如何调用服务的？</h2><p>当调用 <code>/user/list</code> 时，可以看到这时的 UserService 是一个代理对象，它被 jdk 动态代理。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200821172827151.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/21/20200821172827151.png"></p>
 <p>继续执行会调用 ReflectiveFeign.FeignInvocationHandler#invoke 方法，调用路径如下</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/4-1.Feign%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E6%9C%8D%E5%8A%A1.jpg"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/21/202008211814220991.jpg"></p>
 <h2 id="2-代理对象是如何创建的？"><a href="#2-代理对象是如何创建的？" class="headerlink" title="2.代理对象是如何创建的？"></a>2.代理对象是如何创建的？</h2><p>在 OfcFeignUserClientApplication 上添加了 @EnableFeignClients 注解，启用了 feign 功能，@EnableFeignClients 中通过 @Import 引入了 @FeignClientsRegistrar</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>

@@ -589,7 +589,7 @@ kubectl get pods </code></pre>
 <pre class=" language-shell"><code class="language-shell">kubectl get pods -w
 kubectl get svc</code></pre>
 <p>可以发现，新老版本的确会共存</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309211033.gif"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309211033.gif"></p>
 </blockquote>
 <h2 id="1-2-重新创建"><a href="#1-2-重新创建" class="headerlink" title="1.2 重新创建"></a>1.2 重新创建</h2><blockquote>
 <p><code>recreate.yaml</code></p>
@@ -631,7 +631,7 @@ recreate-655d4868d8-sb688 &nbsp; &nbsp; &nbsp; &nbsp; 0/1 &nbsp; &nbsp; Terminat
 <pre class=" language-shell"><code class="language-shell">NAME &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  READY &nbsp; STATUS &nbsp;  RESTARTS &nbsp; AGE
 recreate-6f74f4686d-4xkgl &nbsp; &nbsp; &nbsp; &nbsp; 1/1 &nbsp; &nbsp; Running &nbsp; 0 &nbsp; &nbsp; &nbsp; &nbsp;  13s
 recreate-6f74f4686d-blrt7 &nbsp; &nbsp; &nbsp; &nbsp; 1/1 &nbsp; &nbsp; Running &nbsp; 0 &nbsp; &nbsp; &nbsp; &nbsp;  13s</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309211118.gif"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309211118.gif"></p>
 </blockquote>
 <p><strong>Have a try</strong></p>
 <pre class=" language-shell"><code class="language-shell">kubectl rollout pause deploy rollingupdate
@@ -706,7 +706,7 @@ kubectl get svc
 # 同时观察刚才访问的地址有没有变化
 # 发现流量已经完全切到了v2.0的版本上</code></pre>
 <p><strong>完整演示</strong>：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309211219.gif"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309211219.gif"></p>
 <h2 id="1-4-金丝雀"><a href="#1-4-金丝雀" class="headerlink" title="1.4 金丝雀"></a>1.4 金丝雀</h2><blockquote>
 <p>修改上述 bluegreen-service.yaml</p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">selector</span><span class="token punctuation">:</span>
@@ -716,7 +716,7 @@ kubectl get svc
 <pre class=" language-shell"><code class="language-shell">kubectl apply -f bluegreen-service.yaml 
 # 同时观察刚才访问的地址有没有变化，lstio中就更方便咯
 此时新旧版本能够同时被访问到，AB测试，新功能部署少一些的实例</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309211233.gif"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309211233.gif"></p>
 <h1 id="2-Log-and-Monitor"><a href="#2-Log-and-Monitor" class="headerlink" title="2 Log and Monitor"></a>2 Log and Monitor</h1><h2 id="2-1-Log"><a href="#2-1-Log" class="headerlink" title="2.1 Log"></a>2.1 Log</h2><h3 id="2-1-1-容器级别"><a href="#2-1-1-容器级别" class="headerlink" title="2.1.1 容器级别"></a>2.1.1 容器级别</h3><ul>
 <li><p>docker命令查看</p>
 <pre class=" language-shell"><code class="language-shell">docker ps --->containerid
@@ -737,7 +737,7 @@ docker logs containerid --->查看容器的日志情况</code></pre>
 <h3 id="2-1-4-LogPilot-ES-Kibana"><a href="#2-1-4-LogPilot-ES-Kibana" class="headerlink" title="2.1.4 LogPilot+ES+Kibana"></a>2.1.4 LogPilot+ES+Kibana</h3><blockquote>
 <p><a href="https://github.com/AliyunContainerService/log-pilot" target="_blank" rel="noopener">https://github.com/AliyunContainerService/log-pilot</a></p>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309211242.png"><br><strong>部署流程</strong>：</p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309211242.png"><br><strong>部署流程</strong>：</p>
 <ul>
 <li><p>部署logpilot</p>
 <ol>
@@ -1049,7 +1049,7 @@ kubectl get deploy -n kube-system</code></pre>
 <pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 注意这边是worker01的IP</span>
 <span class="token attr-name">121.41.10.126</span> <span class="token attr-value">kibana.jack.com </span></code></pre>
 </li>
-<li><p>在 windows 访问 kibana.jack.com<br> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309211254.png"></p>
+<li><p>在 windows 访问 kibana.jack.com<br> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309211254.png"></p>
 </li>
 </ol>
 </li>
@@ -1058,7 +1058,7 @@ kubectl get deploy -n kube-system</code></pre>
 <p><code>官网</code>：<a href="https://prometheus.io/" target="_blank" rel="noopener">https://prometheus.io/</a></p>
 <p><code>github</code> ：<a href="https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/prometheus" target="_blank" rel="noopener">https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/prometheus</a></p>
 </blockquote>
-<h3 id="2-2-2-Prometheus架构"><a href="#2-2-2-Prometheus架构" class="headerlink" title="2.2.2 Prometheus架构"></a>2.2.2 Prometheus架构</h3><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309211300.png"></p>
+<h3 id="2-2-2-Prometheus架构"><a href="#2-2-2-Prometheus架构" class="headerlink" title="2.2.2 Prometheus架构"></a>2.2.2 Prometheus架构</h3><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309211300.png"></p>
 <h3 id="2-2-3-Prometheus知识普及"><a href="#2-2-3-Prometheus知识普及" class="headerlink" title="2.2.3 Prometheus知识普及"></a>2.2.3 Prometheus知识普及</h3><ul>
 <li>支持pull、push数据添加方式</li>
 <li>支持k8s服务发现</li>
@@ -1069,9 +1069,9 @@ kubectl get deploy -n kube-system</code></pre>
 <h3 id="2-2-4-数据采集"><a href="#2-2-4-数据采集" class="headerlink" title="2.2.4 数据采集"></a>2.2.4 数据采集</h3><h4 id="2-2-4-1-服务器数据"><a href="#2-2-4-1-服务器数据" class="headerlink" title="2.2.4.1 服务器数据"></a>2.2.4.1 服务器数据</h4><blockquote>
 <p>通过 NodeExporter： <a href="https://github.com/prometheus/node_exporter" target="_blank" rel="noopener">https://github.com/prometheus/node_exporter</a></p>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309211309.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309211309.png"></p>
 <h4 id="2-2-4-2-组件数据"><a href="#2-2-4-2-组件数据" class="headerlink" title="2.2.4.2 组件数据"></a>2.2.4.2 组件数据</h4><p>ETCD： <a href="https://ip:2379/metrics" target="_blank" rel="noopener">https://ip:2379/metrics</a><br>APIServer： <a href="https://ip:6443/metrics" target="_blank" rel="noopener">https://ip:6443/metrics</a><br>ControllerManager： <a href="https://ip:10252/metrics" target="_blank" rel="noopener">https://ip:10252/metrics</a><br>Scheduler： <a href="https://ip:10251/metrics" target="_blank" rel="noopener">https://ip:10251/metrics</a></p>
-<h4 id="2-2-4-3-容器数据"><a href="#2-2-4-3-容器数据" class="headerlink" title="2.2.4.3 容器数据"></a>2.2.4.3 容器数据</h4><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309211312.png"></p>
+<h4 id="2-2-4-3-容器数据"><a href="#2-2-4-3-容器数据" class="headerlink" title="2.2.4.3 容器数据"></a>2.2.4.3 容器数据</h4><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309211312.png"></p>
 <h3 id="2-2-5-Prometheus-Grafana"><a href="#2-2-5-Prometheus-Grafana" class="headerlink" title="2.2.5 Prometheus+Grafana"></a>2.2.5 Prometheus+Grafana</h3><blockquote>
 <p>在master上创建prometheus目录<br>网盘/课堂源码/*.yaml</p>
 <p><code>namespace.yaml</code></p>

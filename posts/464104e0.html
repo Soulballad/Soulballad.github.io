@@ -511,7 +511,7 @@
                 <blockquote>
 <p>Spring Boot 的初步使用： <a href="3aaee350">【从零开始学Spring Boot】-1.第一个Spring Boot应用</a></p>
 </blockquote>
-<h2 id="1-Spring-Boot-启动流程是怎样的？"><a href="#1-Spring-Boot-启动流程是怎样的？" class="headerlink" title="1.Spring Boot 启动流程是怎样的？"></a>1.Spring Boot 启动流程是怎样的？</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200709221114156.png"></p>
+<h2 id="1-Spring-Boot-启动流程是怎样的？"><a href="#1-Spring-Boot-启动流程是怎样的？" class="headerlink" title="1.Spring Boot 启动流程是怎样的？"></a>1.Spring Boot 启动流程是怎样的？</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/09/20200709221114156.png"></p>
 <p>从 main 方法开始</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringBootDemoApplication</span> <span class="token punctuation">{</span>
@@ -574,7 +574,7 @@
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> context<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="2-Spring-Boot-如何加载-Tomcat？"><a href="#2-Spring-Boot-如何加载-Tomcat？" class="headerlink" title="2.Spring Boot 如何加载 Tomcat？"></a>2.Spring Boot 如何加载 Tomcat？</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200709223727507.png"></p>
+<h2 id="2-Spring-Boot-如何加载-Tomcat？"><a href="#2-Spring-Boot-如何加载-Tomcat？" class="headerlink" title="2.Spring Boot 如何加载 Tomcat？"></a>2.Spring Boot 如何加载 Tomcat？</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/09/20200709223727507.png"></p>
 <p>SpringApplication.run -&gt; ConfigurableApplicationContext ，跟踪 tomcat 的创建过程，主要看 createApplicationContext() 和 refreshContext() 方法</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> ConfigurableApplicationContext <span class="token function">run</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// ...</span>
@@ -690,14 +690,14 @@
     <span class="token function">initPropertySources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>这里的 factory 通过 ServletWebServerFactory 来实例化，所以创建 ServletWebServer</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200709225432357.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/09/20200709225432357.png"></p>
 <p>最终在 TomcatServletWebServerFactory 中创建了 Tomcat、Connector、Engine、Host 等，这里可以结合 apache-tomcat 的配置文件 server.xml 来分析几者之间的层级关系</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200709225721299.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/09/20200709225721299.png"></p>
 <h2 id="3-Spring-Boot-默认容器为何是-tomcat？"><a href="#3-Spring-Boot-默认容器为何是-tomcat？" class="headerlink" title="3.Spring Boot 默认容器为何是 tomcat？"></a>3.Spring Boot 默认容器为何是 tomcat？</h2><p>先看下 spring-boot-starter-web 的依赖结构</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200710214932703.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/10/20200710214932703.png"></p>
 <p>spring-boot-starter-web 依赖了 spring-boot-starter-tomcat，又依赖了 tomcat-embed-core。但是只凭这个，并不能说明默认容器为 tomca 的原因。</p>
 <p>要弄清这个问题，就要涉及到 Spring Boot 的自动装配，以及 WebServer 的装配。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200710220743014.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/10/20200710220743014.png"></p>
 <p>@SpringBootApplication 是一个复合注解，它包含如下内容</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
@@ -757,9 +757,9 @@
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">AutoConfigurationEntry</span><span class="token punctuation">(</span>configurations<span class="token punctuation">,</span> exclusions<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>在 getCandidateConfigurations 获取所有自动装配类，这个方法通过 SpringFactoriesLoader 加载 META-INF/spring.factories 中的内容，在 spring-boot-autoconfigure 的 spring.factories 中有如下内容</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200710222137689.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/10/20200710222137689.png"></p>
 <p>其中有一条配置为 EmbeddedWebServerFactoryCustomizerAutoConfiguration，这个即为内容 webServer 的自动装配类</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200710222221906.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/10/20200710222221906.png"></p>
 <p>它的实现如下</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span><span class="token punctuation">(</span>proxyBeanMethods <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@ConditionalOnWebApplication</span>

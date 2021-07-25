@@ -525,7 +525,7 @@
 </ol>
 <h1 id="3-代码"><a href="#3-代码" class="headerlink" title="3.代码"></a>3.代码</h1><h2 id="3-1-功能说明"><a href="#3-1-功能说明" class="headerlink" title="3.1 功能说明"></a>3.1 功能说明</h2><p>用户 User 类里面有 id、name、age、idCard 等字段，这些字段在处理的时候通过注解进行校验；其中 name、age 字段校验使用的是 spring boot 依赖的组件中提供的注解；而 idCard 使用自定义注解 @IdCard；这些注解都支持国际化，最终通过 jpa 保存到 h2 数据库中。</p>
 <p>UserCommand 用来预置几条数据。</p>
-<h2 id="3-2-代码结构"><a href="#3-2-代码结构" class="headerlink" title="3.2 代码结构"></a>3.2 代码结构</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712172518494.png"></p>
+<h2 id="3-2-代码结构"><a href="#3-2-代码结构" class="headerlink" title="3.2 代码结构"></a>3.2 代码结构</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/12/20200712172518494.png"></p>
 <h2 id="3-3-maven-依赖"><a href="#3-3-maven-依赖" class="headerlink" title="3.3 maven 依赖"></a>3.3 maven 依赖</h2><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.h2database<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
@@ -755,11 +755,11 @@
 <pre class=" language-http"><code class="language-http">### GET /user/list
 GET http://localhost:8080/user/list
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712175001915.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/12/20200712175001915.png"></p>
 <pre class=" language-http"><code class="language-http">### GET /user/get/{id}
 GET http://localhost:8080/user/get/1
 <span class="token header-name keyword">Accept:</span> application/json</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712175029788.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/12/20200712175029788.png"></p>
 <pre class=" language-http"><code class="language-http">### POST /user/add success
 POST http://localhost:8080/user/add
 <span class="token header-name keyword">Content-Type:</span> application/json
@@ -771,7 +771,7 @@ POST http://localhost:8080/user/add
   <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span>
   <span class="token string">"idCard"</span><span class="token punctuation">:</span> <span class="token string">"110101200303072399"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712175147586.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/12/20200712175147586.png"></p>
 <pre class=" language-http"><code class="language-http">### POST /user/add idCard&amp;name&amp;age illegal
 POST http://localhost:8080/user/add
 <span class="token header-name keyword">Content-Type:</span> application/json
@@ -783,7 +783,7 @@ POST http://localhost:8080/user/add
   <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">243</span><span class="token punctuation">,</span>
   <span class="token string">"idCard"</span><span class="token punctuation">:</span> <span class="token string">"1101003072399"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712182715264.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/12/20200712182715264.png"></p>
 <pre class=" language-http"><code class="language-http">### PUT /user/update success
 PUT http://localhost:8080/user/update
 <span class="token header-name keyword">Content-Type:</span> application/json
@@ -795,12 +795,12 @@ PUT http://localhost:8080/user/update
   <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span>
   <span class="token string">"idCard"</span><span class="token punctuation">:</span> <span class="token string">"110101200303072399"</span>
 <span class="token punctuation">}</span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712182912860.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/12/20200712182912860.png"></p>
 <pre class=" language-http"><code class="language-http">### DELETE /user/delete/{id} success
 DELETE http://localhost:8080/user/delete/1
 <span class="token header-name keyword">Content-Type:</span> application/json
 <span class="token header-name keyword">Accept:</span> */*</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200712183003589.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/12/20200712183003589.png"></p>
 
             </div>
             <hr/>

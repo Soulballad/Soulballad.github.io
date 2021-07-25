@@ -563,7 +563,7 @@
 <h1 id="3-线程池的实现原理"><a href="#3-线程池的实现原理" class="headerlink" title="3. 线程池的实现原理"></a>3. 线程池的实现原理</h1><p>线程池的基本使用我们都清楚了，接下来我们来了解一下线程池的实现原理 ThreadPoolExecutor 是线程池的核心，提供了线程池的实现。</p>
 <p>ScheduledThreadPoolExecutor 继承了 ThreadPoolExecutor，并另外提供一些调度方法以支持定时和周期任务。Executors 是工具类，主要用来创建线程池对象我们把一个任务提交给线程池去处理的时候，线程池的处理过程是什么样的呢？首先直接来看看定义</p>
 <p><strong>线程池原理分析(FixedThreadPool)</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210418211228.png" alt="1559466123010"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210418211228.png" alt="1559466123010"></p>
 <h1 id="4-源码分析"><a href="#4-源码分析" class="headerlink" title="4. 源码分析"></a>4. 源码分析</h1><h2 id="execute"><a href="#execute" class="headerlink" title="execute"></a>execute</h2><p>基于源码入口进行分析，先看 execute 方法</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">execute</span><span class="token punctuation">(</span>Runnable command<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>command <span class="token operator">==</span> null<span class="token punctuation">)</span>
@@ -601,7 +601,7 @@
 <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> STOP <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 不接收新任务,不执行队列中的任务,中断正在执行中的任务</span>
 <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> TIDYING <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 所有的任务都已结束,线程数量为 0,处于该状态的线程池即将调用 terminated()方法</span>
 <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> TERMINATED <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// terminated()方法执行完成</span></code></pre>
-<h2 id="状态转化"><a href="#状态转化" class="headerlink" title="状态转化"></a>状态转化</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210418211345.png" alt="1559466634564"></p>
+<h2 id="状态转化"><a href="#状态转化" class="headerlink" title="状态转化"></a>状态转化</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210418211345.png" alt="1559466634564"></p>
 <h2 id="addWorker"><a href="#addWorker" class="headerlink" title="addWorker"></a>addWorker</h2><p>如果工作线程数小于核心线程数的话，会调用 addWorker，顾名思义，其实就是要创建一个工作线程。我们来看看源码的实现，源码比较长，看起来比较唬人，其实就做了两件事。</p>
 <ol>
 <li>才用循环 CAS 操作来将线程数加 1；</li>

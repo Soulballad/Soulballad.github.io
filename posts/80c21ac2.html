@@ -513,10 +513,10 @@
 </blockquote>
 <h2 id="1-自定义-starter-原理分析"><a href="#1-自定义-starter-原理分析" class="headerlink" title="1.自定义 starter 原理分析"></a>1.自定义 starter 原理分析</h2><p>demo-spring-boot-starter 中 Hello 接口定义了 hello 方法，它又三个实现类，分别是：HelloGirl、HelloJava、HelloWorld。</p>
 <p>它们三个都是在 HelloAutoConfiguration 中进行的声明，声明时通过条件注解 <code>@ConditionalOnProperty</code> 来区分具体要激活的 bean，而条件注解的值通过外部配置传入，所以就将选择权交给了使用者；同时这里还声明了 HelloTemplate，HelloTemplate 需要用到的属性值通过 HelloProperties 从外部配置文件中传入。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200730200120564.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/30/20200730200120564.png"></p>
 <p>HelloAutoConfiguration 配置在 <code>META-INF\spring.factories</code> 中，spring boot 会通过 SpringFactoriesLoader 来自动加载该位置的类，这是一种 SPI 机制，所以依赖了 demo-spring-boot-starter 的项目，会自动加载 HelloAutoConfiguration 这个装配类。</p>
 <p><code>test-spring-boot-starter</code> 中的 application.properties 中配置了 <code>com.soulballad.hello.java.enable=true</code> 配置，所以会自动激活 HelloJava 的 bean；同时配置的HelloProperties 中其他属性也会一并被加载到上下文中。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200730200329099.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/30/20200730200329099.png"></p>
 <p>所以在 HelloController 中调用 helloTemplate 的 hello 方式时，最终会调用到 HelloJava 类。</p>
 
             </div>

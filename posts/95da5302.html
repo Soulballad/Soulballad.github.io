@@ -511,14 +511,14 @@
                 <blockquote>
 <p>Spring Cloud Ribbon： <a href="883eb3ff">【Spring Cloud学习】-1.Spring Cloud Ribbon 实现负载均衡</a></p>
 </blockquote>
-<h2 id="1-RestTemplate-调用如何负载均衡？"><a href="#1-RestTemplate-调用如何负载均衡？" class="headerlink" title="1.RestTemplate 调用如何负载均衡？"></a>1.RestTemplate 调用如何负载均衡？</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/1-1.RestTemplate%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.jpg"></p>
+<h2 id="1-RestTemplate-调用如何负载均衡？"><a href="#1-RestTemplate-调用如何负载均衡？" class="headerlink" title="1.RestTemplate 调用如何负载均衡？"></a>1.RestTemplate 调用如何负载均衡？</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/11/202008112043212021.jpg"></p>
 <p>通过上面的调用流程可以发现，在 createRequest 时，创建了 InterceptingClientHttpRequest</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
 <span class="token keyword">protected</span> ClientHttpRequest <span class="token function">createRequest</span><span class="token punctuation">(</span>URI uri<span class="token punctuation">,</span> HttpMethod httpMethod<span class="token punctuation">,</span> ClientHttpRequestFactory requestFactory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">InterceptingClientHttpRequest</span><span class="token punctuation">(</span>requestFactory<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>interceptors<span class="token punctuation">,</span> uri<span class="token punctuation">,</span> httpMethod<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>所以在调用 request.execute 方法时，实际调用的是 InterceptingClientHttpRequest.execute，InterceptingClientHttpRequest 的类图如下</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200811205239027.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/11/20200811205239027.png"></p>
 <p>所以会先调用 AbstractClientHttpRequest 和 AbstractBufferingClientHttpRequest，最终调用 InterceptingClientHttpRequest 时，构造了一个调用链 execution</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">final</span> ClientHttpResponse <span class="token function">executeInternal</span><span class="token punctuation">(</span>HttpHeaders headers<span class="token punctuation">,</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bufferedOutput<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
    InterceptingRequestExecution requestExecution <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InterceptingRequestExecution</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

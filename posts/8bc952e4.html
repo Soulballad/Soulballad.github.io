@@ -522,7 +522,7 @@ docker volume rm -f $(docker volume ls)</code></pre>
 </li>
 <li><p>具体查看该volume</p>
 <pre class=" language-shell"><code class="language-shell">docker volume inspect 2fda8b112808f57852eddfd8984c1deba0bdcf91c65be4e1139d85a749165682</code></pre>
-<p>  <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308214941.png"></p>
+<p>  <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308214941.png"></p>
 </li>
 <li><p>名字不好看，name太长，修改一下</p>
 <pre><code>"-v mysql01_volume:/var/lib/mysql" 表示给上述的 volume 起一个能识别的名字</code></pre>
@@ -589,7 +589,7 @@ tomcat容器：cd /usr/local/tomcat/webapps/test</code></pre>
 <li><p>在centos7上访问该路径：curl localhost:9090/test/1.html</p>
 </li>
 <li><p>在win浏览器中通过ip访问</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308215033.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308215033.png"></p>
 </li>
 </ol>
 <h1 id="2-Docker实战"><a href="#2-Docker实战" class="headerlink" title="2 Docker实战"></a>2 Docker实战</h1><h2 id="2-1-MySQL高可用集群搭建"><a href="#2-1-MySQL高可用集群搭建" class="headerlink" title="2.1 MySQL高可用集群搭建"></a>2.1 MySQL高可用集群搭建</h2><ol>
@@ -737,7 +737,7 @@ haproxy -f /usr/local/etc/haproxy/haproxy.cfg</code></pre>
 <li><p>win浏览器访问</p>
 <pre><code>http://centos_ip:8888/dbs_monitor
 用户名密码都是:admin</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308215234.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308215234.png"></p>
 </li>
 <li><p>win上的datagrip连接haproxy01</p>
 <pre class=" language-properties"><code class="language-properties"><span class="token attr-name">ip</span><span class="token punctuation">:</span><span class="token attr-value">centos_ip</span>
@@ -760,7 +760,7 @@ haproxy -f /usr/local/etc/haproxy/haproxy.cfg</code></pre>
 </ul>
 </li>
 </ol>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308215256.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308215256.png"></p>
 <h3 id="2-2-2-MySQL"><a href="#2-2-2-MySQL" class="headerlink" title="2.2.2 MySQL"></a>2.2.2 MySQL</h3><blockquote>
 <p>(1)创建volume</p>
 </blockquote>

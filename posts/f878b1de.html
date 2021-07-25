@@ -555,15 +555,15 @@ sudo gitlab-ctl tail        # 查看日志；</code></pre>
 <h2 id="11-修改端口"><a href="#11-修改端口" class="headerlink" title="11 修改端口"></a>11 修改端口</h2><p>若linux服务器的80和8080端口都已经被使用，则需修改gitlab监听的端口</p>
 <p>修改路径文件：vim /etc/gitlab/gitlab.rb</p>
 <ol>
-<li><p>修改external_url ‘<a href="http://ip:端口号'">http://ip:端口号'</a>   （将前面的#注释符号去掉）,这里改成了8099<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205838.png"></p>
+<li><p>修改external_url ‘<a href="http://ip:端口号'">http://ip:端口号'</a>   （将前面的#注释符号去掉）,这里改成了8099<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309205838.png"></p>
 </li>
-<li><p>找到Advanced settings 下的8080端口 将端口改成自己备用端口号（不能和上面url端口号相同，会冲突占用！），这里改成28080<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205850.png"></p>
+<li><p>找到Advanced settings 下的8080端口 将端口改成自己备用端口号（不能和上面url端口号相同，会冲突占用！），这里改成28080<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309205850.png"></p>
 </li>
 <li><p>运行下面命令</p>
 <pre class=" language-shell"><code class="language-shell">1. sudo gitlab-ctl stop # --停止服务
 2. sudo gitlab-ctl reconfigure # --启动服务
 3. sudo gitlab-ctl start # --启动所有gitlab组件</code></pre>
-<p>启动需要一段时间，上边启动完基本就可以了。<br>期间可以查看端口进程：<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205855.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309205901.png"></p>
+<p>启动需要一段时间，上边启动完基本就可以了。<br>期间可以查看端口进程：<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309205855.png"><br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309205901.png"></p>
 </li>
 <li><p>若访问不了gitlab，尝试关闭或开放防火墙</p>
 </li>

@@ -550,8 +550,8 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>可以看到 spring-cloud-starter-netflix-eureka-server 的依赖关系如下</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200816165825716.png"></p>
-<h2 id="2-EurekaClient如何注册？"><a href="#2-EurekaClient如何注册？" class="headerlink" title="2.EurekaClient如何注册？"></a>2.EurekaClient如何注册？</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2-1.Eureka%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C.jpg"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/16/20200816165825716.png"></p>
+<h2 id="2-EurekaClient如何注册？"><a href="#2-EurekaClient如何注册？" class="headerlink" title="2.EurekaClient如何注册？"></a>2.EurekaClient如何注册？</h2><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/16/202008161729183741.jpg"></p>
 <p>服务启动的时候，会在刷新上下文的时候启动 Lifecycle，EurekaAutoServiceRegistration 是 Lifecycle 的一个实现类，所以会调用它的 start 方法，在 start 方法中通过调用 serviceRegistry.register 方法来进行注册。</p>
 <p>这里的 serviceRegistry 是 EurekaServiceRegistry，EurekaServiceRegistry 实现了 ServiceRegistry 接口，ServiceRegistry 在 spring-cloud-common 中进行定义，它是一个通用的接口，根据实现方案的不同，它还可以是 ConsulServiceRegistry、NacosServiceRegistry、ZookeeperServiceRegistry 等。</p>
 <p>EurekaServiceRegistry#register</p>
@@ -755,9 +755,9 @@ statusChangeListener <span class="token operator">=</span> <span class="token ke
     registry<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>info<span class="token punctuation">,</span> <span class="token string">"true"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>isReplication<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> Response<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">204</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 204 to be backwards compatible</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2-2.EurekaServer%E6%8E%A5%E6%94%B6%E6%B3%A8%E5%86%8C%E8%AF%B7%E6%B1%82.jpg"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/16/202008161809085011.jpg"></p>
 <p>这里的 registry 是 PeerAwareInstanceRegistry，它的类图如下</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200816181121049.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/08/16/20200816181121049.png"></p>
 <p>最终调用的 register 方法在 AbstractInstanceRegistry 中</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">register</span><span class="token punctuation">(</span>InstanceInfo registrant<span class="token punctuation">,</span> <span class="token keyword">int</span> leaseDuration<span class="token punctuation">,</span> <span class="token keyword">boolean</span> isReplication<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">try</span> <span class="token punctuation">{</span>

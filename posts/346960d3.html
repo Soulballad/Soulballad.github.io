@@ -741,12 +741,12 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 <li><p>单库</p>
 <ul>
 <li><p>即单一数据库</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000002.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291610069741.webp"></p>
 </li>
 </ul>
 </li>
 <li><p>分片</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000003.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291610523681.webp"></p>
 <ul>
 <li><strong>分片解决的是“数据量太大”的问题，也就是通常说的“水平切分”</strong>。一旦引入分片，势必有“数据路由”的概念，哪个数据访问哪个库。</li>
 <li>路由规则通常有3种方法：<ul>
@@ -758,12 +758,12 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 </ul>
 </li>
 <li><p>分组</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000004.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291611301881.webp"></p>
 <ul>
 <li><p>分组解决“可用性”问题，分组通常通过<strong>主从复制</strong>的方式实现。</p>
 </li>
 <li><p><strong>互联网公司数据库实际软件架构是：又分片，又分组</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000005.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291611554991.webp"></p>
 </li>
 </ul>
 </li>
@@ -785,11 +785,11 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 </blockquote>
 <p><strong>数据的冗余，会带来一个副作用=&gt;引发一致性问题（先不说一致性问题，先说可用性）。</strong></p>
 <h4 id="4-4-2-2-如何保证数据库“读”高可用？"><a href="#4-4-2-2-如何保证数据库“读”高可用？" class="headerlink" title="4.4.2.2 如何保证数据库“读”高可用？"></a>4.4.2.2 如何保证数据库“读”高可用？</h4><p><strong>冗余读库</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000006.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291612205811.webp"></p>
 <p><strong>冗余读库带来的副作用？读写有延时，可能不一致</strong>。</p>
 <p>上面这个图是很多互联网公司mysql的架构，写仍然是单点，不能保证写高可用。</p>
 <h4 id="4-4-2-3-如何保证数据库“写”高可用？"><a href="#4-4-2-3-如何保证数据库“写”高可用？" class="headerlink" title="4.4.2.3 如何保证数据库“写”高可用？"></a>4.4.2.3 如何保证数据库“写”高可用？</h4><p><strong>冗余写库</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000007.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291612390011.webp"></p>
 <p><strong>采用双主互备的方式，可以冗余写库带来的副作用？双写同步，数据可能冲突（例如“自增id”同步冲突）</strong>，如何解决同步冲突，有两种常见解决方案：</p>
 <blockquote>
 <ol>
@@ -798,7 +798,7 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 </ol>
 </blockquote>
 <p><strong>实际中没有使用上述两种架构来做读写的“高可用”，采用的是“双主当主从用”的方式：</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000008.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291613178211.webp"></p>
 <p>仍是双主，但<strong>只有一个主提供服务（读+写），另一个主是“shadow-master”，只用来保证高可用，平时不提供服务</strong>。</p>
 <p>master挂了，shadow-master顶上（vip漂移，对业务层透明，不需要人工介入）。这种方式的好处：</p>
 <blockquote>
@@ -816,7 +816,7 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 </blockquote>
 <p>那如何提高读性能呢？进入第二个话题，如何提供读性能。</p>
 <h4 id="4-4-2-4-如何扩展读性能"><a href="#4-4-2-4-如何扩展读性能" class="headerlink" title="4.4.2.4 如何扩展读性能"></a>4.4.2.4 如何扩展读性能</h4><p>提高读性能的方式大致有三种，<strong>第一种是建立索引</strong>。这种方式不展开，要提到的一点是，<strong>不同的库可以建立不同的索引</strong>。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000009.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291613344571.webp"></p>
 <p>不同的库可以建立不同的索引</p>
 <blockquote>
 <p><strong>写库</strong>不建立索引；</p>
@@ -831,9 +831,9 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 </ol>
 </blockquote>
 <p>实际中没有采用这种方法提高数据库读性能（没有从库），<strong>采用的是增加缓存</strong>。常见的缓存架构如下：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000010.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291613463781.webp"></p>
 <p>上游是业务应用，下游是主库，从库（读写分离），缓存。实际的玩法：<strong>服务+数据库+缓存一套</strong>。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000011.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291613546451.webp"></p>
 <p>业务层不直接面向db和cache，<strong>服务层屏蔽了底层db、cache的复杂性</strong>。为什么要引入服务层，今天不展开，采用了“服务+数据库+缓存一套”的方式提供数据访问，<strong>用cache提高读性能</strong>。</p>
 <blockquote>
 <p><strong>不管采用主从的方式扩展读性能，还是缓存的方式扩展读性能，数据都要复制多份（主+从，db+cache），一定会引发一致性问题。</strong></p>
@@ -841,13 +841,13 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 <h4 id="4-4-2-5-如何保证一致性？"><a href="#4-4-2-5-如何保证一致性？" class="headerlink" title="4.4.2.5 如何保证一致性？"></a>4.4.2.5 如何保证一致性？</h4><p>主从数据库的一致性，通常有两种解决方案：</p>
 <ol>
 <li><p><strong>中间件</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000012.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291614279951.webp"></p>
 <p>如果某一个key有写操作，在不一致时间窗口内，中间件会将这个key的读操作也路由到主库上。这个方案的缺点是，<strong>数据库中间件的门槛较高</strong>（百度，腾讯，阿里，360等一些公司有）。</p>
 </li>
 <li><p><strong>强制读主</strong></p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000013.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291614380361.webp"></p>
 <p>上面实际用的“双主当主从用”的架构，不存在主从不一致的问题。第二类不一致，<strong>是db与缓存间的不一致</strong>：</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000014.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291614490331.webp"></p>
 <p>常见玩法：数据库+缓存</p>
 <p>常见的缓存架构如上，此时<strong>写操作</strong>的顺序是：</p>
 <blockquote>
@@ -873,7 +873,7 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 <h4 id="4-4-2-6-如何提高数据库的扩展性？"><a href="#4-4-2-6-如何提高数据库的扩展性？" class="headerlink" title="4.4.2.6. 如何提高数据库的扩展性？"></a>4.4.2.6. 如何提高数据库的扩展性？</h4><p>   原来用hash的方式路由，分为2个库，数据量还是太大，要分为3个库，势必需要进行数据迁移，有一个很帅气的“数据库秒级扩容”方案。</p>
 <p>   <strong>如何秒级扩容？</strong></p>
 <p>   首先，<strong>我们不做2库变3库的扩容，我们做2库变4库（库加倍）的扩容（未来4-&gt;8-&gt;16）</strong></p>
-<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000015.webp"></p>
+<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291615053651.webp"></p>
 <p>   服务+数据库是一套（省去了缓存），<strong>数据库采用“双主”的模式</strong>。</p>
 <p>   <strong>扩容步骤：</strong></p>
 <blockquote>
@@ -889,11 +889,11 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 <li>删除多余的数据（余0的主，可以将余2的数据删除掉）；</li>
 </ol>
 </blockquote>
-<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000016.webp"></p>
+<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291615169661.webp"></p>
 <p>   这样，秒级别内，我们就完成了2库变4库的扩展。</p>
 <h1 id="5-大并发带来的挑战"><a href="#5-大并发带来的挑战" class="headerlink" title="5. 大并发带来的挑战"></a>5. 大并发带来的挑战</h1><h2 id="5-1-请求接口的合理设计"><a href="#5-1-请求接口的合理设计" class="headerlink" title="5.1 请求接口的合理设计"></a>5.1 请求接口的合理设计</h2><p>一个秒杀或者抢购页面，通常分为2个部分，一个是<strong>静态的HTML等内容</strong>，另一个就是<strong>参与秒杀的Web后台请求接口</strong>。</p>
 <p><strong>通常静态HTML等内容，是通过CDN的部署，一般压力不大，核心瓶颈实际上在后台请求接口上</strong>。这个后端接口，必须能够支持高并发请求，同时，非常重要的一点，必须尽可能“快”，在最短的时间里返回用户的请求结果。<strong>为了实现尽可能快这一点，接口的后端存储使用内存级别的操作会更好一点</strong>。仍然直接面向MySQL之类的存储是不合适的，<strong>如果有这种复杂业务的需求，都建议采用异步写入</strong>。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000017.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291615325711.webp"></p>
 <p>当然，也有一些秒杀和抢购<strong>采用“滞后反馈”</strong>，就是说秒杀当下不知道结果，一段时间后才可以从页面中看到用户是否秒杀成功。但是，这种属于“偷懒”行为，同时给用户的体验也不好，容易被用户认为是“暗箱操作”。</p>
 <h2 id="5-2-高并发的挑战：一定要“快”"><a href="#5-2-高并发的挑战：一定要“快”" class="headerlink" title="5.2 高并发的挑战：一定要“快”"></a>5.2 高并发的挑战：一定要“快”</h2><p>我们通常衡量一个<strong>Web系统的吞吐率的指标是QPS（Query Per Second，每秒处理请求数），解决每秒数万次的高并发场景，这个指标非常关键</strong>。举个例子，我们假设处理一个业务请求平均响应时间为100ms，同时，系统内有20台Apache的Web服务器，配置MaxClients为500个（表示Apache的最大连接数目）。</p>
 <p>那么，我们的Web系统的理论峰值QPS为（理想化的计算方式）：</p>
@@ -905,7 +905,7 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 <p>于是，我们的系统剩下了4w的QPS，面对5w每秒的请求，中间相差了1w。</p>
 <p>然后，这才是真正的恶梦开始。举个例子，高速路口，1秒钟来5部车，每秒通过5部车，高速路口运作正常。突然，这个路口1秒钟只能通过4部车，车流量仍然依旧，结果必定出现大塞车。（5条车道忽然变成4条车道的感觉）。</p>
 <p>同理，某一个秒内，20*500个可用连接进程都在满负荷工作中，却仍然有1万个新来请求，没有连接进程可用，系统陷入到异常状态也是预期之内。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000018.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291616454441.webp"></p>
 <p>其实在正常的非高并发的业务场景中，也有类似的情况出现，某个业务请求接口出现问题，响应时间极慢，将整个Web请求响应时间拉得很长，逐渐将Web服务器的可用连接数占满，其他正常的业务请求，无连接进程可用。</p>
 <p>更可怕的问题是，是用户的行为特点，系统越是不可用，用户的点击越频繁，<strong>恶性循环最终导致“雪崩”（其中一台Web机器挂了，导致流量分散到其他正常工作的机器上，再导致正常的机器也挂，然后恶性循环）</strong>，将整个Web系统拖垮。</p>
 <h2 id="5-3-重启与过载保护"><a href="#5-3-重启与过载保护" class="headerlink" title="5.3 重启与过载保护"></a>5.3 重启与过载保护</h2><p>如果系统发生“雪崩”，贸然重启服务，是无法解决问题的。最常见的现象是，启动起来后，立刻挂掉。这个时候，<strong>最好在入口层将流量拒绝，然后再将重启</strong>。如果是redis/memcache这种服务也挂了，重启的时候需要注意“预热”，并且很可能需要比较长的时间。</p>
@@ -914,16 +914,16 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 <p>这些都是属于“作弊的手段”，不过，有“进攻”就有“防守”，这是一场没有硝烟的战斗哈。</p>
 <h2 id="6-1-同一个账号，一次性发出多个请求"><a href="#6-1-同一个账号，一次性发出多个请求" class="headerlink" title="6.1 同一个账号，一次性发出多个请求"></a>6.1 同一个账号，一次性发出多个请求</h2><p>部分用户通过浏览器的插件或者其他工具，在秒杀开始的时间里，<strong>以自己的账号，一次发送上百甚至更多的请求</strong>。实际上，这样的用户破坏了秒杀和抢购的公平性。</p>
 <p>这种请求在某些没有做数据安全处理的系统里，也可能造成另外一种破坏，导致某些判断条件被绕过。例如一个简单的领取逻辑，先判断用户是否有参与记录，如果没有则领取成功，最后写入到参与记录中。这是个非常简单的逻辑，但是，在高并发的场景下，存在深深的漏洞。<strong>多个并发请求通过负载均衡服务器，分配到内网的多台Web服务器，它们首先向存储发送查询请求，然后，在某个请求成功写入参与记录的时间差内，其他的请求获查询到的结果都是“没有参与记录”</strong>。这里，就存在逻辑判断被绕过的风险。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000019.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291617087831.webp"></p>
 <blockquote>
 <p><strong>应对方案：</strong></p>
 <p>在程序入口处，一个账号只允许接受1个请求，其他请求过滤。不仅解决了同一个账号，发送N个请求的问题，还保证了后续的逻辑流程的安全。<strong>实现方案，可以通过Redis这种内存缓存服务，写入一个标志位（只允许1个请求写成功，结合watch的乐观锁的特性），成功写入的则可以继续参加</strong>。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000020.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291617203461.webp"></p>
 <p>或者，自己实现一个服务，将同一个账号的请求放入一个队列中，处理完一个，再处理下一个。</p>
 </blockquote>
 <h2 id="6-2-多个账号，一次性发送多个请求"><a href="#6-2-多个账号，一次性发送多个请求" class="headerlink" title="6.2 多个账号，一次性发送多个请求"></a>6.2 多个账号，一次性发送多个请求</h2><p>很多公司的账号注册功能，在发展早期几乎是没有限制的，很容易就可以注册很多个账号。因此，<strong>也导致了出现了一些特殊的工作室，通过编写自动注册脚本，积累了一大批“僵尸账号”，数量庞大，几万甚至几十万的账号不等，专门做各种刷的行为（这就是微博中的“僵尸粉“的来源）</strong>。举个例子，例如微博中有转发抽奖的活动，如果我们使用几万个“僵尸号”去混进去转发，这样就可以大大提升我们中奖的概率。</p>
 <p>这种账号，使用在秒杀和抢购里，也是同一个道理。例如，iPhone官网的抢购，火车票黄牛党。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000021.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291617336391.webp"></p>
 <blockquote>
 <p><strong>应对方案：</strong></p>
 <p>这种场景，可以<strong>通过检测指定机器IP请求频率就可以解决，如果发现某个IP请求频率很高，可以给它弹出一个验证码或者直接禁止它的请求</strong>：</p>
@@ -933,7 +933,7 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 </ol>
 </blockquote>
 <h2 id="6-3-多个账号，不同IP发送不同请求"><a href="#6-3-多个账号，不同IP发送不同请求" class="headerlink" title="6.3 多个账号，不同IP发送不同请求"></a>6.3 多个账号，不同IP发送不同请求</h2><p>所谓道高一尺，魔高一丈。有进攻，就会有防守，永不休止。<strong>这些“工作室”，发现你对单机IP请求频率有控制之后，他们也针对这种场景，想出了他们的“新进攻方案”，就是不断改变IP</strong>。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000022.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291617482561.webp"></p>
 <p>有同学会好奇，这些随机IP服务怎么来的。<strong>有一些是某些机构自己占据一批独立IP，然后做成一个随机代理IP的服务，有偿提供给这些“工作室”使用</strong>。还有一些更为黑暗一点的，就是<strong>通过木马黑掉普通用户的电脑，这个木马也不破坏用户电脑的正常运作，只做一件事情，就是转发IP包，普通用户的电脑被变成了IP代理出口</strong>。通过这种做法，黑客就拿到了大量的独立IP，然后搭建为随机IP服务，就是为了挣钱。</p>
 <blockquote>
 <p><strong>应对方案：</strong></p>
@@ -942,19 +942,19 @@ import org<span class="token punctuation">.</span>apache<span class="token punct
 </blockquote>
 <h1 id="7-高并发下的数据安全"><a href="#7-高并发下的数据安全" class="headerlink" title="7. 高并发下的数据安全"></a>7. 高并发下的数据安全</h1><p>我们知道在<strong>多线程写入同一个文件的时候，会存现“线程安全”的问题</strong>（多个线程同时运行同一段代码，如果每次运行结果和单线程运行的结果是一样的，结果和预期相同，就是线程安全的）。<strong>如果是MySQL数据库，可以使用它自带的锁机制很好的解决问题，但是，在大规模并发的场景中，是不推荐使用MySQL的</strong>。<strong>秒杀和抢购的场景中，还有另外一个问题，就是“超发”，如果在这方面控制不慎，会产生发送过多的情况</strong>。我们也曾经听说过，某些电商搞抢购活动，买家成功拍下后，商家却不承认订单有效，拒绝发货。这里的问题，也许并不一定是商家奸诈，而是系统技术层面存在超发风险导致的。</p>
 <h2 id="7-1-超发的原因"><a href="#7-1-超发的原因" class="headerlink" title="7.1 超发的原因"></a>7.1 超发的原因</h2><p>假设某个抢购场景中，我们一共只有100个商品，在最后一刻，我们已经消耗了99个商品，仅剩最后一个。这个时候，系统发来多个并发请求，这批请求读取到的商品余量都是99个，然后都通过了这一个余量判断，最终导致超发。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000023.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291618042061.webp"></p>
 <p>在上面的这个图中，就导致了并发用户B也“抢购成功”，多让一个人获得了商品。这种场景，在高并发的情况下非常容易出现。</p>
 <h2 id="7-2-悲观锁思路"><a href="#7-2-悲观锁思路" class="headerlink" title="7.2 悲观锁思路"></a>7.2 悲观锁思路</h2><p>解决线程安全的思路很多，可以从“悲观锁”的方向开始讨论。</p>
 <blockquote>
 <p><strong>悲观锁，也就是在修改数据的时候，采用锁定状态，排斥外部请求的修改。遇到加锁的状态，就必须等待。</strong></p>
 </blockquote>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000024.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291618194281.webp"></p>
 <p>虽然上述的方案的确解决了线程安全的问题，但是，别忘记，<strong>我们的场景是“高并发”。也就是说，会很多这样的修改请求，每个请求都需要等待“锁”，某些线程可能永远都没有机会抢到这个“锁”，这种请求就会死在那里</strong>。同时，这种请求会很多，<strong>瞬间增大系统的平均响应时间，结果是可用连接数被耗尽，系统陷入异常</strong>。</p>
 <h2 id="7-3-FIFO队列思路"><a href="#7-3-FIFO队列思路" class="headerlink" title="7.3 FIFO队列思路"></a>7.3 FIFO队列思路</h2><p>那好，那么我们稍微修改一下上面的场景，<strong>我们直接将请求放入队列中的，采用FIFO（First Input First Output，先进先出），这样的话，我们就不会导致某些请求永远获取不到锁</strong>。看到这里，是不是有点强行将多线程变成单线程的感觉哈。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000025.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291618354701.webp"></p>
 <p>然后，我们现在解决了锁的问题，全部请求采用“先进先出”的队列方式来处理。那么新的问题来了，<strong>高并发的场景下，因为请求很多，很可能一瞬间将队列内存“撑爆”，然后系统又陷入到了异常状态</strong>。或者设计一个极大的内存队列，也是一种方案，但是，系统处理完一个队列内请求的速度根本无法和疯狂涌入队列中的数目相比。也就是说，队列内的请求会越积累越多，最终Web系统平均响应时候还是会大幅下降，系统还是陷入异常。</p>
 <h2 id="7-4-乐观锁思路"><a href="#7-4-乐观锁思路" class="headerlink" title="7.4 乐观锁思路"></a>7.4 乐观锁思路</h2><p>这个时候，我们就可以讨论一下“乐观锁”的思路了。<strong>乐观锁，是相对于“悲观锁”采用更为宽松的加锁机制，大都是采用带版本号（Version）更新。</strong>实现就是，这个数据所有请求都有资格去修改，但会获得一个该数据的版本号，只有版本号符合的才能更新成功，其他的返回抢购失败。这样的话，我们就不需要考虑队列的问题，不过，<strong>它会增大CPU的计算开销</strong>。但是，综合来说，这是一个比较好的解决方案。</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/ia_100000026.webp"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/11/29/202011291618529591.webp"></p>
 <p>有很多软件和服务都“乐观锁”功能的支持，例如<strong>Redis中的watch就是其中之一</strong>。通过这个实现，我们保证了数据的安全。</p>
 <h1 id="8-总结"><a href="#8-总结" class="headerlink" title="8. 总结"></a>8. 总结</h1><p>互联网正在高速发展，使用互联网服务的用户越多，高并发的场景也变得越来越多。电商秒杀和抢购，是两个比较典型的互联网高并发场景。虽然我们解决问题的具体技术方案可能千差万别，但是遇到的挑战却是相似的，因此解决问题的思路也异曲同工。</p>
 <p>参考：<a href="https://www.jianshu.com/p/df4fbecb1a4b" target="_blank" rel="noopener">秒杀架构的分析与实战</a></p>

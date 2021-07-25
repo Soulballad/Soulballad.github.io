@@ -512,7 +512,7 @@
 <p>Spring Boot Email 邮件发送：<a href="a2a90ed3">【从零开始学Spring Boot】-7.Spring Boot Email邮件发送</a></p>
 </blockquote>
 <h2 id="1-Email-自动装配"><a href="#1-Email-自动装配" class="headerlink" title="1.Email 自动装配"></a>1.Email 自动装配</h2><p>JavaMailSender 仅有一个实现 JavaMailSenderImpl</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/image-20200719163739485.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2020/07/19/20200719163739485.png"></p>
 <p>在 Mail 的自动装配类 MailSenderAutoConfiguration 中有如下定义</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span><span class="token punctuation">(</span>proxyBeanMethods <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@ConditionalOnClass</span><span class="token punctuation">(</span><span class="token punctuation">{</span> MimeMessage<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> MimeType<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> MailSender<span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>

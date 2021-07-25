@@ -554,7 +554,7 @@
 </li>
 <li><p>根据nginx_replication.yaml创建pod</p>
 <pre class=" language-shell"><code class="language-shell">kubectl apply -f nginx_replication.yaml</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221735.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221735.png"></p>
 </li>
 <li><p>查看pod</p>
 <pre class=" language-shell"><code class="language-shell">kubectl get pods -o wide
@@ -565,12 +565,12 @@ nginx-zzwzl   1/1     Running   0          44s   192.168.190.68   w1
 kubectl get rc
 NAME    DESIRED   CURRENT   READY   AGE
 nginx   3         3         3       2m54s</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221737.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221737.png"></p>
 </li>
 <li><p>尝试删除一个pod</p>
 <pre class=" language-shell"><code class="language-shell">kubectl delete pods nginx-zzwzl
 kubectl get pods</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221740.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221740.png"></p>
 </li>
 <li><p>对pod进行扩缩容</p>
 <p>rc = ReplicationController 简写</p>
@@ -581,11 +581,11 @@ nginx-9pgwk   0/1     ContainerCreating   0          2s
 nginx-hksg8   1/1     Running             0          6m50s
 nginx-q7bw5   1/1     Running             0          6m50s
 nginx-wzqkf   1/1     Running             0          99s</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221743.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221743.png"></p>
 </li>
 <li><p>删除pod</p>
 <pre class=" language-shell"><code class="language-shell">kubectl delete -f nginx_replication.yaml</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221746.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221746.png"></p>
 </li>
 </ol>
 <h3 id="ReplicaSet-RS"><a href="#ReplicaSet-RS" class="headerlink" title="ReplicaSet(RS)"></a>ReplicaSet(RS)</h3><blockquote>
@@ -644,7 +644,7 @@ You describe a desired state in a Deployment, and the Deployment Controller chan
 </li>
 <li><p>根据nginx_deployment.yaml文件创建pod</p>
 <pre class=" language-shell"><code class="language-shell">kubectl apply -f nginx_deployment.yaml</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222211.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222211.png"></p>
 </li>
 <li><p>查看pod</p>
 <blockquote>
@@ -656,21 +656,21 @@ You describe a desired state in a Deployment, and the Deployment Controller chan
 <pre class=" language-shell"><code class="language-shell">nginx-deployment-6dd86d77d-f7dxb   1/1     Running   0      22s   192.168.80.198   w2 
 nginx-deployment-6dd86d77d-npqxj   1/1     Running   0      22s   192.168.190.71   w1 
 nginx-deployment-6dd86d77d-swt25   1/1     Running   0      22s   192.168.190.70   w1</code></pre>
-<p>nginx-deployment[deployment]-6dd86d77d[replicaset]-f7dxb[pod]<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221812.png"></p>
+<p>nginx-deployment[deployment]-6dd86d77d[replicaset]-f7dxb[pod]<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221812.png"></p>
 </li>
 <li><p>当前nginx的版本</p>
 <pre class=" language-shell"><code class="language-shell">kubectl get deployment -o wide
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES      SELECTOR
 nginx-deployment   3/3         3     3  3m27s      nginx    nginx:1.7.9   app=nginx</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221815.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221815.png"></p>
 </li>
 <li><p>更新nginx的image版本</p>
 <pre class=" language-shell"><code class="language-shell">kubectl set image deployment nginx-deployment nginx=nginx:1.9.1</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221820.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221820.png"></p>
 </li>
 <li><p>查询 replicaset 信息</p>
 <pre class=" language-shell"><code class="language-shell">kubectl get rs -o wide</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221823.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221823.png"></p>
 </li>
 </ol>
 <h2 id="2-Labels-and-Selectors"><a href="#2-Labels-and-Selectors" class="headerlink" title="2 Labels and Selectors"></a>2 Labels and Selectors</h2><blockquote>
@@ -723,7 +723,7 @@ default           Active   27m
 kube-node-lease   Active   27m
 kube-public       Active   27m
 kube-system       Active   27m</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221830.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221830.png"></p>
 </blockquote>
 <p>其实说白了，命名空间就是为了隔离不同的资源，比如：Pod、Service、Deployment等。可以在输入命令的时候指定命名空间<code>-n</code>，如果不指定，则使用默认的命名空间：default。</p>
 <h3 id="创建命名空间"><a href="#创建命名空间" class="headerlink" title="创建命名空间"></a>创建命名空间</h3><blockquote>
@@ -741,7 +741,7 @@ kube-node-lease   Active   38m
 kube-public       Active   38m
 kube-system       Active   38m
 myns              Active   6s</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221837.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221837.png"></p>
 <h3 id="指定命名空间下的资源"><a href="#指定命名空间下的资源" class="headerlink" title="指定命名空间下的资源"></a>指定命名空间下的资源</h3><blockquote>
 <p>比如创建一个pod，属于myns命名空间下</p>
 <p>vi nginx-pod.yaml</p>
@@ -763,9 +763,9 @@ myns              Active   6s</code></pre>
 <p>kubectl get pods</p>
 <p>kubectl get pods -n myns</p>
 <p>kubectl get all -n myns</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221841.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221841.png"></p>
 <p>kubectl get pods –all-namespaces    #查找所有命名空间下的pod</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221844.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221844.png"></p>
 </blockquote>
 <h2 id="4-Network"><a href="#4-Network" class="headerlink" title="4 Network"></a>4 Network</h2><h3 id="4-1-同一个Pod中的容器通信"><a href="#4-1-同一个Pod中的容器通信" class="headerlink" title="4.1 同一个Pod中的容器通信"></a>4.1 同一个Pod中的容器通信</h3><blockquote>
 <p>接下来就要说到跟Kubernetes网络通信相关的内容咯</p>
@@ -819,7 +819,7 @@ myns              Active   6s</code></pre>
 busybox    1/1   Running      0       49s    192.168.221.70   worker02-kubeadm-k8s   
 nginx-pod  1/1   Running      0      7m46s   192.168.14.1     worker01-kubeadm-k8s </code></pre>
 <p><code>发现</code>：nginx-pod的ip为192.168.14.1     busybox-pod的ip为192.168.221.70</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221851.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221851.png"></p>
 </blockquote>
 <h4 id="同一个集群中同一台机器"><a href="#同一个集群中同一台机器" class="headerlink" title="同一个集群中同一台机器"></a>同一个集群中同一台机器</h4><blockquote>
 <p>(1)来到worker01：ping 192.168.14.1</p>
@@ -827,7 +827,7 @@ nginx-pod  1/1   Running      0      7m46s   192.168.14.1     worker01-kubeadm-k
 <pre class=" language-shell"><code class="language-shell">PING 192.168.14.1 (192.168.14.1) 56(84) bytes of data.
 64 bytes from 192.168.14.1: icmp_seq=1 ttl=64 time=0.063 ms
 64 bytes from 192.168.14.1: icmp_seq=2 ttl=64 time=0.048 ms</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221855.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221855.png"></p>
 <blockquote>
 <p>(2)来到worker01：curl 192.168.14.1</p>
 </blockquote>
@@ -842,7 +842,7 @@ nginx-pod  1/1   Running      0      7m46s   192.168.14.1     worker01-kubeadm-k
         <span class="token property">font-family</span><span class="token punctuation">:</span> Tahoma, Verdana, Arial, sans-serif<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221858.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221858.png"></p>
 <h4 id="同一个集群中不同机器"><a href="#同一个集群中不同机器" class="headerlink" title="同一个集群中不同机器"></a>同一个集群中不同机器</h4><blockquote>
 <p>(1)来到worker02：ping 192.168.14.1</p>
 </blockquote>
@@ -906,14 +906,14 @@ With Kubernetes you don’t need to modify your application to use an unfamiliar
 <pre class=" language-shell"><code class="language-shell">whoami-deployment-5dd9ff5fd8-22k9n   192.168.221.80   worker02-kubeadm-k8s
 whoami-deployment-5dd9ff5fd8-vbwzp   192.168.14.6     worker01-kubeadm-k8s
 whoami-deployment-5dd9ff5fd8-zzf4d   192.168.14.7     worker01-kubeadm-k8s</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221905.png"><br>   kubect get svc:可以发现目前并没有关于whoami的service</p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221905.png"><br>   kubect get svc:可以发现目前并没有关于whoami的service</p>
 <pre class=" language-shell"><code class="language-shell">  NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
   kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   19h</code></pre>
-<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308221927.png"></p>
+<p>   <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308221927.png"></p>
 <ol start="3">
 <li><p>在集群内正常访问</p>
 <pre class=" language-shell"><code class="language-shell">curl 192.168.221.80:8000/192.168.14.6:8000/192.168.14.7:8000</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222001.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222001.png"></p>
 </li>
 </ol>
 </li>
@@ -929,7 +929,7 @@ kubernetes          ClusterIP   10.96.0.1        <none>        443/TCP    19h
 whoami-deployment   ClusterIP   10.105.147.59   <none>        8000/TCP   23s</code></pre>
 <p><strong>可以发现有一个Cluster IP类型的service，名称为whoami-deployment，IP地址为10.101.201.192</strong></p>
 </blockquote>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222033.png"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222033.png"></p>
 </li>
 <li><p>通过Service的Cluster IP访问</p>
 <pre class=" language-shell"><code class="language-shell">  [root@master-kubeadm-k8s ~]# curl 10.105.147.59:8000
@@ -938,7 +938,7 @@ whoami-deployment   ClusterIP   10.105.147.59   <none>        8000/TCP   23s</co
   I'm whoami-deployment-678b64444d-hgdrk
   [root@master-kubeadm-k8s ~]# curl 10.105.147.59:8000
   I'm whoami-deployment-678b64444d-65t88</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222036.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222036.png"></p>
 </li>
 <li><p>具体查看一下whoami-deployment的详情信息，发现有一个Endpoints连接了具体3个Pod</p>
 <pre class=" language-shell"><code class="language-shell">  [root@master-kubeadm-k8s ~]# kubectl describe svc whoami-deployment
@@ -954,15 +954,15 @@ whoami-deployment   ClusterIP   10.105.147.59   <none>        8000/TCP   23s</co
   Endpoints:         192.168.14.8:8000,192.168.221.81:8000,192.168.221.82:8000
   Session Affinity:  None
   Events:            <none></code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222041.png"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222041.png"></p>
 </li>
 <li><p>不妨对whoami扩容成5个</p>
 <pre class=" language-shell"><code class="language-shell">  kubectl scale deployment whoami-deployment --replicas=5</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222043.png"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222043.png"></p>
 </li>
-<li><p>再次访问：curl 10.105.147.59:8000<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222045.png"></p>
+<li><p>再次访问：curl 10.105.147.59:8000<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222045.png"></p>
 </li>
-<li><p>再次查看service具体信息：kubectl describe svc whoami-deployment<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222048.png"></p>
+<li><p>再次查看service具体信息：kubectl describe svc whoami-deployment<br><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222048.png"></p>
 </li>
 <li><p>其实对于Service的创建，不仅仅可以使用kubectl expose，也可以定义一个yaml文件</p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
@@ -1019,18 +1019,18 @@ kubectl expose deployment whoami-deployment --type=NodePort
 NAME                TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
 kubernetes          ClusterIP   10.96.0.1      <none>        443/TCP          21h
 whoami-deployment   NodePort    10.99.108.82   <none>        8000:32041/TCP   7s</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222056.png"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222056.png"></p>
 </li>
 <li><p>注意上述的端口32041，实际上就是暴露在集群中物理机器上的端口</p>
 <pre class=" language-shell"><code class="language-shell">lsof -i tcp:32041
 netstat -ntlp|grep 32041</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222059.png"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222059.png"></p>
 </li>
 <li><p>浏览器通过物理机器的IP访问</p>
 <pre class=" language-shell"><code class="language-shell">http://192.168.0.51:32041
 curl 192.168.0.61:32041</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222102.png"></p>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222216.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222102.png"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222216.png"></p>
 </li>
 </ol>
 <p><code>conclusion</code>：NodePort虽然能够实现外部访问Pod的需求，但是真的好吗？其实不好，占用了各个物理主机上的端口</p>
@@ -1386,14 +1386,14 @@ hostNetwork: true
 kubectl apply -f mandatory.yaml  
 kubectl get all -n ingress-nginx</code></pre>
 <p>新增如图所示配置，根据 name=ingress 选择运行的节点，hostNetwork=true 以 HostPort 的方式暴露端口</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222145.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222145.png"></p>
 <p>执行 yaml 文件，并查看 namespace 下 pod</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222148.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222148.png"></p>
 </li>
 <li><p>查看<strong>w1</strong>的80和443端口</p>
 <pre class=" language-shell"><code class="language-shell">lsof -i tcp:80
 lsof -i tcp:443</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222151.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222151.png"></p>
 </li>
 <li><p>创建tomcat的pod和service</p>
 <blockquote>
@@ -1440,7 +1440,7 @@ kubectl get pods</code></pre>
   <span class="token key atrule">selector</span><span class="token punctuation">:</span>
     <span class="token key atrule">app</span><span class="token punctuation">:</span> tomcat
   <span class="token key atrule">type</span><span class="token punctuation">:</span> NodePort  </code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222155.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222155.png"></p>
 </li>
 <li><p>创建Ingress以及定义转发规则</p>
 <blockquote>
@@ -1464,7 +1464,7 @@ kubectl describe ingress nginx-ingress</code></pre>
          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> tomcat<span class="token punctuation">-</span>service
          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span></code></pre>
 <p>规则说明：访问 tomcat.jack.com 的根目录时，会被转发到下面的 tomcat-service 服务，tomcat服务的地址是 192.168.19.77:8080</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222159.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222159.png"></p>
 </li>
 <li><p>修改win的hosts文件，添加dns解析</p>
 <pre class=" language-properties"><code class="language-properties"><span class="token attr-name">192.168.8.61</span> <span class="token attr-value">tomcat.jack.com</span>
@@ -1472,7 +1472,7 @@ kubectl describe ingress nginx-ingress</code></pre>
 <span class="token attr-name">172.16.11.129</span> <span class="token attr-value">  tomcat.jack.com</span></code></pre>
 </li>
 <li><p>打开浏览器，访问tomcat.jack.com</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210308222203.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210308222203.png"></p>
 </li>
 </ol>
 <p><code>总结</code>：如果以后想要使用Ingress网络，其实只要定义ingress，service和pod即可，前提是要保证 nginx ingress controller 已经配置好了。</p>

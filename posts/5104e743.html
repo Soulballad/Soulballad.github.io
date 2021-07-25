@@ -743,7 +743,7 @@ ls /busybox-volume
 <pre class=" language-shell"><code class="language-shell">kubectl apply -f nginx-pv-demo.yaml
 kubectl get pv,pvc
 kubectl get pods -o wide</code></pre>
-<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210033.png"></p>
+<p> <img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309210033.png"></p>
 </li>
 <li><p>测试持久化存储</p>
 <ol>
@@ -756,7 +756,7 @@ kubectl get pods -o wide</code></pre>
 </ol>
 </li>
 </ol>
-<h3 id="1-6-3-看图解理解一下"><a href="#1-6-3-看图解理解一下" class="headerlink" title="1.6.3 看图解理解一下"></a>1.6.3 看图解理解一下</h3><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210039.png"></p>
+<h3 id="1-6-3-看图解理解一下"><a href="#1-6-3-看图解理解一下" class="headerlink" title="1.6.3 看图解理解一下"></a>1.6.3 看图解理解一下</h3><p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309210039.png"></p>
 <h2 id="1-7-StorageClass"><a href="#1-7-StorageClass" class="headerlink" title="1.7 StorageClass"></a>1.7 StorageClass</h2><blockquote>
 <p>上面手动管理PV的方式还是有点low，能不能更加灵活一点呢？</p>
 <p><code>官网</code>：<a href="https://kubernetes.io/docs/concepts/storage/storage-classes/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/storage/storage-classes/</a></p>
@@ -788,7 +788,7 @@ The name of a StorageClass object is significant, and is how users can request a
 04 如果Pod想要使用共享存储，一般会在创建PVC，PVC中描述了想要什么类型的后端存储、空间等，K8s从而会匹配对应的PV，如果没有匹配成功，Pod就会处于Pending状态。Pod中使用只需要像使用volumes一样，指定名字就可以使用了
 05 一个Pod可以使用多个PVC，一个PVC也可以给多个Pod使用
 06 一个PVC只能绑定一个PV，一个PV只能对应一种后端存储</code></pre>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210045.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309210045.png"></p>
 <blockquote>
 <p>有了StorageClass之后的PVC可以变成这样</p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolumeClaim
@@ -806,7 +806,7 @@ The name of a StorageClass object is significant, and is how users can request a
 <blockquote>
 <p>StorageClass之所以能够动态供给PV，是因为Provisioner，也就是Dynamic Provisioning</p>
 <p>但是NFS这种类型，K8s中默认是没有Provisioner插件的，需要自己创建</p>
-<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/20210309210049.png"></p>
+<p><img src="https://gitee.com/soulballad/PicGo/raw/master/img/2021/07/24/20210309210049.png"></p>
 </blockquote>
 <h2 id="1-8-StorageClass实战"><a href="#1-8-StorageClass实战" class="headerlink" title="1.8 StorageClass实战"></a>1.8 StorageClass实战</h2><blockquote>
 <p><code>github</code>：<a href="https://github.com/kubernetes-incubator/external-storage/tree/master/nfs" target="_blank" rel="noopener">https://github.com/kubernetes-incubator/external-storage/tree/master/nfs</a></p>
